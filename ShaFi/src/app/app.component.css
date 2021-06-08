@@ -1,0 +1,109 @@
+.NavBarWhite{
+    color: black;
+    display: flex;
+    height: 5rem;
+
+}
+
+nav{
+    display: flex;
+}
+
+ul{
+    display: flex;
+    margin: 0 0 0 5rem;
+    padding: 0 0 0 0;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+a{
+   
+  
+    font-family: 'Franklin Gothic Medium';
+   
+}
+.NavListElement{
+    color:black;
+    font-family: 'Franklin Gothic Medium';
+    text-decoration: none;
+    list-style: none;
+    height: auto;
+    font-size: 1.5rem;
+    padding: 1rem  2rem  2rem  1rem ;
+    transition: 500ms;
+}
+.NavListElement:hover{
+    color:rgb(121, 120, 120);
+    transition: 500ms;
+    font-size: 1.7rem;
+}
+
+
+.logo{
+    height: inherit;
+    
+}
+.LoginFeld{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+.LoginButton{
+   background-color: red; 
+   color: white;
+   padding: 1rem 1rem 1rem 1rem;
+   margin-right: 2rem;
+   border-radius: 2rem;
+   text-decoration: none;
+   font-size: 1.5rem;
+}
+.LoginButton:hover{
+    font-size: larger;
+    transition: 500ms;
+    margin-right: 3rem;
+    color: black;
+}
+
+
+@media screen and (min-width: 700px) and ( max-width: 1000px){
+
+    ul{
+        margin: 0 0 0 1.2rem;
+    }
+
+   .NavListElement{
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+   }
+
+   .NavListElement:hover{
+    font-size: 1.2rem;
+   }
+
+   .LoginButton{
+    font-size: 1.0rem;
+    margin-right: 1rem;
+   }
+
+   .LoginButton:hover{
+    font-size: 1.1rem;
+    margin-right: 1rem;
+   }
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 700px){
+    .NavBarWhite{
+        display: none;
+    }
+}
