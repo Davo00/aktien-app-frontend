@@ -4,6 +4,7 @@
     height: 5rem;
     z-index: 10;
     padding: 1rem 0 1rem 0;
+    
 }
 
 nav{
@@ -20,9 +21,7 @@ nav{
     align-items: center;
     
 }
-ul:nth-child(2){
-    margin: 0 0 0 5rem;
-}
+
 
 a{
    
@@ -41,7 +40,6 @@ a{
     transition: 500ms;
 }
 .NavListElement:hover{
-    color:rgb(121, 120, 120);
     transition: 500ms;
     font-size: 1.7rem;
 }
@@ -151,11 +149,12 @@ a{
         font-size: 2rem;
        position: fixed;
        top: 0;
+       color: white;
        padding: 1rem 0 0 50vw;
        z-index: 5;
     }
     .BurgerMenu{
-        padding: 1rem 0 0 0rem;
+        padding: 1rem 0 1rem 0rem;
         display: block;
         z-index: 1;
         transition: all 0.5s ease;
@@ -173,7 +172,7 @@ a{
     .NavBarWhite{
         position: fixed;
         bottom: 0;
-        background: #686de0;
+        background: white;
         width: 100vw;
         justify-content: center;
         padding: 0 0 0 0;
@@ -193,16 +192,20 @@ a{
     .MenueIcons{
         font-size: 2rem;
         padding: 0 0 0 1rem;
+        color: white;
+        cursor: pointer;
     }
     .MenueIconstimes{
         font-size: 2rem;
        position: fixed;
        top: 0;
+       color: white;
        padding: 1rem 0 0 50vw;
        z-index: 5;
+       cursor: pointer;
     }
     .BurgerMenu{
-        padding: 1rem 0 0 0rem;
+        padding: 1rem 0 1rem 0rem;
         display: block;
         z-index: 1;
         transition: all 0.5s ease;
@@ -264,26 +267,26 @@ a{
 
  
 
-.MobileSiteMenu:hover{
-    transition: all 0.8s ease;
-}
 
 .UserIcon{
     font-size: 4rem;
     padding: 4rem 0 2rem 2rem;
     display: flex;
+    color: white;
+    cursor: pointer;
 }
 .UserName{
     font-size: 2rem;
     margin: 0 0 0 1rem;
     align-items: center;
     display: flex;
-    font-family: 'Franklin Gothic Medium';
+    color:white;
+    font-family: 'Baloo Tammudu 2', cursive;
 }
 
 .BurgerNavList{
     list-style: none;
-    font-family: 'Franklin Gothic small';
+    font-family: 'Baloo Tammudu 2', cursive;
     font-size: 1.8rem;
     line-height: 3rem; 
     margin: 0 0 0 2rem;
@@ -292,7 +295,7 @@ a{
 .BurgerNavListElement{
     text-decoration: none;
     color: white;
-    font-family: fantasy;
+    font-family: 'Baloo Tammudu 2', cursive;
 }
 
 .BurgerNavListElement:hover{
@@ -302,10 +305,9 @@ a{
 
 .BurgerNavListElementEinstellung{
     text-decoration: none;
-    color: black;
-    font-family: 'Franklin Gothic small';
+    color: white;
+    font-family: 'Baloo Tammudu 2', cursive;
     font-size: 1.8rem;
-    font-family: fantasy;
     cursor: pointer;
        
 }

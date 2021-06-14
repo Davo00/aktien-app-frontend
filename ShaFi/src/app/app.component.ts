@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'ShaFi';
 
-  clicked: boolean=!false;
+  clicked: boolean=false;
 
   ngOnInit(): void {
   }
