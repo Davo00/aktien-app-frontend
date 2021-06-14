@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { GroupOverviewComponent } from './group-overview/group-overview.component';
+
+const routes: Routes = [{ path: 'group-overview', component: GroupOverviewComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -5,18 +5,15 @@
     </a>
     <nav>
       <ul class="MenuList">
-        
         <li>
           <a class="NavListElement" href="#" routerLink="/"> Home </a>
         </li>
-        <li><a class="NavListElement" href="#" routerLink="/"> Gruppen </a></li>
+        <li><a class="NavListElement" href="#" routerLink="/group-overview"> Gruppen </a></li>
         <li>
           <a class="NavListElement" href="#" routerLink="/"> Zahlungen </a>
         </li>
         <li><a class="NavListElement" href="#" routerLink="/"> Aktien </a></li>
-      
       </ul>
-      
     </nav>
 
     <div class="LoginFeld">
@@ -24,62 +21,57 @@
     </div>
   </div>
 
-
-
-
-    <div class="BurgerMenu">
-      
-        <div (click)="thisclicked()" class="MenueIcons">
-        <i class='fas fa-bars'>
-
-        </i>
-      </div> 
-      
-
-      
-
-      
-         <div class="MobileSiteMenu" id="MobileNav" [ngClass]="{active: isactive()}" >  
-        
-        
-          
-          
-          <!-- <div class="MobileSiteContent"> -->
-          <div (click)="thisclicked()" class="MenueIconstimes">
-            <i class='fas fa-times'></i>
-          </div>
-
-          <div class="UserIcon">
-          <i class="fas fa-user"></i>
-          <p class="UserName">Username</p>
-        </div>
-        <ul class="BurgerNavList">
-          
-          <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
-          </li>
-          <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
-          </li>
-          <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
-          </li>
-          <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
-          </li>
-          <div class="BurgerNavListElementEinstellung">
-            Einstellungen
-          </div>
-        </ul>  
-      </div>
-      <!-- </div> -->
-    
-      
-     
+  <div class="BurgerMenu">
+    <div (click)="thisclicked()" class="MenueIcons">
+      <i class="fas fa-bars"> </i>
     </div>
 
+    <div
+      class="MobileSiteMenu"
+      id="MobileNav"
+      [ngClass]="{ active: isactive() }"
+    >
+      <!-- <div class="MobileSiteContent"> -->
+      <div (click)="thisclicked()" class="MenueIconstimes">
+        <i class="fas fa-times"></i>
+      </div>
+
+      <div class="UserIcon">
+        <i class="fas fa-user"></i>
+        <p class="UserName">Username</p>
+      </div>
+      <ul class="BurgerNavList">
+        <li>
+          <a class="BurgerNavListElement" href="#" routerLink="/">
+            Element der Liste
+          </a>
+        </li>
+        <li>
+          <a class="BurgerNavListElement" href="#" routerLink="/">
+            Element der Liste
+          </a>
+        </li>
+        <li>
+          <a class="BurgerNavListElement" href="#" routerLink="/">
+            Element der Liste
+          </a>
+        </li>
+        <li>
+          <a class="BurgerNavListElement" href="#" routerLink="/">
+            Element der Liste
+          </a>
+        </li>
+        <div class="BurgerNavListElementEinstellung">Einstellungen</div>
+      </ul>
+    </div>
+    <!-- </div> -->
+  </div>
 </header>
 
-<body style="background-color: rgb(227, 227, 241); height: 200vh">
+<body style="background-color: rgb(227, 227, 241)">
   <h1>Das ist der Text</h1>
 </body>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
