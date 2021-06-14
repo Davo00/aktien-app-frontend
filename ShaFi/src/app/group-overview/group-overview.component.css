@@ -1,0 +1,24 @@
+.groupOverviewPage {
+    display: flex;
+    justify-content: space-between;
+    color: red;
+    background-color: red;
+}
+.groupOverview {
+    color: red;
+    background-color: red;
+}
+
+.groupContainer {
+    color: red;
+    background-color: red;
+}
+
+.addGroupButton {
+    background-color: red;
+}
+
+.group {
+    background-color: red;
+    color: red;
+}
