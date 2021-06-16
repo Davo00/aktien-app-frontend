@@ -1,9 +1,9 @@
-.NavBarWhite {
-  color: black;
-  display: flex;
-  height: 5rem;
-  z-index: 10;
-  padding: 1rem 0 0 0;
+.NavBarWhite{
+    color: black;
+    display: flex;
+    height: 5rem;
+    z-index: 10;
+    padding: 1rem 0 1rem 0;
 }
 
 nav {
@@ -51,20 +51,21 @@ a {
   justify-content: flex-end;
   align-items: center;
 }
-.LoginButton {
-  background-color: red;
-  color: white;
-  padding: 1rem 1rem 1rem 1rem;
-  margin-right: 2rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  font-size: 1.5rem;
+.LoginButton{
+   background-color:#f5f6fa; 
+   color: black;
+   padding: 1rem 1rem 1rem 1rem;
+   margin-right: 2rem;
+   border-radius: 2rem;
+   text-decoration: none;
+   font-size: 1.5rem;
+   /* box-shadow: 1px 1px 3px 3px #303952; */
 }
-.LoginButton:hover {
-  font-size: larger;
-  transition: 500ms;
-  margin-right: 3rem;
-  color: black;
+.LoginButton:hover{
+    font-size: larger;
+    transition: 500ms;
+    margin-right: 3rem;
+   
 }
 
 .BurgerMenu {
@@ -101,21 +102,23 @@ a {
     width: 100vw;
   }
 
-  .NavListElement {
-    font-size: 1rem;
-    padding: 1rem 1rem 1rem 1rem;
-  }
-  .NavBarWhite {
-    position: fixed;
-    bottom: 0;
-    background-color: white;
-    width: 100vw;
-    justify-content: center;
-    padding: 0 0 0 0;
-  }
-  .logo {
-    display: none;
-  }
+@media screen and (min-width: 450px) and (max-width: 700px){
+
+    .NavListElement{
+        font-size: 1rem;
+        padding: 1rem 1rem 1rem 1rem;
+       }
+    .NavBarWhite{
+        position: fixed;
+        bottom: 0;
+        background: #686de0;
+        width: 100vw;
+        justify-content: center;
+        padding: 0 0 0 0;
+    }
+    .logo{
+        display: none;
+    }
 
   .LoginFeld {
     display: none;
@@ -197,9 +200,15 @@ a {
   transition: all 0.8s;
 }
 
-.BurgerMenuNotActiv {
-  width: 100vw;
-  transition: all 0.8s;
+ .MobileSiteMenu{
+    width: 60vw;
+    height: 100vh;
+    background-color: #192a56;
+    position: fixed;
+    left: -100%;
+    top: 0; 
+    z-index: 0;
+    transition: all 0.8s ease;
 
   height: 100vh;
   background-color: gray;
@@ -230,9 +239,10 @@ a {
     transition: transform 0.8s ease-in-out;
 } */
 
-.MobileSiteMenu:hover {
-  background-color: lightgray;
-  transition: all 0.8s ease;
+ 
+
+.MobileSiteMenu:hover{
+    transition: all 0.8s ease;
 }
 
 .UserIcon {
@@ -256,10 +266,10 @@ a {
   margin: 0 0 0 2rem;
   padding: 0 0 0 0;
 }
-.BurgerNavListElement {
-  text-decoration: none;
-  color: black;
-  font-family: fantasy;
+.BurgerNavListElement{
+    text-decoration: none;
+    color: white;
+    font-family: fantasy;
 }
 
 .BurgerNavListElement:hover {
@@ -276,4 +286,5 @@ a {
 }
 .BurgerNavListElementEinstellung:hover {
   font-size: 2rem;
+}
 }
