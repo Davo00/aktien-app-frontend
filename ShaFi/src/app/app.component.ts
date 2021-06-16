@@ -10,7 +10,7 @@ export class AppComponent implements OnInit{
   title = 'ShaFi';
  
 
-  clicked: boolean=!false;
+  clicked: boolean=false;
 
 
 
