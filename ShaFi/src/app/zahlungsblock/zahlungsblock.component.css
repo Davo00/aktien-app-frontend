@@ -1,0 +1,29 @@
+.block {
+    background-color: var(--boxcolor);
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 20px;  
+    margin-right: 20px;  
+    margin-bottom: 20px;   
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px var(--shadowcolor);
+}
+.elementLeft{
+    width: 50%;
+}
+.elementRight{
+    width: 50%;
+}
+.horizontal{
+    display:inline-flex;
+}
+.dateIcons {
+    padding-right: 1rem;
+    padding-top: 0.5rem; 
+    font-size: 200%;
+}
+.chartIcon {
+    padding-right: 1rem;
+    padding-top: 1rem; 
+    font-size: 300%;
+}

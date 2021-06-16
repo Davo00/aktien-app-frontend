@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ZahlungsblockComponent } from './zahlungsblock/zahlungsblock.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    routingComponent,
+    ZahlungsblockComponent
   ],
   imports: [
     BrowserModule,
