@@ -1,9 +1,14 @@
 <body>
 
     <div class="Chatprogramm">
-        <ul>
+        <ul *ngFor="for chat in Chats">
             <li>
-                
+                {{Chats.Datum}}
+                <div>
+                    <div>
+                        {{Chats.Absender}}
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
