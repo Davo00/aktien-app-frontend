@@ -9,6 +9,7 @@ import { MatFormFieldModule }from '@angular/material/form-field';
 import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 import { HomeComponent } from './home/home.component';
+import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     DialogwindowComponent,
     DialogmainexampleComponent,
-    HomeComponent
+    HomeComponent,
+    ChatprogrammComponent
   ],
   imports: [
     BrowserModule,

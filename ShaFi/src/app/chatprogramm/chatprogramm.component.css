@@ -1,0 +1,10 @@
+.Chatprogramm{
+    background-color: gray;
+    width: 40vw;
+    height: 60vh;
+    margin-left: 30vw;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

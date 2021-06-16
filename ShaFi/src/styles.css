@@ -14,6 +14,11 @@ header{
     background-color: #686de0;
 }
 
+body{
+    background: var(--maincolor);
+    min-height: 100vh ;
+}
+
 :root {
    /*  --maincolor: #f5f6fa; */
     --maincolor: linear-gradient(#f3f3f3, #dff9fb);
