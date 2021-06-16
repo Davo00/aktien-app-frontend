@@ -3,10 +3,12 @@
 
 html{
     padding: 0 0 0 0;
+    background-color: #f3f3f3;
 }
 body{
     margin: 0 0 0 0;
 }
+
 
 header{
     background-color: #686de0;
@@ -81,3 +83,4 @@ p{
         font-size: 1rem;
     }
 }
+
