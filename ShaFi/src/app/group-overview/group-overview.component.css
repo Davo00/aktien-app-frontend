@@ -65,4 +65,9 @@
   float: right;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  margin: 0 0 0 0;
+  padding: 1rem 2rem 1rem 2rem;
+  color: white; 
+  background-color: #8f92ec; 
+  border-radius: 50px;
 }
