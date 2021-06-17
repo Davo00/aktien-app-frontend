@@ -1,7 +1,22 @@
 <h1>Beispiel des Dialogs</h1>
 
-<button (click)="openDialogClick()">
+<!-- <button (click)="openDialogClick()" style="font-weight: bold;">
     Open Dialog
+  </button> -->
+
+  <button (click)="openDialogClickcreate()" style="font-weight: bold;">
+    Create new Group
   </button>
+
+  <div>
+    <div>Hier steht das Feld {{Infos[0].name}} mit den Mitgliedern 
+      <ul *ngFor="let info of Infos; let i = index">
+        
+      <li>Name: {{info.name}} und Mitglieder: {{info.mitglieder}}
+        <button (click)="openDialogchange(i)">Ändern</button>  
+      </li>
+    </ul> 
+    </div>
+  </div>
   
-  {{user}}
+
