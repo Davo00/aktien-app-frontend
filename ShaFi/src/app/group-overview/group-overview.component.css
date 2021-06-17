@@ -14,6 +14,10 @@
   margin-right: 0.5rem;
 }
 
+.heading {
+  text-align: center;
+}
+
 .addGroupButton {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
