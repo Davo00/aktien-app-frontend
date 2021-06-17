@@ -17,4 +17,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponent = [ZahlungenComponent]
+export const routingComponent = [ZahlungenComponent, DialogwindowComponent, DialogmainexampleComponent, HomeComponent]

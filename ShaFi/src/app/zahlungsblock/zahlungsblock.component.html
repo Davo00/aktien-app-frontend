@@ -1,7 +1,7 @@
 <section class="block">
-    <div style="display: flex;">
+    <div style="display: flex; !important">
         <section class="elementLeft">
-            <p style="font-size: 3rem; line-height:0px; margin-bottom: 0px;">
+            <p style="font-size: 3rem !important; line-height:0px !important; margin-bottom: 0px !important;">
                 {{zahlung.name}}
             </p>
             <p>
@@ -10,12 +10,12 @@
             <div class="horizontal">
                 <i class="fas fa-chart-bar chartIcon"></i>
                 <div *ngIf = 'zahlung.type == "Einzahlung"'>
-                    <p style="font-size: 2rem;">
+                    <p style="font-size: 2rem !important;">
                         +  {{zahlung.amount}} EURO
                     </p>
                 </div>
                 <div *ngIf = 'zahlung.type == "Auszahlung"'>
-                    <p style="font-size: 2rem;">
+                    <p style="font-size: 2rem !important;">
                         -  {{zahlung.amount}} EURO
                     </p>
                 </div>
@@ -28,7 +28,7 @@
                     <p>
                         Entstehungsdatum:
                     </p>
-                    <p style="font-weight: bold; padding-left:0.5rem; padding-right: 1rem;">
+                    <p style="font-weight: bold !important; padding-left:0.5rem !important; padding-right: 1rem !important;">
                         {{zahlung.startDate}}
                     </p>
                 </div>
@@ -37,14 +37,14 @@
                     <p>
                         Fälligkeitsdatum:
                     </p>
-                    <p style="font-weight: bold; padding-left:0.5rem; padding-right: 1rem;">
+                    <p style="font-weight: bold !important; padding-left:0.5rem !important; padding-right: 1rem !important;">
                         {{zahlung.endDate}}
                     </p>
                 </div>
             </div>
         </section>
     </div>
-    <p style="line-height:0px;">
+    <p style="line-height:0px !important;">
         Der gezeigte Betrag wird durch den Kurswert der ausgewählten Aktie bestimmt.
     </p>
 </section>
