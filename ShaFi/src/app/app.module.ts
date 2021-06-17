@@ -10,6 +10,7 @@ import { MatFormFieldModule }from '@angular/material/form-field';
 import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 import { HomeComponent } from './home/home.component';
+import { GroupHistoryComponent } from './group-history/group-history.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     GroupOverviewComponent,
     DialogwindowComponent,
     DialogmainexampleComponent,
-    HomeComponent
+    HomeComponent,
+    GroupHistoryComponent
   ],
   imports: [
     BrowserModule,
