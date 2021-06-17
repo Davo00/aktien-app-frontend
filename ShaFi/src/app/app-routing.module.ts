@@ -4,7 +4,10 @@ import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexampl
 import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { HomeComponent } from './home/home.component';
 
+import { GroupOverviewComponent } from './group-overview/group-overview.component';
+
 const routes: Routes = [
+  { path: 'group-overview', component: GroupOverviewComponent },
   {path: 'dialogwindow', component: DialogwindowComponent},
   {path: 'dialog', component: DialogmainexampleComponent},
   {path: '', component: HomeComponent},

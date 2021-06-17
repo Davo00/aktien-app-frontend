@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-new-router": "angular/router",
+    "hammerjs": "^2.0.8",
+    "tslib": "^2.2.0"
+  }
+}

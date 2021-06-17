@@ -7,54 +7,46 @@
     
 }
 
-nav{
-    display: flex;
+nav {
+  display: flex;
 }
 
-.MenuList{
-    display: flex;
-    margin: 0 0 0 5rem;
-    padding: 0 0 0 0;
-    list-style: none;
-    height: inherit;
-    justify-content: center;
-    align-items: center;
-    
+.MenuList {
+  display: flex;
+  margin: 0 0 0 5rem;
+  padding: 0 0 0 0;
+  list-style: none;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
 }
 
-
-a{
-   
-  
-    font-family: 'Franklin Gothic Medium';
-   
+a {
+  font-family: "Franklin Gothic Medium";
 }
-.NavListElement{
-    color:black;
-    font-family: 'Franklin Gothic Medium';
-    text-decoration: none;
-    list-style: none;
-    height: auto;
-    font-size: 1.5rem;
-    padding: 1rem  2rem  2rem  1rem ;
-    transition: 500ms;
+.NavListElement {
+  color: black;
+  font-family: "Franklin Gothic Medium";
+  text-decoration: none;
+  list-style: none;
+  height: auto;
+  font-size: 1.5rem;
+  padding: 1rem 2rem 2rem 1rem;
+  transition: 500ms;
 }
 .NavListElement:hover{
     transition: 500ms;
     font-size: 1.7rem;
 }
 
-
-.logo{
-    height: inherit;
-    
+.logo {
+  height: inherit;
 }
-.LoginFeld{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    
+.LoginFeld {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .LoginButton{
    background-color:#f5f6fa; 
@@ -73,34 +65,26 @@ a{
    
 }
 
-.BurgerMenu{
-    display: none;
+.BurgerMenu {
+  display: none;
 }
 
-
-
-
-
-
-@media screen and (min-width: 700px) and ( max-width: 1000px){
-
-   
-
-   .NavListElement{
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+  .NavListElement {
     font-size: 1rem;
     padding: 1rem 1rem 1rem 1rem;
-   }
+  }
 
-   .NavListElement:hover{
+  .NavListElement:hover {
     font-size: 1.2rem;
-   }
+  }
 
-   .LoginButton{
-    font-size: 1.0rem;
+  .LoginButton {
+    font-size: 1rem;
     margin-right: 1rem;
-   }
+  }
 
-   .LoginButton:hover{
+  .LoginButton:hover {
     font-size: 1.1rem;
     margin-right: 1rem;
    }
@@ -161,8 +145,15 @@ a{
         transition: all 0.5s ease;
     }
 
+  .MenuList {
+    margin: 0 0 0 2rem;
+  }
 }
 
+@media screen and (max-width: 450px) {
+  .MobileSiteMenu {
+    width: 100vw;
+  }
 
 @media screen and (min-width: 450px) and (max-width: 700px){
 
@@ -182,13 +173,12 @@ a{
         display: none;
     }
 
-    .LoginFeld{
-        display: none;
-    }
-    .MenuList{
-        margin: 0 0 0 0;
-    }
-    
+  .LoginFeld {
+    display: none;
+  }
+  .MenuList {
+    margin: 0 0 0 0;
+  }
 
     .MenueIcons{
         font-size: 2rem;
@@ -215,30 +205,58 @@ a{
     
 }
 
-
-
-.BurgerMenuActiv{
-    width: 0;
-    height: 100vh;
-    background-color: gray;
+@media screen and (min-width: 450px) and (max-width: 700px) {
+  .NavListElement {
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .NavBarWhite {
     position: fixed;
-    left: 0;
-    top: 0; 
-    z-index: 0;
-    transition: all 0.8s  ;
+    bottom: 0;
+    background-color: rgb(219, 219, 219);
+    width: 100vw;
+    justify-content: center;
+    padding: 0 0 0 0;
+  }
+  .logo {
+    display: none;
+  }
+
+  .LoginFeld {
+    display: none;
+  }
+  .MenuList {
+    margin: 0 0 0 0;
+  }
+
+  .MenueIcons {
+    font-size: 2rem;
+    padding: 0 0 0 1rem;
+  }
+  .MenueIconstimes {
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
+    padding: 1rem 0 0 50vw;
+    z-index: 5;
+  }
+  .BurgerMenu {
+    padding: 1rem 0 0 0rem;
+    display: block;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
 }
 
-.BurgerMenuNotActiv{
-    width: 100vw;
-    transition: all 0.8s ;
-   
-    height: 100vh;
-    background-color: gray;
-    position: fixed;
-    left: 0;
-    top: 0; 
-    z-index: 0;
-    
+.BurgerMenuActiv {
+  width: 0;
+  height: 100vh;
+  background-color: gray;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  transition: all 0.8s;
 }
 
  .MobileSiteMenu{
@@ -251,13 +269,27 @@ a{
     z-index: 0;
     transition: all 0.8s ease;
 
-    
+  height: 100vh;
+  background-color: gray;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
 }
 
-.active{
-    
-    left: 0;
-    
+.MobileSiteMenu {
+  width: 60vw;
+  height: 100vh;
+  background-color: gray;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  z-index: 0;
+  transition: all 0.8s ease;
+}
+
+.active {
+  left: 0;
 }
 
 /* .MobileSiteMenu.active{
@@ -299,8 +331,8 @@ a{
     font-family: 'Baloo Tammudu 2', cursive;
 }
 
-.BurgerNavListElement:hover{
-    font-size: 	2rem;
+.BurgerNavListElement:hover {
+  font-size: 2rem;
 }
 
 
@@ -312,6 +344,7 @@ a{
     cursor: pointer;
        
 }
-.BurgerNavListElementEinstellung:hover{
-    font-size: 	2rem;
+.BurgerNavListElementEinstellung:hover {
+  font-size: 2rem;
+}
 }
