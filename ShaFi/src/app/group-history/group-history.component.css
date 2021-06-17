@@ -1,7 +1,9 @@
 .groupHisoryPage {
   display: flex;
   justify-content: center;
+  margin-top: 5rem;
 }
+
 .groupHisory {
   width: 40%;
   margin-right: 1rem;
