@@ -1,10 +1,65 @@
 .Chatprogramm{
-    background-color: lightgray;
+    background-color: white;
     width: 40vw;
-    height: 60vh;
+     height: 60vh; 
     margin-left: 30vw;
     margin-top: 10vh;
+    padding: 1rem;
+    
+    overflow-x: hidden;
+  overflow-y: auto;
+
+}
+
+.Chatprogramm::-webkit-scrollbar{
+    display: none;
+}
+
+
+.checkUL{
+    list-style: none;
+    padding: 0 1rem 0 1rem;
+    border-radius: 20px;
+}
+
+.chatLI{
+    background-color: rgb(92, 207, 211);
+    border-radius: 10px;
+    width: 80%
+}
+.chatLI.active{
+    background-color: rgb(196, 83, 181);
+    
+    margin-left: 20%;
+}
+.chatLIeigen{
+    background-color: green;
+    border-radius: 10px;
+}
+.chatBox{
+    padding: 0.5rem
+}
+
+.chatAbsender{
+    font-weight: bold;
+}
+
+.chatDate{
+    font-size: 0.5rem;
+    text-align: end;
+    display: flex;
+    width: 20%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.chatInfo{
+    display: flex;
+}
+.chatText{
+    width: 80%;
+}
+
+.chatDateforInput{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
