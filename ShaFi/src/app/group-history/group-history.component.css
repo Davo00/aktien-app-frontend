@@ -29,6 +29,7 @@
 }
 
 .payment {
+  display: flexbox;
   margin-top: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -45,12 +46,23 @@
   width: 50%;
 }
 
+.paymentInfo {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
+
 .paymentAmount {
   padding-top: 1rem;
-  float: right;
   text-align:right;
-  width: 50%;
 }
+
+.paymentArrow {
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  text-align: right;
+}
+
 
 .groupChat {
   width: 40%;
@@ -101,5 +113,7 @@
   padding-right: 5rem;
   padding-top: 1rem;
   background-color: white;
-  border-radius: 2rem;
+  box-shadow: 1px 1px 1px 1px silver;
+  border-radius: 3rem;
+  border-width: 0.01rem;
 }
