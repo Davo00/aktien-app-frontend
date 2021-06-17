@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-var that:any = this;
+import { MatDialog } from '@angular/material/dialog';
+import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
+
+
 @Component({
   selector: 'app-chatprogramm',
   templateUrl: './chatprogramm.component.html',
@@ -9,21 +12,21 @@ var that:any = this;
 
 export class ChatprogrammComponent implements OnInit {
 
-  Chats:{ Absender: string; Datum:Date; text: string; }[]  = [
+  Chats:{ Absender: string; Datum:Date; Text: string; Value: number }[]  = [
 
-    {"Absender": "Peter", "Datum": new Date(5000000000), "text": "Einkauf von Bier" },
-    {"Absender": "Ullo", "Datum":new Date(50000000000), "text": "Einkauf von Bier" },
-    {"Absender": "Cevin", "Datum":new Date(500000000000), "text": "Einkauf von Bier für die Party die wir am letzten Sonntag gefeiert haben" },
-    {"Absender": "Carolina", "Datum":new Date(500000000000), "text": "Einkauf von Bier" },
-    {"Absender": "Sabine", "Datum":new Date(), "text": "Einkauf von Bier" }, 
-    {"Absender": "Cevin", "Datum":new Date(), "text": "Einkauf von Bier" }, 
+    {"Absender": "Peter", "Datum": new Date(5000000000), "Text": "Einkauf von Bier", "Value": 10 },
+    {"Absender": "Ullo", "Datum":new Date(50000000000), "Text": "Einkauf von Bier", "Value": 10 },
+    {"Absender": "Cevin", "Datum":new Date(500000000000), "Text": "Einkauf von Bier für die Party die wir am letzten Sonntag gefeiert haben", "Value": 10 },
+    {"Absender": "Carolina", "Datum":new Date(500000000000), "Text": "Einkauf von Bier", "Value": 5},
+    {"Absender": "Sabine", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10 }, 
+    {"Absender": "Cevin", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10 }, 
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
 ];
 
 ChatDatevar = new Date(0);
 USerName = "Cevin";
 
-  constructor() { }
+  constructor(private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     console.log(this.Chats)
@@ -42,6 +45,41 @@ USerName = "Cevin";
       return false;
     }
   }
+
+  openDialogChatChange(i: number){
+    let dialogref = this.matDialog.open(ChatdialogComponent,
+      {
+        data: {
+         Absender: this.Chats[i].Absender,
+         Datum:this.Chats[i].Datum,
+         Text: this.Chats[i].Text,
+         Value: this.Chats[i].Value,
+         
+          
+          
+
+
+        }, width: "300px",
+        height:"300px",
+        position: {
+         
+          
+        },
+        disableClose: false
+      });
+
+      dialogref.afterClosed().subscribe( result => {
+        console.log(result)
+        this.Chats[i].Text = result.Text;
+        this.Chats[i].Value = result.Value;
+        /* this.Infos[number].name = result.Gruppenname;
+        this.Infos[number].mitglieder = result.Mitglieder; */
+        
+      })
+   
+  
+  }
+  
 
 
 

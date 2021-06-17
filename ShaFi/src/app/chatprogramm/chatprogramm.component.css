@@ -20,6 +20,7 @@
     list-style: none;
     padding: 0 1rem 0 1rem;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .chatLI{

@@ -8,16 +8,19 @@
                  {{chat.Datum.getDate()}}.{{chat.Datum.getMonth() + 1}}.{{chat.Datum.getFullYear()}}
                 </div>
             </li>
-            <li class="chatLI" [ngClass]="{active: isactive(chat.Absender)}">
+            <li (click)="openDialogChatChange(i)" class="chatLI" [ngClass]="{active: isactive(chat.Absender)}">
                  
                 <div class="chatBox">
                     <div class="chatAbsender">
-                        {{chat.Absender}} :5
+                      Absender:  {{chat.Absender}} 
 
                     </div>
+                    <div class="chatText">
+                       Wert: {{chat.Value}}</div>
+                  
                     <div class="chatInfo">
                     <div class="chatText">
-                        {{chat.text}}</div>
+                        Grund: {{chat.Text}}</div>
                         
                     <div class ="chatDate">
                         

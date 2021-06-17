@@ -10,6 +10,7 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 import { HomeComponent } from './home/home.component';
 import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
+import { ChatdialogComponent } from './chatdialog/chatdialog.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
     DialogwindowComponent,
     DialogmainexampleComponent,
     HomeComponent,
-    ChatprogrammComponent
+    ChatprogrammComponent,
+    ChatdialogComponent
   ],
   imports: [
     BrowserModule,
