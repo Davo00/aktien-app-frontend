@@ -1,6 +1,7 @@
 .groupOverviewPage {
   display: flex;
   justify-content: center;
+  margin-top: 5rem;
 }
 .groupOverview {
   width: 40%;
