@@ -1,23 +1,30 @@
 <h1>So muss das laufen</h1>
 <p>Und so läuft es auch</p>
 
-<p>{{data.user}}</p>
-<p>{{data.age}}</p>
+
 
 
 <!-- floatLabel to stop dloating in mat form field -->
 <mat-form-field appearence="legacy" color="accent"> 
-  <mat-label>Username</mat-label>
-  <input matInput value={{data.user}} #box >
+  <mat-label>Gruppenname</mat-label>
+  <input matInput value={{data.Gruppenname}} #box1 >
  <!--  (keyup)="getValue(box.value)" -->
-  <mat-hint align="end">Min 5 character</mat-hint>
+  <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
+</mat-form-field>
+
+<mat-form-field appearence="legacy" color="accent"> 
+  <mat-label>Mitglieder</mat-label>
+  <input matInput value={{data.Mitglieder}} #box2 >
+ <!--  (keyup)="getValue(box.value)" -->
+  <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
 </mat-form-field>
 
 
+<div style="display:block">
+<button (click)="dialogClose()">Abbrechen</button>
+ <button (click) =" data.Gruppenname = box1.value; data.Mitglieder = box2.value;  dialogClose()">Speichern</button> 
 
-<button (click)="dialogClose()">Close</button>
- <button (click) =" data.user = box.value; dialogClose()">Add</button> 
-
+</div>
 
 <!-- <mat-form-field hideRequiredMarker appearence="standart"> 
   <mat-label>Username</mat-label>

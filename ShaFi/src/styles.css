@@ -14,6 +14,15 @@ header{
     background-color: #686de0;
 }
 
+/* 
+button{
+    margin: 0 0 0 0;
+    padding: 1rem 2rem 1rem 2rem;
+    color: white; 
+    background-color: #8f92ec; 
+    border-radius: 50px;
+} */
+
 :root {
    /*  --maincolor: #f5f6fa; */
     --maincolor: linear-gradient(#f3f3f3, #dff9fb);
@@ -41,11 +50,10 @@ h2 {
 }
 
 h3 {
-    font-family: 'Baloo Tammudu 2', cursive !important;
-    font-weight: bold !important;
-
-    font-size: 2rem !important;
-    padding: 0rem 0rem 0rem 0rem !important;
+    font-family: 'Baloo Tammudu 2', cursive;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 0rem 0rem 0rem 0rem;
 }
 
 

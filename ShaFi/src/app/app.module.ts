@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule }from '@angular/material/form-field';
  import{ MatInputModule } from '@angular/material/input';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponent,
-    ZahlungsblockComponent
+    ZahlungsblockComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
