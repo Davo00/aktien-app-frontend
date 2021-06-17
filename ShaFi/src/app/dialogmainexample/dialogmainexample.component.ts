@@ -11,13 +11,50 @@ export class DialogmainexampleComponent implements OnInit {
 
   user = "User";
   Age = 32;
+
+  Infos: { name: string; mitglieder: string; }[]  = [
+    {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"},
+    {"name": "Gruppe2", "mitglieder": "Uwe, Sabine, Peter"},
+    {"name": "Gruppe2", "mitglieder": "Uwe, Sabine, Corina"},
+   
+];
   
   constructor(private matDialog: MatDialog){}
 
   ngOnInit(): void {
+
+    console.log(this.Infos[0]);
+  }
+  openDialogchange(number: number){
+    
+    let dialogref = this.matDialog.open(DialogwindowComponent,
+      {
+        data: {
+          Gruppenname: this.Infos[number].name,
+          Mitglieder: this.Infos[number].mitglieder,
+          
+
+
+        }, width: "500px",
+        height:"500px",
+        position: {
+         
+          
+        },
+        disableClose: false
+      });
+
+      dialogref.afterClosed().subscribe( result => {
+        console.log(result)
+        this.Infos[number].name = result.Gruppenname;
+        this.Infos[number].mitglieder = result.Mitglieder;
+        
+      })
+   
+  
   }
 
-  openDialogClick(){
+  /* openDialogClick(){
     let dialogref = this.matDialog.open(DialogwindowComponent,
       {
         data: {
@@ -29,18 +66,50 @@ export class DialogmainexampleComponent implements OnInit {
         }, width: "500px",
         height:"500px",
         position: {
-          top: "0px",
+         
           
         },
-        disableClose: true
+        disableClose: false
       });
 
       dialogref.afterClosed().subscribe( result => {
         console.log(result)
-        this.user = result.user;
+        this. = result.user;
         this.Age = result.Age;
       })
    
+  } */
+
+  openDialogClickcreate(){
+
+    let dialogref = this.matDialog.open(DialogwindowComponent,
+      {
+        data: {
+          Gruppenname: null,
+          Mitglieder: null,
+          
+
+
+        },
+
+        width: "60vw",
+        height:"60vh",
+        position: {
+          
+          
+        },
+        disableClose: false
+      });
+
+      dialogref.afterClosed().subscribe( result => {
+        if(result == null){
+          
+        }else{
+        console.log(result)
+        this.Infos.push({"name": result.Gruppenname, "mitglieder": result.Mitglieder})
+        }
+      })
+
   }
 
 }

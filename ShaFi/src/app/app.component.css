@@ -7,54 +7,46 @@
     
 }
 
-nav{
-    display: flex;
+nav {
+  display: flex;
 }
 
-.MenuList{
-    display: flex;
-    margin: 0 0 0 5rem;
-    padding: 0 0 0 0;
-    list-style: none;
-    height: inherit;
-    justify-content: center;
-    align-items: center;
-    
+.MenuList {
+  display: flex;
+  margin: 0 0 0 5rem;
+  padding: 0 0 0 0;
+  list-style: none;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
 }
 
-
-a{
-   
-  
-    font-family: 'Franklin Gothic Medium';
-   
+a {
+  font-family: "Franklin Gothic Medium";
 }
-.NavListElement{
-    color:black;
-    font-family: 'Franklin Gothic Medium';
-    text-decoration: none;
-    list-style: none;
-    height: auto;
-    font-size: 1.5rem;
-    padding: 1rem  2rem  2rem  1rem ;
-    transition: 500ms;
+.NavListElement {
+  color: black;
+  font-family: "Franklin Gothic Medium";
+  text-decoration: none;
+  list-style: none;
+  height: auto;
+  font-size: 1.5rem;
+  padding: 1rem 2rem 2rem 1rem;
+  transition: 500ms;
 }
 .NavListElement:hover{
     transition: 500ms;
     font-size: 1.7rem;
 }
 
-
-.logo{
-    height: inherit;
-    
+.logo {
+  height: inherit;
 }
-.LoginFeld{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    
+.LoginFeld {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .LoginButton{
    background-color:#f5f6fa; 
@@ -73,9 +65,10 @@ a{
    
 }
 
-.BurgerMenu{
-    display: none;
+.BurgerMenu {
+  display: none;
 }
+
 
 .MobileSiteMenu{
     width: 60vw;
@@ -197,20 +190,21 @@ a{
    
 
    .NavListElement{
+
     font-size: 1rem;
     padding: 1rem 1rem 1rem 1rem;
-   }
+  }
 
-   .NavListElement:hover{
+  .NavListElement:hover {
     font-size: 1.2rem;
-   }
+  }
 
-   .LoginButton{
-    font-size: 1.0rem;
+  .LoginButton {
+    font-size: 1rem;
     margin-right: 1rem;
-   }
+  }
 
-   .LoginButton:hover{
+  .LoginButton:hover {
     font-size: 1.1rem;
     margin-right: 1rem;
    }
@@ -272,6 +266,7 @@ a{
         z-index: 1;
         transition: all 0.5s ease;
     }
+
     .BurgerNavListElement{
         font-size: 1rem;
     }
@@ -293,6 +288,7 @@ a{
         margin: 2rem 0 0 0;
     }
 
+
     .NavListElement{
         font-size: 1rem;
         padding: 1rem 1rem 1rem 1rem;
@@ -309,13 +305,12 @@ a{
         display: none;
     }
 
-    .LoginFeld{
-        display: none;
-    }
-    .MenuList{
-        margin: 0 0 0 0;
-    }
-    
+  .LoginFeld {
+    display: none;
+  }
+  .MenuList {
+    margin: 0 0 0 0;
+  }
 
     .MenueIcons{
         font-size: 2rem;
@@ -350,12 +345,22 @@ a{
         font-size: 1.6rem;
     }
 
+
 }
+
+
+  .LoginFeld {
+    display: none;
+  }
+  .MenuList {
+    margin: 0 0 0 0;
+  }
 
 
 @media screen and (min-width: 450px) and (max-width: 700px){
 
     
+
 
     .NavListElement{
         font-size: 1rem;
@@ -372,6 +377,7 @@ a{
     .logo{
         display: none;
     }
+
 
     .LoginFeld{
         display: none;
@@ -403,9 +409,8 @@ a{
         transition: all 0.5s ease;
     }
     
+
     
 }
-
-
 
 
