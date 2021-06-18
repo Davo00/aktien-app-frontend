@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     GroupHistoryComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,8 +33,8 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
-
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
