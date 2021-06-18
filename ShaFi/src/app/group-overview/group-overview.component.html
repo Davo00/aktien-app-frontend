@@ -2,25 +2,18 @@
   <div class="groupOverview">
     <div class="groupContainer">
       <h1 class="heading">Groups Overview</h1>
-      <span (click)="addGroup()"></span>
-      <div><button class="addGroupButton">+</button></div>
+      <div><button (click)="addGroup()" class="addGroupButton">+</button></div>
       <div class="groups">
-        <div class="group">
-          <h2 class="">Group 1</h2>
-          <p>description</p>
-        </div>
-        <div class="group">
-          <h2 class="">Group 2</h2>
-          <p>description</p>
-        </div>
-        <div class="group">
-          <h2 class="">Group 3</h2>
-          <p>description</p>
-        </div>
-        <div class="group">
-          <h2 class="">Group 4</h2>
-          <p>description</p>
-        </div>
+        <ul class="group" *ngFor="let group of Groups; let i = index">
+          <div>
+            <h2>{{ Groups[i].groupName }}</h2>
+            <p>{{ Groups[i].members }}</p>
+            <button (click)="editGroup(i)">Edit Group</button>
+          </div>
+          <!-- <li>Name: {{group.groupName}} and {{group.members}}
+            <button (click)="editGroup(i)">Edit</button>  
+          </li> -->
+        </ul>
       </div>
     </div>
   </div>

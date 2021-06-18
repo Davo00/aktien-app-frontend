@@ -11,6 +11,7 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 import { HomeComponent } from './home/home.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
+import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { GroupHistoryComponent } from './group-history/group-history.component';
     DialogwindowComponent,
     DialogmainexampleComponent,
     HomeComponent,
-    GroupHistoryComponent
+    GroupHistoryComponent,
+    AddGroupDialogComponent
   ],
   imports: [
     BrowserModule,

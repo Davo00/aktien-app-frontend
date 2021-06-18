@@ -6,7 +6,7 @@
 .groupOverview {
   width: 40%;
   margin-right: 1rem;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
 
 .groupContainer {
@@ -26,11 +26,9 @@
 }
 
 .groups {
-  display: grid;
 }
 
 .group {
-  display: grid;
   margin-bottom: 0.5rem;
   padding-left: 0.5rem;
   background-color: white;
