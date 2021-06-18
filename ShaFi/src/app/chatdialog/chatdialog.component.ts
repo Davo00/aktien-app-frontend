@@ -9,11 +9,12 @@ import { MAT_DIALOG_DATA,MatDialogRef } from '@angular/material/dialog';
 export class ChatdialogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
-    Absender: string; Datum:Date; Text: string; Value: number
+    Absender: string; Datum:Date; Text: string; Value: number; Mitglieder: string;
   },private matDialogRef:MatDialogRef<ChatdialogComponent>
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data)
   }
 
   ngOnDestroy(){
@@ -30,9 +31,10 @@ export class ChatdialogComponent implements OnInit {
     this.matDialogRef.close();
   }
 
-  safeChatDialog(text:string, amount:string){
+  safeChatDialog(text:string, amount:string, mitglieder: string){
     this.data.Text = text;
     this.data.Value = parseInt(amount);
+    this.data.Mitglieder = mitglieder
     this.matDialogRef.close();
   }
 

@@ -12,14 +12,14 @@ import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
 
 export class ChatprogrammComponent implements OnInit {
 
-  Chats:{ Absender: string; Datum:Date; Text: string; Value: number }[]  = [
+  Chats:{ Absender: string; Datum:Date; Text: string; Value: number; Mitglieder:string }[]  = [
 
-    {"Absender": "Peter", "Datum": new Date(5000000000), "Text": "Einkauf von Bier", "Value": 10 },
-    {"Absender": "Ullo", "Datum":new Date(50000000000), "Text": "Einkauf von Bier", "Value": 10 },
-    {"Absender": "Cevin", "Datum":new Date(500000000000), "Text": "Einkauf von Bier für die Party die wir am letzten Sonntag gefeiert haben", "Value": 10 },
-    {"Absender": "Carolina", "Datum":new Date(500000000000), "Text": "Einkauf von Bier", "Value": 5},
-    {"Absender": "Sabine", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10 }, 
-    {"Absender": "Cevin", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10 }, 
+    {"Absender": "Peter", "Datum": new Date(5000000000), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" },
+    {"Absender": "Ullo", "Datum":new Date(50000000000), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" },
+    {"Absender": "Cevin", "Datum":new Date(500000000000), "Text": "Einkauf von Bier für die Party die wir am letzten Sonntag gefeiert haben", "Value": 10, "Mitglieder": "Peter, Albani, Renate" },
+    {"Absender": "Carolina", "Datum":new Date(500000000000), "Text": "Einkauf von Bier", "Value": 5, "Mitglieder": "Peter, Albani, Renate"},
+    {"Absender": "Sabine", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" }, 
+    {"Absender": "Cevin", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" }, 
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
 ];
 
@@ -54,13 +54,14 @@ USerName = "Cevin";
          Datum:this.Chats[i].Datum,
          Text: this.Chats[i].Text,
          Value: this.Chats[i].Value,
+         Mitglieder: this.Chats[i].Mitglieder
          
           
           
 
 
-        }, width: "300px",
-        height:"300px",
+        }, width: "400px",
+        height:"400px",
         position: {
          
           
@@ -71,6 +72,7 @@ USerName = "Cevin";
       dialogref.afterClosed().subscribe( result => {
         console.log(result)
         this.Chats[i].Text = result.Text;
+        this.Chats[i].Mitglieder = result.Mitglieder;
         this.Chats[i].Value = result.Value;
         /* this.Infos[number].name = result.Gruppenname;
         this.Infos[number].mitglieder = result.Mitglieder; */

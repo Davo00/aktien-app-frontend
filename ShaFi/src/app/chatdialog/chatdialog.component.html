@@ -16,8 +16,15 @@
    <!--  (keyup)="getValue(box.value)" -->
     <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
   </mat-form-field>
+  
+  <mat-form-field appearence="legacy" color="accent"> 
+    <mat-label>Mitgliedern</mat-label>
+    <input matInput value={{data.Mitglieder}} #box3 >
+   <!--  (keyup)="getValue(box.value)" -->
+    <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
+  </mat-form-field>
 
   <button (click)="dialogClose()">Abbrechen</button>
-  <button (click) =" safeChatDialog(box1.value, box2.value) ">Speichern</button> 
+  <button (click) =" safeChatDialog(box1.value, box2.value, box3.value) ">Speichern</button> 
 
 <!--   value={{data.Mitglieder}} -->
