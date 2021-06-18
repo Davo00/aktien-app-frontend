@@ -1,0 +1,91 @@
+.login{
+    background-color: white;
+    margin: 2rem 1rem 2rem 1rem;
+    padding: 1rem 1rem 3rem 1rem;
+    border-radius: 20px;
+}
+
+.headerLogin{
+    
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.headerLoginIcon{
+    background-color: aqua;
+    padding: 1rem;
+    border-radius: 100rem;
+}
+
+.FormField{
+    padding: 1rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Register{
+    color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registertext{
+    color:black;
+    font-size: 1rem;
+    text-decoration: none;
+} 
+
+.buttonstyle{
+    margin: 2rem 0 0 0;
+    padding: 1rem 2rem 1rem 2rem;
+    color: white; 
+    background-color: #8f92ec; 
+    border-radius: 50px;
+}
+.SigninText{
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 450px) {
+    .login{
+    margin: 2rem 15% 2rem 15%;
+    }
+}
+@media screen and (min-width: 600px) {
+    .login{
+    margin: 2rem 20% 2rem 20%;
+    }
+}
+@media screen and (min-width: 800px) {
+    .login{
+    margin: 2rem 30% 2rem 30%;
+    }
+} 
+@media screen and (min-width: 1200px) {
+    .login{
+    margin: 2rem 35% 2rem 35%;
+    
+    
+} 
+}
+@media screen and (min-width: 2000px) {
+    .login{
+    margin: 2rem 40% 2rem 40%;
+    
+    
+} 
+}
+
+
+
+
+
+

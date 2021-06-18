@@ -21,7 +21,7 @@
     </nav>
 
     <div class="LoginFeld">
-      <a class="LoginButton" href="#" routerLink="/"> Konto erstellen </a>
+      <a class="LoginButton" href="#" routerLink="/login"> Konto erstellen </a>
     </div>
   </div>
 
@@ -55,7 +55,7 @@
             <i class="fas fa-times"></i>
           </div>
 
-          <div class="UserIcon">
+          <div (click)="this.router.navigate(['login']); clicked = !clicked" class="UserIcon">
             <i class="fas fa-user"></i>
             <p class="UserName">Username</p>
           </div>

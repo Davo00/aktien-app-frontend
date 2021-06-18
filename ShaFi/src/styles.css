@@ -74,6 +74,12 @@ p{
     font-size: 1.5rem;
 }
 
+.flexElement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Font Sizes for Mobile */
 @media screen and (max-width: 800px) {
