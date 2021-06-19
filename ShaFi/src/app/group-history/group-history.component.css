@@ -25,10 +25,10 @@
   margin-bottom: 0.5rem;
   float: right;
 }
-
+/* 
 .history {
   display: grid;
-}
+} */
 
 .payment {
   display: flexbox;

@@ -30,14 +30,14 @@ export class GroupOverviewComponent implements OnInit {
       disableClose: false,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      // if (result == null) {
-      // } else {
+      if (result == null) {
+      } else {
         console.log(result);
         this.Groups.push({
           groupName: result.groupName,
           members: result.members,
         });
-      // }
+      }
     });
   }
 

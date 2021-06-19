@@ -12,6 +12,7 @@ import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexampl
 import { HomeComponent } from './home/home.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
 import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
+import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dialog.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.com
     DialogmainexampleComponent,
     HomeComponent,
     GroupHistoryComponent,
-    AddGroupDialogComponent
+    AddGroupDialogComponent,
+    AddPaymentDialogComponent
   ],
   imports: [
     BrowserModule,

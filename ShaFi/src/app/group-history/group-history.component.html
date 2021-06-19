@@ -2,9 +2,24 @@
   <div class="groupHisory">
     <div class="groupContainer">
       <h1 class="heading">Group History</h1>
-      <div><button class="addPaymentButton">+</button></div>
+      <div><button (click)="addPayment()" class="addPaymentButton">+</button></div>
+
       <div class="history">
-        <div class="payment">
+        <ul class="payment" *ngFor="let payment of Payments; let i = index">
+          <div class="paymentName">
+            <h2 class="">{{ Payments[i].payerName }}</h2>
+          </div>
+          <div class="paymentInfo">
+            <div class="paymentAmount">
+              <h2 class="">{{ Payments[i].amount }}€</h2>
+            </div>
+            <div class="paymentArrow">
+              <h2 class="">([[]])</h2>
+            </div>
+          </div>
+        </ul>
+
+        <!-- <div class="payment">
           <div class="paymentName">
             <h2 class="">Cevin</h2>
           </div>
@@ -16,8 +31,8 @@
               <h2 class="">([[]])</h2>
             </div>
           </div>
-        </div>
-        <div class="payment">
+        </div> -->
+        <!-- <div class="payment">
           <div class="paymentName">
             <h2 class="">Davit</h2>
           </div>
@@ -68,7 +83,7 @@
               <h2 class="">([[]])</h2>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
