@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
 import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
 import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -32,8 +33,8 @@ import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dial
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
-
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
