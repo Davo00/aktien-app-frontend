@@ -9,6 +9,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule }from '@angular/material/form-field';
  import{ MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
+import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
+import { ChatdialogComponent } from './chatdialog/chatdialog.component';
 
 
 @NgModule({
@@ -16,7 +18,12 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     routingComponent,
     ZahlungsblockComponent,
-    HomeComponent
+    DialogwindowComponent,
+    DialogmainexampleComponent,
+    HomeComponent,
+    ChatprogrammComponent,
+    ChatdialogComponent
+
   ],
   imports: [
     BrowserModule,
