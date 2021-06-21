@@ -10,10 +10,11 @@ import { MAT_DIALOG_DATA,MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogwindowComponent implements OnInit {
 
-  user: any;
+  Gruppenname: any;
+  Mitglieder: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
-    user: String, age: number
+    Gruppenname: String, Mitglieder: String
   },private matDialogRef:MatDialogRef<DialogwindowComponent>
   ) { }
 
@@ -22,7 +23,14 @@ export class DialogwindowComponent implements OnInit {
   }
 
   ngOnDestroy(){
+    console.log(this.data)
+    if(this.data.Gruppenname === null || this.data.Mitglieder === null){
+      this.matDialogRef.close(null)
+      
+    }
+    else{
     this.matDialogRef.close(this.data)
+    }
   }
 
   dialogClose(){
@@ -31,7 +39,8 @@ export class DialogwindowComponent implements OnInit {
 
   dialogSavenewInfo(){
 
-    this.data.user = this.user;
+    this.data.Gruppenname = this.Gruppenname;
+    this.data.Mitglieder = this.Mitglieder;
     this.matDialogRef.close(this.data)
     
   }

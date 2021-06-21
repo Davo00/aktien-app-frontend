@@ -1,263 +1,130 @@
-.NavBarWhite{
-    color: black;
-    display: flex;
-    height: 5rem;
-    z-index: 10;
-    padding: 1rem 0 1rem 0;
-    
+.NavBarWhite {
+  color: black;
+  display: flex;
+  height: 5rem;
+  z-index: 10;
+  padding: 1rem 0 1rem 0;
 }
 
-nav{
-    display: flex;
+nav {
+  display: flex;
 }
 
-.MenuList{
-    display: flex;
-    margin: 0 0 0 5rem;
-    padding: 0 0 0 0;
-    list-style: none;
-    height: inherit;
-    justify-content: center;
-    align-items: center;
-    
+.MenuList {
+  display: flex;
+  margin: 0 0 0 5rem;
+  padding: 0 0 0 0;
+  list-style: none;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
 }
 
-
-a{
-   
-  
-    font-family: 'Franklin Gothic Medium';
-   
-}
-.NavListElement{
-    color:black;
-    font-family: 'Franklin Gothic Medium';
-    text-decoration: none;
-    list-style: none;
-    height: auto;
-    font-size: 1.5rem;
-    padding: 1rem  2rem  2rem  1rem ;
-    transition: 500ms;
-}
-.NavListElement:hover{
-    transition: 500ms;
-    font-size: 1.7rem;
+a {
+  font-family: "Franklin Gothic Medium";
 }
 
-
-.logo{
-    height: inherit;
-    
-}
-.LoginFeld{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    
-}
-.LoginButton{
-   background-color:#f5f6fa; 
-   color: black;
-   padding: 1rem 1rem 1rem 1rem;
-   margin-right: 2rem;
-   border-radius: 2rem;
-   text-decoration: none;
-   font-size: 1.5rem;
-   /* box-shadow: 1px 1px 3px 3px #303952; */
-}
-.LoginButton:hover{
-    font-size: larger;
-    transition: 500ms;
-    margin-right: 3rem;
-   
+.NavListElement {
+  color: black;
+  font-family: "Franklin Gothic Medium";
+  text-decoration: none;
+  list-style: none;
+  height: auto;
+  font-size: 1.5rem;
+  padding: 1rem 2rem 2rem 1rem;
+  transition: 500ms;
 }
 
-.BurgerMenu{
-    display: none;
+.NavListElement:hover {
+  transition: 500ms;
+  font-size: 1.7rem;
 }
 
-
-
-
-
-
-@media screen and (min-width: 700px) and ( max-width: 1000px){
-
-   
-
-   .NavListElement{
-    font-size: 1rem;
-    padding: 1rem 1rem 1rem 1rem;
-   }
-
-   .NavListElement:hover{
-    font-size: 1.2rem;
-   }
-
-   .LoginButton{
-    font-size: 1.0rem;
-    margin-right: 1rem;
-   }
-
-   .LoginButton:hover{
-    font-size: 1.1rem;
-    margin-right: 1rem;
-   }
-
-   .MenuList{
-       margin: 0 0 0 2rem;
-   }
+.logo {
+  height: inherit;
 }
 
-
-
-@media screen and (max-width: 450px){
-    .MobileSiteMenu{
-        width: 100vw;
-    }
-
-    .NavListElement{
-        font-size: 1rem;
-        padding: 1rem 1rem 1rem 1rem;
-       }
-    .NavBarWhite{
-        position: fixed;
-        bottom: 0;
-        background-color: white;
-        width: 100vw;
-        justify-content: center;
-        padding: 0 0 0 0;
-    }
-    .logo{
-        display: none;
-    }
-
-    .LoginFeld{
-        display: none;
-    }
-    .MenuList{
-        margin: 0 0 0 0;
-    }
-    
-
-    .MenueIcons{
-        font-size: 2rem;
-        padding: 0 0 0 1rem;
-        color: white;
-    }
-    .MenueIconstimes{
-        font-size: 2rem;
-       position: fixed;
-       top: 0;
-       color: white;
-       padding: 1rem 0 0 50vw;
-       z-index: 5;
-    }
-    .BurgerMenu{
-        padding: 1rem 0 1rem 0rem;
-        display: block;
-        z-index: 1;
-        transition: all 0.5s ease;
-    }
-
+.LoginFeld {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-
-@media screen and (min-width: 450px) and (max-width: 700px){
-
-    .NavListElement{
-        font-size: 1rem;
-        padding: 1rem 1rem 1rem 1rem;
-       }
-    .NavBarWhite{
-        position: fixed;
-        bottom: 0;
-        background: white;
-        width: 100vw;
-        justify-content: center;
-        padding: 0 0 0 0;
-    }
-    .logo{
-        display: none;
-    }
-
-    .LoginFeld{
-        display: none;
-    }
-    .MenuList{
-        margin: 0 0 0 0;
-    }
-    
-
-    .MenueIcons{
-        font-size: 2rem;
-        padding: 0 0 0 1rem;
-        color: white;
-        cursor: pointer;
-    }
-    .MenueIconstimes{
-        font-size: 2rem;
-       position: fixed;
-       top: 0;
-       color: white;
-       padding: 1rem 0 0 50vw;
-       z-index: 5;
-       cursor: pointer;
-    }
-    .BurgerMenu{
-        padding: 1rem 0 1rem 0rem;
-        display: block;
-        z-index: 1;
-        transition: all 0.5s ease;
-    }
-    
-    
+.LoginButton {
+  background-color: #f5f6fa;
+  color: black;
+  padding: 1rem 1rem 1rem 1rem;
+  margin-right: 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  /* box-shadow: 1px 1px 3px 3px #303952; */
 }
 
-
-
-.BurgerMenuActiv{
-    width: 0;
-    height: 100vh;
-    background-color: gray;
-    position: fixed;
-    left: 0;
-    top: 0; 
-    z-index: 0;
-    transition: all 0.8s  ;
+.LoginButton:hover {
+  font-size: larger;
+  transition: 500ms;
+  margin-right: 3rem;
 }
 
-.BurgerMenuNotActiv{
-    width: 100vw;
-    transition: all 0.8s ;
-   
-    height: 100vh;
-    background-color: gray;
-    position: fixed;
-    left: 0;
-    top: 0; 
-    z-index: 0;
-    
+.BurgerMenu {
+  display: none;
 }
 
- .MobileSiteMenu{
-    width: 60vw;
-    height: 100vh;
-    background-color: #192a56;
-    position: fixed;
-    left: -100%;
-    top: 0; 
-    z-index: 0;
-    transition: all 0.8s ease;
-
-    
+.MobileSiteMenu {
+  width: 60vw;
+  height: 100vh;
+  background-color: #192a56;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  z-index: 0;
+  transition: all 0.8s ease;
 }
 
-.active{
-    
-    left: 0;
-    
+.active {
+  left: 0;
+}
+
+.UserIcon {
+  font-size: 4rem;
+  padding: 4rem 0 2rem 2rem;
+  display: flex;
+  color: white;
+  cursor: pointer;
+}
+
+.UserName {
+  font-size: 2rem;
+  margin: 0 0 0 1rem;
+  align-items: center;
+  display: flex;
+  color: white;
+  font-family: "Baloo Tammudu 2", cursive;
+}
+
+.BurgerMenuActiv {
+  width: 0;
+  height: 100vh;
+  background-color: gray;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  transition: all 0.8s;
+}
+
+.BurgerMenuNotActiv {
+  width: 100vw;
+  transition: all 0.8s;
+
+  height: 100vh;
+  background-color: gray;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
 }
 
 /* .MobileSiteMenu.active{
@@ -266,52 +133,246 @@ a{
     transition: transform 0.8s ease-in-out;
 } */
 
- 
-
-
-.UserIcon{
-    font-size: 4rem;
-    padding: 4rem 0 2rem 2rem;
-    display: flex;
-    color: white;
-    cursor: pointer;
-}
-.UserName{
-    font-size: 2rem;
-    margin: 0 0 0 1rem;
-    align-items: center;
-    display: flex;
-    color:white;
-    font-family: 'Baloo Tammudu 2', cursive;
+.UserIcon {
+  font-size: 4rem;
+  padding: 4rem 0 2rem 2rem;
+  display: flex;
+  color: white;
+  cursor: pointer;
 }
 
-.BurgerNavList{
-    list-style: none;
-    font-family: 'Baloo Tammudu 2', cursive;
-    font-size: 1.8rem;
-    line-height: 3rem; 
+.BurgerNavList {
+  list-style: none;
+  font-family: "Baloo Tammudu 2", cursive;
+  font-size: 1.8rem;
+  line-height: 3rem;
+  margin: 0 0 0 2rem;
+  padding: 0 0 0 0;
+}
+.BurgerNavListElement {
+  text-decoration: none;
+  color: white;
+  font-family: "Baloo Tammudu 2", cursive;
+}
+
+.BurgerNavListElement:hover {
+  font-size: 2rem;
+}
+
+.BurgerNavListElementEinstellung {
+  text-decoration: none;
+  color: white;
+  font-family: "Baloo Tammudu 2", cursive;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.BurgerNavListElementEinstellung:hover {
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+  .NavListElement {
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+
+  .NavListElement:hover {
+    font-size: 1.2rem;
+  }
+
+  .LoginButton {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  .LoginButton:hover {
+    font-size: 1.1rem;
+    margin-right: 1rem;
+  }
+
+  .MenuList {
     margin: 0 0 0 2rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .UserIcon {
+    display: grid !important;
+  }
+  .UserName {
+    margin: 2rem 0 0 0;
+  }
+
+  .NavListElement {
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .NavBarWhite {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100vw;
+    justify-content: center;
     padding: 0 0 0 0;
-}
-.BurgerNavListElement{
-    text-decoration: none;
+  }
+  .logo {
+    display: none;
+  }
+
+  .LoginFeld {
+    display: none;
+  }
+  .MenuList {
+    margin: 0 0 0 0;
+  }
+
+  .MenueIcons {
+    font-size: 2rem;
+    padding: 0 0 0 1rem;
     color: white;
-    font-family: 'Baloo Tammudu 2', cursive;
-}
-
-.BurgerNavListElement:hover{
-    font-size: 	2rem;
-}
-
-
-.BurgerNavListElementEinstellung{
-    text-decoration: none;
+  }
+  .MenueIconstimes {
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
     color: white;
-    font-family: 'Baloo Tammudu 2', cursive;
-    font-size: 1.8rem;
+    padding: 1rem 0 0 75vw;
+    z-index: 5;
+  }
+  .BurgerMenu {
+    padding: 1rem 0 1rem 0rem;
+    display: block;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
+
+  .BurgerNavListElement {
+    font-size: 1rem;
+  }
+  .BurgerNavListElement:hover {
+    font-size: 1.3rem;
+  }
+
+  .MobileSiteMenu {
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 450px) {
+  .UserIcon {
+    display: grid !important;
+  }
+  .UserName {
+    margin: 2rem 0 0 0;
+  }
+
+  .NavListElement {
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .NavBarWhite {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100vw;
+    justify-content: center;
+    padding: 0 0 0 0;
+  }
+  .logo {
+    display: none;
+  }
+
+  .LoginFeld {
+    display: none;
+  }
+  .MenuList {
+    margin: 0 0 0 0;
+  }
+
+  .MenueIcons {
+    font-size: 2rem;
+    padding: 0 0 0 1rem;
+    color: white;
+  }
+  .MenueIconstimes {
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
+    color: white;
+    padding: 1rem 0 0 60vw;
+    z-index: 5;
+  }
+  .BurgerMenu {
+    padding: 1rem 0 1rem 0rem;
+    display: block;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
+  .BurgerNavListElement {
+    font-size: 1.3rem;
+  }
+  .BurgerNavListElementEinstellung {
+    font-size: 1rem;
+  }
+
+  .MobileSiteMenu {
+    width: 70vw;
+  }
+  .BurgerNavListElement:hover {
+    font-size: 1.6rem;
+  }
+}
+
+.LoginFeld {
+  display: none;
+}
+.MenuList {
+  margin: 0 0 0 0;
+}
+
+@media screen and (min-width: 450px) and (max-width: 700px) {
+  .NavListElement {
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .NavBarWhite {
+    position: fixed;
+    bottom: 0;
+    background: white;
+    width: 100vw;
+    justify-content: center;
+    padding: 0 0 0 0;
+  }
+  .logo {
+    display: none;
+  }
+
+  .LoginFeld {
+    display: none;
+  }
+  .MenuList {
+    margin: 0 0 0 0;
+  }
+
+  .MenueIcons {
+    font-size: 2rem;
+    padding: 0 0 0 1rem;
+    color: white;
     cursor: pointer;
-       
-}
-.BurgerNavListElementEinstellung:hover{
-    font-size: 	2rem;
+  }
+  .MenueIconstimes {
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
+    color: white;
+    padding: 1rem 0 0 50vw;
+    z-index: 5;
+    cursor: pointer;
+  }
+  .BurgerMenu {
+    padding: 1rem 0 1rem 0rem;
+    display: block;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
 }

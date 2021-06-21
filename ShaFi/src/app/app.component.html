@@ -1,24 +1,23 @@
-
 <header>
-
   <div class="NavBarWhite">
     <a href="#" class="logo">
       <img class="logo" src="./assets/Navbar/LogoPlaceholder7.png" />
     </a>
     <nav>
       <ul class="MenuList">
-        
         <li>
           <a class="NavListElement" href="#" routerLink="/"> Home </a>
         </li>
-        <li><a class="NavListElement" href="#" routerLink="/"> Gruppen </a></li>
         <li>
-          <a class="NavListElement" href="#" routerLink="/"> Zahlungen </a>
+          <a class="NavListElement" href="#" routerLink="/group-overview">
+            Gruppen
+          </a>
+        </li>
+        <li>
+          <a class="NavListElement" href="#" routerLink="/zahlungen"> Zahlungen </a>
         </li>
         <li><a class="NavListElement" href="#" routerLink="/"> Aktien </a></li>
-      
       </ul>
-      
     </nav>
 
     <div class="LoginFeld">
@@ -26,86 +25,138 @@
     </div>
   </div>
 
+  <div class="BurgerMenu">
+    <div (click)="thisclicked()" class="MenueIcons">
+      <i class="fas fa-bars"> </i>
+    </div>
 
+    <div
+      class="MobileSiteMenu"
+      id="MobileNav"
+      [ngClass]="{ active: isactive() }"
+    >
+      <!-- <div class="MobileSiteContent"> -->
+      <div (click)="thisclicked()" class="MenueIconstimes">
+        <i class="fas fa-times"></i>
+      </div>
 
-
-
-
-    <div class="BurgerMenu">
-      
+      <div class="BurgerMenu">
         <div (click)="thisclicked()" class="MenueIcons">
-        <i class='fas fa-bars'>
+          <i class="fas fa-bars"> </i>
+        </div>
 
-        </i>
-      </div> 
-      
-
-      
-
-      
-         <div class="MobileSiteMenu" id="MobileNav" [ngClass]="{active: isactive()}" >  
-        
-        
-          
-          
+        <div
+          class="MobileSiteMenu"
+          id="MobileNav"
+          [ngClass]="{ active: isactive() }"
+        >
           <!-- <div class="MobileSiteContent"> -->
           <div (click)="thisclicked()" class="MenueIconstimes">
-            <i class='fas fa-times'></i>
+            <i class="fas fa-times"></i>
           </div>
 
           <div class="UserIcon">
-          <i class="fas fa-user"></i>
-          <p class="UserName">Username</p>
+            <i class="fas fa-user"></i>
+            <p class="UserName">Username</p>
+          </div>
+          <ul class="BurgerNavList">
+            <li>
+              <a class="BurgerNavListElement" href="#" routerLink="/">
+                Element der Liste
+              </a>
+            </li>
+            <li>
+              <a class="BurgerNavListElement" href="#" routerLink="/">
+                Element der Liste
+              </a>
+            </li>
+            <li>
+              <a class="BurgerNavListElement" href="#" routerLink="/">
+                Element der Liste
+              </a>
+            </li>
+            <li>
+              <a class="BurgerNavListElement" href="#" routerLink="/">
+                Element der Liste
+              </a>
+            </li>
+            <div class="BurgerNavListElementEinstellung">Einstellungen</div>
+          </ul>
         </div>
         <ul class="BurgerNavList">
-          
           <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
+            <a class="BurgerNavListElement" href="#" routerLink="/">
+              Element der Liste
+            </a>
           </li>
           <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
+            <a class="BurgerNavListElement" href="#" routerLink="/">
+              Element der Liste
+            </a>
           </li>
           <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
+            <a class="BurgerNavListElement" href="#" routerLink="/">
+              Element der Liste
+            </a>
           </li>
           <li>
-            <a class ="BurgerNavListElement"href="#" routerLink="/"> Element der Liste </a>
+            <a class="BurgerNavListElement" href="#" routerLink="/">
+              Element der Liste
+            </a>
           </li>
-          <div class="BurgerNavListElementEinstellung">
-            Einstellungen
-          </div>
-        </ul>  
+
+          <a class="BurgerNavListElement" href="#" routerLink="/">
+            Einstellung
+          </a>
+        </ul>
       </div>
       <!-- </div> -->
-    
-      
-     
     </div>
-
+  </div>
 </header>
 
- <!-- 
-<body style="background: var(--maincolor); padding-top: 5rem;" >
+<router-outlet></router-outlet>
 
-  
-  <div style="margin: 5rem 5rem 0 5rem;background-color: white; box-shadow:10px 5px 5px px silver; border-radius: 20px;">
+<!-- 
+<body style="background: var(--maincolor); height: 100vh; padding-top: 5rem">
+  <div
+    style="
+      margin: 5rem 5rem 0 5rem;
+      background-color: white;
+      box-shadow: 10px 5px 5px px silver;
+      border-radius: 20px;
+    "
+  >
     Das ist eine Box
 
-    <button style="margin: 5rem 0 0 0;color: white; background-color: #8f92ec; width: 5rem; height: 3rem; border-radius: 20px;">
+    <button
+      style="
+        margin: 5rem 0 0 0;
+        color: white;
+        background-color: #8f92ec;
+        width: 5rem;
+        height: 3rem;
+        border-radius: 20px;
+      "
+    >
       Hallo
     </button>
 
     <h1>Hallo</h1>
     <h2>Hallo</h2>
     <h3>Hallo</h3>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    
-
-    
+    <p>
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+      amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+      nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+      diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+      Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+      sit amet.
+    </p>
   </div>
-  
-   
 </body>
 -->
- <router-outlet></router-outlet>
-
+<router-outlet></router-outlet>
