@@ -3,14 +3,13 @@
     <div class="groupContainer">
       <h1 class="heading">Groups Overview</h1>
       <div><button (click)="addGroup()" class="addGroupButton">+</button></div>
-
-        <ul class="group" *ngFor="let group of Groups; let i = index">
-          <div>
-            <h2>{{ Groups[i].groupName }}</h2>
-            <p>{{ Groups[i].members }}</p>
-            <button (click)="editGroup(i)">Edit Group</button>
-          </div>
-        </ul>
+      <ul class="group" *ngFor="let group of Groups; let i = index">
+        <div>
+          <h2>{{ Groups[i].groupName }}</h2>
+          <p>{{ Groups[i].members }}</p>
+          <button (click)="editGroup(i)">Edit Group</button>
+        </div>
+      </ul>
     </div>
   </div>
   <div class="groupPreview">
