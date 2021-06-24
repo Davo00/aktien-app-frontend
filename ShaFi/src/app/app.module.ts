@@ -15,6 +15,8 @@ import { GroupHistoryComponent } from './group-history/group-history.component';
 import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
 import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
+import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 
 
 
@@ -27,7 +29,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     DialogmainexampleComponent,
     HomeComponent,
     ChatprogrammComponent,
-    ChatdialogComponent
+    ChatdialogComponent,
     GroupHistoryComponent,
     AddGroupDialogComponent,
     AddPaymentDialogComponent

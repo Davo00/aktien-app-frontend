@@ -11,6 +11,8 @@ export class AddPaymentDialogComponent implements OnInit {
   reason: any;
   members: any;
   amount: any;
+  Selfpaid = false;
+  Username = "Cevin"
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -24,6 +26,18 @@ export class AddPaymentDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  SelpaidName(){
+    this.Selfpaid = !this.Selfpaid;
+    if(this.Selfpaid){
+      this.data.payerName = this.Username;
+    }
+    else{
+      this.data.payerName= "";
+    }
+    console.log(this.Selfpaid)
+    return this.Selfpaid;
+  }
 
   dialogSaveGroup() {
     this.data.payerName = this.payerName;
