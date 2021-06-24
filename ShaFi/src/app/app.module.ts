@@ -11,6 +11,13 @@ import { MatFormFieldModule }from '@angular/material/form-field';
 import { HomeComponent } from './home/home.component';
 import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 import { ChatdialogComponent } from './chatdialog/chatdialog.component';
+import { GroupHistoryComponent } from './group-history/group-history.component';
+import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
+import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
+import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
+
 
 
 @NgModule({
@@ -22,8 +29,10 @@ import { ChatdialogComponent } from './chatdialog/chatdialog.component';
     DialogmainexampleComponent,
     HomeComponent,
     ChatprogrammComponent,
-    ChatdialogComponent
-
+    ChatdialogComponent,
+    GroupHistoryComponent,
+    AddGroupDialogComponent,
+    AddPaymentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +40,8 @@ import { ChatdialogComponent } from './chatdialog/chatdialog.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
-
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

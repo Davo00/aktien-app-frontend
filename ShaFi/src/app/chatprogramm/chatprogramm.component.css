@@ -1,11 +1,7 @@
 .Chatprogramm{
     background-color: white;
-    width: 40vw;
-     height: 60vh; 
-    margin-left: 30vw;
-    margin-top: 10vh;
     padding: 1rem;
-    
+    height: 70vh;
     overflow-x: hidden;
   overflow-y: auto;
 
