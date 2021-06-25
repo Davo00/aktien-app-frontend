@@ -8,13 +8,34 @@ import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.co
   styleUrls: ['./group-overview.component.css'],
 })
 export class GroupOverviewComponent implements OnInit {
+  // GroupsOverview = false;
+  // GroupPreview = true;
+
   constructor(private matDialog: MatDialog) {}
 
   ngOnInit(): void {
     console.log(this.Groups);
+
+    //Media Query
+    // var query = window.matchMedia("(min-width: 900px");
+    // if (query.matches) {
+    //   this.GroupsOverview = false;
+    //   this.GroupPreview = false;
+    // } else {
+    //   this.GroupsOverview = false;
+    //   this.GroupPreview = true;
+    // }
   }
 
   Groups: { groupName: string; members: string }[] = [
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
     { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
   ];
 
@@ -61,4 +82,24 @@ export class GroupOverviewComponent implements OnInit {
       }
     });
   }
+
+  // preview essential info about a group
+  preview() {
+    console.log("hello");
+  }
+
+  // GroupsOverviewButton(){
+  //   this.GroupsOverview = false;
+  //   this.GroupPreview = true;
+  // }
+  // GroupPreviewButton(){
+  //   this.GroupPreview = false;
+  //   this.GroupsOverview = true;
+  // }
+  // returnGroupsOverview(){
+  //   return this.GroupsOverview;
+  // }
+  // returnGroupPreview(){
+  //   return this.GroupPreview;
+  // }
 }
