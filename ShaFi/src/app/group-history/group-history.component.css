@@ -1,17 +1,30 @@
 .groupHisoryPage {
+}
+
+.groupHisoryPageContent {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  height: 80vh;
+  height:65vh;
 }
 
 .groupHisory {
   width: 40%;
   margin-right: 1rem;
   border-radius: 10px;
-  
 }
-.groupHisory.deactiv{
+
+.history {
+  height: 53vh;
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+.history::-webkit-scrollbar {
+  display: none;
+}
+
+.groupHisory.deactiv {
   display: none;
 }
 
@@ -22,8 +35,8 @@
 }
 
 .heading {
-    text-align: center;
-    line-height: 100%
+  text-align: center;
+  line-height: 100%;
 }
 
 .addPaymentButton {
@@ -31,18 +44,9 @@
   margin-bottom: 0.5rem;
   float: right;
 }
- 
-.history {
-  height: 62vh;
-  overflow-x:auto;
-  overflow-y: scroll;  
-}  
-.history::-webkit-scrollbar{
-  display: none;
-}
 
-.AddButton{
-  height:30px;
+.AddButton {
+  height: 30px;
 }
 
 .payment {
@@ -56,7 +60,7 @@
   box-shadow: 0 2px silver;
   border-radius: 10px;
 }
-.paymentfont{
+.paymentfont {
   font-size: 2rem;
 }
 
@@ -77,25 +81,23 @@
 
 .paymentAmount {
   padding-top: 1rem;
-  text-align:right;
+  text-align: right;
 }
 
 .paymentArrow {
   height: inherit;
   text-align: right;
-  font-size:1.5rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
 }
-
 
 .groupChat {
   width: 40%;
   margin-left: 1rem;
   border-radius: 10px;
-  
 }
-.groupChat.deactiv{
+.groupChat.deactiv {
   display: none;
 }
 
@@ -103,8 +105,6 @@
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  
-  
 }
 
 .groupChatContent {
@@ -117,29 +117,29 @@
   padding-bottom: 0.5rem;
   margin-top: calc(30px + 2rem);
   text-align: center;
-  height: 60vh;
+  height: 49.7vh;
   overflow-x: hidden;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 /* .groupchatScroll{
   height: 60vh;
   overflow-x: hidden;
   overflow-y: auto; 
 } */
-.groupChatContent::-webkit-scrollbar{
+.groupChatContent::-webkit-scrollbar {
   display: none;
 }
 
 .chatHeader {
-    background-color: #686de0;
-    box-shadow: 1px 1px 1px 1px silver;
-    margin-bottom: 1rem;
-    text-align: left;
-    padding-left: 0.5rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  background-color: #686de0;
+  box-shadow: 1px 1px 1px 1px silver;
+  margin-bottom: 1rem;
+  text-align: left;
+  padding-left: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .closeBillArea {
@@ -162,48 +162,45 @@
   border-width: 0.01rem;
 }
 
-.Chatprogramm{
+.Chatprogramm {
   background-color: white;
   padding: 0rem 1rem 0rem 1rem;
-  
-
 }
 
-.Chatprogramm::-webkit-scrollbar{
+.Chatprogramm::-webkit-scrollbar {
   display: none;
 }
 
-
-.checkUL{
+.checkUL {
   list-style: none;
   padding: 0 1rem 0 1rem;
   border-radius: 20px;
   cursor: pointer;
 }
 
-.chatLI{
+.chatLI {
   background-color: rgb(92, 207, 211);
   border-radius: 10px;
-  width: 80%
+  width: 80%;
 }
-.chatLI.active{
+.chatLI.active {
   background-color: rgb(196, 83, 181);
-  
+
   margin-left: 20%;
 }
-.chatLIeigen{
+.chatLIeigen {
   background-color: green;
   border-radius: 10px;
 }
-.chatBox{
-  padding: 0.5rem
+.chatBox {
+  padding: 0.5rem;
 }
 
-.chatAbsender{
+.chatAbsender {
   font-weight: bold;
 }
 
-.chatDate{
+.chatDate {
   font-size: 0.5rem;
   text-align: end;
   display: flex;
@@ -211,31 +208,30 @@
   justify-content: flex-end;
   align-items: flex-end;
 }
-.chatInfo{
+.chatInfo {
   display: flex;
 }
-.chatText{
+.chatText {
   width: 80%;
   text-align: start;
-  
 }
 
-.chatDateforInput{
+.chatDateforInput {
   display: flex;
   justify-content: center;
 }
-.positivAmount{
-  color:green;
+.positivAmount {
+  color: green;
 }
-.negativAmount{
-  color:red;
+.negativAmount {
+  color: red;
 }
 
-.smallNavHistory{
+.smallNavHistory {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-gap:3rem ;
+  grid-gap: 3rem;
   width: 100%;
   font-size: 2rem;
   padding-top: 1em;
@@ -244,7 +240,7 @@
 .displayNone900 {
   display: block;
 }
-.ElementNavHis{
+.ElementNavHis {
   font-weight: bold;
   cursor: pointer;
   text-decoration: solid;
@@ -252,104 +248,153 @@
   border-bottom: 5px solid black;
   transition: all 100ms ease-in-out;
 }
-.ElementNavHis.deactiv{
-color:gray;
-border-bottom: none;
-
+.ElementNavHis.deactiv {
+  color: gray;
+  border-bottom: none;
 }
 
-@media screen and (max-width: 900px){
-  .smallNavHistory{
-  display:flex;
+/* test */
+/* 
+.test1 {
+  background-color: red;
+  justify-content: center;
+  display: grid;
+  margin-top: 2.5rem;
+  padding-bottom: 2rem;
+  transform: translateY(-5rem);
+    display: none;
+}
+.test2 {
+  background-color: yellow;
+  justify-content: center;
+  display: grid;
+  margin-top: 7rem;
+  padding-bottom: 2rem;
+  transform: translateY(-5rem);
+  display: flex !important;
+}
+
+.testButton {
+  font-family: "Baloo Tammudu 2";
+  font-size: 1.5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 1rem;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px silver;
+  border-radius: 3rem;
+  border-width: 0.01rem;
+} */
+/* test */
+
+
+.example-card {
+  display: grid;
+  justify-content: unset;
+  height: unset;
+  width: max-content;
+  background-color: black;
+}
+
+.card {
+  display: none;
+  background-color: red;
+}
+/* img {
+  width: 200px;
+} */
+
+@media screen and (max-width: 900px) {
+  .smallNavHistory {
+    display: flex;
   }
   .displayNone900 {
     display: none;
   }
-  .groupHisory{
+  .groupHisory {
     width: 80%;
     margin: 0;
   }
-  .groupChat{
+  .groupChat {
     width: 80%;
     margin: 0;
   }
-  
+  /* .test1 {
+    display: none;
+  }
+  .test2 {
+    display: flex !important;
+  } */
+  .example-card {
+    width: 85%;
+  }
 }
 
-@media screen and (min-width: 900px){
-  .smallNavHistory{
-  display:none;
+@media screen and (min-width: 900px) {
+  .smallNavHistory {
+    display: none;
   }
   .closeBillArea {
     padding-bottom: 2rem;
-      transform: translateY(0rem);
-    }
-  
+    transform: translateY(0rem);
+  }
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 700px) {
   .closeBillArea {
-  padding-bottom: 2rem;
+    padding-bottom: 2rem;
     transform: translateY(-4rem);
   }
-  
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 500px) {
   .closeBillArea {
-  padding-bottom: 2rem;
+    padding-bottom: 2rem;
     transform: translateY(-6rem);
   }
-  .ElementNavHis{
+  .ElementNavHis {
     font-size: 1.5rem;
   }
-  .Chatprogramm{
+  .Chatprogramm {
     padding: 0;
   }
-  .groupHisory{
+  .groupHisory {
     width: 90%;
     margin: 0;
   }
-  .groupChat{
+  .groupChat {
     width: 90%;
     margin: 0;
   }
-  
-  
 }
-@media screen and (max-width: 400px){
+@media screen and (max-width: 400px) {
   .closeBillArea {
-  padding-bottom: 2rem;
+    padding-bottom: 2rem;
     transform: translateY(-6rem);
   }
-  .ElementNavHis{
+  .ElementNavHis {
     font-size: 1.5rem;
   }
 
-  .groupHisory{
+  .groupHisory {
     width: 90%;
     margin: 0;
   }
-  .groupChat{
+  .groupChat {
     width: 90%;
     margin: 0;
   }
-  .smallNavHistory{
+  .smallNavHistory {
     grid-gap: 1rem;
   }
-  .Chatprogramm{
+  .Chatprogramm {
     padding: 0;
   }
-  
-  
 }
 
-
-
-
-
-@media screen and (max-width: 1250px){
-  h1{
-    font-size: 3rem!important;
+@media screen and (max-width: 1250px) {
+  h1 {
+    font-size: 3rem !important;
   }
 }
+
