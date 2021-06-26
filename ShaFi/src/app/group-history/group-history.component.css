@@ -45,6 +45,10 @@
   float: right;
 }
 
+.addPaymentButton:hover {
+  cursor: pointer;
+}
+
 .AddButton {
   height: 30px;
 }
@@ -59,7 +63,19 @@
   background-color: white;
   box-shadow: 0 2px silver;
   border-radius: 10px;
+  width: 93.5%;
+  width: 94%;
+  margin-left: 0.5rem;
 }
+
+.payment:hover {
+  transform: scale(1.01);
+  /* font-weight: 500; */
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 100ms;
+}
+
 .paymentfont {
   font-size: 2rem;
 }
@@ -160,6 +176,12 @@
   box-shadow: 1px 1px 1px 1px silver;
   border-radius: 3rem;
   border-width: 0.01rem;
+}
+
+.closeBillButton:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: transform 150ms;
 }
 
 .Chatprogramm {
