@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  height:65vh;
+  height: 65vh;
 }
 
 .groupHisory {
@@ -309,47 +309,24 @@
 } */
 /* test */
 
-
-.example-card {
-  display: grid;
-  justify-content: unset;
+.swipeLeftCard {
+  display: block;
+  justify-content: center;
   height: unset;
   width: max-content;
-  background-color: black;
 }
 
 .card {
-  display: none;
+  /* display: none; */
   background-color: red;
+  width: max-content;
 }
 /* img {
   width: 200px;
 } */
 
-@media screen and (max-width: 900px) {
-  .smallNavHistory {
-    display: flex;
-  }
-  .displayNone900 {
-    display: none;
-  }
-  .groupHisory {
-    width: 80%;
-    margin: 0;
-  }
-  .groupChat {
-    width: 80%;
-    margin: 0;
-  }
-  /* .test1 {
-    display: none;
-  }
-  .test2 {
-    display: flex !important;
-  } */
-  .example-card {
-    width: 85%;
-  }
+.groupHisoryPageContentMobile {
+  display: none;
 }
 
 @media screen and (min-width: 900px) {
@@ -360,18 +337,108 @@
     padding-bottom: 2rem;
     transform: translateY(0rem);
   }
+  /* .swipeLeftCard {
+    display: none;
+  }
+  .card {
+    display: none;
+  } */
+}
+
+@media screen and (max-width: 900px) {
+  .groupHisoryPageContent {
+    display: none;
+    background-color: blue;
+  }
+  .groupHisoryPageContentMobile {
+    background-color: black;
+    display: inherit;
+    vertical-align: middle;
+  }
+  .swipeLeftCard {
+    width: 95.5%;
+    display: flex;
+    background-color: green;
+    vertical-align: middle;
+  }
+  .card {
+    /* display: none; */
+    background-color: red;
+    width: 85%;
+    margin: 0 0 0 0;
+    vertical-align: middle;
+  }
+  .groupHisory {
+    width: 100%;
+    margin: 0 0 0 0;
+    background-color: yellow;
+  }
+  .groupChat {
+    width: 80%;
+    margin: 0 0 0 0;
+  }
+  .closeBillArea {
+    /* justify-content: center;
+    display: grid;
+    margin-top: 2.5rem;
+    transform: translateY(-5rem); */
+    background-color: brown;
+    padding-bottom: unset;
+    margin-top: 7rem;
+  }
+  .smallNavHistory {
+    display: flex;
+  }
+  .displayNone900 {
+    display: none;
+  }
+
+  .payment {
+    width: 93%;
+  }
+
+  .closeBillButton {
+    /* font-family: "Baloo Tammudu 2";
+    font-size: 1.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 1rem;
+    box-shadow: 1px 1px 1px 1px silver;
+    border-radius: 3rem;
+    border-width: 0.01rem; */
+  }
+
+  /* .test1 {
+    display: none;
+  }
+  .test2 {
+    display: flex !important;
+  } */
 }
 
 @media screen and (max-width: 700px) {
   .closeBillArea {
-    padding-bottom: 2rem;
     transform: translateY(-4rem);
+  }
+  .swipeLeftCard {
+    width: 94%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .closeBillArea {
+    transform: translateY(-4rem);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .swipeLeftCard {
+    width: 93.5%;
   }
 }
 
 @media screen and (max-width: 500px) {
   .closeBillArea {
-    padding-bottom: 2rem;
     transform: translateY(-6rem);
   }
   .ElementNavHis {
@@ -380,37 +447,74 @@
   .Chatprogramm {
     padding: 0;
   }
-  .groupHisory {
-    width: 90%;
-    margin: 0;
+  .card {
+    width: 100%;
   }
-  .groupChat {
-    width: 90%;
-    margin: 0;
+  .swipeLeftCard {
+    width: 92.5%;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .swipeLeftCard {
+    width: 92%;
+  }
+
+  .payment {
+    width: 92%;
+  }
+}
+
 @media screen and (max-width: 400px) {
+  .card {
+    width: 100%;
+  }
+  .swipeLeftCard {
+    width: 91%;
+  }
   .closeBillArea {
-    padding-bottom: 2rem;
     transform: translateY(-6rem);
   }
   .ElementNavHis {
     font-size: 1.5rem;
-  }
-
-  .groupHisory {
-    width: 90%;
-    margin: 0;
-  }
-  .groupChat {
-    width: 90%;
-    margin: 0;
   }
   .smallNavHistory {
     grid-gap: 1rem;
   }
   .Chatprogramm {
     padding: 0;
+  }
+
+  .payment {
+    width: 91%;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .swipeLeftCard {
+    width: 90%;
+  }
+
+  .payment {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .swipeLeftCard {
+    width: 89%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .swipeLeftCard {
+    width: 88%;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .swipeLeftCard {
+    width: 89%;
   }
 }
 
@@ -419,4 +523,3 @@
     font-size: 3rem !important;
   }
 }
-

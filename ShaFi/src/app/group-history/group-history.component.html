@@ -1,4 +1,84 @@
-<!-- <div class="groupHisoryPage">
+<div class="groupHisoryPage">
+  <div class="groupHisoryPageContent">
+    <div class="groupHisory" [ngClass]="{ deactiv: returngroupHistory() }">
+      <div class="groupContainer">
+        <h1 class="heading">Group History</h1>
+        <div class="AddButton">
+          <button (click)="addPayment()" class="addPaymentButton">+</button>
+        </div>
+
+        <div class="history">
+          <ul class="payment" *ngFor="let payment of Payments; let i = index">
+            <div class="paymentName">
+              <h3 class="">{{ Payments[i].payerName }}</h3>
+            </div>
+            <div class="paymentInfo">
+              <div class="paymentAmount">
+                <h3 class="">{{ Payments[i].amount }}€</h3>
+              </div>
+              <div class="paymentArrow">
+                <div *ngIf="Payments[i].amount >= 0" class="positivAmount">
+                  <i class="fas fa-plus"></i>
+                </div>
+                <div *ngIf="Payments[i].amount < 0" class="negativAmount">
+                  <i class="fas fa-minus"></i>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
+      <div class="groupChatContainer">
+        <h1 class="heading">Group Chat</h1>
+        <div class="groupChatContent">
+          <div id="scrollBlock" class="Chatprogramm">
+            <div class="ChatprogrammDiv">
+              <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
+                <li *ngIf="checkDate(chat.Datum)">
+                  <div class="chatDateforInput">
+                    {{ chat.Datum.getDate() }}.{{
+                      chat.Datum.getMonth() + 1
+                    }}.{{ chat.Datum.getFullYear() }}
+                  </div>
+                </li>
+                <li
+                  (click)="openDialogChatChange(i)"
+                  class="chatLI"
+                  [ngClass]="{ active: isactive(chat.Absender) }"
+                >
+                  <div class="chatBox">
+                    <div class="chatAbsender">
+                      Absender: {{ chat.Absender }}
+                    </div>
+                    <div class="chatText">Wert: {{ chat.Value }}</div>
+
+                    <div class="chatText">
+                      Mitglieder: {{ chat.Mitglieder }}
+                    </div>
+
+                    <div class="chatInfo">
+                      <div class="chatText">Grund: {{ chat.Text }}</div>
+
+                      <div class="chatDate">
+                        {{ chat.Datum.getHours() }} :
+                        {{ chat.Datum.getMinutes() }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile -->
+
   <div class="smallNavHistory">
     <div
       class="ElementNavHis"
@@ -16,9 +96,9 @@
     </div>
   </div>
 
-  <div class="groupHisoryPageContent">
+  <div class="groupHisoryPageContentMobile">
     <mat-card
-      class="example-card"
+      class="swipeLeftCard"
       [@cardAnimator]="animationState"
       (@cardAnimator.done)="resetAnimationState()"
     >
@@ -72,9 +152,8 @@
         <div class="displayNone900">
           <h1 class="heading">Group Chat</h1>
         </div>
-        <div class="groupChatContent"> -->
-<!-- <div class="chatHeader">Header</div> -->
-<!-- <div id="scrollBlock" class="Chatprogramm">
+        <div class="groupChatContent">
+          <div id="scrollBlock" class="Chatprogramm">
             <div class="ChatprogrammDiv">
               <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
                 <li *ngIf="checkDate(chat.Datum)">
@@ -116,12 +195,13 @@
       </div>
     </div>
   </div>
+
   <div class="closeBillArea">
     <button class="closeBillButton">Close Bill</button>
   </div>
-</div> -->
+</div>
 
-<div class="groupHisoryPage">
+<!-- <div class="groupHisoryPage">
   <div class="smallNavHistory">
     <div
       class="ElementNavHis"
@@ -178,7 +258,7 @@
         </div>
         <div class="groupChatContent">
           <!-- <div class="chatHeader">Header</div> -->
-          <div id="scrollBlock" class="Chatprogramm">
+<!-- <div id="scrollBlock" class="Chatprogramm">
             <div class="ChatprogrammDiv">
               <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
                 <li *ngIf="checkDate(chat.Datum)">
@@ -224,7 +304,7 @@
   <div class="closeBillArea">
     <button class="closeBillButton">Close Bill</button>
   </div>
-</div>
+</div> -->
 
 <!-- <div class="test1">
   <button class="testButton">Close Bill</button>
