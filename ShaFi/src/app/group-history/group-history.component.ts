@@ -20,7 +20,11 @@ import * as kf from './keyframes';
       ),
       transition(
         '* => slideOutLeft',
-        animate(1000, keyframes(kf.slideOutLeft))
+        animate(700, keyframes(kf.slideOutLeft))
+      ),
+      transition(
+        '* => slideOutRight',
+        animate(700, keyframes(kf.slideOutRight))
       ),
       transition(
         '* => rotateOutUpRight',
@@ -32,9 +36,11 @@ import * as kf from './keyframes';
 })
 export class GroupHistoryComponent implements OnInit {
   animationState: string;
+  currentTabChat: boolean;
 
   constructor(private matDialog: MatDialog) {
     this.animationState = '';
+    this.currentTabChat = false;
   }
 
   startAnimation(state: any) {
@@ -236,18 +242,33 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  GroupHistoryButton() {
-    this.GroupHistory = false;
-    this.GroupChat = true;
+  public delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
   GroupChatButton() {
     this.GroupChat = false;
     this.GroupHistory = true;
   }
-  returngroupHistory() {
-    return this.GroupHistory;
+  public async SwipeLeft() {
+    this.startAnimation('slideOutLeft');
+    await this.delay(550);
+    this.GroupChatButton();
+    this.currentTabChat = true;
   }
   returnChatHistory() {
     return this.GroupChat;
+  }
+  GroupHistoryButton() {
+    this.GroupHistory = false;
+    this.GroupChat = true;
+  }
+  public async SwipeRight() {
+    this.startAnimation('slideOutRight');
+    await this.delay(550);
+    this.GroupHistoryButton();
+    this.currentTabChat = false;
+  }
+  returngroupHistory() {
+    return this.GroupHistory;
   }
 }

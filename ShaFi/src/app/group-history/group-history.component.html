@@ -83,14 +83,14 @@
     <div
       class="ElementNavHis"
       [ngClass]="{ deactiv: returngroupHistory() }"
-      (click)="GroupHistoryButton()"
+      (click)="SwipeRight()"
     >
       Group History
     </div>
     <div
       class="ElementNavHis"
       [ngClass]="{ deactiv: returnChatHistory() }"
-      (click)="GroupChatButton()"
+      (click)="SwipeLeft()"
     >
       Group Chat
     </div>
@@ -98,7 +98,8 @@
 
   <div class="groupHisoryPageContentMobile">
     <mat-card
-      class="swipeLeftCard"
+      *ngIf="!currentTabChat"
+      class="cardContainer"
       [@cardAnimator]="animationState"
       (@cardAnimator.done)="resetAnimationState()"
     >
@@ -137,63 +138,65 @@
             </div>
           </div>
         </div>
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="startAnimation('slideOutLeft')"
-        >
-          SWIPE LEFT
-        </button>
       </mat-card-actions>
     </mat-card>
 
-    <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
-      <div class="groupChatContainer">
-        <div class="displayNone900">
-          <h1 class="heading">Group Chat</h1>
-        </div>
-        <div class="groupChatContent">
-          <div id="scrollBlock" class="Chatprogramm">
-            <div class="ChatprogrammDiv">
-              <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
-                <li *ngIf="checkDate(chat.Datum)">
-                  <div class="chatDateforInput">
-                    {{ chat.Datum.getDate() }}.{{
-                      chat.Datum.getMonth() + 1
-                    }}.{{ chat.Datum.getFullYear() }}
-                  </div>
-                </li>
-                <li
-                  (click)="openDialogChatChange(i)"
-                  class="chatLI"
-                  [ngClass]="{ active: isactive(chat.Absender) }"
-                >
-                  <div class="chatBox">
-                    <div class="chatAbsender">
-                      Absender: {{ chat.Absender }}
-                    </div>
-                    <div class="chatText">Wert: {{ chat.Value }}</div>
-
-                    <div class="chatText">
-                      Mitglieder: {{ chat.Mitglieder }}
-                    </div>
-
-                    <div class="chatInfo">
-                      <div class="chatText">Grund: {{ chat.Text }}</div>
-
-                      <div class="chatDate">
-                        {{ chat.Datum.getHours() }} :
-                        {{ chat.Datum.getMinutes() }}
+    <mat-card
+      *ngIf="currentTabChat"
+      class="cardContainer"
+      [@cardAnimator]="animationState"
+      (@cardAnimator.done)="resetAnimationState()"
+    >
+      <mat-card-actions class="card">
+        <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
+          <div class="groupChatContainer">
+            <div class="displayNone900">
+              <h1 class="heading">Group Chat</h1>
+            </div>
+            <div class="groupChatContent">
+              <div id="scrollBlock" class="Chatprogramm">
+                <div class="ChatprogrammDiv">
+                  <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
+                    <li *ngIf="checkDate(chat.Datum)">
+                      <div class="chatDateforInput">
+                        {{ chat.Datum.getDate() }}.{{
+                          chat.Datum.getMonth() + 1
+                        }}.{{ chat.Datum.getFullYear() }}
                       </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+                    </li>
+                    <li
+                      (click)="openDialogChatChange(i)"
+                      class="chatLI"
+                      [ngClass]="{ active: isactive(chat.Absender) }"
+                    >
+                      <div class="chatBox">
+                        <div class="chatAbsender">
+                          Absender: {{ chat.Absender }}
+                        </div>
+                        <div class="chatText">Wert: {{ chat.Value }}</div>
+
+                        <div class="chatText">
+                          Mitglieder: {{ chat.Mitglieder }}
+                        </div>
+
+                        <div class="chatInfo">
+                          <div class="chatText">Grund: {{ chat.Text }}</div>
+
+                          <div class="chatDate">
+                            {{ chat.Datum.getHours() }} :
+                            {{ chat.Datum.getMinutes() }}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </mat-card-actions>
+    </mat-card>
   </div>
 
   <div class="closeBillArea">
