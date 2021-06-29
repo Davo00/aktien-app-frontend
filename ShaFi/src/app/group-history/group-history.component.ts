@@ -18,10 +18,7 @@ import * as kf from './keyframes';
         '* => zoomOutRight',
         animate(1000, keyframes(kf.zoomOutRight))
       ),
-      transition(
-        '* => slideOutLeft',
-        animate(700, keyframes(kf.slideOutLeft))
-      ),
+      transition('* => slideOutLeft', animate(700, keyframes(kf.slideOutLeft))),
       transition(
         '* => slideOutRight',
         animate(700, keyframes(kf.slideOutRight))
@@ -250,10 +247,12 @@ export class GroupHistoryComponent implements OnInit {
     this.GroupHistory = true;
   }
   public async SwipeLeft() {
-    this.startAnimation('slideOutLeft');
-    await this.delay(550);
-    this.GroupChatButton();
-    this.currentTabChat = true;
+    if (!this.currentTabChat) {
+      this.startAnimation('slideOutLeft');
+      await this.delay(550);
+      this.GroupChatButton();
+      this.currentTabChat = true;
+    }
   }
   returnChatHistory() {
     return this.GroupChat;
@@ -263,10 +262,12 @@ export class GroupHistoryComponent implements OnInit {
     this.GroupChat = true;
   }
   public async SwipeRight() {
-    this.startAnimation('slideOutRight');
-    await this.delay(550);
-    this.GroupHistoryButton();
-    this.currentTabChat = false;
+    if (this.currentTabChat) {
+      this.startAnimation('slideOutRight');
+      await this.delay(550);
+      this.GroupHistoryButton();
+      this.currentTabChat = false;
+    }
   }
   returngroupHistory() {
     return this.GroupHistory;

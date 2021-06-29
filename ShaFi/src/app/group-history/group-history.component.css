@@ -392,11 +392,6 @@
   }
 
   .closeBillArea {
-    /* justify-content: center;
-    display: grid;
-    margin-top: 2.5rem;
-    transform: translateY(-5rem); */
-    /* background-color: brown; */
     padding-bottom: unset;
     margin-top: 7rem;
   }
@@ -412,22 +407,13 @@
   .payment {
     width: 93%;
   }
-
-  .closeBillButton {
-    /* font-family: "Baloo Tammudu 2";
-    font-size: 1.5rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    padding-top: 1rem;
-    box-shadow: 1px 1px 1px 1px silver;
-    border-radius: 3rem;
-    border-width: 0.01rem; */
-  }
 }
 
 @media screen and (max-width: 700px) {
   .closeBillArea {
-    transform: translateY(-4rem);
+    margin-top: 1rem;
+    padding: 0 0 0 0;
+    transform: translateY(-1rem);
   }
   .cardContainer {
     width: 94%;
@@ -436,7 +422,7 @@
 
 @media screen and (max-width: 600px) {
   .closeBillArea {
-    transform: translateY(-4rem);
+    /* transform: translateY(-4rem); */
   }
 }
 
@@ -444,11 +430,14 @@
   .cardContainer {
     width: 93.5%;
   }
+  .smallNavHistory {
+    margin: 0 0 0 0;
+  }
 }
 
 @media screen and (max-width: 500px) {
   .closeBillArea {
-    transform: translateY(-6rem);
+    /* transform: translateY(-6rem); */
   }
   .ElementNavHis {
     font-size: 1.5rem;
@@ -461,6 +450,12 @@
   }
   .cardContainer {
     width: 92.5%;
+  }
+  .history {
+    height: 50vh;
+  }
+  .groupChatContent {
+    height: 53.5vh;
   }
 }
 
@@ -482,7 +477,13 @@
     width: 91%;
   }
   .closeBillArea {
-    transform: translateY(-6rem);
+    transform: translateY(-2rem);
+  }
+  .history {
+    height: 45vh;
+  }
+  .groupChatContent {
+    height: 47.5vh;
   }
   .smallNavHistory {
     grid-gap: 1rem;
@@ -493,6 +494,19 @@
 
   .payment {
     width: 91%;
+  }
+}
+
+@media screen and (max-width: 400px), 
+screen and (max-height: 800px) {
+  .closeBillArea {
+    transform: translateY(-1rem);
+  }
+  .history {
+    height: 50vh;
+  }
+  .groupChatContent {
+    height: 53.5vh;
   }
 }
 

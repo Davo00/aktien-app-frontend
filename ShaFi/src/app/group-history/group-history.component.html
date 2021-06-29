@@ -102,6 +102,7 @@
       class="cardContainer"
       [@cardAnimator]="animationState"
       (@cardAnimator.done)="resetAnimationState()"
+      (swipeleft)="SwipeLeft()"
     >
       <mat-card-actions class="card">
         <div class="groupHisory" [ngClass]="{ deactiv: returngroupHistory() }">
@@ -146,6 +147,7 @@
       class="cardContainer"
       [@cardAnimator]="animationState"
       (@cardAnimator.done)="resetAnimationState()"
+      (swiperight)="SwipeRight()"
     >
       <mat-card-actions class="card">
         <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
