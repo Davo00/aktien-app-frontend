@@ -8,7 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule }from '@angular/material/form-field';
  import{ MatInputModule } from '@angular/material/input';
+ import {MatTableModule} from '@angular/material/table';
 import { HomeComponent } from './home/home.component';
+import { AbbrechnungComponent } from './abbrechnung/abbrechnung.component';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     routingComponent,
     ZahlungsblockComponent,
-    HomeComponent
+    HomeComponent,
+    AbbrechnungComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
 
   ],
   providers: [],

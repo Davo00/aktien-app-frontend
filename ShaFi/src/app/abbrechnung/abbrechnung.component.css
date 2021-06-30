@@ -1,0 +1,40 @@
+.mat-table {
+    border-spacing: 0;
+    width: 100%;
+    font-family: 'Baloo Tammudu 2', cursive !important;
+    margin-bottom: 4rem;
+}
+
+.mat-column-free {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+.tableDiv {
+    width: 50%;
+    margin: 0 auto;
+}
+.memberColumn{
+    text-align: center;
+}
+.memberHeader {
+    text-align: center;
+    font-weight: bold;
+    line-height: 0px;
+    font-size: 1rem;
+    border-bottom-color: black;
+}
+.memberExpandable{
+    display: flex;
+}
+.tableWrapper {
+    margin-bottom: 4rem;
+}
+.tableMobileDiv {
+    margin: 0 auto;
+    width: 50%;
+    left: 50%;
+}

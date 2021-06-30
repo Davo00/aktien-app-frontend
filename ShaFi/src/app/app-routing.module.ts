@@ -6,14 +6,16 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { HomeComponent } from './home/home.component';
 import { GroupOverviewComponent } from './group-overview/group-overview.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
+import { AbbrechnungComponent } from './abbrechnung/abbrechnung.component';
 
 const routes: Routes = [
   {path: 'zahlungen', component: ZahlungenComponent},
-  { path: 'group-overview', component: GroupOverviewComponent },
-  { path: 'group-history', component: GroupHistoryComponent },
+  {path: 'group-overview', component: GroupOverviewComponent },
+  {path: 'group-history', component: GroupHistoryComponent },
   {path: 'dialogwindow', component: DialogwindowComponent},
   {path: 'dialog', component: DialogmainexampleComponent},
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'abrechnung', component: AbbrechnungComponent}
 ];
 
 @NgModule({
@@ -21,4 +23,10 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponent = [ZahlungenComponent, GroupOverviewComponent, GroupHistoryComponent, DialogwindowComponent, DialogmainexampleComponent, HomeComponent]
+export const routingComponent = [ZahlungenComponent, 
+                                GroupOverviewComponent, 
+                                GroupHistoryComponent, 
+                                DialogwindowComponent, 
+                                DialogmainexampleComponent, 
+                                HomeComponent,
+                                AbbrechnungComponent]
