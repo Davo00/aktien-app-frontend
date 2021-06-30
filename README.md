@@ -1,7 +1,8 @@
 # aktien-app-frontend
 This is the frontend for the pay by stock value app
 
-##Guide to run the application on your localhost
+
+## Guide to run the application on your localhost
 
 1. clone the repository
 2. go into the subfolder Shafi
