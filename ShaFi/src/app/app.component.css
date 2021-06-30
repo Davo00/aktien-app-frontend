@@ -319,13 +319,14 @@ a {
   .BurgerNavListElement:hover {
     font-size: 1.6rem;
   }
-}
+
 
 .LoginFeld {
   display: none;
 }
 .MenuList {
   margin: 0 0 0 0;
+}
 }
 
 @media screen and (min-width: 450px) and (max-width: 700px) {

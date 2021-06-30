@@ -7,15 +7,19 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { HomeComponent } from './home/home.component';
 import { GroupOverviewComponent } from './group-overview/group-overview.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: 'zahlungen', component: ZahlungenComponent},
   { path: 'group-overview', component: GroupOverviewComponent },
   { path: 'group-history', component: GroupHistoryComponent },
-  {path: 'dialogwindow', component: DialogwindowComponent},
-  {path: 'chat', component: ChatprogrammComponent},
-  {path: 'dialog', component: DialogmainexampleComponent},
-  {path: '', component: HomeComponent}
+  { path: 'dialogwindow', component: DialogwindowComponent },
+  { path: 'dialog', component: DialogmainexampleComponent },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
 ];
 
 @NgModule({
