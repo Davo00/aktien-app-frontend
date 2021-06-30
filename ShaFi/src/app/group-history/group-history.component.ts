@@ -11,22 +11,16 @@ import * as kf from './keyframes';
   styleUrls: ['./group-history.component.css'],
   animations: [
     trigger('cardAnimator', [
-      // transition('* => wobble', animate(1000, keyframes(kf.wobble))),
-      // transition('* => swing', animate(1000, keyframes(kf.swing))),
-      // transition('* => jello', animate(1000, keyframes(kf.jello))),
-      // transition(
-      //   '* => zoomOutRight',
-      //   animate(1000, keyframes(kf.zoomOutRight))
-      // ),
       transition('* => slideOutLeft', animate(700, keyframes(kf.slideOutLeft))),
       transition(
         '* => slideOutRight',
-        animate(700, keyframes(kf.slideOutRight)),
+        animate(700, keyframes(kf.slideOutRight))
       ),
-      // transition(
-      //   '* => rotateOutUpRight',
-      //   animate(1000, keyframes(kf.rotateOutUpRight))
-      // ),
+      // transition('* => wobble', animate(1000, keyframes(kf.wobble))),
+      // transition('* => swing', animate(1000, keyframes(kf.swing))),
+      // transition('* => jello', animate(1000, keyframes(kf.jello))),
+      // transition('* => zoomOutRight', animate(1000, keyframes(kf.zoomOutRight))),
+      // transition('* => rotateOutUpRight', animate(1000, keyframes(kf.rotateOutUpRight))),
       // transition('* => flipOutY', animate(1000, keyframes(kf.flipOutY))),
     ]),
   ],
@@ -161,9 +155,9 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   checkDate(datecheck: Date) {
-    /*   console.log(datecheck); */
+    /* console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
-    /*     console.log(datecheck.getDate()) */
+    /* console.log(datecheck.getDate()) */
     /* console.log(this.ChatDatevar) */
     /* console.log(this.ChatDatevar) */
     if (
