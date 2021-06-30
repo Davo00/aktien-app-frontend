@@ -1,13 +1,18 @@
 .groupHisoryPage {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
+  height: 80vh;
 }
 
 .groupHisory {
   width: 40%;
   margin-right: 1rem;
   border-radius: 10px;
+  
+}
+.groupHisory.deactiv{
+  display: none;
 }
 
 .groupContainer {
@@ -18,6 +23,7 @@
 
 .heading {
     text-align: center;
+    line-height: 100%
 }
 
 .addPaymentButton {
@@ -25,23 +31,37 @@
   margin-bottom: 0.5rem;
   float: right;
 }
-
+ 
 .history {
-  display: grid;
+  height: 62vh;
+  overflow-x:auto;
+  overflow-y: scroll;  
+}  
+.history::-webkit-scrollbar{
+  display: none;
+}
+
+.AddButton{
+  height:30px;
 }
 
 .payment {
-  display: flexbox;
-  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background-color: white;
-  box-shadow: 1px 1px 1px 1px silver;
+  box-shadow: 0 2px silver;
   border-radius: 10px;
+}
+.paymentfont{
+  font-size: 2rem;
 }
 
 .paymentName {
-  padding-top: 1rem;
+  padding-top: 1em;
   padding-bottom: 0em;
   float: left;
   text-align: left;
@@ -52,6 +72,7 @@
   display: flex;
   width: 50%;
   justify-content: flex-end;
+  grid-gap: 1rem;
 }
 
 .paymentAmount {
@@ -60,9 +81,11 @@
 }
 
 .paymentArrow {
-  padding-top: 1rem;
-  padding-left: 0.5rem;
+  height: inherit;
   text-align: right;
+  font-size:1.5rem;
+  display: flex;
+  align-items: center;
 }
 
 
@@ -70,12 +93,18 @@
   width: 40%;
   margin-left: 1rem;
   border-radius: 10px;
+  
+}
+.groupChat.deactiv{
+  display: none;
 }
 
 .groupChatContainer {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
+  
+  
 }
 
 .groupChatContent {
@@ -86,8 +115,19 @@
   padding-top: 0.5rem;
   padding-right: 0.5rem;
   padding-bottom: 0.5rem;
-  margin-top: 3.84rem;
+  margin-top: calc(30px + 2rem);
   text-align: center;
+  height: 60vh;
+  overflow-x: hidden;
+  overflow-y: auto; 
+}
+/* .groupchatScroll{
+  height: 60vh;
+  overflow-x: hidden;
+  overflow-y: auto; 
+} */
+.groupChatContent::-webkit-scrollbar{
+  display: none;
 }
 
 .chatHeader {
@@ -106,6 +146,8 @@
   justify-content: center;
   display: grid;
   margin-top: 2.5rem;
+  padding-bottom: 2rem;
+  transform: translateY(-5rem);
 }
 
 .closeBillButton {
@@ -118,4 +160,196 @@
   box-shadow: 1px 1px 1px 1px silver;
   border-radius: 3rem;
   border-width: 0.01rem;
+}
+
+.Chatprogramm{
+  background-color: white;
+  padding: 0rem 1rem 0rem 1rem;
+  
+
+}
+
+.Chatprogramm::-webkit-scrollbar{
+  display: none;
+}
+
+
+.checkUL{
+  list-style: none;
+  padding: 0 1rem 0 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.chatLI{
+  background-color: rgb(92, 207, 211);
+  border-radius: 10px;
+  width: 80%
+}
+.chatLI.active{
+  background-color: rgb(196, 83, 181);
+  
+  margin-left: 20%;
+}
+.chatLIeigen{
+  background-color: green;
+  border-radius: 10px;
+}
+.chatBox{
+  padding: 0.5rem
+}
+
+.chatAbsender{
+  font-weight: bold;
+}
+
+.chatDate{
+  font-size: 0.5rem;
+  text-align: end;
+  display: flex;
+  width: 20%;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.chatInfo{
+  display: flex;
+}
+.chatText{
+  width: 80%;
+  text-align: start;
+  
+}
+
+.chatDateforInput{
+  display: flex;
+  justify-content: center;
+}
+.positivAmount{
+  color:green;
+}
+.negativAmount{
+  color:red;
+}
+
+.smallNavHistory{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap:3rem ;
+  width: 100%;
+  font-size: 2rem;
+  padding-top: 1em;
+  margin-top: 1rem;
+}
+.displayNone900 {
+  display: block;
+}
+.ElementNavHis{
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: solid;
+  padding-bottom: 1rem;
+  border-bottom: 5px solid black;
+  transition: all 100ms ease-in-out;
+}
+.ElementNavHis.deactiv{
+color:gray;
+border-bottom: none;
+
+}
+
+@media screen and (max-width: 900px){
+  .smallNavHistory{
+  display:flex;
+  }
+  .displayNone900 {
+    display: none;
+  }
+  .groupHisory{
+    width: 80%;
+    margin: 0;
+  }
+  .groupChat{
+    width: 80%;
+    margin: 0;
+  }
+  
+}
+
+@media screen and (min-width: 900px){
+  .smallNavHistory{
+  display:none;
+  }
+  .closeBillArea {
+    padding-bottom: 2rem;
+      transform: translateY(0rem);
+    }
+  
+}
+
+@media screen and (max-width: 700px){
+  .closeBillArea {
+  padding-bottom: 2rem;
+    transform: translateY(-4rem);
+  }
+  
+}
+
+@media screen and (max-width: 500px){
+  .closeBillArea {
+  padding-bottom: 2rem;
+    transform: translateY(-6rem);
+  }
+  .ElementNavHis{
+    font-size: 1.5rem;
+  }
+  .Chatprogramm{
+    padding: 0;
+  }
+  .groupHisory{
+    width: 90%;
+    margin: 0;
+  }
+  .groupChat{
+    width: 90%;
+    margin: 0;
+  }
+  
+  
+}
+@media screen and (max-width: 400px){
+  .closeBillArea {
+  padding-bottom: 2rem;
+    transform: translateY(-6rem);
+  }
+  .ElementNavHis{
+    font-size: 1.5rem;
+  }
+
+  .groupHisory{
+    width: 90%;
+    margin: 0;
+  }
+  .groupChat{
+    width: 90%;
+    margin: 0;
+  }
+  .smallNavHistory{
+    grid-gap: 1rem;
+  }
+  .Chatprogramm{
+    padding: 0;
+  }
+  
+  
+}
+
+
+
+
+
+@media screen and (max-width: 1250px){
+  h1{
+    font-size: 3rem!important;
+  }
 }

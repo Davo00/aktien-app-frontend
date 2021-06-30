@@ -19,11 +19,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
   }
-  closeBar(): void{(e: { key: any; }) =>{
-    if(this.clicked && e.key == 'Escape') {
-      this.clicked = false;
-      
-  }}}
 
 
 

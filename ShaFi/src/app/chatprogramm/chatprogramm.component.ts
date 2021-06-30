@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dialog.component';
 import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
 
 
 @Component({
-  selector: 'app-group-history',
-  templateUrl: './group-history.component.html',
-  styleUrls: ['./group-history.component.css']
+  selector: 'app-chatprogramm',
+  templateUrl: './chatprogramm.component.html',
+  styleUrls: ['./chatprogramm.component.css']
 })
-export class GroupHistoryComponent implements OnInit {
 
-  constructor(private matDialog: MatDialog) {}
+
+export class ChatprogrammComponent implements OnInit {
 
   Chats:{ Absender: string; Datum:Date; Text: string; Value: number; Mitglieder:string }[]  = [
 
@@ -26,27 +25,16 @@ export class GroupHistoryComponent implements OnInit {
 
 ChatDatevar = new Date(0);
 USerName = "Cevin";
-GroupHistory = false;
-GroupChat = true;
-  
+
+  constructor(private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     console.log(this.Chats)
     var scrollclass = document.getElementById("scrollBlock");
-    console.log(this.Payments);
+    console.log("läuft")
     if(scrollclass !=null){
       
     scrollclass.scrollTop = scrollclass.scrollHeight;
-
-    //Media Query
-    var query = window.matchMedia("(min-width: 900px");
-    if(query.matches){
-      this.GroupHistory = false;
-      this.GroupChat = false;
-    }else{
-      this.GroupHistory = false;
-      this.GroupChat = true;
-    }
     }
   }
 
@@ -118,82 +106,4 @@ GroupChat = true;
     
   }
 
-  
-
-  // payee, currency, ...
-  Payments: { payerName: string; amount: number }[] = [
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Moritz', amount: -9999 },
-    { payerName: 'Moayad', amount: 9999 },
-    { payerName: 'Davit', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-
-
-  ];
-
-  addPayment() {
-    const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {
-        payerName: null,
-        amount: null,
-      },
-      width: '60vw',
-      height: '60vh',
-      position: {},
-      disableClose: false,
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
-        this.Payments.push({
-          payerName: result.payerName,
-          amount: result.amount,
-        });
-      }
-    });
-  }
-
-  editGroup(number: number) {
-    const dialogref = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {
-        groupName: this.Payments[number].payerName,
-        members: this.Payments[number].amount,
-      },
-      width: '60vw',
-      height: '60vh',
-      position: {},
-      disableClose: false,
-    });
-    dialogref.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
-        this.Payments[number].payerName = result.payerName;
-        this.Payments[number].amount = result.amount;
-      }
-    });
-  }
-
-
-  GroupHistoryButton(){
-    this.GroupHistory = false;
-    this.GroupChat = true;
-  }
-  GroupChatButton(){
-    this.GroupChat = false;
-    this.GroupHistory = true;
-  }
-  returngroupHistory(){
-    return this.GroupHistory;
-  }
-  returnChatHistory(){
-    return this.GroupChat;
-  }
 }
