@@ -249,7 +249,7 @@ export class GroupHistoryComponent implements OnInit {
   public async SwipeLeft() {
     if (!this.currentTabChat) {
       this.startAnimation('slideOutLeft');
-      await this.delay(550);
+      await this.delay(400);
       this.GroupChatButton();
       this.currentTabChat = true;
     }
@@ -264,7 +264,7 @@ export class GroupHistoryComponent implements OnInit {
   public async SwipeRight() {
     if (this.currentTabChat) {
       this.startAnimation('slideOutRight');
-      await this.delay(550);
+      await this.delay(400);
       this.GroupHistoryButton();
       this.currentTabChat = false;
     }
