@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 import { ChatdialogComponent } from './chatdialog/chatdialog.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
 import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -29,6 +32,7 @@ export class MyHammerConfig extends HammerGestureConfig {
   };
 }
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +41,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     DialogwindowComponent,
     DialogmainexampleComponent,
     HomeComponent,
+    LoginComponent,
+    RegisterComponent,
     ChatprogrammComponent,
     ChatdialogComponent,
     GroupHistoryComponent,
@@ -54,6 +60,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatCheckboxModule,
     MatCardModule,
     MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
