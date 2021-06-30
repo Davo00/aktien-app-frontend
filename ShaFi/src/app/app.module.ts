@@ -47,8 +47,8 @@ import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexampl
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
-    MatCheckboxModule
+    ReactiveFormsModule,
+    MatCheckboxModule,
 
   ],
   providers: [],
