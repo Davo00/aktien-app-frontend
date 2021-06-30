@@ -11,23 +11,23 @@ import * as kf from './keyframes';
   styleUrls: ['./group-history.component.css'],
   animations: [
     trigger('cardAnimator', [
-      transition('* => wobble', animate(1000, keyframes(kf.wobble))),
-      transition('* => swing', animate(1000, keyframes(kf.swing))),
-      transition('* => jello', animate(1000, keyframes(kf.jello))),
-      transition(
-        '* => zoomOutRight',
-        animate(1000, keyframes(kf.zoomOutRight))
-      ),
+      // transition('* => wobble', animate(1000, keyframes(kf.wobble))),
+      // transition('* => swing', animate(1000, keyframes(kf.swing))),
+      // transition('* => jello', animate(1000, keyframes(kf.jello))),
+      // transition(
+      //   '* => zoomOutRight',
+      //   animate(1000, keyframes(kf.zoomOutRight))
+      // ),
       transition('* => slideOutLeft', animate(700, keyframes(kf.slideOutLeft))),
       transition(
         '* => slideOutRight',
-        animate(700, keyframes(kf.slideOutRight))
+        animate(700, keyframes(kf.slideOutRight)),
       ),
-      transition(
-        '* => rotateOutUpRight',
-        animate(1000, keyframes(kf.rotateOutUpRight))
-      ),
-      transition('* => flipOutY', animate(1000, keyframes(kf.flipOutY))),
+      // transition(
+      //   '* => rotateOutUpRight',
+      //   animate(1000, keyframes(kf.rotateOutUpRight))
+      // ),
+      // transition('* => flipOutY', animate(1000, keyframes(kf.flipOutY))),
     ]),
   ],
 })
