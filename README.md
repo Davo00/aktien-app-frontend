@@ -1,10 +1,11 @@
 # aktien-app-frontend
 This is the frontend for the pay by stock value app
 
-## 02.06.2020 Siepmann
-1. Initiales erstellen eines Angular Projektes 
 
-## 11.06.2020 Siepmann
-1. Navbar erstellt
-2. Mobile Anpassung abgeschlossen
-3. Styles
+## Guide to run the application on your localhost
+
+1. clone the repository
+2. go into the subfolder Shafi
+3. execute the command: “npm install”
+4. execute the command: “ng serve -o”
+A new window should popup and show the page.
