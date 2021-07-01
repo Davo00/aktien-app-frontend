@@ -50,7 +50,7 @@ GroupChat = true;
     }
   }
 
-  isactive(Absender: string){
+  public isactive(Absender: string){
     if(Absender === this.USerName){
       return true;
     }else{
@@ -58,7 +58,7 @@ GroupChat = true;
     }
   }
 
-  openDialogChatChange(i: number){
+  public openDialogChatChange(i: number){
     let dialogref = this.matDialog.open(ChatdialogComponent,
       {
         data: {
@@ -98,7 +98,7 @@ GroupChat = true;
 
 
 
-  checkDate(datecheck: Date) {
+  public checkDate(datecheck: Date) {
     
   /*   console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
@@ -137,7 +137,7 @@ GroupChat = true;
 
   ];
 
-  addPayment() {
+  public addPayment() {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
         payerName: null,
@@ -160,7 +160,7 @@ GroupChat = true;
     });
   }
 
-  editGroup(number: number) {
+  public editGroup(number: number) {
     const dialogref = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
         groupName: this.Payments[number].payerName,
@@ -182,18 +182,18 @@ GroupChat = true;
   }
 
 
-  GroupHistoryButton(){
+  public GroupHistoryButton(){
     this.GroupHistory = false;
     this.GroupChat = true;
   }
-  GroupChatButton(){
+  public GroupChatButton(){
     this.GroupChat = false;
     this.GroupHistory = true;
   }
-  returngroupHistory(){
+  public returngroupHistory(){
     return this.GroupHistory;
   }
-  returnChatHistory(){
+  public returnChatHistory(){
     return this.GroupChat;
   }
 }

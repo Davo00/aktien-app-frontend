@@ -19,6 +19,7 @@ import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dial
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
+import { HttpClientModule} from '@angular/common/http';
 
 
 
@@ -49,6 +50,7 @@ import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexampl
     MatInputModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    HttpClientModule
 
   ],
   providers: [],

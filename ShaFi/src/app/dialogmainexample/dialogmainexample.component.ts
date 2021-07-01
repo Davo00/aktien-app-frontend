@@ -25,7 +25,7 @@ export class DialogmainexampleComponent implements OnInit {
 
     console.log(this.Infos[0]);
   }
-  openDialogchange(number: number){
+  public openDialogchange(number: number){
     
     let dialogref = this.matDialog.open(DialogwindowComponent,
       {
@@ -80,7 +80,7 @@ export class DialogmainexampleComponent implements OnInit {
    
   } */
 
-  openDialogClickcreate(){
+  public openDialogClickcreate(){
 
     let dialogref = this.matDialog.open(DialogwindowComponent,
       {
