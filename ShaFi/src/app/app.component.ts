@@ -1,43 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'ShaFi';
- 
+  clicked: boolean = false;
+  
+  constructor(public router: Router) {}
 
-  constructor(public router: Router) { }
+  ngOnInit(): void {}
 
-  clicked: boolean=false;
-
-
-
-  ngOnInit(): void {
-  }
-
-
-
-
-
-  thisclicked(){
+  thisclicked() {
     this.clicked = !this.clicked;
-    
   }
 
-  
-
-  
-
-  isactive(){
-    
-  return this.clicked;
-}
-
+  isactive() {
+    return this.clicked;
+  }
 
   /* setClasses(){
     let myClasses = {
@@ -46,7 +29,4 @@ export class AppComponent implements OnInit{
     }
     return myClasses;
   }  */
-  
- 
 }
-
