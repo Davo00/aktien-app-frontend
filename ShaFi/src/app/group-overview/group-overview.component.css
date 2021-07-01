@@ -1,7 +1,11 @@
 .groupOverviewPage {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+}
+
+.heading {
+  text-align: center;
+  transform: translateY(1rem);
 }
 
 .groupOverview {
@@ -16,22 +20,19 @@
   margin-right: 0.5rem;
 }
 
-.heading {
-  text-align: center;
+.AddButton {
+  height: 30px;
 }
 
 .addGroupButton {
   margin-right: 0.5rem;
   margin-top: 0.8rem;
   float: right;
+  transform: translateY(-0.1rem);
 }
 
 .addGroupButton:hover {
   cursor: pointer;
-}
-
-.AddButton {
-  height: 30px;
 }
 
 .groups {
@@ -39,6 +40,7 @@
   overflow-y: scroll;
   height: 49vh;
   margin-top: 0.8rem;
+  clip-path: inset(13px 0px 5px 0px);
 }
 
 .groups::-webkit-scrollbar {
