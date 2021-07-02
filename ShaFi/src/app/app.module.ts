@@ -23,7 +23,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HammertimeDirective } from './hammertime.directive';
 import * as Hammer from 'hammerjs';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import {
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG,
+} from '@angular/platform-browser';
+import { AngularResizedEventModule } from 'angular-resize-event';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -31,7 +35,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     swipe: { direction: Hammer.DIRECTION_ALL },
   };
 }
-
 
 @NgModule({
   declarations: [
@@ -60,7 +63,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatCheckboxModule,
     MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularResizedEventModule,
   ],
   providers: [
     {

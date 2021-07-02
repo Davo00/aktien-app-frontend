@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.component';
+import { Router } from '@angular/router';
+import { ResizedEvent } from 'angular-resize-event';
+
+type groupType = { groupName: string; groupID: string; members: string };
 
 @Component({
   selector: 'app-group-overview',
@@ -8,41 +12,66 @@ import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.co
   styleUrls: ['./group-overview.component.css'],
 })
 export class GroupOverviewComponent implements OnInit {
-  // GroupsOverview = false;
-  // GroupPreview = true;
+  groupToPreview: any;
+  mobileView: boolean;
+  innerWidth: number;
+  innerHeight: number;
 
-  constructor(private matDialog: MatDialog) {}
-
-  ngOnInit(): void {
-    console.log(this.Groups);
-
-    //Media Query
-    // var query = window.matchMedia("(min-width: 900px");
-    // if (query.matches) {
-    //   this.GroupsOverview = false;
-    //   this.GroupPreview = false;
-    // } else {
-    //   this.GroupsOverview = false;
-    //   this.GroupPreview = true;
-    // }
+  constructor(private matDialog: MatDialog, private router: Router) {
+    this.groupToPreview = null;
+    this.mobileView = false;
+    this.innerWidth = 0;
+    this.innerHeight = 0;
   }
 
-  Groups: { groupName: string; members: string }[] = [
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+  ngOnInit(): void {
+  }
+
+  Groups: { groupName: string; groupID: string; members: string }[] = [
+    {
+      groupName: 'Test Group 1',
+      groupID: '1',
+      members: 'Niklas, Alex, Hendrick',
+    },
+    {
+      groupName: 'Test Group 2',
+      groupID: '2',
+      members: 'Moayad, Moritz, Cevin',
+    },
+    { groupName: 'Test Group 3', groupID: '3', members: 'Davit, Alex, Niklas' },
+    {
+      groupName: 'Test Group 4',
+      groupID: '4',
+      members: 'Hendrick, Davit, Cevin',
+    },
+    {
+      groupName: 'Test Group 5',
+      groupID: '5',
+      members: 'Moayad, Hendrick, Moritz',
+    },
+    {
+      groupName: 'Test Group 6',
+      groupID: '6',
+      members: 'Davit, Moritz, Cevin',
+    },
+    {
+      groupName: 'Test Group',
+      groupID: '7',
+      members: 'Davit, Moayad, Hendrick',
+    },
+    { groupName: 'Test Group', groupID: '8', members: 'Niklas, Alex, Niklas' },
+    {
+      groupName: 'Test Group',
+      groupID: '9',
+      members: 'Hendrick, Moayad, Cevin',
+    },
   ];
 
   addGroup() {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: null,
+        groupID: null,
         members: null,
       },
       width: '60vw',
@@ -56,6 +85,7 @@ export class GroupOverviewComponent implements OnInit {
         console.log(result);
         this.Groups.push({
           groupName: result.groupName,
+          groupID: result.groupID,
           members: result.members,
         });
       }
@@ -66,6 +96,7 @@ export class GroupOverviewComponent implements OnInit {
     const dialogref = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: this.Groups[number].groupName,
+        groupID: this.Groups[number].groupID,
         members: this.Groups[number].members,
       },
       width: '60vw',
@@ -78,28 +109,20 @@ export class GroupOverviewComponent implements OnInit {
       } else {
         console.log(result);
         this.Groups[number].groupName = result.groupName;
+        this.Groups[number].groupID = result.groupID;
         this.Groups[number].members = result.members;
       }
     });
   }
 
-  // preview essential info about a group
-  preview() {
-    console.log("hello");
+  onResized(event: ResizedEvent) {
+    this.innerWidth = event.newWidth;
+    this.innerHeight = event.newHeight;
   }
 
-  // GroupsOverviewButton(){
-  //   this.GroupsOverview = false;
-  //   this.GroupPreview = true;
-  // }
-  // GroupPreviewButton(){
-  //   this.GroupPreview = false;
-  //   this.GroupsOverview = true;
-  // }
-  // returnGroupsOverview(){
-  //   return this.GroupsOverview;
-  // }
-  // returnGroupPreview(){
-  //   return this.GroupPreview;
-  // }
+  previewGroup(group: groupType) {
+    if (this.innerWidth <= 900) {
+      this.router.navigate(['/', 'group-history']);
+    } else this.groupToPreview = group;
+  }
 }

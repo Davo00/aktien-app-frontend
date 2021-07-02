@@ -310,9 +310,8 @@
   border-bottom: none;
 }
 
-.card {
-  /* background-color: red; */
-}
+/* .card {
+} */
 
 @media screen and (max-width: 1250px) {
   h1 {
@@ -429,7 +428,7 @@
 
 @media screen and (max-width: 400px) and (max-height: 800px) {
   .closeBillArea {
-    /* transform: translateY(-1rem); */
+    transform: translateY(1rem);
   }
 }
 
@@ -437,12 +436,6 @@
   .closeBillArea {
     transform: translateY(1rem);
   }
-  /* .history {
-    height: 50vh;
-  }
-  .groupChatContent {
-    height: 53.5vh;
-  } */
 }
 
 @media screen and (max-width: 700px) {
@@ -499,7 +492,6 @@
   .cardContainer {
     width: 92%;
   }
-
   .payment {
     width: 92%;
   }
@@ -543,7 +535,6 @@
   .cardContainer {
     width: 90%;
   }
-
   .payment {
     width: 90%;
   }
@@ -558,17 +549,5 @@
 @media screen and (max-width: 300px) {
   .cardContainer {
     width: 88%;
-  }
-}
-
-@media screen and (max-width: 325px) {
-  .cardContainer {
-    width: 89%;
-  }
-}
-
-@media screen and  (max-height: 750px) {
-  .closeBillArea {
-    transform: translateY(1rem);
   }
 }
