@@ -7,6 +7,9 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { HomeComponent } from './home/home.component';
 import { GroupOverviewComponent } from './group-overview/group-overview.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
+import { ErrorSiteComponent } from './error-site/error-site.component';
+import { StaticReflector } from '@angular/compiler';
+import { StartseiteComponent } from './startseite/startseite.component';
 
 const routes: Routes = [
   {path: 'zahlungen', component: ZahlungenComponent},
@@ -15,7 +18,17 @@ const routes: Routes = [
   {path: 'dialogwindow', component: DialogwindowComponent},
   {path: 'chat', component: ChatprogrammComponent},
   {path: 'dialog', component: DialogmainexampleComponent},
-  {path: '', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: '', component: StartseiteComponent},
+
+
+
+
+
+  //Dieser Link muss als letztes in der Zeile stehen
+  {path: '**', component: ErrorSiteComponent},
+  
+
 ];
 
 @NgModule({

@@ -17,6 +17,8 @@ import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dial
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
+import { ErrorSiteComponent } from './error-site/error-site.component';
+import { StartseiteComponent } from './startseite/startseite.component';
 
 
 
@@ -32,7 +34,9 @@ import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexampl
     ChatdialogComponent,
     GroupHistoryComponent,
     AddGroupDialogComponent,
-    AddPaymentDialogComponent
+    AddPaymentDialogComponent,
+    ErrorSiteComponent,
+    StartseiteComponent
   ],
   imports: [
     BrowserModule,
