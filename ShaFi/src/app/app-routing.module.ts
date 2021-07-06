@@ -10,6 +10,9 @@ import { GroupHistoryComponent } from './group-history/group-history.component';
 import { ErrorSiteComponent } from './error-site/error-site.component';
 import { StaticReflector } from '@angular/compiler';
 import { StartseiteComponent } from './startseite/startseite.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
 
 const routes: Routes = [
   {path: 'zahlungen', component: ZahlungenComponent},
@@ -20,6 +23,8 @@ const routes: Routes = [
   {path: 'dialog', component: DialogmainexampleComponent},
   {path: 'home', component: HomeComponent},
   {path: '', component: StartseiteComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
 
 
@@ -29,6 +34,7 @@ const routes: Routes = [
   {path: '**', component: ErrorSiteComponent},
   
 
+  
 ];
 
 @NgModule({
