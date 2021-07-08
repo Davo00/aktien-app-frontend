@@ -1,156 +1,207 @@
-<div class="smallNavHistory">
-  <div class="ElementNavHis" [ngClass]="{ deactiv: returngroupHistory() }" (click)="GroupHistoryButton()">Group History</div>
-  <div class="ElementNavHis" [ngClass]="{ deactiv: returnChatHistory() }" (click)="GroupChatButton()">Group Chat</div>
-</div>
-
 <div class="groupHisoryPage">
-  
-  <div class="groupHisory" [ngClass]="{ deactiv: returngroupHistory() }">
-    <div class="groupContainer">
-      <div class="displayNone900">
-      <h1 class="heading">Group History</h1>
-    </div>
-      <div class="AddButton"><button (click)="addPayment()" class="addPaymentButton">+</button></div>
+  <div class="groupHisoryPageContent">
+    <div class="groupHisory" [ngClass]="{ deactiv: returngroupHistory() }">
+      <div class="groupContainer">
+        <h1 class="heading">Group History</h1>
+        <div class="AddButton">
+          <button (click)="addPayment()" class="addPaymentButton">+</button>
+        </div>
 
-      <div class="history">
-        <ul class="payment" *ngFor="let payment of Payments; let i = index">
-          <div class="paymentName">
-            <h3 class="">{{ Payments[i].payerName }}</h3>
-          </div>
-          <div class="paymentInfo">
-            <div class="paymentAmount">
-              <h3 class="">{{ Payments[i].amount }}€</h3>
+        <div class="history">
+          <ul class="payment" *ngFor="let payment of Payments; let i = index">
+            <div class="paymentName">
+              <h3 class="">{{ Payments[i].payerName }}</h3>
             </div>
-            <div class="paymentArrow">
-              <div *ngIf="Payments[i].amount >=0" class="positivAmount">
-                <i class="fas fa-plus"></i>
+            <div class="paymentInfo">
+              <div class="paymentAmount">
+                <h3 class="">{{ Payments[i].amount }}€</h3>
               </div>
-              <div *ngIf="Payments[i].amount < 0" class="negativAmount">
-                <i class="fas fa-minus"></i>
+              <div class="paymentArrow">
+                <div *ngIf="Payments[i].amount >= 0" class="positivAmount">
+                  <i class="fas fa-plus"></i>
+                </div>
+                <div *ngIf="Payments[i].amount < 0" class="negativAmount">
+                  <i class="fas fa-minus"></i>
+                </div>
               </div>
             </div>
-          </div>
-        </ul>
-
-        <!-- <div class="payment">
-          <div class="paymentName">
-            <h2 class="">Cevin</h2>
-          </div>
-          <div class="paymentInfo">
-            <div class="paymentAmount">
-              <h2 class="">+9999€</h2>
-            </div>
-            <div class="paymentArrow">
-              <h2 class="">([[]])</h2>
-            </div>
-          </div>
-        </div> -->
-        <!-- <div class="payment">
-          <div class="paymentName">
-            <h2 class="">Davit</h2>
-          </div>
-          <div class="paymentInfo">
-            <div class="paymentAmount">
-              <h2 class="">+9999€</h2>
-            </div>
-            <div class="paymentArrow">
-              <h2 class="">([[]])</h2>
-            </div>
-          </div>
-        </div>
-        <div class="payment">
-          <div class="paymentName">
-            <h2 class="">Hendrick</h2>
-          </div>
-          <div class="paymentInfo">
-            <div class="paymentAmount">
-              <h2 class="">+9999€</h2>
-            </div>
-            <div class="paymentArrow">
-              <h2 class="">([[]])</h2>
-            </div>
-          </div>
-        </div>
-        <div class="payment">
-          <div class="paymentName">
-            <h2 class="">Moayad</h2>
-          </div>
-          <div class="paymentInfo">
-            <div class="paymentAmount">
-              <h2 class="">+9999€</h2>
-            </div>
-            <div class="paymentArrow">
-              <h2 class="">([[]])</h2>
-            </div>
-          </div>
-        </div>
-        <div class="payment">
-          <div class="paymentName">
-            <h2 class="">Niklas</h2>
-          </div>
-          <div class="paymentInfo">
-            <div class="paymentAmount">
-              <h2 class="">+9999€</h2>
-            </div>
-            <div class="paymentArrow">
-              <h2 class="">([[]])</h2>
-            </div>
-          </div>
-        </div> -->
-      </div>
-    </div>
-  </div>
-
-  <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
-    <div class="groupChatContainer">
-      <div class="displayNone900">
-        <h1 class="heading">Group Chat</h1>
-      </div>
-      <div class="groupChatContent">
-        
-        <!-- <div class="chatHeader">Header</div> -->
-        <div id="scrollBlock" class="Chatprogramm">
-          <div class="ChatprogrammDiv">
-          <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
-              <li *ngIf="checkDate(chat.Datum)">
-                  <div class="chatDateforInput">
-                   {{chat.Datum.getDate()}}.{{chat.Datum.getMonth() + 1}}.{{chat.Datum.getFullYear()}}
-                  </div>
-              </li>
-              <li (click)="openDialogChatChange(i)" class="chatLI" [ngClass]="{active: isactive(chat.Absender)}">
-                   
-                  <div class="chatBox">
-                      <div class="chatAbsender">
-                        Absender:  {{chat.Absender}} 
-  
-                      </div>
-                      <div class="chatText">
-                         Wert: {{chat.Value}}</div>
-                      
-                      <div class="chatText">
-                      Mitglieder: {{chat.Mitglieder}}</div>
-                    
-                      <div class="chatInfo">
-                      <div class="chatText">
-                          Grund: {{chat.Text}}</div>
-                          
-                      <div class ="chatDate">
-                          
-                          {{chat.Datum.getHours()}} : {{chat.Datum.getMinutes()}}
-                          
-                          
-                      </div>
-                  </div>
-                  </div>
-              </li>
           </ul>
-      </div>
-      
+        </div>
       </div>
     </div>
+
+    <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
+      <div class="groupChatContainer">
+        <h1 class="heading">Group Chat</h1>
+        <div class="groupChatContent">
+          <div id="scrollBlock" class="Chatprogramm">
+            <div class="ChatprogrammDiv">
+              <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
+                <li *ngIf="checkDate(chat.Datum)">
+                  <div class="chatDateforInput">
+                    {{ chat.Datum.getDate() }}.{{
+                      chat.Datum.getMonth() + 1
+                    }}.{{ chat.Datum.getFullYear() }}
+                  </div>
+                </li>
+                <li
+                  (click)="openDialogChatChange(i)"
+                  class="chatLI"
+                  [ngClass]="{ active: isactive(chat.Absender) }"
+                >
+                  <div class="chatBox">
+                    <div class="chatAbsender">
+                      Absender: {{ chat.Absender }}
+                    </div>
+                    <div class="chatText">Wert: {{ chat.Value }}</div>
+
+                    <div class="chatText">
+                      Mitglieder: {{ chat.Mitglieder }}
+                    </div>
+
+                    <div class="chatInfo">
+                      <div class="chatText">Grund: {{ chat.Text }}</div>
+
+                      <div class="chatDate">
+                        {{ chat.Datum.getHours() }} :
+                        {{ chat.Datum.getMinutes() }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<div class="closeBillArea">
-  <button class="closeBillButton">Close Bill</button>
+
+  <!-- Mobile -->
+
+  <div class="smallNavHistory">
+    <div
+      class="ElementNavHis"
+      [ngClass]="{ deactiv: returngroupHistory() }"
+      (click)="SwipeRight()"
+    >
+      Group History
+    </div>
+    <div
+      class="ElementNavHis"
+      [ngClass]="{ deactiv: returnChatHistory() }"
+      (click)="SwipeLeft()"
+    >
+      Group Chat
+    </div>
+  </div>
+
+  <div class="groupHisoryPageContentMobile">
+    <mat-card
+      *ngIf="!currentTabChat"
+      class="cardContainer"
+      [@cardAnimator]="animationState"
+      (@cardAnimator.done)="resetAnimationState()"
+      (swipeleft)="SwipeLeft()"
+    >
+      <mat-card-actions class="card">
+        <div class="groupHisory" [ngClass]="{ deactiv: returngroupHistory() }">
+          <div class="groupContainer">
+            <div class="displayNone900">
+              <h1 class="heading">Group History</h1>
+            </div>
+            <div class="AddButton">
+              <button (click)="addPayment()" class="addPaymentButton">+</button>
+            </div>
+
+            <div class="history">
+              <ul
+                class="payment"
+                *ngFor="let payment of Payments; let i = index"
+              >
+                <div class="paymentName">
+                  <h3 class="">{{ Payments[i].payerName }}</h3>
+                </div>
+                <div class="paymentInfo">
+                  <div class="paymentAmount">
+                    <h3 class="">{{ Payments[i].amount }}€</h3>
+                  </div>
+                  <div class="paymentArrow">
+                    <div *ngIf="Payments[i].amount >= 0" class="positivAmount">
+                      <i class="fas fa-plus"></i>
+                    </div>
+                    <div *ngIf="Payments[i].amount < 0" class="negativAmount">
+                      <i class="fas fa-minus"></i>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card
+      *ngIf="currentTabChat"
+      class="cardContainer"
+      [@cardAnimator]="animationState"
+      (@cardAnimator.done)="resetAnimationState()"
+      (swiperight)="SwipeRight()"
+    >
+      <mat-card-actions class="card">
+        <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
+          <div class="groupChatContainer">
+            <div class="displayNone900">
+              <h1 class="heading">Group Chat</h1>
+            </div>
+            <div class="groupChatContent">
+              <div id="scrollBlock" class="Chatprogramm">
+                <div class="ChatprogrammDiv">
+                  <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
+                    <li *ngIf="checkDate(chat.Datum)">
+                      <div class="chatDateforInput">
+                        {{ chat.Datum.getDate() }}.{{
+                          chat.Datum.getMonth() + 1
+                        }}.{{ chat.Datum.getFullYear() }}
+                      </div>
+                    </li>
+                    <li
+                      (click)="openDialogChatChange(i)"
+                      class="chatLI"
+                      [ngClass]="{ active: isactive(chat.Absender) }"
+                    >
+                      <div class="chatBox">
+                        <div class="chatAbsender">
+                          Absender: {{ chat.Absender }}
+                        </div>
+                        <div class="chatText">Wert: {{ chat.Value }}</div>
+
+                        <div class="chatText">
+                          Mitglieder: {{ chat.Mitglieder }}
+                        </div>
+
+                        <div class="chatInfo">
+                          <div class="chatText">Grund: {{ chat.Text }}</div>
+
+                          <div class="chatDate">
+                            {{ chat.Datum.getHours() }} :
+                            {{ chat.Datum.getMinutes() }}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="closeBillArea">
+    <button class="closeBillButton">Close Bill</button>
+  </div>
 </div>

@@ -12,7 +12,7 @@ export class AddPaymentDialogComponent implements OnInit {
   members: any;
   amount: any;
   Selfpaid = false;
-  Username = "Cevin"
+  Username = 'Cevin';
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -29,13 +29,12 @@ export class AddPaymentDialogComponent implements OnInit {
 
   public SelpaidName(){
     this.Selfpaid = !this.Selfpaid;
-    if(this.Selfpaid){
+    if (this.Selfpaid) {
       this.data.payerName = this.Username;
+    } else {
+      this.data.payerName = '';
     }
-    else{
-      this.data.payerName= "";
-    }
-    console.log(this.Selfpaid)
+    console.log(this.Selfpaid);
     return this.Selfpaid;
   }
 

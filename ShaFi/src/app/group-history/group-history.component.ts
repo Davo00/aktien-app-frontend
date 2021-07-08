@@ -2,58 +2,129 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dialog.component';
 import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
-
+import { trigger, keyframes, animate, transition } from '@angular/animations';
+import * as kf from './keyframes';
 
 @Component({
   selector: 'app-group-history',
   templateUrl: './group-history.component.html',
-  styleUrls: ['./group-history.component.css']
+  styleUrls: ['./group-history.component.css'],
+  animations: [
+    trigger('cardAnimator', [
+      transition('* => slideOutLeft', animate(700, keyframes(kf.slideOutLeft))),
+      transition(
+        '* => slideOutRight',
+        animate(700, keyframes(kf.slideOutRight))
+      ),
+      // transition('* => wobble', animate(1000, keyframes(kf.wobble))),
+      // transition('* => swing', animate(1000, keyframes(kf.swing))),
+      // transition('* => jello', animate(1000, keyframes(kf.jello))),
+      // transition('* => zoomOutRight', animate(1000, keyframes(kf.zoomOutRight))),
+      // transition('* => rotateOutUpRight', animate(1000, keyframes(kf.rotateOutUpRight))),
+      // transition('* => flipOutY', animate(1000, keyframes(kf.flipOutY))),
+    ]),
+  ],
 })
 export class GroupHistoryComponent implements OnInit {
+  animationState: string;
+  currentTabChat: boolean;
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(private matDialog: MatDialog) {
+    this.animationState = '';
+    this.currentTabChat = false;
+  }
 
-  Chats:{ Absender: string; Datum:Date; Text: string; Value: number; Mitglieder:string }[]  = [
+  startAnimation(state: any) {
+    console.log(state);
+    if (!this.animationState) {
+      this.animationState = state;
+    }
+  }
 
-    {"Absender": "Peter", "Datum": new Date(5000000000), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" },
-    {"Absender": "Ullo", "Datum":new Date(50000000000), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" },
-    {"Absender": "Cevin", "Datum":new Date(500000000000), "Text": "Einkauf von Bier für die Party die wir am letzten Sonntag gefeiert haben", "Value": 10, "Mitglieder": "Peter, Albani, Renate" },
-    {"Absender": "Carolina", "Datum":new Date(500000000000), "Text": "Einkauf von Bier", "Value": 5, "Mitglieder": "Peter, Albani, Renate"},
-    {"Absender": "Sabine", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" }, 
-    {"Absender": "Cevin", "Datum":new Date(), "Text": "Einkauf von Bier", "Value": 10, "Mitglieder": "Peter, Albani, Renate" }, 
+  resetAnimationState() {
+    this.animationState = '';
+  }
+
+  Chats: {
+    Absender: string;
+    Datum: Date;
+    Text: string;
+    Value: number;
+    Mitglieder: string;
+  }[] = [
+    {
+      Absender: 'Peter',
+      Datum: new Date(5000000000),
+      Text: 'Einkauf von Bier',
+      Value: 10,
+      Mitglieder: 'Peter, Albani, Renate',
+    },
+    {
+      Absender: 'Ullo',
+      Datum: new Date(50000000000),
+      Text: 'Einkauf von Bier',
+      Value: 10,
+      Mitglieder: 'Peter, Albani, Renate',
+    },
+    {
+      Absender: 'Cevin',
+      Datum: new Date(500000000000),
+      Text: 'Einkauf von Bier für die Party die wir am letzten Sonntag gefeiert haben',
+      Value: 10,
+      Mitglieder: 'Peter, Albani, Renate',
+    },
+    {
+      Absender: 'Carolina',
+      Datum: new Date(500000000000),
+      Text: 'Einkauf von Bier',
+      Value: 5,
+      Mitglieder: 'Peter, Albani, Renate',
+    },
+    {
+      Absender: 'Sabine',
+      Datum: new Date(),
+      Text: 'Einkauf von Bier',
+      Value: 10,
+      Mitglieder: 'Peter, Albani, Renate',
+    },
+    {
+      Absender: 'Cevin',
+      Datum: new Date(),
+      Text: 'Einkauf von Bier',
+      Value: 10,
+      Mitglieder: 'Peter, Albani, Renate',
+    },
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
-];
+  ];
 
-ChatDatevar = new Date(0);
-USerName = "Cevin";
-GroupHistory = false;
-GroupChat = true;
-  
+  ChatDatevar = new Date(0);
+  USerName = 'Cevin';
+  GroupHistory = false;
+  GroupChat = true;
 
   ngOnInit(): void {
-    console.log(this.Chats)
-    var scrollclass = document.getElementById("scrollBlock");
+    console.log(this.Chats);
+    var scrollclass = document.getElementById('scrollBlock');
     console.log(this.Payments);
-    if(scrollclass !=null){
-      
-    scrollclass.scrollTop = scrollclass.scrollHeight;
+    if (scrollclass != null) {
+      scrollclass.scrollTop = scrollclass.scrollHeight;
 
-    //Media Query
-    var query = window.matchMedia("(min-width: 900px");
-    if(query.matches){
-      this.GroupHistory = false;
-      this.GroupChat = false;
-    }else{
-      this.GroupHistory = false;
-      this.GroupChat = true;
-    }
+      //Media Query
+      var query = window.matchMedia('(min-width: 900px');
+      if (query.matches) {
+        this.GroupHistory = false;
+        this.GroupChat = false;
+      } else {
+        this.GroupHistory = false;
+        this.GroupChat = true;
+      }
     }
   }
 
   public isactive(Absender: string){
     if(Absender === this.USerName){
       return true;
-    }else{
+    } else {
       return false;
     }
   }
@@ -88,37 +159,29 @@ GroupChat = true;
         this.Chats[i].Value = result.Value;
         /* this.Infos[number].name = result.Gruppenname;
         this.Infos[number].mitglieder = result.Mitglieder; */
-        
-      })
-   
-  
+    });
   }
-  
-
-
-
 
   public checkDate(datecheck: Date) {
     
   /*   console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
-/*     console.log(datecheck.getDate()) */
+    /* console.log(datecheck.getDate()) */
     /* console.log(this.ChatDatevar) */
     /* console.log(this.ChatDatevar) */
-    if(datecheck.getDate() == this.ChatDatevar.getDate() && datecheck.getMonth() +1  == this.ChatDatevar.getMonth()+1 && datecheck.getFullYear() == this.ChatDatevar.getFullYear()){
-
-      
+    if (
+      datecheck.getDate() == this.ChatDatevar.getDate() &&
+      datecheck.getMonth() + 1 == this.ChatDatevar.getMonth() + 1 &&
+      datecheck.getFullYear() == this.ChatDatevar.getFullYear()
+    ) {
       this.ChatDatevar = datecheck;
-      
+
       return false;
-    }else{
+    } else {
       this.ChatDatevar = datecheck;
-      return true
+      return true;
     }
-    
   }
-
-  
 
   // payee, currency, ...
   Payments: { payerName: string; amount: number }[] = [
@@ -133,8 +196,6 @@ GroupChat = true;
     { payerName: 'Hendrick', amount: 9999 },
     { payerName: 'Hendrick', amount: 9999 },
     { payerName: 'Hendrick', amount: 9999 },
-
-
   ];
 
   public addPayment() {
@@ -195,5 +256,24 @@ GroupChat = true;
   }
   public returnChatHistory(){
     return this.GroupChat;
+  }
+  public delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  public async SwipeLeft() {
+    if (!this.currentTabChat) {
+      this.startAnimation('slideOutLeft');
+      await this.delay(400);
+      this.GroupChatButton();
+      this.currentTabChat = true;
+    }
+  }
+  public async SwipeRight() {
+    if (this.currentTabChat) {
+      this.startAnimation('slideOutRight');
+      await this.delay(400);
+      this.GroupHistoryButton();
+      this.currentTabChat = false;
+    }
   }
 }
