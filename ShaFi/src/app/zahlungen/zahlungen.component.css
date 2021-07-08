@@ -1,3 +1,168 @@
+.groupOverviewPage {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+  }
+
 .header{
     font-weight: bold;
 }
+
+.subHeader {
+    margin-left: 1rem !important;
+}
+
+.smallNavHistory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 1rem;
+    width: 100%;
+    font-size: 2rem;
+    padding-top: 1em;
+    margin-top: 1rem;
+  }
+
+  .cardContainer {
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 5rem;
+  }
+
+  .mobile {
+      align-items: center;
+      align-content: center;
+    display: inherit;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .ElementNavHis {
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: solid;
+    padding-bottom: 1rem;
+    border-bottom: 5px solid black;
+    transition: all 100ms ease-in-out;
+  }
+  
+  .ElementNavHis.deactiv {
+    color: gray;
+    border-bottom: none;
+  }
+
+  .heading {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 1486px) {
+    h1 {
+      font-size: 4rem !important;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 1250px) {
+    h1 {
+      font-size: 3.5rem !important;
+    }
+    .group {
+      width: 95%;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 1075px) {
+    h1 {
+      font-size: 3rem !important;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .group {
+      width: 94%;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 930px) {
+    h1 {
+      font-size: 2.8rem !important;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .groupOverview {
+      width: 90%;
+    }
+    .groupPreview {
+      display: none;
+    }
+    .group {
+      width: 96%;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 620px) {
+    .groupOverviewPage {
+      margin-top: 1rem;
+    }
+    .group {
+      width: 95%;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    h1 {
+      font-size: 2.3rem !important;
+    }
+    h3 {
+        font-size: 1.2rem !important;
+        text-align: center;
+    }
+    .group {
+      width: 94%;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 360px) {
+    h1 {
+      font-size: 2.2rem !important;
+    }
+    h3 {
+        font-size: 1rem !important;
+        text-align: center;
+    }
+    .group {
+      width: 93%;
+    }
+    .subHeader {
+        text-align: center;
+    }
+  }
