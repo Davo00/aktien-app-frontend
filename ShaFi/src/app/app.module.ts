@@ -21,6 +21,7 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 import { ErrorSiteComponent } from './error-site/error-site.component';
 import { StartseiteComponent } from './startseite/startseite.component';
+import { HttpClientModule} from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HammertimeDirective } from './hammertime.directive';
@@ -64,6 +65,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    HttpClientModule,
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule

@@ -39,7 +39,7 @@ export class GroupOverviewComponent implements OnInit {
     { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
   ];
 
-  addGroup() {
+  public addGroup() {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: null,
@@ -62,7 +62,7 @@ export class GroupOverviewComponent implements OnInit {
     });
   }
 
-  editGroup(number: number) {
+  public editGroup(number: number) {
     const dialogref = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: this.Groups[number].groupName,

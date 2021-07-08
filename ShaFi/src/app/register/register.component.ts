@@ -16,14 +16,14 @@ export class RegisterComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  showError(){
+  public showError(){
     this.errorNach = !this.errorNach;
   }
-  errorAbfrage(){
+  public errorAbfrage(){
     return this.errorNach;
   }
 
-  getErrorMessage() {
+  public getErrorMessage() {
     if (this.control.hasError('required')) {
       return 'You must enter a value';
     }
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit{
     return this.control.hasError('email') ? 'Not a valid email' : '';
   }
 
-  handleSubmit(Benutzername: string,email: string,password: string,passwordrep: string,){
+  public handleSubmit(Benutzername: string,email: string,password: string,passwordrep: string,){
 
     if(password !== passwordrep){
       this.showError();

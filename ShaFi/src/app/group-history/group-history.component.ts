@@ -121,41 +121,50 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  isactive(Absender: string) {
-    if (Absender === this.USerName) {
+  public isactive(Absender: string){
+    if(Absender === this.USerName){
       return true;
     } else {
       return false;
     }
   }
 
-  openDialogChatChange(i: number) {
-    let dialogref = this.matDialog.open(ChatdialogComponent, {
-      data: {
-        Absender: this.Chats[i].Absender,
-        Datum: this.Chats[i].Datum,
-        Text: this.Chats[i].Text,
-        Value: this.Chats[i].Value,
-        Mitglieder: this.Chats[i].Mitglieder,
-      },
-      width: '400px',
-      height: '400px',
-      position: {},
-      disableClose: false,
-    });
+  public openDialogChatChange(i: number){
+    let dialogref = this.matDialog.open(ChatdialogComponent,
+      {
+        data: {
+         Absender: this.Chats[i].Absender,
+         Datum:this.Chats[i].Datum,
+         Text: this.Chats[i].Text,
+         Value: this.Chats[i].Value,
+         Mitglieder: this.Chats[i].Mitglieder
+         
+          
+          
 
-    dialogref.afterClosed().subscribe((result) => {
-      console.log(result);
-      this.Chats[i].Text = result.Text;
-      this.Chats[i].Mitglieder = result.Mitglieder;
-      this.Chats[i].Value = result.Value;
-      /* this.Infos[number].name = result.Gruppenname;
+
+        }, width: "400px",
+        height:"400px",
+        position: {
+         
+          
+        },
+        disableClose: false
+      });
+
+      dialogref.afterClosed().subscribe( result => {
+        console.log(result)
+        this.Chats[i].Text = result.Text;
+        this.Chats[i].Mitglieder = result.Mitglieder;
+        this.Chats[i].Value = result.Value;
+        /* this.Infos[number].name = result.Gruppenname;
         this.Infos[number].mitglieder = result.Mitglieder; */
     });
   }
 
-  checkDate(datecheck: Date) {
-    /* console.log(datecheck); */
+  public checkDate(datecheck: Date) {
+    
+  /*   console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
     /* console.log(datecheck.getDate()) */
     /* console.log(this.ChatDatevar) */
@@ -189,7 +198,7 @@ export class GroupHistoryComponent implements OnInit {
     { payerName: 'Hendrick', amount: 9999 },
   ];
 
-  addPayment() {
+  public addPayment() {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
         payerName: null,
@@ -212,7 +221,7 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  editGroup(number: number) {
+  public editGroup(number: number) {
     const dialogref = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
         groupName: this.Payments[number].payerName,
@@ -233,12 +242,23 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  public delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+
+  public GroupHistoryButton(){
+    this.GroupHistory = false;
+    this.GroupChat = true;
   }
-  GroupChatButton() {
+  public GroupChatButton(){
     this.GroupChat = false;
     this.GroupHistory = true;
+  }
+  public returngroupHistory(){
+    return this.GroupHistory;
+  }
+  public returnChatHistory(){
+    return this.GroupChat;
+  }
+  public delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
   public async SwipeLeft() {
     if (!this.currentTabChat) {
@@ -248,13 +268,6 @@ export class GroupHistoryComponent implements OnInit {
       this.currentTabChat = true;
     }
   }
-  returnChatHistory() {
-    return this.GroupChat;
-  }
-  GroupHistoryButton() {
-    this.GroupHistory = false;
-    this.GroupChat = true;
-  }
   public async SwipeRight() {
     if (this.currentTabChat) {
       this.startAnimation('slideOutRight');
@@ -262,8 +275,5 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistoryButton();
       this.currentTabChat = false;
     }
-  }
-  returngroupHistory() {
-    return this.GroupHistory;
   }
 }

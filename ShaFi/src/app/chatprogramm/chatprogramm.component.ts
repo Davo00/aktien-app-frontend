@@ -38,7 +38,7 @@ USerName = "Cevin";
     }
   }
 
-  isactive(Absender: string){
+  public isactive(Absender: string){
     if(Absender === this.USerName){
       return true;
     }else{
@@ -46,7 +46,7 @@ USerName = "Cevin";
     }
   }
 
-  openDialogChatChange(i: number){
+  public openDialogChatChange(i: number){
     let dialogref = this.matDialog.open(ChatdialogComponent,
       {
         data: {
@@ -86,7 +86,7 @@ USerName = "Cevin";
 
 
 
-  checkDate(datecheck: Date) {
+  public checkDate(datecheck: Date) {
     
   /*   console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
