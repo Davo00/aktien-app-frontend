@@ -3,35 +3,52 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.component';
 import { Router } from '@angular/router';
 import { ResizedEvent } from 'angular-resize-event';
+import { GroupHistoryComponent } from '../group-history/group-history.component';
 
 type groupType = { groupName: string; groupID: string; members: string };
+// // type groupType = { groupName: string; groupID: string; members: string; groupHistory: GroupHistoryComponent };
+// type groupChatType = {
+//   Absender: string;
+//   Datum: Date;
+//   Text: string;
+//   Value: number;
+//   Mitglieder: string;
+// }
+// type groupPaymentType = { payerName: string; amount: number }
 
 @Component({
   selector: 'app-group-overview',
   templateUrl: './group-overview.component.html',
   styleUrls: ['./group-overview.component.css'],
 })
+
 export class GroupOverviewComponent implements OnInit {
   groupToPreview: any;
   mobileView: boolean;
   innerWidth: number;
   innerHeight: number;
+  // Groupp: groupType [];
+
+  ngOnInit(): void {
+  }
 
   constructor(private matDialog: MatDialog, private router: Router) {
     this.groupToPreview = null;
     this.mobileView = false;
     this.innerWidth = 0;
     this.innerHeight = 0;
+    // this.Groupp = [];
   }
 
-  ngOnInit(): void {
-  }
-
+  //  groupHistory: GroupHistoryComponent
+  // Groups: { groupName: string; groupID: string; members: string; groupHistory: GroupHistoryComponent }[] = [
   Groups: { groupName: string; groupID: string; members: string }[] = [
     {
       groupName: 'Test Group 1',
       groupID: '1',
       members: 'Niklas, Alex, Hendrick',
+      // groupHistory: new GroupHistoryComponent(this.matDialog) ////////////
+      // groupHistory: {animationState: '', currentTabChat: false}
     },
     {
       groupName: 'Test Group 2',
@@ -87,6 +104,7 @@ export class GroupOverviewComponent implements OnInit {
           groupName: result.groupName,
           groupID: result.groupID,
           members: result.members,
+          // groupHistory: result.groupHistory //////////////////////
         });
       }
     });

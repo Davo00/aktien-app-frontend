@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 import { ChatdialogComponent } from './chatdialog/chatdialog.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
+import { GroupOverviewComponent } from './group-overview/group-overview.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -49,6 +50,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     ChatprogrammComponent,
     ChatdialogComponent,
     GroupHistoryComponent,
+    GroupOverviewComponent,
     AddGroupDialogComponent,
     AddPaymentDialogComponent,
     HammertimeDirective,

@@ -4,6 +4,16 @@ import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dia
 import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
 import { trigger, keyframes, animate, transition } from '@angular/animations';
 import * as kf from './keyframes';
+// import { GroupOverviewComponent } from './group-overview/group-overview.component';
+
+// type groupPaymentType = { payerName: string; amount: number }
+// type groupChatType = {
+//   Absender: string;
+//   Datum: Date;
+//   Text: string;
+//   Value: number;
+//   Mitglieder: string;
+// }
 
 @Component({
   selector: 'app-group-history',
@@ -28,22 +38,52 @@ import * as kf from './keyframes';
 export class GroupHistoryComponent implements OnInit {
   animationState: string;
   currentTabChat: boolean;
+  ChatDatevar = new Date(0);
+  USerName = 'Cevin';
+  GroupHistory = false;
+  GroupChat = true;
+  // payment: groupPaymentType [];
+  
+
+  ngOnInit(): void {
+    console.log(this.Chats);
+    var scrollclass = document.getElementById('scrollBlock');
+    console.log(this.Payments);
+    if (scrollclass != null) {
+      scrollclass.scrollTop = scrollclass.scrollHeight;
+
+      //Media Query
+      var query = window.matchMedia('(min-width: 900px');
+      if (query.matches) {
+        this.GroupHistory = false;
+        this.GroupChat = false;
+      } else {
+        this.GroupHistory = false;
+        this.GroupChat = true;
+      }
+    }
+    // this.add();
+  }
 
   constructor(private matDialog: MatDialog) {
     this.animationState = '';
     this.currentTabChat = false;
+    // this.payment = [];
   }
 
-  startAnimation(state: any) {
-    console.log(state);
-    if (!this.animationState) {
-      this.animationState = state;
-    }
-  }
-
-  resetAnimationState() {
-    this.animationState = '';
-  }
+  Payments: { payerName: string; amount: number }[] = [
+    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Moritz', amount: -9999 },
+    { payerName: 'Moayad', amount: 9999 },
+    { payerName: 'Davit', amount: 9999 },
+    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrick', amount: 9999 },
+  ];
 
   Chats: {
     Absender: string;
@@ -96,30 +136,6 @@ export class GroupHistoryComponent implements OnInit {
     },
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
   ];
-
-  ChatDatevar = new Date(0);
-  USerName = 'Cevin';
-  GroupHistory = false;
-  GroupChat = true;
-
-  ngOnInit(): void {
-    console.log(this.Chats);
-    var scrollclass = document.getElementById('scrollBlock');
-    console.log(this.Payments);
-    if (scrollclass != null) {
-      scrollclass.scrollTop = scrollclass.scrollHeight;
-
-      //Media Query
-      var query = window.matchMedia('(min-width: 900px');
-      if (query.matches) {
-        this.GroupHistory = false;
-        this.GroupChat = false;
-      } else {
-        this.GroupHistory = false;
-        this.GroupChat = true;
-      }
-    }
-  }
 
   isactive(Absender: string) {
     if (Absender === this.USerName) {
@@ -174,21 +190,6 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  // payee, currency, ...
-  Payments: { payerName: string; amount: number }[] = [
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Moritz', amount: -9999 },
-    { payerName: 'Moayad', amount: 9999 },
-    { payerName: 'Davit', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-  ];
-
   addPayment() {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
@@ -236,10 +237,23 @@ export class GroupHistoryComponent implements OnInit {
   public delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
+
   GroupChatButton() {
     this.GroupChat = false;
     this.GroupHistory = true;
   }
+
+  startAnimation(state: any) {
+    console.log(state);
+    if (!this.animationState) {
+      this.animationState = state;
+    }
+  }
+
+  resetAnimationState() {
+    this.animationState = '';
+  }
+
   public async SwipeLeft() {
     if (!this.currentTabChat) {
       this.startAnimation('slideOutLeft');
@@ -248,13 +262,16 @@ export class GroupHistoryComponent implements OnInit {
       this.currentTabChat = true;
     }
   }
+
   returnChatHistory() {
     return this.GroupChat;
   }
+
   GroupHistoryButton() {
     this.GroupHistory = false;
     this.GroupChat = true;
   }
+
   public async SwipeRight() {
     if (this.currentTabChat) {
       this.startAnimation('slideOutRight');
@@ -263,6 +280,7 @@ export class GroupHistoryComponent implements OnInit {
       this.currentTabChat = false;
     }
   }
+  
   returngroupHistory() {
     return this.GroupHistory;
   }

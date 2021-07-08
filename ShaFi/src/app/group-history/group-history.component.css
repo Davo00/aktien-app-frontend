@@ -267,6 +267,7 @@
   box-shadow: 1px 1px 1px 1px silver;
   border-radius: 3rem;
   border-width: 0.01rem;
+  margin-bottom: 5rem;
 }
 
 .closeBillButton:hover {
