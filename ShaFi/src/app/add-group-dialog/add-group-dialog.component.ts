@@ -21,13 +21,13 @@ export class AddGroupDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  dialogSaveGroup() {
+  public dialogSaveGroup() {
     this.data.groupName = this.groupName;
     this.data.members = this.members;
     this.matDialogRef.close(this.data);
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     console.log(this.data);
     if (this.data.groupName === null || this.data.members === null) {
       this.matDialogRef.close(null);
@@ -36,7 +36,7 @@ export class AddGroupDialogComponent implements OnInit {
     }
   }
 
-  dialogClose() {
+  public dialogClose() {
     this.matDialogRef.close();
   }
 }

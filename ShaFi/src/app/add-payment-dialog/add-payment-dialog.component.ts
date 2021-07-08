@@ -27,7 +27,7 @@ export class AddPaymentDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  SelpaidName() {
+  public SelpaidName(){
     this.Selfpaid = !this.Selfpaid;
     if (this.Selfpaid) {
       this.data.payerName = this.Username;
@@ -38,7 +38,7 @@ export class AddPaymentDialogComponent implements OnInit {
     return this.Selfpaid;
   }
 
-  dialogSaveGroup() {
+  public dialogSaveGroup() {
     this.data.payerName = this.payerName;
     this.data.reason = this.reason;
     this.data.members = this.members;
@@ -46,7 +46,7 @@ export class AddPaymentDialogComponent implements OnInit {
     this.matDialogRef.close(this.data);
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     console.log(this.data);
     if (
       this.data.payerName === null ||
@@ -60,7 +60,7 @@ export class AddPaymentDialogComponent implements OnInit {
     }
   }
 
-  dialogClose() {
+  public dialogClose() {
     this.matDialogRef.close();
   }
 }
