@@ -1,45 +1,41 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
+import {ApiService} from './services/api.service';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'ShaFi';
  
+
+  constructor(public router: Router, private api:ApiService) {  
+  }
 
   clicked: boolean=false;
 
 
 
   ngOnInit(): void {
+    this.api.getAllExpense().subscribe(returnData => {
+      console.log(returnData);
+    })
+
+    this.api.getSpecificExpense(1).subscribe(returnData => {
+      console.log(returnData);
+    })
   }
-  closeBar(): void{(e: { key: any; }) =>{
-    if(this.clicked && e.key == 'Escape') {
-      this.clicked = false;
-      
-  }}}
 
-
-
-
-
-  thisclicked(){
+  thisclicked() {
     this.clicked = !this.clicked;
-    
   }
 
-  
-
-  
-
-  isactive(){
-    
-  return this.clicked;
-}
-
+  isactive() {
+    return this.clicked;
+  }
 
   /* setClasses(){
     let myClasses = {
@@ -48,7 +44,4 @@ export class AppComponent implements OnInit{
     }
     return myClasses;
   }  */
-  
- 
 }
-

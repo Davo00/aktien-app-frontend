@@ -1,0 +1,71 @@
+<body>
+    
+<div class="registerDiv">
+<div class ="flexElement"><h1 style="font-weight: 900;">Registrieren</h1></div>
+
+    <!-- <div class="InputDoppel">
+     
+     <mat-form-field class="InputfildDoppel" appearance="fill"  color="accent">       
+        <mat-label>Vorname</mat-label>
+        <input required type="text" matInput #box1 >
+      </mat-form-field>
+     
+      <mat-form-field class="InputfildDoppel" appearance="fill"  color="accent">       
+        <mat-label>Nachname</mat-label>
+        <input required type="text" matInput #box2 >
+      </mat-form-field>
+    </div> -->
+
+    <div class="flexElement">
+        <mat-form-field class="InputfildEinzel" appearance="fill" hideRequiredMarker color="accent">       
+            <mat-label>Benutzername</mat-label>
+            <input required matInput #Benutzer >
+          </mat-form-field>
+
+    </div>
+
+    <div class="flexElement">
+        <mat-form-field class="InputfildEinzel" appearance="fill" hideRequiredMarker color="accent">       
+            <mat-label>E-Mail Adresse</mat-label>
+            <!-- <input matInput [formControl]="email" required #box3 > -->
+            <input matInput placeholder="pat@example.com" [formControl]="control" required #Email>
+            <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <mat-error *ngIf="email.invalid">Üngültige Email</mat-error> -->
+          </mat-form-field>
+
+    </div>
+    <!-- <div class="flexElement">
+        <mat-form-field class="InputfildEinzel" appearance="fill"  color="accent">       
+            <mat-label>Geburtsdatum</mat-label>
+            <input required type="date" matInput #box4 >
+          </mat-form-field>
+
+    </div> -->
+    <div class="erroronFalse"  [ngClass]="{ error: errorAbfrage() } ">Hier ist ein Fehler aufgetreten, bitte die Passwörter überprüfen</div>
+    <div class="flexElement">
+        <mat-form-field class="InputfildEinzel" hideRequiredMarker appearance="fill"  color="accent">       
+            <mat-label>Passwort</mat-label>
+            <input required type="password" matInput #pass1 >
+          </mat-form-field>
+
+    </div>
+    <div class="flexElement">
+        <mat-form-field class="InputfildEinzel" appearance="fill" hideRequiredMarker color="accent">       
+            <mat-label>Passwort wiederholen</mat-label>
+            <input required type="password" matInput #pass2 >
+          </mat-form-field>
+
+    </div>
+
+     
+    <div class="flexElement">
+        <button (click)="handleSubmit(Benutzer.value, Email.value, pass1.value, pass2.value)" class="buttonstyle">Einlogen</button>
+    </div>
+
+    
+
+
+
+    </div>
+
+</body>

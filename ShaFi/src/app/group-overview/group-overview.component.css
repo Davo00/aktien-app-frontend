@@ -3,10 +3,11 @@
   justify-content: center;
   margin-top: 5rem;
 }
+
 .groupOverview {
   width: 40%;
   margin-right: 1rem;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
 
 .groupContainer {
@@ -21,21 +22,46 @@
 
 .addGroupButton {
   margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.8rem;
   float: right;
 }
 
+.addGroupButton:hover {
+  cursor: pointer;
+}
+
+.AddButton {
+  height: 30px;
+}
+
 .groups {
-  display: grid;
+  overflow-x: auto;
+  overflow-y: scroll;
+  height: 49vh;
+  margin-top: 0.8rem;
+}
+
+.groups::-webkit-scrollbar {
+  display: none;
 }
 
 .group {
-  display: grid;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
   padding-left: 0.5rem;
+  padding-top: 0.3rem;
   background-color: white;
   box-shadow: 1px 1px 1px 1px silver;
   border-radius: 10px;
+  width: 96%;
+}
+
+.group:hover {
+  transform: scale(1.01);
+  /* font-weight: 500; */
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 100ms;
 }
 
 .groupPreview {
@@ -58,7 +84,7 @@
   padding-top: 0.5rem;
   padding-right: 0.5rem;
   padding-bottom: 0.5rem;
-  margin-top: 2.82rem;
+  margin-top: 4.54rem;
 }
 
 .moreDetailsButton {
@@ -67,7 +93,98 @@
   margin-bottom: 1rem;
   margin: 0 0 0 0;
   padding: 1rem 2rem 1rem 2rem;
-  color: white; 
-  background-color: #8f92ec; 
+  color: white;
+  background-color: #8f92ec;
   border-radius: 50px;
+}
+
+.moreDetailsButton:hover {
+  transform: scale(1.05);
+  /* font-weight: 500; */
+  cursor: pointer;
+  transition: transform 150ms;
+}
+
+@media screen and (min-width: 900px) {
+  /* .mobileNav {
+        display: none;
+    } */
+}
+
+@media screen and (max-width: 1486px) {
+  h1 {
+    font-size: 4rem !important;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  h1 {
+    font-size: 3.5rem !important;
+  }
+  .group {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 1075px) {
+  h1 {
+    font-size: 3rem !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .group {
+    width: 94%;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  h1 {
+    font-size: 2.8rem !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .groupOverview {
+    width: 90%;
+  }
+  .groupPreview {
+    display: none;
+  }
+  .group {
+    width: 96%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .groupOverviewPage {
+    margin-top: 1rem;
+  }
+  .group {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .group {
+    width: 94%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 2.3rem !important;
+  }
+  .group {
+    width: 94%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  h1 {
+    font-size: 2.2rem !important;
+  }
+  .group {
+    width: 93%;
+  }
 }

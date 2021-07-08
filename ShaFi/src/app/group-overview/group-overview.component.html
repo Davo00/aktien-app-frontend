@@ -1,47 +1,46 @@
+<!-- <div class="mobileNav">
+    <div class="elementMobileNav" [ngClass]="{ deactiv: returnGroupsOverview() }" (click)="GroupsOverviewButton()">Groups Overview</div>
+    <div class="elementMobileNav" [ngClass]="{ deactiv: returnGroupPreview() }" (click)="GroupPreviewButton()">Group Preview</div>
+</div> -->
+
 <div class="groupOverviewPage">
-  <div class="groupOverview">
-    <div class="groupContainer">
-      <h1 class="heading">Groups Overview</h1>
-      <span (click)="addGroup()"></span>
-      <div><button class="addGroupButton">+</button></div>
-      <div class="groups">
-        <div class="group">
-          <h2 class="">Group 1</h2>
-          <p>description</p>
+    <div class="groupOverview">
+        <div class="groupContainer">
+            <!-- <div class="displayNone900"> -->
+            <h1 class="heading">Groups Overview</h1>
+            <!-- </div> -->
+            <div class="AddButton"><button (click)="addGroup()" class="addGroupButton">+</button></div>
+            <div class="groups">
+                <ul class="group" *ngFor="let group of Groups; let i = index">
+                    <!-- (click)="preview($event, group)" -->
+                    <div>
+                        <h3>{{ Groups[i].groupName }}</h3>
+                        <p>{{ Groups[i].members }}</p>
+                        <!-- <button (click)="editGroup(i)">Edit Group</button> -->
+                    </div>
+                </ul>
+            </div>
         </div>
-        <div class="group">
-          <h2 class="">Group 2</h2>
-          <p>description</p>
-        </div>
-        <div class="group">
-          <h2 class="">Group 3</h2>
-          <p>description</p>
-        </div>
-        <div class="group">
-          <h2 class="">Group 4</h2>
-          <p>description</p>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="groupPreview">
-    <div class="groupPreviewContainer">
-      <h1 class="heading">Group Preview</h1>
-      <div></div>
-      <div class="groupPreviewContent">
-        <p>
-          Hier sieht man Infos über die erste Gruppe (default) Wenn man auf eine
-          Gruppe klickt, dann erscheinen ihre Informationen hier.
-        </p>
-        <p>description</p>
-        <p>description</p>
-        <p>description</p>
-        <p>description</p>
-        <p>description</p>
-        <p>description</p>
-        <p>description</p>
-      </div>
+    <div class="groupPreview">
+        <div class="groupPreviewContainer">
+            <!-- <div class="displayNone900"> -->
+            <h1 class="heading">Group Preview</h1>
+            <!-- </div> -->
+            <div></div>
+            <div class="groupPreviewContent">
+                <p>
+                    Hier sieht man Infos über die erste Gruppe (default) Wenn man auf eine Gruppe klickt, dann erscheinen ihre Informationen hier.
+                </p>
+                <p>description</p>
+                <p>description</p>
+                <p>description</p>
+                <p>description</p>
+                <p>description</p>
+                <p>description</p>
+                <p>description</p>
+            </div>
+        </div>
+        <button class="moreDetailsButton" routerLink="/group-history">more details</button>
     </div>
-    <button class="moreDetailsButton">more details</button>
-  </div>
 </div>

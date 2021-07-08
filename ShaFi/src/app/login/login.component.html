@@ -1,0 +1,43 @@
+<body>
+<div class= "login">
+
+    <div class="headerLogin">
+        <div class="headerLoginIcon">
+        <i class="fas fa-user"></i>
+        </div>
+    </div>
+    <div class="SigninText">
+        <h1 style="font-weight: 900;">Sign In</h1>
+    </div>
+    <div class="FormField">
+
+        
+<mat-form-field  appearance="fill"  color="accent"> 
+    
+    <mat-label>Username</mat-label>
+    <input  matInput #box1 >
+   <!--  (keyup)="getValue(box.value)" -->
+    <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
+    
+  </mat-form-field>
+</div>
+<div class="FormField">
+    <mat-form-field  appearance="fill"  color="accent"> 
+        
+        <mat-label>Passwort</mat-label>
+        <input type="password" matInput #box2 >
+       <!--  (keyup)="getValue(box.value)" -->
+        <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
+        
+      </mat-form-field>
+    </div>
+
+<div class="Register">
+    <a class="registertext"href="#" routerLink="/register">Oder hier registrieren!</a>
+</div>
+<div class="flexElement">
+    <button (click)="handleSubmit(box1.value, box2.value)" class="buttonstyle">Einlogen</button>
+</div>
+</div>
+
+</body>

@@ -22,7 +22,7 @@ export class DialogwindowComponent implements OnInit {
     
   }
 
-  ngOnDestroy(){
+  public ngOnDestroy(){
     console.log(this.data)
     if(this.data.Gruppenname === null || this.data.Mitglieder === null){
       this.matDialogRef.close(null)
@@ -33,11 +33,11 @@ export class DialogwindowComponent implements OnInit {
     }
   }
 
-  dialogClose(){
+  public dialogClose(){
     this.matDialogRef.close();
   }
 
-  dialogSavenewInfo(){
+  public dialogSavenewInfo(){
 
     this.data.Gruppenname = this.Gruppenname;
     this.data.Mitglieder = this.Mitglieder;
