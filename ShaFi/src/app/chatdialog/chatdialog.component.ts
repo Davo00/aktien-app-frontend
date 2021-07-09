@@ -17,7 +17,7 @@ export class ChatdialogComponent implements OnInit {
     console.log(this.data)
   }
 
-  ngOnDestroy(){
+  public ngOnDestroy(){
     if(this.data.Text === null || this.data.Value === null){
       this.matDialogRef.close(null)
       
@@ -27,11 +27,11 @@ export class ChatdialogComponent implements OnInit {
     }
   }
 
-  dialogClose(){
+  public dialogClose(){
     this.matDialogRef.close();
   }
 
-  safeChatDialog(text:string, amount:string, mitglieder: string){
+  public safeChatDialog(text:string, amount:string, mitglieder: string){
     this.data.Text = text;
     this.data.Value = parseInt(amount);
     this.data.Mitglieder = mitglieder
