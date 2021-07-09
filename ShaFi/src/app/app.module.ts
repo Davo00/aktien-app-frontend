@@ -53,7 +53,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     AddGroupDialogComponent,
     AddPaymentDialogComponent,
     ErrorSiteComponent,
-    StartseiteComponent
+    StartseiteComponent,
     HammertimeDirective,
 
   ],
