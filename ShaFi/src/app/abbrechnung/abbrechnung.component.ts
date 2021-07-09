@@ -2,8 +2,13 @@ import { Component, HostListener, OnInit } from '@angular/core';
 
 export interface PeriodicElement {
   member: string;
-  erhalten: number;
-  bezahlen: number;
+  erhalten: any;
+  bezahlen: any;
+}
+export interface dataType {
+  creditor: string;
+  debitor: string;
+  amount: number;
 }
 
 const ELEMENT_DATA: object[] = [
@@ -33,6 +38,7 @@ export class AbbrechnungComponent implements OnInit {
     else{
       this.mobile = false;
     }
+    this.group = this.getAllGroupMember();
   }
 
 
@@ -51,9 +57,12 @@ export class AbbrechnungComponent implements OnInit {
   getDisplayedColumns(member: string): string[] {
     let newDisplayedColumns: string[] = [];
     newDisplayedColumns.push('free');
-    for(let i=0; i < this.displayedColumns.length; i++) {
-      if(this.displayedColumns[i] != member) {
-        newDisplayedColumns.push(this.displayedColumns[i]);
+    for(let i=0; i < this.DATA_EXAMPLE.length; i++) {
+      if(this.DATA_EXAMPLE[i].creditor === member) {
+        newDisplayedColumns.push(this.DATA_EXAMPLE[i].debitor);
+      }
+      else if(this.DATA_EXAMPLE[i].debitor === member) {
+        newDisplayedColumns.push(this.DATA_EXAMPLE[i].creditor);
       }
     }
     return newDisplayedColumns;
@@ -84,15 +93,71 @@ export class AbbrechnungComponent implements OnInit {
     return true;
   }
 
-  gruppe: string[] = ['Cevin', 'Moritz', 'Hendrik', 'Moayad'];
-  mobileColumns: string[] = ['free', 'Erhalten', 'Bezahlen'];
+  getData(member:string) {
+    let displayedData: PeriodicElement[] = [];
+    for(let i=0; i < this.DATA_EXAMPLE.length; i++) {
+      let newRow: PeriodicElement = {member: "", erhalten: "", bezahlen:""};
+      if(this.DATA_EXAMPLE[i].creditor === member) {
+        newRow.member = this.DATA_EXAMPLE[i].debitor;
+        newRow.erhalten = this.DATA_EXAMPLE[i].amount;
+        displayedData.push(newRow);
+      }
+      else if(this.DATA_EXAMPLE[i].debitor === member) {
+        newRow.member = this.DATA_EXAMPLE[i].creditor;
+        newRow.bezahlen = this.DATA_EXAMPLE[i].amount;
+        displayedData.push(newRow);
+      }
+    }
+    console.log(displayedData);
+    return displayedData;
+  }
+
+  getAllGroupMember() {
+    let newDisplayedColumns: string[] = [];
+    for(let i=0; i < this.DATA_EXAMPLE.length; i++) {
+      if(!newDisplayedColumns.includes(this.DATA_EXAMPLE[i].creditor)) {
+        newDisplayedColumns.push(this.DATA_EXAMPLE[i].creditor);
+      }
+      if(!newDisplayedColumns.includes(this.DATA_EXAMPLE[i].debitor)) {
+        newDisplayedColumns.push(this.DATA_EXAMPLE[i].debitor);
+      }
+    }
+    return newDisplayedColumns;
+  }
+
+  DATA_EXAMPLE: dataType[] = [
+    {
+     creditor: "Hendrik",
+     debitor: "Davit",
+     amount: 16.13
+    },
+    {
+     creditor: "Ramona",
+     debitor: "Moritz",
+     amount: 6.6
+    },
+    {
+     creditor: "Cevin",
+     debitor: "Davit",
+     amount: 4.05
+    },
+    {
+     creditor: "Ramona",
+     debitor: "Davit",
+     amount: 2.43
+    }
+   ];
+
+  group: string[] = [];
+  columns: string[] = ['free', 'Erhalten', 'Bezahlen'];
   displayedColumns: string[] = ['Cevin', 'Moritz', 'Hendrik', 'Moayad'];
-  dataSource = ELEMENT_DATA;
+  dataSource = 3;
+
   dataSource2: PeriodicElement[] = [
-    {member: 'Cevin', erhalten: 30, bezahlen: 0},
-    {member: 'Moritz', erhalten: 0, bezahlen: 40},
-    {member: 'Hendrik', erhalten: 0, bezahlen: 0},
-    {member: 'Moayad', erhalten: 0, bezahlen: 20}
+    {member: 'Cevin', erhalten: 30, bezahlen: ""},
+    {member: 'Moritz', erhalten: "", bezahlen: 40},
+    {member: 'Hendrik', erhalten: "", bezahlen: ""},
+    {member: 'Moayad', erhalten: "", bezahlen: 20}
   ];
 }
 
