@@ -1,14 +1,7 @@
-<!-- <div class="mobileNav">
-    <div class="elementMobileNav" [ngClass]="{ deactiv: returnGroupsOverview() }" (click)="GroupsOverviewButton()">Groups Overview</div>
-    <div class="elementMobileNav" [ngClass]="{ deactiv: returnGroupPreview() }" (click)="GroupPreviewButton()">Group Preview</div>
-</div> -->
-
 <div class="groupOverviewPage" (resized)="onResized($event)">
   <div class="groupOverview">
     <div class="groupContainer">
-      <!-- <div class="displayNone900"> -->
       <h1 class="heading">Groups Overview</h1>
-      <!-- </div> -->
       <div class="AddButton">
         <button (click)="addGroup()" class="addGroupButton">+</button>
       </div>
@@ -18,10 +11,8 @@
           *ngFor="let group of Groups; let i = index"
           (click)="previewGroup(group)"
         >
-          <!-- (click)="preview($event, group)" -->
           <div>
             <h3>{{ Groups[i].groupName }}</h3>
-            <!-- <button (click)="editGroup(i)">Edit Group</button> -->
           </div>
         </ul>
       </div>
@@ -29,9 +20,7 @@
   </div>
   <div class="groupPreview">
     <div class="groupPreviewContainer">
-      <!-- <div class="displayNone900"> -->
       <h1 class="heading">Group Preview</h1>
-      <!-- </div> -->
       <div
         class="groupPreviewContent"
         *ngIf="groupToPreview == null; else groupsExistBlock"
@@ -44,13 +33,16 @@
         <div class="groupPreviewContent">
           <h4>Group Name: {{ groupToPreview.groupName }}</h4>
           <br />
-          <h4>Group ID: {{ groupToPreview.groupID }}</h4>
+          <h4>Group ID: {{ groupToPreview.groupId }}</h4>
           <br />
           <h4>Group Members: {{ groupToPreview.members }}</h4>
         </div>
       </ng-template>
     </div>
-    <button class="moreDetailsButton" routerLink="/group-history">
+    <button
+      class="moreDetailsButton"
+      (click)="openGroup(groupToPreview.groupId)"
+    >
       more details
     </button>
   </div>

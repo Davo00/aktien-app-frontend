@@ -11,9 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path: 'zahlungen', component: ZahlungenComponent},
+  { path: 'zahlungen', component: ZahlungenComponent },
   { path: 'group-overview', component: GroupOverviewComponent },
-  { path: 'group-history', component: GroupHistoryComponent },
+  { path: 'group/:id', component: GroupHistoryComponent },
   { path: 'dialogwindow', component: DialogwindowComponent },
   { path: 'dialog', component: DialogmainexampleComponent },
   { path: '', component: HomeComponent },

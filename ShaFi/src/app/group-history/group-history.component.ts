@@ -5,7 +5,7 @@ import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
 import { trigger, keyframes, animate, transition } from '@angular/animations';
 import * as kf from './keyframes';
 // import { GroupOverviewComponent } from './group-overview/group-overview.component';
-
+import { Router, ActivatedRoute } from '@angular/router';
 // type groupPaymentType = { payerName: string; amount: number }
 // type groupChatType = {
 //   Absender: string;
@@ -43,7 +43,6 @@ export class GroupHistoryComponent implements OnInit {
   GroupHistory = false;
   GroupChat = true;
   // payment: groupPaymentType [];
-  
 
   ngOnInit(): void {
     console.log(this.Chats);
@@ -62,27 +61,30 @@ export class GroupHistoryComponent implements OnInit {
         this.GroupChat = true;
       }
     }
-    // this.add();
   }
 
-  constructor(private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog, private route: ActivatedRoute,
+    private router: Router) {
     this.animationState = '';
     this.currentTabChat = false;
     // this.payment = [];
+    // this.route.params.subscribe((params) => { //////////////////////////////////////
+    //   console.log(params);
+    // });
   }
 
   Payments: { payerName: string; amount: number }[] = [
-    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
     { payerName: 'Moritz', amount: -9999 },
     { payerName: 'Moayad', amount: 9999 },
     { payerName: 'Davit', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
-    { payerName: 'Hendrick', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
+    { payerName: 'Hendrik', amount: 9999 },
   ];
 
   Chats: {
