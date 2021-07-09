@@ -20,6 +20,9 @@ import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dial
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
+import { ErrorSiteComponent } from './error-site/error-site.component';
+import { StartseiteComponent } from './startseite/startseite.component';
+import { HttpClientModule} from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HammertimeDirective } from './hammertime.directive';
@@ -29,6 +32,7 @@ import {
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
 import { AngularResizedEventModule } from 'angular-resize-event';
+
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -53,7 +57,10 @@ export class MyHammerConfig extends HammerGestureConfig {
     GroupOverviewComponent,
     AddGroupDialogComponent,
     AddPaymentDialogComponent,
+    ErrorSiteComponent,
+    StartseiteComponent,
     HammertimeDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -63,6 +70,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    HttpClientModule,
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,

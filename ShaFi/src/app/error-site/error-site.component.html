@@ -1,0 +1,10 @@
+<div class="errorFile">
+<div class="errorBox">
+    <h1>Fehler: Seite nicht gefunden</h1>
+    <p>Leider ist hierbei ein Fehler aufgetreten, diese Seite konnte nicht gefunden werden.</p>
+<div class="errorButtonDiv">
+    <a *ngIf="LogedIN === true"class="errorButton" href="#" routerLink="/home"> Startseite </a>
+    <a *ngIf="LogedIN !== true"class="errorButton" href="#" routerLink="/"> Startseite </a>
+</div>
+</div>
+</div>

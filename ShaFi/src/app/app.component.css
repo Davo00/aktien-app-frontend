@@ -79,7 +79,7 @@ a {
   position: fixed;
   left: -100%;
   top: 0;
-  z-index: 0;
+  z-index: 1000;
   transition: all 0.8s ease;
 }
 
@@ -281,6 +281,9 @@ a {
   .logo {
     display: none;
   }
+  .LoginFeld {
+    display: none;
+  }
 
   
   .MenuList {
@@ -321,9 +324,7 @@ a {
   }
 
 
-.LoginFeld {
-  display: none;
-}
+
 .MenuList {
   margin: 0 0 0 0;
 }

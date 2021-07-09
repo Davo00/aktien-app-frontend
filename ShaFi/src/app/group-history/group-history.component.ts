@@ -63,8 +63,11 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  constructor(private matDialog: MatDialog, private route: ActivatedRoute,
-    private router: Router) {
+  constructor(
+    private matDialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.animationState = '';
     this.currentTabChat = false;
     // this.payment = [];
@@ -147,7 +150,7 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  openDialogChatChange(i: number) {
+  public openDialogChatChange(i: number) {
     let dialogref = this.matDialog.open(ChatdialogComponent, {
       data: {
         Absender: this.Chats[i].Absender,
@@ -172,8 +175,8 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  checkDate(datecheck: Date) {
-    /* console.log(datecheck); */
+  public checkDate(datecheck: Date) {
+    /*   console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
     /* console.log(datecheck.getDate()) */
     /* console.log(this.ChatDatevar) */
@@ -215,7 +218,7 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  editGroup(number: number) {
+  public editGroup(number: number) {
     const dialogref = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
         groupName: this.Payments[number].payerName,
@@ -236,13 +239,17 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  public delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   GroupChatButton() {
     this.GroupChat = false;
     this.GroupHistory = true;
+  }
+
+  returnChatHistory() {
+    return this.GroupChat;
+  }
+
+  returnGroupHistory() {
+    return this.GroupHistory;
   }
 
   startAnimation(state: any) {
@@ -256,6 +263,15 @@ export class GroupHistoryComponent implements OnInit {
     this.animationState = '';
   }
 
+  public delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  GroupHistoryButton() {
+    this.GroupHistory = false;
+    this.GroupChat = true;
+  }
+
   public async SwipeLeft() {
     if (!this.currentTabChat) {
       this.startAnimation('slideOutLeft');
@@ -265,15 +281,6 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  returnChatHistory() {
-    return this.GroupChat;
-  }
-
-  GroupHistoryButton() {
-    this.GroupHistory = false;
-    this.GroupChat = true;
-  }
-
   public async SwipeRight() {
     if (this.currentTabChat) {
       this.startAnimation('slideOutRight');
@@ -281,9 +288,5 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistoryButton();
       this.currentTabChat = false;
     }
-  }
-  
-  returngroupHistory() {
-    return this.GroupHistory;
   }
 }
