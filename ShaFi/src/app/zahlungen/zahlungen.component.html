@@ -1,31 +1,31 @@
 <div class="groupOverviewPage">
     <div>
-        <h1 class="heading">
+        <h1 class="header">
             Ein/Auszahlungen
         </h1>
         <p class="subHeader">
             Hier sehen sie die Übersicht ihrer einzelnen Zahlungen
         </p>
-        <div *ngIf = "!mobile">
-            <div style="width:50%">
-                <h3 style="padding-left: 1rem !important;">Fällige Zahlungen:</h3>
+        <div *ngIf = "!mobile" class="desktopView">
+            <div>
+                <h3 class="headerZahlungen">Fällige Zahlungen:</h3>
                 <div *ngFor = "let data of zahlungExample">
                     <div *ngIf = 'data.type == "Faellig"'>
                         <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                     </div>
                 </div> 
             </div>
-            <div style="display: flex;">
-                <div style="width:50%">
-                    <h3 style="padding-left: 1rem !important;">Einzahlungen:</h3>
+            <div>
+                <div>
+                    <h3 class="headerZahlungen">Einzahlungen:</h3>
                     <div *ngFor = "let data of zahlungExample">
                         <div *ngIf = 'data.type == "Einzahlung"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                         </div>
                     </div> 
                 </div>
-                <div style="width:50%;">
-                    <h3 style="padding-left: 1rem !important;">Auszahlungen:</h3>
+                <div>
+                    <h3 class="headerZahlungen">Auszahlungen:</h3>
                     <div *ngFor = "let data of zahlungExample">
                         <div *ngIf = 'data.type == "Auszahlung"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>

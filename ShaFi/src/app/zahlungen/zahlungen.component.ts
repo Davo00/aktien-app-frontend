@@ -42,7 +42,7 @@ export class ZahlungenComponent implements OnInit {
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     console.log(this.innerWidth);
-    if(this.innerWidth <= 800) {
+    if(this.innerWidth <= 700) {
       this.mobile = true;
     }
     else{
@@ -54,7 +54,7 @@ export class ZahlungenComponent implements OnInit {
   onResize() {
     this.innerWidth = window.innerWidth;
     console.log(this.innerWidth);
-    if(this.innerWidth <= 800) {
+    if(this.innerWidth <= 700) {
       this.mobile = true;
     }
     else{

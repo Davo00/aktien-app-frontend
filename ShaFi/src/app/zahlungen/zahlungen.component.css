@@ -1,15 +1,20 @@
 .groupOverviewPage {
-    display: flex;
-    justify-content: center;
+    
     margin-top: 5rem;
+    padding-bottom: 5rem;
   }
 
 .header{
-    font-weight: bold;
+  text-align: center;
 }
 
 .subHeader {
-    margin-left: 1rem !important;
+  text-align: center;
+}
+
+.headerZahlungen {
+  text-align: center;
+  padding-top: 3rem !important;
 }
 
 .smallNavHistory {
@@ -33,9 +38,14 @@
     margin-bottom: 5rem;
   }
 
+  .desktopView {
+    margin: 0 auto; 
+    width:50%
+}
+
   .mobile {
-      align-items: center;
-      align-content: center;
+    align-items: center;
+    align-content: center;
     display: inherit;
     vertical-align: middle;
     margin-right: 0.5rem;
@@ -124,9 +134,6 @@
   }
   
   @media screen and (max-width: 620px) {
-    .groupOverviewPage {
-      margin-top: 1rem;
-    }
     .group {
       width: 95%;
     }
