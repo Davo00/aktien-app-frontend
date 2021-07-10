@@ -8,6 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
+import {MatTableModule} from '@angular/material/table';
+import { AbbrechnungComponent } from './abbrechnung/abbrechnung.component';
 import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 import { ChatdialogComponent } from './chatdialog/chatdialog.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
@@ -42,6 +44,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     AppComponent,
     routingComponent,
     ZahlungsblockComponent,
+    HomeComponent,
+    AbbrechnungComponent,
     DialogwindowComponent,
     DialogmainexampleComponent,
     HomeComponent,
@@ -64,6 +68,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
     MatCheckboxModule,
     HttpClientModule,
     MatCardModule,
