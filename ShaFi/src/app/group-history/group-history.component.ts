@@ -4,16 +4,9 @@ import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dia
 import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
 import { trigger, keyframes, animate, transition } from '@angular/animations';
 import * as kf from './keyframes';
-// import { GroupOverviewComponent } from './group-overview/group-overview.component';
+import { GroupOverviewComponent } from '../group-overview/group-overview.component';
 import { Router, ActivatedRoute } from '@angular/router';
-// type groupPaymentType = { payerName: string; amount: number }
-// type groupChatType = {
-//   Absender: string;
-//   Datum: Date;
-//   Text: string;
-//   Value: number;
-//   Mitglieder: string;
-// }
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-group-history',
@@ -66,7 +59,8 @@ export class GroupHistoryComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) {
     this.animationState = '';
     this.currentTabChat = false;
@@ -176,7 +170,7 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   public checkDate(datecheck: Date) {
-    /*   console.log(datecheck); */
+    /* console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
     /* console.log(datecheck.getDate()) */
     /* console.log(this.ChatDatevar) */
@@ -214,27 +208,6 @@ export class GroupHistoryComponent implements OnInit {
           payerName: result.payerName,
           amount: result.amount,
         });
-      }
-    });
-  }
-
-  public editGroup(number: number) {
-    const dialogref = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {
-        groupName: this.Payments[number].payerName,
-        members: this.Payments[number].amount,
-      },
-      width: '60vw',
-      height: '60vh',
-      position: {},
-      disableClose: false,
-    });
-    dialogref.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
-        this.Payments[number].payerName = result.payerName;
-        this.Payments[number].amount = result.amount;
       }
     });
   }
@@ -289,4 +262,35 @@ export class GroupHistoryComponent implements OnInit {
       this.currentTabChat = false;
     }
   }
+
+  addUser(groupId: number, userName: string) {
+    // this.apiService.addUserToGroup(groupId, userName);
+  }
+
+  // wrong implementation, should search for ids not array indices
+  // public editGroup(groupId: number) {
+  //   const dialogref = this.matDialog.open(AddGroupDialogComponent, {
+  //     data: {
+  //       groupName: this.Groups[groupId].groupName,
+  //       groupId: this.Groups[groupId].groupId,
+  //       members: this.Groups[groupId].members,
+  //     },
+  //     width: '60vw',
+  //     height: '60vh',
+  //     position: {},
+  //     disableClose: false,
+  //   });
+  //   dialogref.afterClosed().subscribe((result) => {
+  //     if (result == null) {
+  //     } else {
+  //       console.log(result);
+  //       this.Groups[groupId].groupName = result.groupName;
+  //       this.Groups[groupId].groupId = result.groupId;
+  //       this.Groups[groupId].members = result.members;
+  //       this.apiService.updateGroupById(groupId);
+  //     }
+  //   });
+  // }
+
+  deleteGroup() {}
 }

@@ -22,7 +22,8 @@ export class GroupOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     // this.apiService.getAllGroupsOfUser(1).subscribe(data => {
-    // // this.Groups.push(data);
+    //   console.log(data);
+    // this.Groups.push(data);
     // })
   }
 
@@ -86,7 +87,6 @@ export class GroupOverviewComponent implements OnInit {
   //   this.Groups.push({ groupName, groupId, members });
   // }
 
-  // add group from frontend
   addGroup() {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
@@ -109,29 +109,7 @@ export class GroupOverviewComponent implements OnInit {
           members: result.members,
           // groupHistory: result.groupHistory //////////////////////
         });
-      }
-    });
-  }
-
-  public editGroup(number: number) {
-    const dialogref = this.matDialog.open(AddGroupDialogComponent, {
-      data: {
-        groupName: this.Groups[number].groupName,
-        groupId: this.Groups[number].groupId,
-        members: this.Groups[number].members,
-      },
-      width: '60vw',
-      height: '60vh',
-      position: {},
-      disableClose: false,
-    });
-    dialogref.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
-        this.Groups[number].groupName = result.groupName;
-        this.Groups[number].groupId = result.groupId;
-        this.Groups[number].members = result.members;
+        this.apiService.createGroup(result.groupName);
       }
     });
   }
