@@ -22,7 +22,7 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 import { ErrorSiteComponent } from './error-site/error-site.component';
 import { StartseiteComponent } from './startseite/startseite.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HammertimeDirective } from './hammertime.directive';
@@ -32,6 +32,8 @@ import {
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
 import { AngularResizedEventModule } from 'angular-resize-event';
+import { Observable } from 'rxjs';
+import { ApiService } from './services/api.service';
 
 
 @Injectable()
@@ -60,7 +62,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     ErrorSiteComponent,
     StartseiteComponent,
     HammertimeDirective,
-
   ],
   imports: [
     BrowserModule,
@@ -75,12 +76,14 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatButtonModule,
     ReactiveFormsModule,
     AngularResizedEventModule,
+    Observable
   ],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,
     },
+    ApiService
   ],
   bootstrap: [AppComponent],
 })

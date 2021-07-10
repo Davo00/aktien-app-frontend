@@ -4,6 +4,7 @@ import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.co
 import { Router } from '@angular/router';
 import { ResizedEvent } from 'angular-resize-event';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 type groupType = { groupName: string; groupId: string; members: string };
 // type groupType = { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent };
@@ -19,12 +20,17 @@ export class GroupOverviewComponent implements OnInit {
   innerWidth: number;
   innerHeight: number;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService.getAllGroupsOfUser(1).subscribe(data => {
+    // this.Groups.push(data);
+    })
+  }
 
   constructor(
     private matDialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private apiService: ApiService
   ) {
     this.groupToPreview = null;
     this.mobileView = false;
