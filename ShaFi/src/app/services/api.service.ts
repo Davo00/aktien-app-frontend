@@ -22,23 +22,11 @@ export class ApiService {
     return this.http.get(url);
   }
 
-  // ** GROUP ENTITY ** //
-
-  public getGroupsUsers(groupId: number) {
-    let url = '/groups/' + groupId + '/myUsers';
-    return this.http.get(url);
-  }
-
-  public getSpecificGroupsUser(groupId: number, userId: number) {
-    let url = '/groups/' + groupId + '/myUsers/' + userId;
-    return this.http.get(url);
-  }
-
   // ** GROUP CONTROLLER ** //
 
   public getUserByGroup(groupId: number) {
     let url = '/group/' + 'allUsers/' + groupId;
-    return this.http.get(url);
+    return this.http.get(url); // this.baseUrl + url
   }
 
   public createGroup(groupName: string): Observable<any> {

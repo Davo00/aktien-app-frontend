@@ -62,6 +62,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     ErrorSiteComponent,
     StartseiteComponent,
     HammertimeDirective,
+    // Observable
   ],
   imports: [
     BrowserModule,
@@ -75,8 +76,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
-    AngularResizedEventModule,
-    Observable
+    AngularResizedEventModule
   ],
   providers: [
     {
