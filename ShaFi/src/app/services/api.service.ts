@@ -17,7 +17,7 @@ export class ApiService {
     return this.http.get(url);
   }
 
-  public getSpecificExpenses(groupId: number) {
+  public getSpecificExpense(groupId: number) {
     let url = '/expense/' + groupId;
     return this.http.get(url);
   }

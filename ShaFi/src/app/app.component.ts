@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       console.log(returnData);
     })
 
-    this.api.getSpecificExpenses(1).subscribe(returnData => {
+    this.api.getSpecificExpense(1).subscribe(returnData => {
       console.log(returnData);
     })
   }

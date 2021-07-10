@@ -21,9 +21,9 @@ export class GroupOverviewComponent implements OnInit {
   innerHeight: number;
 
   ngOnInit(): void {
-    this.apiService.getAllGroupsOfUser(1).subscribe(data => {
-    // this.Groups.push(data);
-    })
+    // this.apiService.getAllGroupsOfUser(1).subscribe(data => {
+    // // this.Groups.push(data);
+    // })
   }
 
   constructor(
