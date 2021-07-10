@@ -20,6 +20,10 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(window.location.href);
+    const userData = sessionStorage.getItem('userData');
+    console.log(userData);
+    
     this.api.getAllExpense().subscribe(returnData => {
       console.log(returnData);
     })

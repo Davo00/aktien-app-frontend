@@ -39,4 +39,8 @@ export class ZahlungenComponent implements OnInit {
       }
   ]
 
+  onSave() {
+    sessionStorage.setItem('userData', "Niklas");
+    console.log("Niklas")
+  }
 }
