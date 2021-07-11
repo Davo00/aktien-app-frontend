@@ -1,8 +1,46 @@
-# ShaFi
+# SharedFinanze
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+ <img alt ="ShaFi Logo" src="Doku_Unterlagen\KG24_LOGO.png">
 
-## Development server
+ # Inhaltsverzeichnis 
+
+ 1) Idee
+ 2) Aufbau des Repositories
+ 3) Herangehensweise an das Projekt
+ 4) Lessons Learned im Frontend
+ 5) Verwendung der App
+ 6) Installationshinweise
+
+
+## Idee
+
+
+
+## Aufbau des Repositories
+
+
+
+## Herangehensweise an das Projekt
+
+
+
+## Lessons Learned im Frontend
+
+
+
+## Verwendung der App
+
+
+
+## Installationshinweise
+
+
+
+
+
+
+
+<!-- ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -24,4 +62,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->
+ 
