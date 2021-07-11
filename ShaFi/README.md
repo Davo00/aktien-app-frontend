@@ -5,9 +5,9 @@
  # Inhaltsverzeichnis 
 
  1) [Idee](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Idee)
- 2) [Aufbau des Repositorys](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Aufbau-des-Repositorys)
- 2.1) [Frontend](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Frontend)
- 2.2) [Backend](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Backend)
+ 2) [Aufbau des Repositorys](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Aufbau-des-Repositorys)</br>
+ 2.1) [Frontend](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Frontend)</br>
+ 2.2) [Backend](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Backend)</br>
  3) [Verwendung von Angular](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Verwendung-von-Angular)
  4) [Herangehensweise an das Projekt](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Herangehensweise-an-das-Projekt)
  5) [Lessons Learned im Frontend](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Lessons-Learned-im-Frontend)
