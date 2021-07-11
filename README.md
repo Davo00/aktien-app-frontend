@@ -1,8 +1,6 @@
-# aktien-app-frontend
-This is the frontend for the pay by stock value app
+# Shared Finanz
 
-
-## Guide to run the application on your localhost
+ <img alt="ShaFi Logo"  src="Doku_Unterlagen\KG24_LOGO.png">
 
 1. clone the repository
 2. go into the subfolder Shafi
