@@ -1,5 +1,6 @@
-# aktien-app-frontend
-This is the frontend for the pay by stock value app
+# Shared Finanz
+
+ <img alt="ShaFi Logo"  src="Doku_Unterlagen\KG24_LOGO.png">
 
 
 ## Guide to run the application on your localhost
