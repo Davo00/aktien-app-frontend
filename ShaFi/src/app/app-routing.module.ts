@@ -14,40 +14,34 @@ import { StartseiteComponent } from './startseite/startseite.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-
 const routes: Routes = [
-  {path: 'zahlungen', component: ZahlungenComponent},
-  {path: 'group-overview', component: GroupOverviewComponent },
-  {path: 'group-history', component: GroupHistoryComponent },
-  {path: 'dialogwindow', component: DialogwindowComponent},
-  {path: 'chat', component: ChatprogrammComponent},
-  {path: 'dialog', component: DialogmainexampleComponent},
-  {path: 'home', component: HomeComponent},
-  {path: '', component: StartseiteComponent},
+  { path: 'zahlungen', component: ZahlungenComponent },
+  { path: 'group-overview', component: GroupOverviewComponent },
+  { path: 'group/:id', component: GroupHistoryComponent },
+  { path: 'dialogwindow', component: DialogwindowComponent },
+  { path: 'chat', component: ChatprogrammComponent },
+  { path: 'dialog', component: DialogmainexampleComponent },
+  { path: '', component: HomeComponent },
+  { path: '', component: StartseiteComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  {path: 'abrechnung', component: AbbrechnungComponent},
-
-
-
-
+  { path: 'abrechnung', component: AbbrechnungComponent },
 
   //Dieser Link muss als letztes in der Zeile stehen
-  {path: '**', component: ErrorSiteComponent},
-  
-
-  
+  { path: '**', component: ErrorSiteComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-export const routingComponent = [ZahlungenComponent, 
-                                GroupOverviewComponent, 
-                                GroupHistoryComponent, 
-                                DialogwindowComponent, 
-                                DialogmainexampleComponent, 
-                                HomeComponent,
-                                AbbrechnungComponent]
+export class AppRoutingModule {}
+export const routingComponent = [
+  ZahlungenComponent,
+  GroupOverviewComponent,
+  GroupHistoryComponent,
+  DialogwindowComponent,
+  DialogmainexampleComponent,
+  HomeComponent,
+  AbbrechnungComponent,
+];

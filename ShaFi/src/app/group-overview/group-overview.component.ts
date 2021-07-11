@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.component';
+import { Router } from '@angular/router';
+import { ResizedEvent } from 'angular-resize-event';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../services/api.service';
+
+type groupType = { groupName: string; groupId: string; members: string };
+// type groupType = { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent };
 
 @Component({
   selector: 'app-group-overview',
@@ -8,41 +15,83 @@ import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.co
   styleUrls: ['./group-overview.component.css'],
 })
 export class GroupOverviewComponent implements OnInit {
-  // GroupsOverview = false;
-  // GroupPreview = true;
-
-  constructor(private matDialog: MatDialog) {}
+  groupToPreview: any;
+  mobileView: boolean;
+  innerWidth: number;
+  innerHeight: number;
 
   ngOnInit(): void {
-    console.log(this.Groups);
-
-    //Media Query
-    // var query = window.matchMedia("(min-width: 900px");
-    // if (query.matches) {
-    //   this.GroupsOverview = false;
-    //   this.GroupPreview = false;
-    // } else {
-    //   this.GroupsOverview = false;
-    //   this.GroupPreview = true;
-    // }
+    // this.apiService.getAllGroupsOfUser(1).subscribe(data => {
+    //   console.log(data);
+    // this.Groups.push(data);
+    // })
   }
 
-  Groups: { groupName: string; members: string }[] = [
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
-    { groupName: 'Test Group', members: 'Moayad, Alex, Cevin' },
+  constructor(
+    private matDialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute,
+    private apiService: ApiService
+  ) {
+    this.groupToPreview = null;
+    this.mobileView = false;
+    this.innerWidth = 0;
+    this.innerHeight = 0;
+  }
+
+  // groupHistory: GroupHistoryComponent
+  // Groups: { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent }[] = [
+  Groups: { groupName: string; groupId: string; members: string }[] = [
+    {
+      groupName: 'Test Group 1',
+      groupId: '1',
+      members: 'Niklas, Alex, Hendrik',
+      // groupHistory:
+    },
+    {
+      groupName: 'Test Group 2',
+      groupId: '2',
+      members: 'Moayad, Moritz, Cevin',
+    },
+    { groupName: 'Test Group 3', groupId: '3', members: 'Davit, Alex, Niklas' },
+    {
+      groupName: 'Test Group 4',
+      groupId: '4',
+      members: 'Hendrik, Davit, Cevin',
+    },
+    {
+      groupName: 'Test Group 5',
+      groupId: '5',
+      members: 'Moayad, Hendrik, Moritz',
+    },
+    {
+      groupName: 'Test Group 6',
+      groupId: '6',
+      members: 'Davit, Moritz, Cevin',
+    },
+    {
+      groupName: 'Test Group',
+      groupId: '7',
+      members: 'Davit, Moayad, Hendrik',
+    },
+    { groupName: 'Test Group', groupId: '8', members: 'Niklas, Alex, Niklas' },
+    {
+      groupName: 'Test Group',
+      groupId: '9',
+      members: 'Hendrik, Moayad, Cevin',
+    },
   ];
 
-  public addGroup() {
+  // get group from backend
+  // getGroup(groupName: string, groupId: string, members: string) {
+  //   this.Groups.push({ groupName, groupId, members });
+  // }
+
+  addGroup() {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: null,
+        groupId: null,
         members: null,
       },
       width: '60vw',
@@ -56,50 +105,31 @@ export class GroupOverviewComponent implements OnInit {
         console.log(result);
         this.Groups.push({
           groupName: result.groupName,
+          groupId: result.groupId,
           members: result.members,
+          // groupHistory: result.groupHistory //////////////////////
         });
+        this.apiService.createGroup(result.groupName);
       }
     });
   }
 
-  public editGroup(number: number) {
-    const dialogref = this.matDialog.open(AddGroupDialogComponent, {
-      data: {
-        groupName: this.Groups[number].groupName,
-        members: this.Groups[number].members,
-      },
-      width: '60vw',
-      height: '60vh',
-      position: {},
-      disableClose: false,
-    });
-    dialogref.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
-        this.Groups[number].groupName = result.groupName;
-        this.Groups[number].members = result.members;
-      }
-    });
+  onResized(event: ResizedEvent) {
+    this.innerWidth = event.newWidth;
+    this.innerHeight = event.newHeight;
   }
 
-  // preview essential info about a group
-  preview() {
-    console.log("hello");
+  previewGroup(group: groupType) {
+    if (this.innerWidth <= 900) {
+      this.openGroup(group.groupId);
+    } else this.groupToPreview = group;
   }
 
-  // GroupsOverviewButton(){
-  //   this.GroupsOverview = false;
-  //   this.GroupPreview = true;
-  // }
-  // GroupPreviewButton(){
-  //   this.GroupPreview = false;
-  //   this.GroupsOverview = true;
-  // }
-  // returnGroupsOverview(){
-  //   return this.GroupsOverview;
-  // }
-  // returnGroupPreview(){
-  //   return this.GroupPreview;
-  // }
+  openGroup(groupId: string) {
+    for (let group of this.Groups) {
+      if (group.groupId === groupId)
+        this.router.navigate(['/', 'group', groupId]);
+      else console.log('Group does not exist'); // hier kann man mehr machen
+    }
+  }
 }

@@ -13,6 +13,7 @@ import { AbbrechnungComponent } from './abbrechnung/abbrechnung.component';
 import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 import { ChatdialogComponent } from './chatdialog/chatdialog.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
+import { GroupOverviewComponent } from './group-overview/group-overview.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -23,12 +24,18 @@ import { DialogwindowComponent } from './dialogwindow/dialogwindow.component';
 import { DialogmainexampleComponent } from './dialogmainexample/dialogmainexample.component';
 import { ErrorSiteComponent } from './error-site/error-site.component';
 import { StartseiteComponent } from './startseite/startseite.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HammertimeDirective } from './hammertime.directive';
 import * as Hammer from 'hammerjs';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import {
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG,
+} from '@angular/platform-browser';
+import { AngularResizedEventModule } from 'angular-resize-event';
+import { Observable } from 'rxjs';
+import { ApiService } from './services/api.service';
 
 
 @Injectable()
@@ -37,7 +44,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     swipe: { direction: Hammer.DIRECTION_ALL },
   };
 }
-
 
 @NgModule({
   declarations: [
@@ -54,12 +60,13 @@ export class MyHammerConfig extends HammerGestureConfig {
     ChatprogrammComponent,
     ChatdialogComponent,
     GroupHistoryComponent,
+    GroupOverviewComponent,
     AddGroupDialogComponent,
     AddPaymentDialogComponent,
     ErrorSiteComponent,
     StartseiteComponent,
     HammertimeDirective,
-
+    // Observable
   ],
   imports: [
     BrowserModule,
@@ -73,13 +80,15 @@ export class MyHammerConfig extends HammerGestureConfig {
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularResizedEventModule
   ],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,
     },
+    ApiService
   ],
   bootstrap: [AppComponent],
 })
