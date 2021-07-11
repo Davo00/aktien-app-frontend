@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'dialogwindow', component: DialogwindowComponent },
   { path: 'chat', component: ChatprogrammComponent },
   { path: 'dialog', component: DialogmainexampleComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: '', component: StartseiteComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
