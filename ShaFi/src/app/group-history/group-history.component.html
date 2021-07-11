@@ -33,8 +33,8 @@
     <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
       <div class="groupChatContainer">
         <h1 class="heading">Group Chat</h1>
-        <div class="groupChatContent">
-          <div id="scrollBlock" class="Chatprogramm">
+        <div class="groupChatContent" id="scrollBlock">
+          <div class="Chatprogramm">
             <div class="ChatprogrammDiv">
               <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
                 <li *ngIf="checkDate(chat.Datum)">
