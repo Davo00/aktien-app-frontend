@@ -60,4 +60,11 @@ export class ApiService {
     let url = '/user/' + 'group/' + groupName;
     return this.http.get(url);
   }
+
+  // ** CALCULATE CONTROLLER ** //
+
+  public getCalculatedDebtsForGroup(groupId: number) {
+    let url = '/calculate/debts'  + groupId;
+    return this.http.get(url);
+  }
 }

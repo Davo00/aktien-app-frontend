@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import {ApiService} from './services/api.service';
 
 export interface PeriodicElement {
   member: string;
@@ -11,11 +12,6 @@ export interface dataType {
   amount: number;
 }
 
-const ELEMENT_DATA: object[] = [
-  {position: 'Bezahlen', name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 'Erhalten', name: 'Helium', weight: 4.0026, symbol: 'He'},
-];
-
 @Component({
   selector: 'app-abbrechnung',
   templateUrl: './abbrechnung.component.html',
@@ -24,12 +20,16 @@ const ELEMENT_DATA: object[] = [
 
 export class AbbrechnungComponent implements OnInit {
 
-  mobile: boolean = false;
+  mobile = false;
   public innerWidth: any;
 
-  constructor() { }
+  constructor(private api:ApiService) { }
 
   ngOnInit(): void {
+    this.api.getCalculatedDebtsForGroup(1).subscribe(data => {
+      console.log(data);
+    })
+
     this.innerWidth = window.innerWidth;
     console.log(this.innerWidth);
     if(this.innerWidth <= 800) {
@@ -79,9 +79,6 @@ export class AbbrechnungComponent implements OnInit {
     else{
       table.style.display = "none";
     }
-    //target.style.display = "none";
-    //console.log(target);
-    //angular.element('#element').css('height', '100px');
   }
 
   isActive(){
@@ -108,7 +105,6 @@ export class AbbrechnungComponent implements OnInit {
         displayedData.push(newRow);
       }
     }
-    console.log(displayedData);
     return displayedData;
   }
 
@@ -150,14 +146,5 @@ export class AbbrechnungComponent implements OnInit {
 
   group: string[] = [];
   columns: string[] = ['free', 'Erhalten', 'Bezahlen'];
-  displayedColumns: string[] = ['Cevin', 'Moritz', 'Hendrik', 'Moayad'];
-  dataSource = 3;
-
-  dataSource2: PeriodicElement[] = [
-    {member: 'Cevin', erhalten: 30, bezahlen: ""},
-    {member: 'Moritz', erhalten: "", bezahlen: 40},
-    {member: 'Hendrik', erhalten: "", bezahlen: ""},
-    {member: 'Moayad', erhalten: "", bezahlen: 20}
-  ];
 }
 
