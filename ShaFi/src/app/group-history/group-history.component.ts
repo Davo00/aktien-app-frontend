@@ -136,8 +136,45 @@ export class GroupHistoryComponent implements OnInit {
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
   ];
 
-  isactive(Absender: string) {
-    if (Absender === this.USerName) {
+  ChatDatevar = new Date(0);
+  USerName = 'Cevin';
+  GroupHistory = false;
+  GroupChat = true;
+
+  ngOnInit(): void {
+    console.log(this.Chats);
+    console.log(this.Payments);
+    let myscrollElement = document.getElementById('scrollBlock') as any;
+    const target = myscrollElement?.scrollHeight;
+    let currentScrollPos = 0;
+
+    const intervalId = setInterval(() => {
+      currentScrollPos = currentScrollPos + 10;
+
+      myscrollElement.scrollTo(0, currentScrollPos);
+
+      if (currentScrollPos >= target) {
+        
+        clearInterval(intervalId);
+      }
+    }, 20);
+
+
+
+      //Media Query
+      let query = window.matchMedia('(min-width: 900px');
+      if (query.matches) {
+        this.GroupHistory = false;
+        this.GroupChat = false;
+      } else {
+        this.GroupHistory = false;
+        this.GroupChat = true;
+      }
+    }
+  
+
+  public isactive(Absender: string){
+    if(Absender === this.USerName){
       return true;
     } else {
       return false;
