@@ -278,30 +278,5 @@ export class GroupHistoryComponent implements OnInit {
     // this.apiService.addUserToGroup(groupId, userName);
   }
 
-  // wrong implementation, should search for ids not array indices
-  // public editGroup(groupId: number) {
-  //   const dialogref = this.matDialog.open(AddGroupDialogComponent, {
-  //     data: {
-  //       groupName: this.Groups[groupId].groupName,
-  //       groupId: this.Groups[groupId].groupId,
-  //       members: this.Groups[groupId].members,
-  //     },
-  //     width: '60vw',
-  //     height: '60vh',
-  //     position: {},
-  //     disableClose: false,
-  //   });
-  //   dialogref.afterClosed().subscribe((result) => {
-  //     if (result == null) {
-  //     } else {
-  //       console.log(result);
-  //       this.Groups[groupId].groupName = result.groupName;
-  //       this.Groups[groupId].groupId = result.groupId;
-  //       this.Groups[groupId].members = result.members;
-  //       this.apiService.updateGroupById(groupId);
-  //     }
-  //   });
-  // }
-
   deleteGroup() {}
 }
