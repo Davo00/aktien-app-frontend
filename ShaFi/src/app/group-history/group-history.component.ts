@@ -147,22 +147,6 @@ export class GroupHistoryComponent implements OnInit {
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
   ];
 
-  // ngOnInit(): void {
-  //   let myscrollElement = document.getElementById('scrollBlock') as any;
-  //   const target = myscrollElement?.scrollHeight;
-  //   let currentScrollPos = 0;
-
-  //   const intervalId = setInterval(() => {
-  //     currentScrollPos = currentScrollPos + 10;
-
-  //     myscrollElement.scrollTo(0, currentScrollPos);
-
-  //     if (currentScrollPos >= target) {
-  //       clearInterval(intervalId);
-  //     }
-  //   }, 20);
-  // }
-
   public isactive(Absender: string) {
     if (Absender === this.USerName) {
       return true;
