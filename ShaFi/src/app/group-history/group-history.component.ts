@@ -278,5 +278,4 @@ export class GroupHistoryComponent implements OnInit {
     // this.apiService.addUserToGroup(groupId, userName);
   }
 
-  deleteGroup() {}
 }

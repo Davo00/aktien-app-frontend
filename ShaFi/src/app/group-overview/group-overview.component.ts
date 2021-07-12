@@ -139,6 +139,8 @@ export class GroupOverviewComponent implements OnInit {
     });
   }
 
+  deleteGroup() {}
+
   onResized(event: ResizedEvent) {
     this.innerWidth = event.newWidth;
     this.innerHeight = event.newHeight;
