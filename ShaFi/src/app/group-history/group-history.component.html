@@ -1,6 +1,6 @@
 <div class="groupHisoryPage">
   <div class="groupHisoryPageContent">
-    <div class="groupHisory" [ngClass]="{ deactiv: returngroupHistory() }">
+    <div class="groupHisory" [ngClass]="{ deactiv: returnGroupHistory() }">
       <div class="groupContainer">
         <h1 class="heading">Group History</h1>
         <div class="AddButton">
@@ -82,7 +82,7 @@
   <div class="smallNavHistory">
     <div
       class="ElementNavHis"
-      [ngClass]="{ deactiv: returngroupHistory() }"
+      [ngClass]="{ deactiv: returnGroupHistory() }"
       (click)="SwipeRight()"
     >
       Group History
@@ -105,7 +105,7 @@
       (swipeleft)="SwipeLeft()"
     >
       <mat-card-actions class="card">
-        <div class="groupHisory" [ngClass]="{ deactiv: returngroupHistory() }">
+        <div class="groupHisory" [ngClass]="{ deactiv: returnGroupHistory() }">
           <div class="groupContainer">
             <div class="displayNone900">
               <h1 class="heading">Group History</h1>

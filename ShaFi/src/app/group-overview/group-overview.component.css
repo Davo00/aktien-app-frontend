@@ -1,7 +1,11 @@
 .groupOverviewPage {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+}
+
+.heading {
+  text-align: center;
+  transform: translateY(1rem);
 }
 
 .groupOverview {
@@ -16,22 +20,19 @@
   margin-right: 0.5rem;
 }
 
-.heading {
-  text-align: center;
+.AddButton {
+  height: 30px;
 }
 
 .addGroupButton {
   margin-right: 0.5rem;
   margin-top: 0.8rem;
   float: right;
+  transform: translateY(-0.1rem);
 }
 
 .addGroupButton:hover {
   cursor: pointer;
-}
-
-.AddButton {
-  height: 30px;
 }
 
 .groups {
@@ -39,6 +40,7 @@
   overflow-y: scroll;
   height: 49vh;
   margin-top: 0.8rem;
+  clip-path: inset(13px 0px 5px 0px);
 }
 
 .groups::-webkit-scrollbar {
@@ -49,7 +51,7 @@
   margin-bottom: 1rem;
   margin-left: 0.5rem;
   padding-left: 0.5rem;
-  padding-top: 0.3rem;
+  padding-top: 1rem;
   background-color: white;
   box-shadow: 1px 1px 1px 1px silver;
   border-radius: 10px;
@@ -85,6 +87,7 @@
   padding-right: 0.5rem;
   padding-bottom: 0.5rem;
   margin-top: 4.54rem;
+  min-height: 20vh;
 }
 
 .moreDetailsButton {
