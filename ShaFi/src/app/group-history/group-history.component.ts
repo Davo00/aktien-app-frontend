@@ -39,20 +39,31 @@ export class GroupHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.Chats);
-    var scrollclass = document.getElementById('scrollBlock');
     console.log(this.Payments);
+    var scrollclass = document.getElementById('scrollBlock');
     if (scrollclass != null) {
       scrollclass.scrollTop = scrollclass.scrollHeight;
+    }
+    let myscrollElement = document.getElementById('scrollBlock') as any;
+    const target = myscrollElement?.scrollHeight;
+    let currentScrollPos = 0;
+    const intervalId = setInterval(() => {
+      currentScrollPos = currentScrollPos + 10;
 
-      //Media Query
-      var query = window.matchMedia('(min-width: 900px');
-      if (query.matches) {
-        this.GroupHistory = false;
-        this.GroupChat = false;
-      } else {
-        this.GroupHistory = false;
-        this.GroupChat = true;
+      myscrollElement.scrollTo(0, currentScrollPos);
+
+      if (currentScrollPos >= target) {
+        clearInterval(intervalId);
       }
+    }, 20);
+    //Media Query
+    let query = window.matchMedia('(min-width: 900px');
+    if (query.matches) {
+      this.GroupHistory = false;
+      this.GroupChat = false;
+    } else {
+      this.GroupHistory = false;
+      this.GroupChat = true;
     }
   }
 
@@ -136,7 +147,7 @@ export class GroupHistoryComponent implements OnInit {
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
   ];
 
-  isactive(Absender: string) {
+  public isactive(Absender: string) {
     if (Absender === this.USerName) {
       return true;
     } else {
