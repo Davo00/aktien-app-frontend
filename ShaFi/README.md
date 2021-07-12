@@ -33,7 +33,7 @@ Das Repository des Frontend ist so aufgebaut, dass im Hauptordner Aktien-App-Fro
 Außerdem gibt es den Ordner ShaFi, dieser beinhaltet das eigentliche Frontend des Projektes. Es ist aus dem Grund ein Unterordner, um eine übersichtliche Struktur des Repositorys zu ermöglichen. 
 Der Ordner ShaFi ist auch für die Installation sehr wichtig. Dazu [hier](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Installationshinweise) mehr Informationen.
 Die Ordner .vscode und node_modules sowie viele  Dateien sind automatisch generiert und werden von unserer Seite nicht bearbeitet. Außerhalb des src Ordners werden nur die Dateien ReadMe und .eslintrc.json häufig bearbeitet. Die ReadMe Datei ist diese Dokumentation und die eslintrc.json Datei beinhaltet automatische Tests. </br>
-Innerhalb des src Ordners werden die Ordner app, sowie die Datei styles.css von uns direkt bearbeitet. Die Datei styles.css beinhaltet die Schrifttypen, die Farben und weitere allgemeine Informationen, die für jede Seite wiederverwendet werden sollen. Dadurch kann zum einen verhindert werden, dass für jede Seite die Schrifttypen definiert werden müssen und ermöglicht außerdem eine einfache Bearbeitung der Variablen, wie der Farben. Hierbei ist jedoch Vorsicht geboten, da dies alle Seiten betrifft uns dadurch schnell neue Probleme verursachen kann. .</br>
+Innerhalb des src Ordners werden die Ordner app, sowie die Datei styles.css von uns direkt bearbeitet. Die Datei styles.css beinhaltet die Schrifttypen, die Farben und weitere allgemeine Informationen, die für jede Seite wiederverwendet werden sollen. Dadurch kann zum einen verhindert werden, dass für jede Seite die Schrifttypen definiert werden müssen und ermöglicht außerdem eine einfache Bearbeitung der Variablen, wie der Farben. Hierbei ist jedoch Vorsicht geboten, da dies alle Seiten betrifft uns dadurch schnell neue Probleme verursachen kann.</br>
 Innerhalb des app Ordners werden alle Komponenten der Webseite gespeichert. Jede Komponente stellt einen Teil oder eine ganze Seite zur Verfügung und beinhaltet somit den tatsächlich auszuführenden Code. 
 Durch die Verwendung von Angular besteht jede Komponente aus vier Dateien. Einer HTML-Datei, die den Code beinhaltet. Einer CSS-Datei, die das Styling der Komponente beeinflusst. Einer Typescript Datei um die Funktionalität der Webseite bereitzustellen und einer spec Datei, die aber unter normalen Bedingungen nicht bearbeitet wird.
 
@@ -54,7 +54,24 @@ Unser Projekt besteht aus insgesamt 6 Phasen.
 
 
 ## Lessons Learned im Frontend
+- Token Verwendung für Anmeldung
+- Mobile Gestaltung (Css, Html)
+- Angular Framework kennengelernt
+- typescript 
+- Github 
+- Rerouting
+- Wir können kein Design
+- Test mit eslint
+- npm Packet Manager
 
+
+
+
+## Zukunftsausblick
+- Weitere Komponenten in der Zukunft
+- Elevator Pitch, Zettel an der Uni/Bar verteilen 
+- Krypto geht auch(Für Zocker)
+- QR COde
 
 
 ## Verwendung der App
