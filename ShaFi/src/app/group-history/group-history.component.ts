@@ -39,20 +39,31 @@ export class GroupHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.Chats);
-    var scrollclass = document.getElementById('scrollBlock');
     console.log(this.Payments);
+    var scrollclass = document.getElementById('scrollBlock');
     if (scrollclass != null) {
       scrollclass.scrollTop = scrollclass.scrollHeight;
+    }
+    let myscrollElement = document.getElementById('scrollBlock') as any;
+    const target = myscrollElement?.scrollHeight;
+    let currentScrollPos = 0;
+    const intervalId = setInterval(() => {
+      currentScrollPos = currentScrollPos + 10;
 
-      //Media Query
-      var query = window.matchMedia('(min-width: 900px');
-      if (query.matches) {
-        this.GroupHistory = false;
-        this.GroupChat = false;
-      } else {
-        this.GroupHistory = false;
-        this.GroupChat = true;
+      myscrollElement.scrollTo(0, currentScrollPos);
+
+      if (currentScrollPos >= target) {
+        clearInterval(intervalId);
       }
+    }, 20);
+    //Media Query
+    let query = window.matchMedia('(min-width: 900px');
+    if (query.matches) {
+      this.GroupHistory = false;
+      this.GroupChat = false;
+    } else {
+      this.GroupHistory = false;
+      this.GroupChat = true;
     }
   }
 
@@ -136,7 +147,7 @@ export class GroupHistoryComponent implements OnInit {
     /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
   ];
 
-  isactive(Absender: string) {
+  public isactive(Absender: string) {
     if (Absender === this.USerName) {
       return true;
     } else {
@@ -267,30 +278,4 @@ export class GroupHistoryComponent implements OnInit {
     // this.apiService.addUserToGroup(groupId, userName);
   }
 
-  // wrong implementation, should search for ids not array indices
-  // public editGroup(groupId: number) {
-  //   const dialogref = this.matDialog.open(AddGroupDialogComponent, {
-  //     data: {
-  //       groupName: this.Groups[groupId].groupName,
-  //       groupId: this.Groups[groupId].groupId,
-  //       members: this.Groups[groupId].members,
-  //     },
-  //     width: '60vw',
-  //     height: '60vh',
-  //     position: {},
-  //     disableClose: false,
-  //   });
-  //   dialogref.afterClosed().subscribe((result) => {
-  //     if (result == null) {
-  //     } else {
-  //       console.log(result);
-  //       this.Groups[groupId].groupName = result.groupName;
-  //       this.Groups[groupId].groupId = result.groupId;
-  //       this.Groups[groupId].members = result.members;
-  //       this.apiService.updateGroupById(groupId);
-  //     }
-  //   });
-  // }
-
-  deleteGroup() {}
 }
