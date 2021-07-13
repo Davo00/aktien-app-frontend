@@ -18,10 +18,6 @@ export class AppComponent implements OnInit {
     this.api.getAllExpense().subscribe((returnData) => {
       console.log(returnData);
     });
-
-    this.api.getSpecificExpense(1).subscribe((returnData) => {
-      console.log(returnData);
-    });
   }
 
   thisclicked() {

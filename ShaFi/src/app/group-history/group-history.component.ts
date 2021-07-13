@@ -58,7 +58,13 @@ export class GroupHistoryComponent implements OnInit {
     } else {
       this.GroupHistory = false;
       this.GroupChat = true;
-    }
+    } 
+    this.apiService.getAllExpense().subscribe((returnData) => {
+      console.log(returnData);
+    });
+    this.apiService.getAllGroupsOfUser(6).subscribe(data => {
+       console.log(data);
+    })
   }
 
   constructor(
@@ -160,7 +166,16 @@ export class GroupHistoryComponent implements OnInit {
           amount: result.amount,
         });
       }
+      this.apiService.createExpense(); //////////////////////
     });
+  }
+
+  editPayment() {/////////////////////////////////////////////
+    this.apiService.editExpenseById(1);
+  }
+
+  deletePayment() {/////////////////////////////////////////////
+    this.apiService.deleteExpenseById(1);
   }
 
   public isactive(Absender: string) {
