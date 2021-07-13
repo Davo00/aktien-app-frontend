@@ -9,10 +9,10 @@
         <ul
           class="group"
           *ngFor="let group of Groups; let i = index"
-          (click)="previewGroup(group)"
+          
         >
           <div class="flexElement">
-            <div class="GroupBlockleft">
+            <div class="GroupBlockleft" (click)="previewGroup(group)">
             <h3>{{ Groups[i].name }}</h3>
             
           </div>
