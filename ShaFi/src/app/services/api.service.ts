@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const baseUrl: string = 'http://162.55.185.65:8080/';
+
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   baseUrl: string = 'http://162.55.185.65:8080/';
+
+  headersToken= new HttpHeaders()
+  //.set('Authorization', 'application/json')
+  .set('Access-Control-Allow-Origin', 'POST');
 
   constructor(private http: HttpClient) {}
 
@@ -60,4 +66,12 @@ export class ApiService {
     let url = '/user/' + 'group/' + groupName;
     return this.http.get(url);
   }
+  public postLogin(login: Object): Observable<any> {
+    let url =  '/user/login';
+    console.log(login)
+    return this.http.post<any>(url, login, {headers: this.headersToken} );
+  }
+
+  //return this.http.post<string>(url, login , { 'headers': headers };
+
 }

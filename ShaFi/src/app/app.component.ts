@@ -20,6 +20,20 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    //Initiales Login
+    let data  = {"password": "pass", "username": "Cevin"}
+
+    
+    console.log(data)
+    this.api.postLogin(data).subscribe(key => {
+      console.log(key)
+    })
+
+    
+
+
+
     this.api.getAllExpense().subscribe(returnData => {
       console.log(returnData);
     })
