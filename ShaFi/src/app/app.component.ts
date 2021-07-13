@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
-import {ApiService} from './services/api.service';
-
+import { Router } from '@angular/router';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +9,19 @@ import {ApiService} from './services/api.service';
 })
 export class AppComponent implements OnInit {
   title = 'ShaFi';
- 
 
-  constructor(public router: Router, private api:ApiService) {  
-  }
+  constructor(public router: Router, private api: ApiService) {}
 
-  clicked: boolean=false;
-
-
+  clicked: boolean = false;
 
   ngOnInit(): void {
-    this.api.getAllExpense().subscribe(returnData => {
+    this.api.getAllExpense().subscribe((returnData) => {
       console.log(returnData);
-    })
+    });
 
-    this.api.getSpecificExpense(1).subscribe(returnData => {
+    this.api.getSpecificExpense(1).subscribe((returnData) => {
       console.log(returnData);
-    })
+    });
   }
 
   thisclicked() {

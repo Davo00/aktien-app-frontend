@@ -318,6 +318,7 @@
   h1 {
     font-size: 3rem !important;
   }
+
   .closeBillArea {
     margin-top: 2rem;
     display: flex;
@@ -328,10 +329,12 @@
   .smallNavHistory {
     display: none;
   }
+
   .closeBillArea {
     padding-bottom: 2rem;
     transform: translateY(0rem);
   }
+
   .payment {
     width: 91%;
   }
@@ -351,6 +354,7 @@
   .groupHisoryPageContentMobile {
     display: inherit;
     vertical-align: middle;
+    overflow-x: hidden;
   }
 
   .cardContainer {
@@ -394,10 +398,12 @@
     padding: 0 0 0 0;
     margin: 0 0 0 0;
   }
+
   .groupChat {
     width: 100%;
     margin: 0 0 0 0;
   }
+
   .groupChatContent {
     height: 57.7vh;
   }
@@ -445,6 +451,7 @@
     padding: 0 0 0 0;
     transform: translateY(-1rem);
   }
+
   .cardContainer {
     width: 94%;
   }
@@ -460,6 +467,7 @@
   .cardContainer {
     width: 93.5%;
   }
+
   .smallNavHistory {
     margin: 0 0 0 0;
   }
@@ -469,21 +477,27 @@
   .closeBillArea {
     /* transform: translateY(-6rem); */
   }
+
   .ElementNavHis {
     font-size: 1.5rem;
   }
+
   .Chatprogramm {
     padding: 0;
   }
+
   .card {
     width: 100%;
   }
+
   .cardContainer {
     width: 92.5%;
   }
+
   .history {
     height: 50vh;
   }
+
   .groupChatContent {
     height: 53.5vh;
   }
@@ -493,6 +507,7 @@
   .cardContainer {
     width: 92%;
   }
+
   .payment {
     width: 92%;
   }
@@ -502,21 +517,27 @@
   .card {
     width: 100%;
   }
+
   .cardContainer {
     width: 91%;
   }
+
   .closeBillArea {
     transform: translateY(-2rem);
   }
+
   .history {
     height: 45vh;
   }
+
   .groupChatContent {
     height: 47.5vh;
   }
+
   .smallNavHistory {
     grid-gap: 1rem;
   }
+
   .Chatprogramm {
     padding: 0;
   }
@@ -536,6 +557,7 @@
   .cardContainer {
     width: 90%;
   }
+
   .payment {
     width: 90%;
   }
