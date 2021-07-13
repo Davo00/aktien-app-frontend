@@ -1,6 +1,8 @@
-# SharedFinanze
+# Shared Finance
+<p align="center">
+ <img alt ="ShaFi Logo" height = 10% width= auto src="..\Doku_Unterlagen\LogoShaFi.jpeg">
+</p>
 
- <img alt ="ShaFi Logo" src="..\Doku_Unterlagen\KG24_LOGO.png">
 
  # Inhaltsverzeichnis 
 
@@ -33,7 +35,7 @@ Das Repository des Frontend ist so aufgebaut, dass im Hauptordner Aktien-App-Fro
 Außerdem gibt es den Ordner ShaFi, dieser beinhaltet das eigentliche Frontend des Projektes. Es ist aus dem Grund ein Unterordner, um eine übersichtliche Struktur des Repositorys zu ermöglichen. 
 Der Ordner ShaFi ist auch für die Installation sehr wichtig. Dazu [hier](https://github.com/Davo00/aktien-app-frontend/blob/main/ShaFi/README.md#Installationshinweise) mehr Informationen.
 Die Ordner .vscode und node_modules sowie viele  Dateien sind automatisch generiert und werden von unserer Seite nicht bearbeitet. Außerhalb des src Ordners werden nur die Dateien ReadMe und .eslintrc.json häufig bearbeitet. Die ReadMe Datei ist diese Dokumentation und die eslintrc.json Datei beinhaltet automatische Tests. </br>
-Innerhalb des src Ordners werden die Ordner app, sowie die Datei styles.css von uns direkt bearbeitet. Die Datei styles.css beinhaltet die Schrifttypen, die Farben und weitere allgemeine Informationen, die für jede Seite wiederverwendet werden sollen. Dadurch kann zum einen verhindert werden, dass für jede Seite die Schrifttypen definiert werden müssen und ermöglicht außerdem eine einfache Bearbeitung der Variablen, wie der Farben. Hierbei ist jedoch Vorsicht geboten, da dies alle Seiten betrifft uns dadurch schnell neue Probleme verursachen kann. .</br>
+Innerhalb des src Ordners werden die Ordner app, sowie die Datei styles.css von uns direkt bearbeitet. Die Datei styles.css beinhaltet die Schrifttypen, die Farben und weitere allgemeine Informationen, die für jede Seite wiederverwendet werden sollen. Dadurch kann zum einen verhindert werden, dass für jede Seite die Schrifttypen definiert werden müssen und ermöglicht außerdem eine einfache Bearbeitung der Variablen, wie der Farben. Hierbei ist jedoch Vorsicht geboten, da dies alle Seiten betrifft uns dadurch schnell neue Probleme verursachen kann.</br>
 Innerhalb des app Ordners werden alle Komponenten der Webseite gespeichert. Jede Komponente stellt einen Teil oder eine ganze Seite zur Verfügung und beinhaltet somit den tatsächlich auszuführenden Code. 
 Durch die Verwendung von Angular besteht jede Komponente aus vier Dateien. Einer HTML-Datei, die den Code beinhaltet. Einer CSS-Datei, die das Styling der Komponente beeinflusst. Einer Typescript Datei um die Funktionalität der Webseite bereitzustellen und einer spec Datei, die aber unter normalen Bedingungen nicht bearbeitet wird.
 
@@ -54,7 +56,22 @@ Unser Projekt besteht aus insgesamt 6 Phasen.
 
 
 ## Lessons Learned im Frontend
+Im Projekt wurden viel Neues gelernt und bereits vorhandene Fähigkeiten im Frontend Team konnten verbessert werden. Durch ein anderes Projekt waren die Grundsätze von HTML, CSS und JS bekannt. Durch die Verwendung von Typescript wurden dann neue Fähigkeiten aufgebaut. Den allgemeinen Aufbau zu verstehen ging relativ schnell, bei einigen Funktionen sind jedoch kleine Fehler erst nach stundenlanger Überprüfung festgestellt worden. So waren eine zu früh geschlossene Klammer häufig ein Problem, auch die Einbindung der API Calls mit Typescript war zu beginn relativ schwierig. Auch die mobile Optimierung mit Typescript war ein Thema, wo neue Fähigkeiten aufgebaut wurden. Die Optimierung der Webseite durch einfache Media Queries in einer CSS-Datei wurden unter anderem durch Media Queries in Typescript verfeinert. Dies eröffnete uns neue Möglichkeiten. 
+Durch die Verwendung verschiedener Gruppen war es außerdem notwendig, dass ein rerouting stattgefunden hat. Der Link für eine Gruppe beinhaltet die Gruppen ID und war zu relativ schwierig einzubinden. Die tatsächliche Lösung war im Nachgang betrachtet relativ einfach und kann für die nächsten Projekte bei Bedarf wiederverwendet werden. Die letzten Punkte zusammenfassend kann man sagen, dass Typescript häufig Probleme verursacht hat. Viele dieser Aspekte können jedoch im nächsten Projekt leichter umgesetzt werden, da nun die Vorgehensweise bekannt ist.
 
+Als weiteren Punkt kann man die Verwendung eines Tokens für die eindeutige Identifizierung eines Users aufnehmen. Dies hat uns vor einige Probleme gestellt, wie genau dieser Token verwendet wird und wie wir damit am besten umgehen.Die Testung des Codes durch Eslint war zu Beginn relativ umständlich, da viele Fehler aufgetreten sind. Am Ende muss jedoch festgestellt werden, dass der Code deutlich aufgeräumter ist und besser lesbar. Auch sind immer wieder kleine Probleme mit GitHub und NPM aufgetreten, diese waren jedoch meist relativ schnell gelöst.
+
+Damit kann man sagen, dass sehr viel Zeit für das Projekt aufgewendet wurde, um Fehler zu beheben. Am Ende haben wir damit aber auch mehr gelernt, als wenn alles genau erklärt worden wäre.
+
+
+
+
+
+## Zukunftsausblick
+- Weitere Komponenten in der Zukunft
+- Elevator Pitch, Zettel an der Uni/Bar verteilen 
+- Krypto geht auch(Für Zocker)
+- QR COde
 
 
 ## Verwendung der App
@@ -69,7 +86,7 @@ Erstelle eine Gruppe mit einem passenden Namen unter Gruppen. Füge deine Kolleg
 4. Führe danach den folgenden Befehl aus: “ng serve -o” .
 5. Ein neues Fenster in deinem Browser öffnet sich.
 Weitere Informationen findest du in unserem Video: 
-[Installation von Shared Finanz](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[Installation von Shared Finance](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 
 
