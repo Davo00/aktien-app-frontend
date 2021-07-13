@@ -36,6 +36,7 @@ import {
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { Observable } from 'rxjs';
 import { ApiService } from './services/api.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @Injectable()
@@ -88,7 +89,12 @@ export class MyHammerConfig extends HammerGestureConfig {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,
     },
-    ApiService
+    ApiService,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+
+    }
   ],
   bootstrap: [AppComponent],
 })

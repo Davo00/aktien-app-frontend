@@ -58,6 +58,8 @@ export class ApiService {
 
   public getUsersByGroup(groupName: string) {
     let url = '/user/' + 'group/' + groupName;
+    console.log(url)
     return this.http.get(url);
+    
   }
 }

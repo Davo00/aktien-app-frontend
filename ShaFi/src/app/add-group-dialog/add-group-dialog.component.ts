@@ -29,14 +29,38 @@ export class AddGroupDialogComponent implements OnInit {
 
   public ngOnDestroy() {
     console.log(this.data);
-    if (this.data.groupName === null || this.data.members === null) {
+    if (this.data.groupName === "" || this.data.members === "") {
+      console.log("if")
       this.matDialogRef.close(null);
     } else {
+      console.log("else")
       this.matDialogRef.close(this.data);
     }
   }
 
   public dialogClose() {
     this.matDialogRef.close();
+  }
+
+  public arraylist(){
+    let all = "";
+    let i = 1;
+    for(let member of this.data.members){
+      if(this.data.members.length !== i){
+      all = all + member + ", ";
+      
+      
+      }else{
+        all = all + member ;
+      }
+      i++;
+    }
+    return all
+  }
+
+  public dialogSave(groupname: string, member: string){
+
+
+    //data.groupName = box1.value; data.members = box2.value; dialogClose()
   }
 }
