@@ -282,7 +282,7 @@ export class GroupHistoryComponent implements OnInit {
     this.animationState = '';
   }
 
-  closeBill() {
+  closeBill() {/////////////////////////////////////////////////
     // alles auf null setzen
     this.router.navigate(['/', 'zahlungen']);
   }

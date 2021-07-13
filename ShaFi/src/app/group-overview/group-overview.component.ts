@@ -82,11 +82,6 @@ export class GroupOverviewComponent implements OnInit {
     },
   ];
 
-  // get group from backend
-  // getGroup(groupName: string, groupId: string, members: string) {
-  //   this.Groups.push({ groupName, groupId, members });
-  // }
-
   addGroup() {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
