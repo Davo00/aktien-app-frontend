@@ -31,9 +31,16 @@
 display: none;
 }
 
+.errorgroßnonvisible{
+    display: none;
+    padding: 1rem;
+}
+
 .error{
     display: block;
 }
+
+
 
 
 

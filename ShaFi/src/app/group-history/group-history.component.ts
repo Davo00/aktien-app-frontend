@@ -18,13 +18,7 @@ import { ApiService } from '../services/api.service';
       transition(
         '* => slideOutRight',
         animate(700, keyframes(kf.slideOutRight))
-      ),
-      // transition('* => wobble', animate(1000, keyframes(kf.wobble))),
-      // transition('* => swing', animate(1000, keyframes(kf.swing))),
-      // transition('* => jello', animate(1000, keyframes(kf.jello))),
-      // transition('* => zoomOutRight', animate(1000, keyframes(kf.zoomOutRight))),
-      // transition('* => rotateOutUpRight', animate(1000, keyframes(kf.rotateOutUpRight))),
-      // transition('* => flipOutY', animate(1000, keyframes(kf.flipOutY))),
+      )
     ]),
   ],
 })
@@ -64,7 +58,13 @@ export class GroupHistoryComponent implements OnInit {
     } else {
       this.GroupHistory = false;
       this.GroupChat = true;
-    }
+    } 
+    this.apiService.getAllExpense().subscribe((returnData) => {
+      console.log(returnData);
+    });
+    this.apiService.getAllGroupsOfUser(6).subscribe(data => {
+       console.log(data);
+    })
   }
 
   constructor(
@@ -144,8 +144,39 @@ export class GroupHistoryComponent implements OnInit {
       Value: 10,
       Mitglieder: 'Peter, Albani, Renate',
     },
-    /* {"name": "Gruppe1", "mitglieder": "Harald, Sabine, Peter"}, */
   ];
+
+  addPayment() {
+    const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
+      data: {
+        payerName: null,
+        amount: null,
+      },
+      width: '60vw',
+      height: '60vh',
+      position: {},
+      disableClose: false,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == null) {
+      } else {
+        console.log(result);
+        this.Payments.push({
+          payerName: result.payerName,
+          amount: result.amount,
+        });
+      }
+      this.apiService.createExpense(); //////////////////////
+    });
+  }
+
+  editPayment() {/////////////////////////////////////////////
+    this.apiService.editExpenseById(1);
+  }
+
+  deletePayment() {/////////////////////////////////////////////
+    this.apiService.deleteExpenseById(1);
+  }
 
   public isactive(Absender: string) {
     if (Absender === this.USerName) {
@@ -200,34 +231,6 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  addPayment() {
-    const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {
-        payerName: null,
-        amount: null,
-      },
-      width: '60vw',
-      height: '60vh',
-      position: {},
-      disableClose: false,
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
-        this.Payments.push({
-          payerName: result.payerName,
-          amount: result.amount,
-        });
-      }
-    });
-  }
-
-  GroupChatButton() {
-    this.GroupChat = false;
-    this.GroupHistory = true;
-  }
-
   returnChatHistory() {
     return this.GroupChat;
   }
@@ -236,24 +239,18 @@ export class GroupHistoryComponent implements OnInit {
     return this.GroupHistory;
   }
 
-  startAnimation(state: any) {
-    console.log(state);
-    if (!this.animationState) {
-      this.animationState = state;
-    }
-  }
-
-  resetAnimationState() {
-    this.animationState = '';
-  }
-
-  public delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  GroupChatButton() {
+    this.GroupChat = false;
+    this.GroupHistory = true;
   }
 
   GroupHistoryButton() {
     this.GroupHistory = false;
     this.GroupChat = true;
+  }
+
+  public delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   public async SwipeLeft() {
@@ -272,10 +269,22 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistoryButton();
       this.currentTabChat = false;
     }
+  }  
+
+  startAnimation(state: any) {
+    console.log(state);
+    if (!this.animationState) {
+      this.animationState = state;
+    }
   }
 
-  addUser(groupId: number, userName: string) {
-    // this.apiService.addUserToGroup(groupId, userName);
+
+  resetAnimationState() {
+    this.animationState = '';
+  }
+  closeBill() {
+    // alles auf null setzen
+    this.router.navigate(['/', 'zahlungen']);
   }
 
 }
