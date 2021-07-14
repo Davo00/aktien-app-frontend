@@ -1,6 +1,8 @@
-# SharedFinanze
+# Shared Finance
+<p align="center">
+ <img alt ="ShaFi Logo"  src="../Doku_Unterlagen/LogoShaFi.png" height = 10% width= auto>
+</p>
 
- <img alt ="ShaFi Logo" src="..\Doku_Unterlagen\KG24_LOGO.png">
 
  # Inhaltsverzeichnis 
 
@@ -54,15 +56,13 @@ Unser Projekt besteht aus insgesamt 6 Phasen.
 
 
 ## Lessons Learned im Frontend
-- Token Verwendung für Anmeldung
-- Mobile Gestaltung (Css, Html)
-- Angular Framework kennengelernt
-- typescript 
-- Github 
-- Rerouting
-- Wir können kein Design
-- Test mit eslint
-- npm Packet Manager
+Im Projekt wurden viel Neues gelernt und bereits vorhandene Fähigkeiten im Frontend Team konnten verbessert werden. Durch ein anderes Projekt waren die Grundsätze von HTML, CSS und JS bekannt. Durch die Verwendung von Typescript wurden dann neue Fähigkeiten aufgebaut. Den allgemeinen Aufbau zu verstehen ging relativ schnell, bei einigen Funktionen sind jedoch kleine Fehler erst nach stundenlanger Überprüfung festgestellt worden. So waren eine zu früh geschlossene Klammer häufig ein Problem, auch die Einbindung der API Calls mit Typescript war zu beginn relativ schwierig. Auch die mobile Optimierung mit Typescript war ein Thema, wo neue Fähigkeiten aufgebaut wurden. Die Optimierung der Webseite durch einfache Media Queries in einer CSS-Datei wurden unter anderem durch Media Queries in Typescript verfeinert. Dies eröffnete uns neue Möglichkeiten. 
+Durch die Verwendung verschiedener Gruppen war es außerdem notwendig, dass ein rerouting stattgefunden hat. Der Link für eine Gruppe beinhaltet die Gruppen ID und war zu relativ schwierig einzubinden. Die tatsächliche Lösung war im Nachgang betrachtet relativ einfach und kann für die nächsten Projekte bei Bedarf wiederverwendet werden. Die letzten Punkte zusammenfassend kann man sagen, dass Typescript häufig Probleme verursacht hat. Viele dieser Aspekte können jedoch im nächsten Projekt leichter umgesetzt werden, da nun die Vorgehensweise bekannt ist.
+
+Als weiteren Punkt kann man die Verwendung eines Tokens für die eindeutige Identifizierung eines Users aufnehmen. Dies hat uns vor einige Probleme gestellt, wie genau dieser Token verwendet wird und wie wir damit am besten umgehen.Die Testung des Codes durch Eslint war zu Beginn relativ umständlich, da viele Fehler aufgetreten sind. Am Ende muss jedoch festgestellt werden, dass der Code deutlich aufgeräumter ist und besser lesbar. Auch sind immer wieder kleine Probleme mit GitHub und NPM aufgetreten, diese waren jedoch meist relativ schnell gelöst.
+
+Damit kann man sagen, dass sehr viel Zeit für das Projekt aufgewendet wurde, um Fehler zu beheben. Am Ende haben wir damit aber auch mehr gelernt, als wenn alles genau erklärt worden wäre.
+
 
 
 
@@ -86,7 +86,7 @@ Erstelle eine Gruppe mit einem passenden Namen unter Gruppen. Füge deine Kolleg
 4. Führe danach den folgenden Befehl aus: “ng serve -o” .
 5. Ein neues Fenster in deinem Browser öffnet sich.
 Weitere Informationen findest du in unserem Video: 
-[Installation von Shared Finanz](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[Installation von Shared Finance](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 
 
