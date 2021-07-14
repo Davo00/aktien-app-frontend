@@ -15,7 +15,36 @@ export class AppComponent implements OnInit {
   clicked: boolean = false;
 
   ngOnInit(): void {
-    this.api.getAllExpense().subscribe((returnData) => {
+
+
+    //Initiales Login
+    	if(sessionStorage.getItem("Token")  === null ) {
+    let data  = {"password": "pass", "username": "Cevin"}
+    console.log(data)
+    this.api.postLogin(data).subscribe(response => {
+      console.log(response)
+      const keys = response.headers.keys();
+
+       let headers = keys.map((key: any) =>
+       `${key}: ${response.headers.get(key)}`);
+      console.log(keys);
+      console.log(headers);
+      console.log(headers[2].slice(15));
+      sessionStorage.setItem("Token", headers[2].slice(15));
+      console.log(sessionStorage.getItem("Token"))
+    })
+  }
+
+    
+
+
+
+    this.api.getAllExpense().subscribe(returnData => {
+      console.log(returnData);
+    })
+
+    this.api.getSpecificExpense(1).subscribe(returnData => {
+
       console.log(returnData);
     });
   }
