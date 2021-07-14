@@ -90,7 +90,7 @@ export class ApiService {
 
   public getUsersByGroup(groupName: string) {
     let url = '/user/' + 'group/' + groupName;
-    return this.http.get(url, null ,{headers: this.headersToken} );
+    return this.http.get(url, {headers: this.headersToken} );
   }
   public postLogin(login: Object): Observable<any> {
     let url =  '/user/login';
