@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +13,32 @@ export class LoginComponent implements OnInit {
   
    
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private api: ApiService) { }
 
   ngOnInit(): void {
   }
 
-  public handleSubmit(user: string, pass: string){
+  public handleSubmit(username: string, pass: string){
 
-   var LoginData: { User: string; Password: string; } = 
-   {"User": user, "Password": pass}
-    console.log(user, pass)
+   var LoginData: { username: string; password: string; } = 
+   {"password": pass, "username": username}
+    console.log(username, pass)
+
+    this.api.postLogin(LoginData).subscribe(response => {
+      console.log(response)
+      const keys = response.headers.keys();
+
+       let headers = keys.map((key: any) =>
+       `${key}: ${response.headers.get(key)}`);
+      sessionStorage.setItem("Token", headers[2].slice(15));
+      console.log(sessionStorage.getItem("Token"))
+    })
     
-    this.router.navigate([''])
+    //this.router.navigate([''])
+
+
+
+
   }
 
 }

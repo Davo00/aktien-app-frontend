@@ -96,9 +96,13 @@ export class ApiService {
     let url =  '/user/login';
     console.log(login)
     
-      return this.http.post<any>(url, login, {headers: this.headersToken, observe: 'response'} );
+      return this.http.post<any>(url, login, {observe: 'response'} );
   }
-  //return this.http.post<string>(url, login , { 'headers': headers };
+ 
+  public postRegister(register: Object){
+    let url = '/user/register';
+    return this.http.post<any>(url, register, {observe: 'response'} );
+  }
 
   public createUser(): Observable<any> {
     let url = '/user/register';
