@@ -63,7 +63,7 @@ export class AbbrechnungComponent implements OnInit {
   }
 
   getDisplayedColumns(member: string): string[] {
-    let newDisplayedColumns: string[] = [];
+    const newDisplayedColumns: string[] = [];
     newDisplayedColumns.push('free');
     for(let i=0; i < this.FETCHED_DATA.length; i++) {
       if(this.FETCHED_DATA[i].creditor === member) {
@@ -76,11 +76,10 @@ export class AbbrechnungComponent implements OnInit {
     return newDisplayedColumns;
   }
   onClickExpand(event: Event): void {
-    let elementId: string = (event.target as Element).id;
-    let buttonNumber: string = elementId.split('-')[1];
-    let tableId: string = "table-" + buttonNumber;
-    console.log(tableId);
-    let table = document.getElementById(tableId)!;
+    const elementId: string = (event.target as Element).id;
+    const buttonNumber: string = elementId.split('-')[1];
+    const tableId: string = "table-" + buttonNumber;
+    const table = document.getElementById(tableId)!;
     if(table.style.display == "none") {
       table.style.display = "inline";
     }
@@ -89,19 +88,19 @@ export class AbbrechnungComponent implements OnInit {
     }
   }
 
-  isActive(){
+  isActive(): boolean {
     
     return this.mobile;
   }
 
-  isExpanded(member:String) {
+  isExpanded(member: string): boolean {
     return true;
   }
 
-  getData(member:string) {
-    let displayedData: PeriodicElement[] = [];
+  getData(member: string): PeriodicElement[] {
+    const displayedData: PeriodicElement[] = [];
     for(let i=0; i < this.FETCHED_DATA.length; i++) {
-      let newRow: PeriodicElement = {member: "", erhalten: "", bezahlen:""};
+      const newRow: PeriodicElement = {member: "", erhalten: "", bezahlen:""};
       if(this.FETCHED_DATA[i].creditor === member) {
         newRow.member = this.FETCHED_DATA[i].debitor;
         newRow.erhalten = this.FETCHED_DATA[i].amount;
@@ -116,8 +115,8 @@ export class AbbrechnungComponent implements OnInit {
     return displayedData;
   }
 
-  getAllGroupMember() {
-    let newDisplayedColumns: string[] = [];
+  getAllGroupMember(): string[] {
+    const newDisplayedColumns: string[] = [];
     for(let i=0; i < this.FETCHED_DATA.length; i++) {
       if(!newDisplayedColumns.includes(this.FETCHED_DATA[i].creditor)) {
         newDisplayedColumns.push(this.FETCHED_DATA[i].creditor);
@@ -129,17 +128,17 @@ export class AbbrechnungComponent implements OnInit {
     return newDisplayedColumns;
   }
 
-  cancelAbrechnung() {
+  cancelAbrechnung(): void {
         this.router.navigate(['/', 'group', this.groupId]);
   }
 
-  finalizeAndDelete() {
+  finalizeAndDelete(): void {
     this.api.finalizeCalculatedDebts(this.groupId);
     this.api.deleteGroupById(this.groupId);
     this.router.navigate(['/', 'home']);
   }
 
-  finalizeAndMaintain() {
+  finalizeAndMaintain(): void {
     this.api.finalizeCalculatedDebts(this.groupId);
     this.router.navigate(['/', 'group', this.groupId]);
   }

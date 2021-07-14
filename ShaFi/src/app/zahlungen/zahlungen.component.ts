@@ -14,12 +14,6 @@ import * as kf from './keyframes';
         '* => slideOutRight',
         animate(700, keyframes(kf.slideOutRight))
       ),
-      // transition('* => wobble', animate(1000, keyframes(kf.wobble))),
-      // transition('* => swing', animate(1000, keyframes(kf.swing))),
-      // transition('* => jello', animate(1000, keyframes(kf.jello))),
-      // transition('* => zoomOutRight', animate(1000, keyframes(kf.zoomOutRight))),
-      // transition('* => rotateOutUpRight', animate(1000, keyframes(kf.rotateOutUpRight))),
-      // transition('* => flipOutY', animate(1000, keyframes(kf.flipOutY))),
     ]),
   ]
 })
@@ -30,10 +24,10 @@ export class ZahlungenComponent implements OnInit {
     this.animationState = '';
    }
 
-  mobile: boolean = false;
-  public innerWidth: any;
-  currentId: String;
-  animationState: String;
+  mobile = false;
+  innerWidth: any;
+  currentId: string;
+  animationState: string;
 
   faellig = false;
   einzahlung = true;
@@ -55,7 +49,7 @@ export class ZahlungenComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize() {
+  onResize(): void {
     this.innerWidth = window.innerWidth;
     console.log(this.innerWidth);
     if(this.innerWidth <= 700) {
@@ -66,18 +60,17 @@ export class ZahlungenComponent implements OnInit {
     }
   }
 
-  startAnimation(state: any) {
-    console.log(state);
+  startAnimation(state: string): void {
     if (!this.animationState) {
       this.animationState = state;
     }
   }
 
-  resetAnimationState() {
+  resetAnimationState(): void {
     this.animationState = '';
   }
 
-  public delay(ms: number) {
+  public delay(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
@@ -108,7 +101,7 @@ export class ZahlungenComponent implements OnInit {
       }
   ]
 
-  public changeTab(tabId: String): String {
+  public changeTab(tabId: string): string {
     let animationType = "slideOutLeft";
 
     if(this.faellig == false) {
@@ -139,33 +132,21 @@ export class ZahlungenComponent implements OnInit {
     return animationType;
   }
 
-  public async Swipe(elementId: String) {
-    console.log(elementId);
+  public async Swipe(elementId: string): Promise<void> {
     if(elementId != this.currentId) {
-      let animationType = this.changeTab(elementId);
+      const animationType = this.changeTab(elementId);
       this.startAnimation(animationType);
       await this.delay(400);
       this.currentId = elementId;
-      console.log(this.currentId);
     }
   }
-  returnFaellig() {
+  returnFaellig(): boolean {
     return this.faellig;
   }
-  returnEinzahlung() {
+  returnEinzahlung(): boolean {
     return this.einzahlung;
   }
-  returnAuszahlung() {
+  returnAuszahlung(): boolean {
     return this.auszahlung;
   }
-
-  /*public async SwipeRight() {
-    if (this.currentTabChat) {
-      this.startAnimation('slideOutRight');
-      await this.delay(400);
-      this.GroupHistoryButton();
-      this.currentTabChat = false;
-    }
-  }*/
-
 }
