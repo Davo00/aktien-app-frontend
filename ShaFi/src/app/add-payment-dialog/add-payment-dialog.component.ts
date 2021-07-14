@@ -7,39 +7,62 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-payment-dialog.component.css'],
 })
 export class AddPaymentDialogComponent implements OnInit {
-  payerName: any;
-  reason: any;
-  members: any;
   amount: any;
-  Selfpaid = false;
+  consumerCount: number;
+  copayerIds: number[];
+  description: string;
+  // groupId: number;
+  // id: number;
+  reason: any;
+  // unpaid: boolean;
+  userPaid: any;
+  members: any;
+  selfPaid = false;
   Username = 'Cevin';
+
+  // amount: number;
+  // consumerCount: number;
+  // copayerIds: number[];
+  // description: string;
+  // groupId: number;
+  // id: number;
+  // name: string; // reason
+  // unpaid: boolean;
+  // userPaid: string; //
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      payerName: string;
+      userPaid: string;
       reason: string;
       members: string; // datatype: member
       amount: any;
     },
     private matDialogRef: MatDialogRef<AddPaymentDialogComponent>
-  ) {}
+  ) {
+    this.amount = 0;
+    this.consumerCount = 0;
+    this.copayerIds = [];
+    this.description = '';
+    // groupId: number;
+    // id: number;
+  }
 
   ngOnInit(): void {}
 
-  public SelpaidName(){
-    this.Selfpaid = !this.Selfpaid;
-    if (this.Selfpaid) {
-      this.data.payerName = this.Username;
+  public selfPaidName() {
+    this.selfPaid = !this.selfPaid;
+    if (this.selfPaid) {
+      this.data.userPaid = this.Username;
     } else {
-      this.data.payerName = '';
+      this.data.userPaid = '';
     }
-    console.log(this.Selfpaid);
-    return this.Selfpaid;
+    console.log(this.selfPaid);
+    return this.selfPaid;
   }
 
   public dialogSaveGroup() {
-    this.data.payerName = this.payerName;
+    this.data.userPaid = this.userPaid;
     this.data.reason = this.reason;
     this.data.members = this.members;
     this.data.amount = this.amount;
@@ -49,7 +72,7 @@ export class AddPaymentDialogComponent implements OnInit {
   public ngOnDestroy() {
     console.log(this.data);
     if (
-      this.data.payerName === null ||
+      this.data.userPaid === null ||
       this.data.reason === null ||
       this.data.members === null ||
       this.data.amount === null

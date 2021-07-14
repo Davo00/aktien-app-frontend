@@ -2,7 +2,7 @@
 
 <!-- <mat-form-field appearence="legacy" color="accent">
   <mat-label>Reason</mat-label>
-  <input matInput value="{{ data.payerName }}" #box1 />
+  <input matInput value="{{ data.userPaid }}" #box1 />
 </mat-form-field>
 
 <mat-form-field appearence="legacy" color="accent">
@@ -42,10 +42,10 @@
       <br />
     </td>
     <td class="mat-cell">
-      <mat-checkbox class="" (change)="SelpaidName()">Paid myself </mat-checkbox>
+      <mat-checkbox class="" (change)="selfPaidName()">Paid myself </mat-checkbox>
       <br />
       <mat-form-field appearence="legacy" color="accent">
-        <input  matInput value="{{ data.payerName }}" #boxPayer />
+        <input  matInput value="{{ data.userPaid }}" #boxPayer />
         
       </mat-form-field>
     </td>
@@ -83,10 +83,9 @@
   <button
     (click)="
       data.reason = boxReason.value;
-      data.payerName = boxPayer.value;
+      data.userPaid = boxPayer.value;
       data.members = boxMembers.value;
       data.amount = boxAmount.value;
-      
       dialogClose()
     "
   >

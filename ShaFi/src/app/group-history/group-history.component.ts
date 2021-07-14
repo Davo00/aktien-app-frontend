@@ -8,6 +8,18 @@ import { GroupOverviewComponent } from '../group-overview/group-overview.compone
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
+type expenseType = {
+  amount: number;
+  consumerCount: number;
+  copayerIds: number[];
+  description: string;
+  groupId: number;
+  id: number;
+  name: string; // reason
+  unpaid: boolean;
+  userPaid: string;
+};
+
 @Component({
   selector: 'app-group-history',
   templateUrl: './group-history.component.html',
@@ -18,7 +30,7 @@ import { ApiService } from '../services/api.service';
       transition(
         '* => slideOutRight',
         animate(700, keyframes(kf.slideOutRight))
-      )
+      ),
     ]),
   ],
 })
@@ -26,14 +38,15 @@ export class GroupHistoryComponent implements OnInit {
   animationState: string;
   currentTabChat: boolean;
   ChatDatevar = new Date(0);
-  USerName = 'Cevin';
+  userName = 'Cevin';
   GroupHistory = false;
   GroupChat = true;
-  // payment: groupPaymentType [];
+  // expenses: expenseType[]; ////////////////////////////////
+  expenses: any = [];
 
   ngOnInit(): void {
-    console.log(this.Chats);
-    console.log(this.Payments);
+    // console.log(this.Chats);
+    // console.log(this.Payments);
     var scrollclass = document.getElementById('scrollBlock');
     if (scrollclass != null) {
       scrollclass.scrollTop = scrollclass.scrollHeight;
@@ -50,7 +63,6 @@ export class GroupHistoryComponent implements OnInit {
         clearInterval(intervalId);
       }
     }, 20);
-    //Media Query
     let query = window.matchMedia('(min-width: 900px');
     if (query.matches) {
       this.GroupHistory = false;
@@ -58,13 +70,16 @@ export class GroupHistoryComponent implements OnInit {
     } else {
       this.GroupHistory = false;
       this.GroupChat = true;
-    } 
+    }
     this.apiService.getAllExpense().subscribe((returnData) => {
-      console.log(returnData);
+      console.log(returnData);      
+      this.expenses = returnData;
+      console.log(this.expenses);
     });
-    this.apiService.getAllGroupsOfUser(6).subscribe(data => {
-       console.log(data);
-    })
+    // console.log(this.Payments);
+    // this.apiService.getAllGroupsOfUser(1).subscribe(data => {
+    //    console.log(data);
+    // })
   }
 
   constructor(
@@ -75,25 +90,16 @@ export class GroupHistoryComponent implements OnInit {
   ) {
     this.animationState = '';
     this.currentTabChat = false;
-    // this.payment = [];
-    // this.route.params.subscribe((params) => { //////////////////////////////////////
-    //   console.log(params);
-    // });
+    this.expenses = [];
   }
 
-  Payments: { payerName: string; amount: number }[] = [
-    { payerName: 'Hendrik', amount: 9999 },
-    { payerName: 'Moritz', amount: -9999 },
-    { payerName: 'Moayad', amount: 9999 },
-    { payerName: 'Davit', amount: 9999 },
-    { payerName: 'Hendrik', amount: 9999 },
-    { payerName: 'Hendrik', amount: 9999 },
-    { payerName: 'Hendrik', amount: 9999 },
-    { payerName: 'Hendrik', amount: 9999 },
-    { payerName: 'Hendrik', amount: 9999 },
-    { payerName: 'Hendrik', amount: 9999 },
-    { payerName: 'Hendrik', amount: 9999 },
-  ];
+  // Payments: { userPaid: string; amount: number }[] = [
+  //   { userPaid: 'Hendrik', amount: 9999 },
+  //   { userPaid: 'Moritz', amount: -9999 },
+  //   { userPaid: 'Moayad', amount: 9999 },
+  //   { userPaid: 'Davit', amount: 9999 },
+  //   { userPaid: 'Hendrik', amount: 9999 },
+  // ];
 
   Chats: {
     Absender: string;
@@ -149,7 +155,7 @@ export class GroupHistoryComponent implements OnInit {
   addPayment() {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
-        payerName: null,
+        userPaid: null,
         amount: null,
       },
       width: '60vw',
@@ -161,25 +167,35 @@ export class GroupHistoryComponent implements OnInit {
       if (result == null) {
       } else {
         console.log(result);
-        this.Payments.push({
-          payerName: result.payerName,
+        this.expenses.push({
           amount: result.amount,
+          consumerCount: result.consumerCount,
+          copayerIds: result.copayerIds,
+          description: result.description,
+          groupId: result.groupId,
+          id: result.id,
+          name: result.name, // reason
+          unpaid: result.unpaid,
+          userPaid: result.userPaid,
         });
       }
       this.apiService.createExpense(); //////////////////////
+      console.log("Expense created");
     });
   }
 
-  editPayment() {/////////////////////////////////////////////
+  editPayment() {
+    /////////////////////////////////////////////
     this.apiService.editExpenseById(1);
   }
 
-  deletePayment() {/////////////////////////////////////////////
+  deletePayment() {
+    /////////////////////////////////////////////
     this.apiService.deleteExpenseById(1);
   }
 
   public isactive(Absender: string) {
-    if (Absender === this.USerName) {
+    if (Absender === this.userName) {
       return true;
     } else {
       return false;
@@ -269,7 +285,7 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistoryButton();
       this.currentTabChat = false;
     }
-  }  
+  }
 
   startAnimation(state: any) {
     console.log(state);
@@ -282,7 +298,8 @@ export class GroupHistoryComponent implements OnInit {
     this.animationState = '';
   }
 
-  closeBill() {/////////////////////////////////////////////////
+  closeBill() {
+    /////////////////////////////////////////////////
     // alles auf null setzen
     this.router.navigate(['/', 'zahlungen']);
   }
