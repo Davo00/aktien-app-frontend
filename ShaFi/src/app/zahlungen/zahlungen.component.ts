@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { trigger, keyframes, animate, transition } from '@angular/animations';
+import {ApiService} from '../services/api.service';
 import * as kf from './keyframes';
 
 @Component({
@@ -24,7 +25,7 @@ import * as kf from './keyframes';
 })
 export class ZahlungenComponent implements OnInit {
 
-  constructor() {
+  constructor(private api: ApiService) {
     this.currentId = "faelligId";
     this.animationState = '';
    }
@@ -40,6 +41,9 @@ export class ZahlungenComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.api.loginUser({password: "pass", username: "Anonym"}).subscribe(data => {
+      console.log(data);
+    });
     this.innerWidth = window.innerWidth;
     console.log(this.innerWidth);
     if(this.innerWidth <= 700) {

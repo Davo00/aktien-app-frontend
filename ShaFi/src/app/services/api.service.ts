@@ -1,19 +1,18 @@
+import { dataType } from './../abbrechnung/abbrechnung.component';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl: string = 'http://162.55.185.65:8080/';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  baseUrl: string = 'http://162.55.185.65:8080/';
 
   constructor(private http: HttpClient) {}
 
   public getAllExpense() {
-    let url = '/expense';
+    const url = '/expense';
     return this.http.get(url);
   }
 
@@ -31,21 +30,21 @@ export class ApiService {
 
   public createGroup(groupName: string): Observable<any> {
     let url = '/group/' + groupName;
-    return this.http.post<string>(this.baseUrl, url);
+    return this.http.post<string>(url, null);
   }
 
   public addUserToGroup(groupId: number, userName: string): Observable<any> {
     let url = '/group/' + groupId + '/' + userName;
-    return this.http.put<string>(this.baseUrl, url);
+    return this.http.put<string>(url, null);
   }
 
   public updateGroupById(groupId: number): Observable<any> {
     let url = '/group/' + groupId;
-    return this.http.put<string>(this.baseUrl, url);
+    return this.http.put<string>(url, null);
   }
 
   public deleteGroupById(groupId: number): Observable<any> {
-    let url = this.baseUrl + '/group/' + groupId;
+    let url ='/group/' + groupId;
     return this.http.delete<string>(url);
   }
 
@@ -63,8 +62,20 @@ export class ApiService {
 
   // ** CALCULATE CONTROLLER ** //
 
-  public getCalculatedDebtsForGroup(groupId: number) {
-    let url = '/calculate/debts'  + groupId;
-    return this.http.get(url);
+  public getCalculatedDebtsForGroup(groupId: number): Observable<dataType[]> {
+    let url = '/calculate/debts/'  + groupId;
+    return this.http.get<dataType[]>(url);
+  }
+
+  public finalizeCalculatedDebts(groupId: number) {
+    const url = '/calculate/final/' + groupId;
+    return this.http.put(url, null);
+  }
+
+
+  //** LOGIN **/
+  public loginUser(login: object) {
+    const url = 'user/login';
+    return this.http.post(url, login)
   }
 }

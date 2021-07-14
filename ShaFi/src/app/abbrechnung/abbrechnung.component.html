@@ -1,42 +1,44 @@
 <div class="abrechnungWrapper">
     <h2 style="text-align: center;">
-        Abrechnungen
+        Settlement
     </h2>
-    <div *ngFor = "let data of group; let i = index" class="tableMobileDiv">
-        <div class="memberExpandable">
-            <h3 style="line-height: 0px">
-                {{data}}
-            </h3>
-            <button id="{{ 'button-' + i }}" (click)="onClickExpand($event)">+</button>
-        </div>
-        <div *ngIf = "isExpanded(data)">
-            <div id="{{ 'table-' + i }}" class="tableWrapper">
-                <table mat-table [dataSource]="getData(data)" class="mat-elevation-z8 tableStyle">
-            
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="free">
-                        <th mat-header-cell *matHeaderCellDef class="memberHeader">  </th>
-                        <td mat-cell *matCellDef="let element"> {{element.member}} </td>
-                    </ng-container>
+    <div *ngIf = "isLoaded" >
+        <div *ngFor = "let data of group; let i = index" class="tableMobileDiv">
+            <div class="memberExpandable">
+                <h3 style="line-height: 0px">
+                    {{data}}
+                </h3>
+                <button id="{{ 'button-' + i }}" (click)="onClickExpand($event)">+</button>
+            </div>
+            <div *ngIf = "isExpanded(data)">
+                <div id="{{ 'table-' + i }}" class="tableWrapper">
+                    <table mat-table [dataSource]="getData(data)" class="mat-elevation-z8 tableStyle">
+                
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="free">
+                            <th mat-header-cell *matHeaderCellDef class="memberHeader">  </th>
+                            <td mat-cell *matCellDef="let element"> {{element.member}} </td>
+                        </ng-container>
 
-                    <ng-container matColumnDef=Erhalten>
-                        <th mat-header-cell *matHeaderCellDef class="memberHeader"> Erhalten </th>
-                        <td mat-cell *matCellDef="let element" class="memberColumn"> {{element.erhalten}} </td>
-                    </ng-container>
+                        <ng-container matColumnDef=Erhalten>
+                            <th mat-header-cell *matHeaderCellDef class="memberHeader"> Get </th>
+                            <td mat-cell *matCellDef="let element" class="memberColumn"> {{element.erhalten}} </td>
+                        </ng-container>
 
-                    <ng-container matColumnDef=Bezahlen>
-                        <th mat-header-cell *matHeaderCellDef class="memberHeader"> Bezahlen </th>
-                        <td mat-cell *matCellDef="let element" class="memberColumn"> {{element.bezahlen}} </td>
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="columns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: columns"></tr>
-                </table>
+                        <ng-container matColumnDef=Bezahlen>
+                            <th mat-header-cell *matHeaderCellDef class="memberHeader"> Pay </th>
+                            <td mat-cell *matCellDef="let element" class="memberColumn"> {{element.bezahlen}} </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="buttons">
-        <button>Abbrechen</button>
-        <button>Abschließen & Gruppe Löschen</button>
-        <button>Abschließen & Gruppe erhalten</button>
+        <div class="buttons">
+            <button>Cancel</button>
+            <button>Complete & Delete</button>
+            <button>Complete & Maintain</button>
+        </div>
     </div>
 </div>
