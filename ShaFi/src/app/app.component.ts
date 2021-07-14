@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
 
     //Initiales Login
-    	/* if(sessionStorage.getItem("Token")  === null ) {
+    	 if(sessionStorage.getItem("Token")  === null ) {
     let data  = {"password": "pass", "username": "Cevin"}
     console.log(data)
     this.api.postLogin(data).subscribe(response => {
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
       sessionStorage.setItem("Token", headers[2].slice(15));
       console.log(sessionStorage.getItem("Token")) 
     })
-  }*/
+  }
 
     
 

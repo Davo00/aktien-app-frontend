@@ -24,7 +24,7 @@
 <div class="FormField">
     <mat-form-field  appearance="fill"  color="accent"> 
         
-        <mat-label>Passwort</mat-label>
+        <mat-label>Password</mat-label>
         <input type="password" matInput #box2 >
        <!--  (keyup)="getValue(box.value)" -->
         <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
@@ -33,10 +33,10 @@
     </div>
 
 <div class="Register">
-    <a class="registertext"href="#" routerLink="/register">Oder hier registrieren!</a>
+    <a class="registertext"href="#" routerLink="/register">register here!</a>
 </div>
 <div class="flexElement">
-    <button (click)="handleSubmit(box1.value, box2.value)" class="buttonstyle">Einlogen</button>
+    <button (click)="handleSubmit(box1.value, box2.value)" class="buttonstyle">Log in</button>
 </div>
 </div>
 

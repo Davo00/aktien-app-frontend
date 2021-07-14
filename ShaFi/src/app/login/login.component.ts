@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public handleSubmit(user: string, pass: string){
+  public handleSubmit(username: string, pass: string){
 
-   var LoginData: { user: string; password: string; } = 
-   {"password": pass, "user": user}
-    console.log(user, pass)
+   var LoginData: { username: string; password: string; } = 
+   {"password": pass, "username": username}
+    console.log(username, pass)
 
     this.api.postLogin(LoginData).subscribe(response => {
       console.log(response)
