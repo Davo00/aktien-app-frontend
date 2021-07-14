@@ -278,12 +278,13 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
+
   resetAnimationState() {
     this.animationState = '';
   }
-
   closeBill() {
     // alles auf null setzen
     this.router.navigate(['/', 'zahlungen']);
   }
+
 }

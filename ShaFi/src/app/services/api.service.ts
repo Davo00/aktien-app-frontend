@@ -90,6 +90,7 @@ export class ApiService {
 
   public getUsersByGroup(groupName: string) {
     let url = '/user/' + 'group/' + groupName;
+
     return this.http.get(url, {headers: this.headersToken} );
   }
   public postLogin(login: Object): Observable<any> {
@@ -97,6 +98,7 @@ export class ApiService {
     console.log(login)
     
       return this.http.post<any>(url, login, {observe: 'response'} );
+
   }
  
   public postRegister(register: Object){
