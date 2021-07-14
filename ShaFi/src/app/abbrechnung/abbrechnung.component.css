@@ -9,6 +9,10 @@
     margin-bottom: 4rem;
 }
 
+.groupNameHeader {
+    line-height: 0px;
+}
+
 .mat-column-free {
     width: 32px;
     border-right: 1px solid currentColor;

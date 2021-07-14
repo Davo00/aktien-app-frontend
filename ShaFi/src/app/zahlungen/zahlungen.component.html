@@ -1,14 +1,14 @@
 <div class="groupOverviewPage">
     <div>
         <h1 class="header">
-            Ein/Auszahlungen
+            Payments
         </h1>
         <p class="subHeader">
-            Hier sehen sie die Übersicht ihrer einzelnen Zahlungen
+            Here you can see the overview of your individual payments
         </p>
         <div *ngIf = "!mobile" class="desktopView">
             <div>
-                <h3 class="headerZahlungen">Fällige Zahlungen:</h3>
+                <h3 class="headerZahlungen">Due payments:</h3>
                 <div *ngFor = "let data of zahlungExample">
                     <div *ngIf = 'data.type == "Faellig"'>
                         <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
@@ -17,7 +17,7 @@
             </div>
             <div>
                 <div>
-                    <h3 class="headerZahlungen">Einzahlungen:</h3>
+                    <h3 class="headerZahlungen">Deposits:</h3>
                     <div *ngFor = "let data of zahlungExample">
                         <div *ngIf = 'data.type == "Einzahlung"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
@@ -25,7 +25,7 @@
                     </div> 
                 </div>
                 <div>
-                    <h3 class="headerZahlungen">Auszahlungen:</h3>
+                    <h3 class="headerZahlungen">Payments:</h3>
                     <div *ngFor = "let data of zahlungExample">
                         <div *ngIf = 'data.type == "Auszahlung"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
@@ -45,7 +45,7 @@
                   (click)="Swipe('faelligId')"
                 >
                     <h3 id="test1">
-                        Fällige Zahlungen
+                        Due payments  
                     </h3>
                 </div>
                 <div
@@ -55,7 +55,7 @@
                   (click)="Swipe('einzahlungId')"
                 >
                     <h3 id="test2">
-                        Einzahlungen
+                        Deposits
                     </h3>
                 </div>
                 <div
@@ -65,7 +65,7 @@
                   (click)="Swipe('auszahlungId')"
                 >
                     <h3 id="test3">
-                        Auszahlungen
+                        Payments
                     </h3>
                 </div>
             </div>
