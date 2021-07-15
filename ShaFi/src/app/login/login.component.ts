@@ -24,14 +24,14 @@ export class LoginComponent implements OnInit {
    {"password": pass, "username": username}
     console.log(username, pass)
 
-    const crypto = require('crypto');
+    /* const crypto = require('crypto');
 
       const secret = 'abcdefg';
       const hash = crypto.createHmac('sha256', secret)
                         .update('I love cupcakes')
                         .digest('hex');
-      console.log(hash);
-
+      console.log(hash); 
+ */
 
     this.api.postLogin(LoginData).subscribe(response => {
       console.log(response)
