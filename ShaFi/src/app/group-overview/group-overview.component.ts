@@ -71,11 +71,6 @@ export class GroupOverviewComponent implements OnInit {
   // groupHistory: GroupHistoryComponent
   // Groups: { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent }[] = [
 
-  // get group from backend
-  // getGroup(groupName: string, groupId: string, members: string) {
-  //   this.Groups.push({ groupName, groupId, members });
-  // }
-
   addGroup() {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
