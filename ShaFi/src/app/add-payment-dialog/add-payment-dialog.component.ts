@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class AddPaymentDialogComponent implements OnInit {
   amount: any;
-  consumerCount: number;
+  consumerCount: number; // nein
   copayerIds: number[];
   description: string;
   // groupId: number;
@@ -19,6 +19,16 @@ export class AddPaymentDialogComponent implements OnInit {
   members: any;
   selfPaid = false;
   Username = 'Cevin';
+
+  // @NoArgsConstructor
+  // public class CreateExpense {
+  //     private Long groupId;
+  //     private String userPaid;
+  //     private String name;
+  //     private double amount;
+  //     private String description;
+  //     private List<String> copayerNames;
+  // }
 
   // amount: number;
   // consumerCount: number;
