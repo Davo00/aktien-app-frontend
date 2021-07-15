@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: '', component: StartseiteComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'abrechnung', component: AbbrechnungComponent },
+  { path: 'abrechnung/:id', component: AbbrechnungComponent },
 
   //Dieser Link muss als letztes in der Zeile stehen
   { path: '**', component: ErrorSiteComponent },

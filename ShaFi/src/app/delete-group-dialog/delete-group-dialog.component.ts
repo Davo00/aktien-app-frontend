@@ -2,14 +2,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-group-dialog',
-  templateUrl: './add-group-dialog.component.html',
-  styleUrls: ['./add-group-dialog.component.css'],
+  selector: 'app-delete-group-dialog',
+  templateUrl: './delete-group-dialog.component.html',
+  styleUrls: ['./delete-group-dialog.component.css']
 })
-export class AddGroupDialogComponent{
-  groupName: any;
-  members: any;
+export class DeleteGroupDialogComponent implements OnInit {
 
+  
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
@@ -17,10 +16,11 @@ export class AddGroupDialogComponent{
       members: Number[];
       membersStr:String[];
     },
-    private matDialogRef: MatDialogRef<AddGroupDialogComponent>
+    private matDialogRef: MatDialogRef<DeleteGroupDialogComponent>
   ) {}
 
-
+  ngOnInit(): void {
+  }
 
   public ngOnDestroy() {
     console.log(this.data);
@@ -34,6 +34,12 @@ export class AddGroupDialogComponent{
   }
 
   public dialogClose() {
+    this.matDialogRef.close();
+  }
+
+  public deleteSure(){
+    //Call zum Löschen
+    
     this.matDialogRef.close();
   }
 
@@ -58,18 +64,4 @@ export class AddGroupDialogComponent{
     
   }
 
-  public dialogSave(groupname: string, member: string){
-
-    let memberArray = member.split(",");
-    console.log(memberArray)
-    let memberIntArray = memberArray.map(Number);
-    console.log(memberIntArray)
-
-
-    this.data.groupName  = groupname;
-    this.data.members = memberIntArray;
-    	
-    this.matDialogRef.close();
-    //data.groupName = box1.value; data.members = box2.value; dialogClose()
-  }
 }
