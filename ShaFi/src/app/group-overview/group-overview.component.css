@@ -108,6 +108,18 @@
   transition: transform 150ms;
 }
 
+.GroupBlockleft{
+  text-align: left;
+  width: 90%;
+}
+  .GroupBlockright{
+    font-size: 1.3rem;
+    padding: 0rem 0.5rem 0 0 ;
+    transform: translateY(-10px);
+  }
+  
+
+
 @media screen and (min-width: 900px) {
   /* .mobileNav {
         display: none;

@@ -62,9 +62,9 @@ export class GroupHistoryComponent implements OnInit {
     this.apiService.getAllExpense().subscribe((returnData) => {
       console.log(returnData);
     });
-    this.apiService.getAllGroupsOfUser(6).subscribe(data => {
+    /* this.apiService.getAllGroupsOfUser(6).subscribe(data => {
        console.log(data);
-    })
+    }) */
   }
 
   constructor(
@@ -278,12 +278,13 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
+
   resetAnimationState() {
     this.animationState = '';
   }
-
   closeBill() {
     // alles auf null setzen
     this.router.navigate(['/', 'zahlungen']);
   }
+
 }
