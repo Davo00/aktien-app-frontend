@@ -38,6 +38,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from './services/api.service';
 import { CommonModule } from '@angular/common';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-dialog.component';
 
 
 
@@ -69,6 +70,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     ErrorSiteComponent,
     StartseiteComponent,
     HammertimeDirective,
+    DeleteGroupDialogComponent,
     // Observable
   ],
   imports: [

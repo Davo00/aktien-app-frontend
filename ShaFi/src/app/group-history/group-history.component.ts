@@ -62,9 +62,9 @@ export class GroupHistoryComponent implements OnInit {
     this.apiService.getAllExpense().subscribe((returnData) => {
       console.log(returnData);
     });
-    this.apiService.getAllGroupsOfUser(6).subscribe(data => {
+    /* this.apiService.getAllGroupsOfUser(6).subscribe(data => {
        console.log(data);
-    })
+    }) */
   }
 
   constructor(
