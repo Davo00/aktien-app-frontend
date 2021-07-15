@@ -1,67 +1,40 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-group-dialog',
   templateUrl: './delete-group-dialog.component.html',
-  styleUrls: ['./delete-group-dialog.component.css']
+  styleUrls: ['./delete-group-dialog.component.css'],
 })
-export class DeleteGroupDialogComponent implements OnInit {
-
-  
+export class DeleteGroupDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      groupName: String;
-      members: Number[];
-      membersStr:String[];
+      groupName: string;
+      members: number[];
+      membersStr: string[];
     },
     private matDialogRef: MatDialogRef<DeleteGroupDialogComponent>
   ) {}
 
-  ngOnInit(): void {
-  }
-
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     console.log(this.data);
-    if (this.data.groupName === "" || this.data.members === null) {
-      console.log("if")
+    if (this.data.groupName === '' || this.data.members === null) {
+      console.log('if');
       this.matDialogRef.close(null);
     } else {
-      console.log("else")
+      console.log('else');
       this.matDialogRef.close(this.data);
     }
   }
 
-  public dialogClose() {
+  public dialogClose(): void {
     this.matDialogRef.close();
   }
 
-  public deleteSure(){
+  public deleteSure(): void {
     //Call zum Löschen
-    
+
     this.matDialogRef.close();
   }
-
-  public arraylist(){
-    let all = "";
-    let i = 1;
-    if(this.data.members !==null){
-    for(let member of this.data.members){
-      if(this.data.members.length !== i){
-      all = all + member + ", ";
-      
-      
-      }else{
-        all = all + member ;
-      }
-      i++;
-      
-    }return all
-  }else{
-    return ""
-  }
-    
-  }
-
 }
