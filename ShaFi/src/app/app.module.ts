@@ -69,8 +69,10 @@ export class MyHammerConfig extends HammerGestureConfig {
     AddPaymentDialogComponent,
     ErrorSiteComponent,
     StartseiteComponent,
+
     HammertimeDirective,
     DeleteGroupDialogComponent,
+
     // Observable
   ],
   imports: [

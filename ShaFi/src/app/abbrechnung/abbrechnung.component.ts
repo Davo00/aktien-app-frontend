@@ -1,4 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import {ApiService} from '../services/api.service';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from "@angular/router";
 
 export interface PeriodicElement {
   member: string;
@@ -11,11 +14,6 @@ export interface dataType {
   amount: number;
 }
 
-const ELEMENT_DATA: object[] = [
-  {position: 'Bezahlen', name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 'Erhalten', name: 'Helium', weight: 4.0026, symbol: 'He'},
-];
-
 @Component({
   selector: 'app-abbrechnung',
   templateUrl: './abbrechnung.component.html',
@@ -24,21 +22,31 @@ const ELEMENT_DATA: object[] = [
 
 export class AbbrechnungComponent implements OnInit {
 
-  mobile: boolean = false;
+  public FETCHED_DATA: dataType[] = [];
+  isLoaded = false;
+  mobile = false;
   public innerWidth: any;
+  group: string[] = [];
+  groupId = 0;
+  columns: string[] = ['free', 'Erhalten', 'Bezahlen'];
 
-  constructor() { }
+  constructor(private api: ApiService, private router: Router, private url: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.groupId = Number(this.url.snapshot.paramMap.get("id"));
+    this.api.getCalculatedDebtsForGroup(this.groupId).subscribe(data => {
+      this.FETCHED_DATA = data;
+      this.isLoaded = true;
+      this.group = this.getAllGroupMember();
+    })
+
     this.innerWidth = window.innerWidth;
-    console.log(this.innerWidth);
     if(this.innerWidth <= 800) {
       this.mobile = true;
     }
     else{
       this.mobile = false;
     }
-    this.group = this.getAllGroupMember();
   }
 
 
@@ -55,109 +63,84 @@ export class AbbrechnungComponent implements OnInit {
   }
 
   getDisplayedColumns(member: string): string[] {
-    let newDisplayedColumns: string[] = [];
+    const newDisplayedColumns: string[] = [];
     newDisplayedColumns.push('free');
-    for(let i=0; i < this.DATA_EXAMPLE.length; i++) {
-      if(this.DATA_EXAMPLE[i].creditor === member) {
-        newDisplayedColumns.push(this.DATA_EXAMPLE[i].debitor);
+    for(let i=0; i < this.FETCHED_DATA.length; i++) {
+      if(this.FETCHED_DATA[i].creditor === member) {
+        newDisplayedColumns.push(this.FETCHED_DATA[i].debitor);
       }
-      else if(this.DATA_EXAMPLE[i].debitor === member) {
-        newDisplayedColumns.push(this.DATA_EXAMPLE[i].creditor);
+      else if(this.FETCHED_DATA[i].debitor === member) {
+        newDisplayedColumns.push(this.FETCHED_DATA[i].creditor);
       }
     }
     return newDisplayedColumns;
   }
   onClickExpand(event: Event): void {
-    let elementId: string = (event.target as Element).id;
-    let buttonNumber: string = elementId.split('-')[1];
-    let tableId: string = "table-" + buttonNumber;
-    console.log(tableId);
-    let table = document.getElementById(tableId)!;
+    const elementId: string = (event.target as Element).id;
+    const buttonNumber: string = elementId.split('-')[1];
+    const tableId: string = "table-" + buttonNumber;
+    const table = document.getElementById(tableId)!;
     if(table.style.display == "none") {
       table.style.display = "inline";
     }
     else{
       table.style.display = "none";
     }
-    //target.style.display = "none";
-    //console.log(target);
-    //angular.element('#element').css('height', '100px');
   }
 
-  isActive(){
+  isActive(): boolean {
     
     return this.mobile;
   }
 
-  isExpanded(member:String) {
+  isExpanded(member: string): boolean {
     return true;
   }
 
-  getData(member:string) {
-    let displayedData: PeriodicElement[] = [];
-    for(let i=0; i < this.DATA_EXAMPLE.length; i++) {
-      let newRow: PeriodicElement = {member: "", erhalten: "", bezahlen:""};
-      if(this.DATA_EXAMPLE[i].creditor === member) {
-        newRow.member = this.DATA_EXAMPLE[i].debitor;
-        newRow.erhalten = this.DATA_EXAMPLE[i].amount;
+  getData(member: string): PeriodicElement[] {
+    const displayedData: PeriodicElement[] = [];
+    for(let i=0; i < this.FETCHED_DATA.length; i++) {
+      const newRow: PeriodicElement = {member: "", erhalten: "", bezahlen:""};
+      if(this.FETCHED_DATA[i].creditor === member) {
+        newRow.member = this.FETCHED_DATA[i].debitor;
+        newRow.erhalten = this.FETCHED_DATA[i].amount;
         displayedData.push(newRow);
       }
-      else if(this.DATA_EXAMPLE[i].debitor === member) {
-        newRow.member = this.DATA_EXAMPLE[i].creditor;
-        newRow.bezahlen = this.DATA_EXAMPLE[i].amount;
+      else if(this.FETCHED_DATA[i].debitor === member) {
+        newRow.member = this.FETCHED_DATA[i].creditor;
+        newRow.bezahlen = this.FETCHED_DATA[i].amount;
         displayedData.push(newRow);
       }
     }
-    console.log(displayedData);
     return displayedData;
   }
 
-  getAllGroupMember() {
-    let newDisplayedColumns: string[] = [];
-    for(let i=0; i < this.DATA_EXAMPLE.length; i++) {
-      if(!newDisplayedColumns.includes(this.DATA_EXAMPLE[i].creditor)) {
-        newDisplayedColumns.push(this.DATA_EXAMPLE[i].creditor);
+  getAllGroupMember(): string[] {
+    const newDisplayedColumns: string[] = [];
+    for(let i=0; i < this.FETCHED_DATA.length; i++) {
+      if(!newDisplayedColumns.includes(this.FETCHED_DATA[i].creditor)) {
+        newDisplayedColumns.push(this.FETCHED_DATA[i].creditor);
       }
-      if(!newDisplayedColumns.includes(this.DATA_EXAMPLE[i].debitor)) {
-        newDisplayedColumns.push(this.DATA_EXAMPLE[i].debitor);
+      if(!newDisplayedColumns.includes(this.FETCHED_DATA[i].debitor)) {
+        newDisplayedColumns.push(this.FETCHED_DATA[i].debitor);
       }
     }
     return newDisplayedColumns;
   }
 
-  DATA_EXAMPLE: dataType[] = [
-    {
-     creditor: "Hendrik",
-     debitor: "Davit",
-     amount: 16.13
-    },
-    {
-     creditor: "Ramona",
-     debitor: "Moritz",
-     amount: 6.6
-    },
-    {
-     creditor: "Cevin",
-     debitor: "Davit",
-     amount: 4.05
-    },
-    {
-     creditor: "Ramona",
-     debitor: "Davit",
-     amount: 2.43
-    }
-   ];
+  cancelAbrechnung(): void {
+        this.router.navigate(['/', 'group', this.groupId]);
+  }
 
-  group: string[] = [];
-  columns: string[] = ['free', 'Erhalten', 'Bezahlen'];
-  displayedColumns: string[] = ['Cevin', 'Moritz', 'Hendrik', 'Moayad'];
-  dataSource = 3;
+  finalizeAndDelete(): void {
+    this.api.finalizeCalculatedDebts(this.groupId);
+    this.api.deleteGroupById(this.groupId);
+    this.router.navigate(['/', 'home']);
+  }
 
-  dataSource2: PeriodicElement[] = [
-    {member: 'Cevin', erhalten: 30, bezahlen: ""},
-    {member: 'Moritz', erhalten: "", bezahlen: 40},
-    {member: 'Hendrik', erhalten: "", bezahlen: ""},
-    {member: 'Moayad', erhalten: "", bezahlen: 20}
-  ];
+  finalizeAndMaintain(): void {
+    this.api.finalizeCalculatedDebts(this.groupId);
+    this.router.navigate(['/', 'group', this.groupId]);
+  }
 }
 
