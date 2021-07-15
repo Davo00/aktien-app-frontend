@@ -1,0 +1,6 @@
+{
+    "ignorePatterns": ["./app/login/*.js", "./app/register/*.js"],
+    "rules": {
+        
+    }
+}

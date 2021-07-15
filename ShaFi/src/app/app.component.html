@@ -6,7 +6,10 @@
     <nav>
       <ul class="MenuList">
         <li>
-          <a class="NavListElement" href="#" routerLink="/"> Home </a>
+          <div *ngIf="logedIn === false"><a class="NavListElement" href="#" routerLink="/" > Home </a></div>
+          <div *ngIf="logedIn === true"><a class="NavListElement" href="#" routerLink="/home" > Home </a></div>
+          
+         
         </li>
         <li>
           <a class="NavListElement" href="#" routerLink="/group-overview">
