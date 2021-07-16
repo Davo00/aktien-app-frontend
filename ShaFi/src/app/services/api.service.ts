@@ -53,10 +53,10 @@ export class ApiService {
     return this.http.get(url ,{headers: this.headersToken} ); // this.baseUrl + url
   }
 
-  public createGroup(groupName: string): Observable<any> {
+  public createGroup(groupName: string, myUsers: string[]): Observable<any> {
     let url = '/group/' + groupName;
 
-    return this.http.post<string>(url, null ,{headers: this.headersToken} );
+    return this.http.post<string>(url, null ,{headers: this.headersToken, observe: 'response'} );
 
   }
 
@@ -79,14 +79,15 @@ export class ApiService {
 
   // ** USER CONTROLLER ** //
 
-  public getAllGroupsOfUser(userId: number) {
-    let url = '/user/' + 'allGroups/' + userId;
+  public getAllGroupsOfUser() {
+    let url = '/user/' + 'allGroups/';
     return this.http.get(url ,{headers: this.headersToken} );
   }
 
 
   public getUsersByGroup(groupName: string) {
     let url = '/user/' + 'group/' + groupName;
+
     return this.http.get(url, {headers: this.headersToken} );
   }
   public postLogin(login: Object): Observable<any> {
@@ -94,6 +95,7 @@ export class ApiService {
     console.log(login)
     
       return this.http.post<any>(url, login, {observe: 'response'} );
+
   }
 
   // ** CALCULATE CONTROLLER ** //

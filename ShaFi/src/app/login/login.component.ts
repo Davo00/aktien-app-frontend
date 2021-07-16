@@ -1,44 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Component} from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  constructor(
+    private router: Router,
+     private api: ApiService
+     ) {}
 
-  
-  
-   
+  public handleSubmit(username: string, pass: string): void {
+    const hash = CryptoJS.SHA3(pass, { outputLength: 256 });
+    const passhash = hash.toString(CryptoJS.enc.Base64);
 
-  constructor(private router: Router, private api: ApiService) { }
+    const LoginData: { username: string; password: string } = {
+      password: passhash,
+      username: username,
+    };
+    console.log(username, pass);
 
-  ngOnInit(): void {
-  }
-
-  public handleSubmit(username: string, pass: string){
-
-   var LoginData: { username: string; password: string; } = 
-   {"password": pass, "username": username}
-    console.log(username, pass)
-
-    this.api.postLogin(LoginData).subscribe(response => {
-      console.log(response)
+    this.api.postLogin(LoginData).subscribe((response) => {
+      console.log(response);
       const keys = response.headers.keys();
 
-       let headers = keys.map((key: any) =>
-       `${key}: ${response.headers.get(key)}`);
-      sessionStorage.setItem("Token", headers[2].slice(15));
-      console.log(sessionStorage.getItem("Token"))
-    })
+      const headers = keys.map(
+        (key: unknown) => `${key}: ${response.headers.get(key)}`
+      );
+      sessionStorage.setItem('Token', headers[2].slice(15));
+      console.log(sessionStorage.getItem('Token'));
+
+      this.router.navigate(['/home'])
+    });
+
     
-    //this.router.navigate([''])
 
-
-
-
+    
   }
-
 }

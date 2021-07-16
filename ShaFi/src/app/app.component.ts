@@ -13,10 +13,10 @@ export class AppComponent implements OnInit {
   constructor(public router: Router, private api: ApiService) {}
 
   clicked: boolean = false;
+  logedIn= false
+  
 
-  ngOnInit(): void {
-
-
+  public ngOnInit(): void {
     //Initiales Login
     if(sessionStorage.getItem("Token")  === null ) {
       let data  = {"password": "pass", "username": "Davit"}
@@ -36,26 +36,28 @@ export class AppComponent implements OnInit {
       })
     }
 
+    // this.api.getSpecificExpense(1).subscribe((returnData) => {
+    //   console.log(returnData);
+    // });
     
+    if(sessionStorage.getItem('Token') !== null){
+      this.logedIn= true
+    }
 
 
-
-    this.api.getAllExpense().subscribe(returnData => {
-      console.log(returnData);
-    })
-
-    this.api.getSpecificExpense(1).subscribe(returnData => {
-
-      console.log(returnData);
-    });
+     console.log(sessionStorage.getItem('Token'))
   }
 
-  thisclicked() {
+  public thisclicked():void {
     this.clicked = !this.clicked;
   }
 
-  isactive() {
+  public isactive():boolean {
     return this.clicked;
+  }
+
+  public islogedIn():boolean{
+    return this.logedIn
   }
 
   /* setClasses(){
