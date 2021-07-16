@@ -7,56 +7,25 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-payment-dialog.component.css'],
 })
 export class AddPaymentDialogComponent implements OnInit {
-  amount: any;
-  consumerCount: number; // nein
-  copayerIds: number[];
-  description: string;
-  // groupId: number;
-  // id: number;
-  reason: any;
-  // unpaid: boolean;
   userPaid: any;
-  members: any;
+  reason: any;
+  amount: any;
+  description: any;
+  members: any; // List<String> copayerNames
   selfPaid = false;
-  Username = 'Cevin';
-
-  // @NoArgsConstructor
-  // public class CreateExpense {
-  //     private Long groupId;
-  //     private String userPaid;
-  //     private String name;
-  //     private double amount;
-  //     private String description;
-  //     private List<String> copayerNames;
-  // }
-
-  // amount: number;
-  // consumerCount: number;
-  // copayerIds: number[];
-  // description: string;
-  // groupId: number;
-  // id: number;
-  // name: string; // reason
-  // unpaid: boolean;
-  // userPaid: string; //
+  Username = 'Cevin'; ////////////////////////////
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
       userPaid: string;
       reason: string;
-      members: string; // datatype: member
+      description: string;
+      members: string;
       amount: any;
     },
     private matDialogRef: MatDialogRef<AddPaymentDialogComponent>
-  ) {
-    this.amount = 0;
-    this.consumerCount = 0;
-    this.copayerIds = [];
-    this.description = '';
-    // groupId: number;
-    // id: number;
-  }
+  ) {}
 
   ngOnInit(): void {}
 
@@ -74,6 +43,7 @@ export class AddPaymentDialogComponent implements OnInit {
   public dialogSaveGroup() {
     this.data.userPaid = this.userPaid;
     this.data.reason = this.reason;
+    this.data.description = this.description;
     this.data.members = this.members;
     this.data.amount = this.amount;
     this.matDialogRef.close(this.data);

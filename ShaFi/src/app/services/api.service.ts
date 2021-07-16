@@ -33,17 +33,17 @@ export class ApiService {
 
   public createExpense(): Observable<any> {
     let url = '/expense/';
-    return this.http.post<string>(url, null);
+    return this.http.post<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   public editExpenseById(expenseId: number): Observable<any> {
     let url = '/expense/' + expenseId;
-    return this.http.put<string>(url, null);
+    return this.http.put<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   public deleteExpenseById(expenseId: number): Observable<any> {
     let url = '/expense/' + expenseId;
-    return this.http.delete<string>(url);
+    return this.http.delete<string>(url, {headers: this.headersToken, observe: 'response'});
   }
 
   // ** GROUP CONTROLLER ** //

@@ -6,24 +6,18 @@
         <button (click)="addGroup()" class="addGroupButton">+</button>
       </div>
       <div class="groups">
-        <ul
-          class="group"
-          *ngFor="let group of Groups; let i = index"
-          
-        >
+        <ul class="group" *ngFor="let group of Groups; let i = index">
           <div class="flexElement">
             <div class="GroupBlockleft" (click)="previewGroup(group)">
-            <h3>{{ Groups[i].name }}</h3>
-            
+              <h3>{{ Groups[i].name }}</h3>
+            </div>
+            <div (click)="editGroup(Groups[i].id, i)" class="GroupBlockright">
+              <i class="fas fa-edit"></i>
+            </div>
+            <div (click)="deleteGroup(Groups[i].id, i)" class="GroupBlockright">
+              <i class="far fa-trash-alt"></i>
+            </div>
           </div>
-          <div (click)="editGroup(Groups[i].id, i)"class="GroupBlockright">
-            <i class="fas fa-edit"></i>
-          </div>
-          <div (click)="deleteGroup(Groups[i].id, i)"class="GroupBlockright">
-            <i class="far fa-trash-alt"></i>
-          </div>
-          </div>
-          
         </ul>
       </div>
     </div>
@@ -45,23 +39,17 @@
           <br />
           <h4>Group ID: {{ groupToPreview.id }}</h4>
           <br />
-          <h4>Group Members: 
-            
-            <ul *ngFor="let members of groupToPreview.myUsers; let i = index">
-              <div>{{groupToPreview.myUsers[i]}}</div>
+          <h4>
+            Group Members:
 
+            <ul *ngFor="let members of groupToPreview.myUsers; let i = index">
+              <div>{{ groupToPreview.myUsers[i] }}</div>
             </ul>
-          
-        
-            
-            </h4>
+          </h4>
         </div>
       </ng-template>
     </div>
-    <button
-      class="moreDetailsButton"
-      (click)="openGroup(groupToPreview.id)"
-    >
+    <button class="moreDetailsButton" (click)="openGroup(groupToPreview.id)">
       more details
     </button>
   </div>

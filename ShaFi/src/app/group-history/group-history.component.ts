@@ -35,14 +35,27 @@ type expenseType = {
   ],
 })
 export class GroupHistoryComponent implements OnInit {
+  groupId: any;
+  userName = 'Cevin';
   animationState: string;
   currentTabChat: boolean;
   ChatDatevar = new Date(0);
-  userName = 'Cevin';
   GroupHistory = false;
   GroupChat = true;
-  // expenses: expenseType[]; ////////////////////////////////
   expenses: any = [];
+  // copayerIds: number[];
+
+  constructor(
+    private matDialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router,
+    private apiService: ApiService
+  ) {
+    this.animationState = '';
+    this.currentTabChat = false;
+    this.expenses = [];
+    this.groupId = this.route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit(): void {
     // console.log(this.Chats);
@@ -72,27 +85,16 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupChat = true;
     }
     this.apiService.getAllExpense().subscribe((returnData) => {
-      console.log(returnData);      
+      console.log(returnData);
       this.expenses = returnData;
-      console.log(this.expenses);
     });
-    // console.log(this.Payments);
+    console.log(this.groupId);
     // this.apiService.getAllGroupsOfUser(1).subscribe(data => {
     //    console.log(data);
     // })
   }
 
-  constructor(
-    private matDialog: MatDialog,
-    private route: ActivatedRoute,
-    private router: Router,
-    private apiService: ApiService
-  ) {
-    this.animationState = '';
-    this.currentTabChat = false;
-    this.expenses = [];
-  }
-
+  // outdated test data
   // Payments: { userPaid: string; amount: number }[] = [
   //   { userPaid: 'Hendrik', amount: 9999 },
   //   { userPaid: 'Moritz', amount: -9999 },
@@ -155,8 +157,9 @@ export class GroupHistoryComponent implements OnInit {
   addPayment() {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
-        userPaid: null,
-        amount: null,
+        // userPaid: null,
+        // amount: null,
+        // description: null
       },
       width: '60vw',
       height: '60vh',
@@ -164,33 +167,83 @@ export class GroupHistoryComponent implements OnInit {
       disableClose: false,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
+      if (result != null) {
+        // console.log(result);
         this.expenses.push({
-          amount: result.amount,
-          consumerCount: result.consumerCount,
-          copayerIds: result.copayerIds,
-          description: result.description,
-          groupId: result.groupId,
-          id: result.id,
-          name: result.name, // reason
-          unpaid: result.unpaid,
+          // input values via dialog box
           userPaid: result.userPaid,
+          name: result.reason, // reason
+          amount: result.amount,
+          description: result.description, /////////////////////////
+          // copayerIds: result.members,  //////////////////////////
+          // unpaid: true/false //////////////////////////
+          // calculated values
+          groupId: this.groupId, ////////////////////////////////////
+          // consumerCount: , //////// needs logic
         });
       }
       this.apiService.createExpense(); //////////////////////
-      console.log("Expense created");
+      console.log(this.expenses); ////////////////////////////////
+      console.log("Expense created"); ////////////////////////////////
+    });
+  }
+  // amount: number;
+  // consumerCount: number;
+  // copayerIds: number[];
+  // description: string;
+  // groupId: number;
+  // id: number;
+  // name: string; // reason
+  // unpaid: boolean;
+  // userPaid: string;
+  //
+  // @NoArgsConstructor
+  // public class CreateExpense {
+  //     private Long groupId;
+  //     private String userPaid;
+  //     private String name;
+  //     private double amount;
+  //     private String description;
+  //     private List<String> copayerNames;
+  // }
+
+  editPayment(expenseId: number) {
+    const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
+      data: {
+      },
+      width: '60vw',
+      height: '60vh',
+      position: {},
+      disableClose: false,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != null) {
+        // console.log(result);
+        // Algorithm:
+        // array.find(i => i.id === 1);
+        // delete
+        // push
+        // Or: find somthing to replace object instead of delete and push new
+        this.expenses.push({
+          // input values via dialog box
+          userPaid: result.userPaid,
+          name: result.reason, // reason
+          amount: result.amount,
+          description: result.description, /////////////////////////
+          // copayerIds: result.members,  //////////////////////////
+          // unpaid: true/false //////////////////////////
+          // calculated values
+          groupId: this.groupId, ////////////////////////////////////
+          // consumerCount: , //////// needs logic
+        });
+      }
+      this.apiService.editExpenseById(1); //////////////////////
+      console.log(this.expenses); ////////////////////////////////
+      console.log("Expense edited"); ////////////////////////////////
     });
   }
 
-  editPayment() {
-    /////////////////////////////////////////////
-    this.apiService.editExpenseById(1);
-  }
-
   deletePayment() {
-    /////////////////////////////////////////////
     this.apiService.deleteExpenseById(1);
   }
 
@@ -288,7 +341,6 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   startAnimation(state: any) {
-    console.log(state);
     if (!this.animationState) {
       this.animationState = state;
     }
@@ -297,9 +349,9 @@ export class GroupHistoryComponent implements OnInit {
   resetAnimationState() {
     this.animationState = '';
   }
+
   closeBill() {
-    /////////////////////////////////////////////////
-    // alles auf null setzen
+    this.expenses = null; ///////////////////////////////////////////
     this.router.navigate(['/', 'zahlungen']);
   }
 }

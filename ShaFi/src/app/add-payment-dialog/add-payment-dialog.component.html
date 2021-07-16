@@ -42,11 +42,12 @@
       <br />
     </td>
     <td class="mat-cell">
-      <mat-checkbox class="" (change)="selfPaidName()">Paid myself </mat-checkbox>
+      <mat-checkbox class="" (change)="selfPaidName()"
+        >Paid myself
+      </mat-checkbox>
       <br />
       <mat-form-field appearence="legacy" color="accent">
-        <input  matInput value="{{ data.userPaid }}" #boxPayer />
-        
+        <input matInput value="{{ data.userPaid }}" #boxPayer />
       </mat-form-field>
     </td>
   </tr>
@@ -76,6 +77,16 @@
       </mat-form-field>
     </td>
   </tr>
+  <tr class="mat-row">
+    <td class="mat-cell">
+      <mat-label>Description</mat-label>
+    </td>
+    <td class="mat-cell">
+      <mat-form-field appearence="legacy" color="accent">
+        <input matInput value="{{ data.description }}" #boxDescription />
+      </mat-form-field>
+    </td>
+  </tr>
 </table>
 
 <div style="display: block">
@@ -86,6 +97,7 @@
       data.userPaid = boxPayer.value;
       data.members = boxMembers.value;
       data.amount = boxAmount.value;
+      data.description = boxDescription.value;
       dialogClose()
     "
   >

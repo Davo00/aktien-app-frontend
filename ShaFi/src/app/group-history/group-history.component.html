@@ -1,14 +1,15 @@
 <div class="groupHisoryPage">
   <div class="groupHisoryPageContent">
+
     <div class="groupHisory" [ngClass]="{ deactiv: returnGroupHistory() }">
       <div class="groupContainer">
         <h1 class="heading">Group History</h1>
         <div class="AddButton">
           <button (click)="addPayment()" class="addPaymentButton">+</button>
         </div>
-
         <div class="history">
           <ul class="payment" *ngFor="let payment of expenses; let i = index">
+            <!--  (click)="editPayment(i)" -->
             <div class="paymentName">
               <h3 class="">{{ expenses[i].userPaid }}</h3>
             </div>
