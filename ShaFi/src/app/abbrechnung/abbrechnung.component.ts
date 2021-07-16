@@ -92,11 +92,7 @@ export class AbbrechnungComponent implements OnInit {
     
     return this.mobile;
   }
-
-  isExpanded(member: string): boolean {
-    return true;
-  }
-
+  
   getData(member: string): PeriodicElement[] {
     const displayedData: PeriodicElement[] = [];
     for(let i=0; i < this.FETCHED_DATA.length; i++) {

@@ -18,22 +18,23 @@ export class AppComponent implements OnInit {
 
 
     //Initiales Login
-    	 if(sessionStorage.getItem("Token")  === null ) {
-    let data  = {"password": "pass", "username": "Cevin"}
-    console.log(data)
-    this.api.postLogin(data).subscribe(response => {
-      console.log(response)
-      const keys = response.headers.keys();
+    if(sessionStorage.getItem("Token")  === null ) {
+      let data  = {"password": "pass", "username": "Davit"}
+      sessionStorage.setItem("userName", data.username);
+      console.log(data)
+      this.api.postLogin(data).subscribe(response => {
+        console.log(response)
+        const keys = response.headers.keys();
 
-       let headers = keys.map((key: any) =>
-       `${key}: ${response.headers.get(key)}`);
-      console.log(keys);
-      console.log(headers);
-      console.log(headers[2].slice(15));
-      sessionStorage.setItem("Token", headers[2].slice(15));
-      console.log(sessionStorage.getItem("Token")) 
-    })
-  }
+        let headers = keys.map((key: any) =>
+        `${key}: ${response.headers.get(key)}`);
+        console.log(keys);
+        console.log(headers);
+        console.log(headers[2].slice(15));
+        sessionStorage.setItem("Token", headers[2].slice(15));
+        console.log(sessionStorage.getItem("Token")) 
+      })
+    }
 
     
 

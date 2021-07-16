@@ -4,19 +4,11 @@
             <h2>
                 {{zahlung.name}}
             </h2>
-            <p class="reason">
-                {{zahlung.reason}}
-            </p>
             <div class="horizontal">
                 <i class="fas fa-chart-bar chartIcon"></i>
-                <div *ngIf = 'zahlung.type == "Einzahlung"'>
+                <div>
                     <p style="font-size: 2rem !important;">
-                        +  {{zahlung.amount}} EURO
-                    </p>
-                </div>
-                <div *ngIf = 'zahlung.type == "Auszahlung"'>
-                    <p style="font-size: 2rem !important;">
-                        -  {{zahlung.amount}} EURO
+                        {{zahlung.inOrOut}}  {{zahlung.amount}} €
                     </p>
                 </div>
             </div>

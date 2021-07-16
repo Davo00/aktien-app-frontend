@@ -1,7 +1,21 @@
+import { ProposeShareDialogComponent } from './../propose-share-dialog/propose-share-dialog.component';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { trigger, keyframes, animate, transition } from '@angular/animations';
 import {ApiService} from '../services/api.service';
 import * as kf from './keyframes';
+import { DataSource } from '@angular/cdk/collections';
+import { MatDialog } from '@angular/material/dialog';
+
+export interface paymentType {
+  type: string,
+  name: string,
+  amount: number,
+  endDate: string,
+  startDate: string,
+  inOrOut: string,
+  proposeType: number,
+  debtId: number
+}
 
 @Component({
   selector: 'app-zahlungen',
@@ -17,17 +31,22 @@ import * as kf from './keyframes';
     ]),
   ]
 })
+
 export class ZahlungenComponent implements OnInit {
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private matDialog: MatDialog) {
     this.currentId = "faelligId";
     this.animationState = '';
    }
 
+  displayedPayments: paymentType[] = [];
   mobile = false;
   innerWidth: any;
   currentId: string;
   animationState: string;
+  
+  today = new Date();
+  
 
   faellig = false;
   einzahlung = true;
@@ -35,8 +54,49 @@ export class ZahlungenComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.api.loginUser({password: "pass", username: "Anonym"}).subscribe(data => {
+    const dd = String(this.today.getDate()).padStart(2, '0');
+    const mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = this.today.getFullYear();
+
+    let date = dd + "." + mm + "." + yyyy;
+    let userName = sessionStorage.getItem("userName");
+    this.api.getAllDebtsForUser().subscribe(data => {
       console.log(data);
+      for(let i=0; i < data.length; i++) {
+        let paymentObject: paymentType = {type: "open", name: "", amount: data[i].amount, endDate: "", startDate: "", inOrOut: "", proposeType: 0, debtId: data[i].id};
+        let deadline = data[i].deadline.split("T")[0].split("-");
+        let creation = data[i].creation.split("T")[0].split("-");
+        paymentObject.endDate = deadline[2] + "." + deadline[1] + "." + deadline[0];
+        paymentObject.startDate = creation[2] + "." + creation[1] + "." + creation[0];
+
+
+        if(data[i].creditorUsername === userName) {
+          paymentObject.name = data[0].debtorUsername;
+          paymentObject.inOrOut = "+";
+          paymentObject.proposeType = 0;
+        }
+        else {
+          paymentObject.name = data[0].creditorUsername;
+          paymentObject.inOrOut = "-";
+          paymentObject.proposeType = 1;
+        }
+        if(data[i].debtorConfirmed === true || data[i].creditorConfirmed === true) {
+          paymentObject.proposeType = 2;
+        }
+        if(this.today > new Date(deadline[1] + " " + deadline[2] + " " + deadline[0])) {
+          paymentObject.type = "due";
+        } 
+        else {
+          if(data[i].creditorUsername === userName && data[i].creditorConfirmed === true) {
+            paymentObject.type = "deposit";
+          }
+          else if(data[i].debtorUsername === userName && data[i].debtorConfirmed === true) {
+            paymentObject.type = "payment";
+          }
+        }        
+        this.displayedPayments.push(paymentObject);
+      }
+      console.log(this.displayedPayments)
     });
     this.innerWidth = window.innerWidth;
     console.log(this.innerWidth);
@@ -74,32 +134,27 @@ export class ZahlungenComponent implements OnInit {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  zahlungExample = [ 
-    {
-    type: "Auszahlung",
-    name: "Moritz",
-    reason: "Essen gehen",
-    amount: "30",
-    endDate: "22.06.2021",
-    startDate: "01.06.2021"
-    },
-    {
-    type: "Einzahlung",
-    name: "Niklas",
-    reason: "Spritgeld",
-    amount: "10",
-    endDate: "25.06.2021",
-    startDate: "04.06.2021"
-    },
-    {
-      type: "Einzahlung",
-      name: "Cevin",
-      reason: "Döner",
-      amount: "5",
-      endDate: "25.06.2021",
-      startDate: "04.06.2021"
-      }
-  ]
+
+  public onProposeShare(event: Event): void {
+    const elementId: string = (event.target as Element).id;
+    const buttonNumber: number = parseInt(elementId.split('-')[1]);
+    const dialogRef = this.matDialog.open(ProposeShareDialogComponent, {
+      data: {
+        debtId: buttonNumber
+      },
+      width: '60vw',
+      height: '60vh',
+      position: {},
+      disableClose: false,
+    });
+  }
+
+  public onAcceptShare(event: Event): void {
+    const elementId: string = (event.target as Element).id;
+    const buttonNumber: number = parseInt(elementId.split('-')[1]);
+    this.api.acceptShare(buttonNumber);
+    window.location.reload();
+  }
 
   public changeTab(tabId: string): string {
     let animationType = "slideOutLeft";
