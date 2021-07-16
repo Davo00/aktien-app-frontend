@@ -4,21 +4,20 @@ import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dia
 import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
 import { trigger, keyframes, animate, transition } from '@angular/animations';
 import * as kf from './keyframes';
-import { GroupOverviewComponent } from '../group-overview/group-overview.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
-type expenseType = {
-  amount: number;
-  consumerCount: number;
-  copayerIds: number[];
-  description: string;
-  groupId: number;
-  id: number;
-  name: string; // reason
-  unpaid: boolean;
-  userPaid: string;
-};
+// type expenseType = {
+//   amount: number;
+//   consumerCount: number;
+//   copayerIds: number[];
+//   description: string;
+//   groupId: number;
+//   id: number;
+//   name: string; // reason
+//   unpaid: boolean;
+//   userPaid: string;
+// };
 
 @Component({
   selector: 'app-group-history',
@@ -36,7 +35,7 @@ type expenseType = {
 })
 export class GroupHistoryComponent implements OnInit {
   groupId: any;
-  userName = 'Cevin';
+  userName = sessionStorage.getItem('username');
   animationState: string;
   currentTabChat: boolean;
   ChatDatevar = new Date(0);
@@ -60,11 +59,11 @@ export class GroupHistoryComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.Chats);
     // console.log(this.Payments);
-    var scrollclass = document.getElementById('scrollBlock');
+    const scrollclass = document.getElementById('scrollBlock');
     if (scrollclass != null) {
       scrollclass.scrollTop = scrollclass.scrollHeight;
     }
-    let myscrollElement = document.getElementById('scrollBlock') as any;
+    const myscrollElement = document.getElementById('scrollBlock') as HTMLElement; // any
     const target = myscrollElement?.scrollHeight;
     let currentScrollPos = 0;
     const intervalId = setInterval(() => {
@@ -76,7 +75,7 @@ export class GroupHistoryComponent implements OnInit {
         clearInterval(intervalId);
       }
     }, 20);
-    let query = window.matchMedia('(min-width: 900px');
+    const query = window.matchMedia('(min-width: 900px');
     if (query.matches) {
       this.GroupHistory = false;
       this.GroupChat = false;
@@ -84,14 +83,11 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistory = false;
       this.GroupChat = true;
     }
-    this.apiService.getAllExpense().subscribe((returnData) => {
+    this.apiService.getAllExpense().subscribe((returnData: boolean) => { //////// boolean?
       console.log(returnData);
       this.expenses = returnData;
     });
     console.log(this.groupId);
-    // this.apiService.getAllGroupsOfUser(1).subscribe(data => {
-    //    console.log(data);
-    // })
   }
 
   // outdated test data
@@ -154,7 +150,7 @@ export class GroupHistoryComponent implements OnInit {
     },
   ];
 
-  addPayment() {
+  addPayment(): void {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
         // userPaid: null,
@@ -168,49 +164,55 @@ export class GroupHistoryComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result != null) {
-        // console.log(result);
-        this.expenses.push({
-          // input values via dialog box
+        this.expenses.push({ // push to expenses or a new array just for added values?
           userPaid: result.userPaid,
           name: result.reason, // reason
           amount: result.amount,
-          description: result.description, /////////////////////////
-          // copayerIds: result.members,  //////////////////////////
-          // unpaid: true/false //////////////////////////
-          // calculated values
-          groupId: this.groupId, ////////////////////////////////////
-          // consumerCount: , //////// needs logic
+          description: result.description,
+          copayerIds: this.extractCopayers(result.members),
+          groupId: this.groupId,
         });
       }
       this.apiService.createExpense(); //////////////////////
       console.log(this.expenses); ////////////////////////////////
-      console.log("Expense created"); ////////////////////////////////
+      console.log('Expense created'); ////////////////////////////////
     });
   }
-  // amount: number;
-  // consumerCount: number;
-  // copayerIds: number[];
-  // description: string;
-  // groupId: number;
-  // id: number;
-  // name: string; // reason
-  // unpaid: boolean;
-  // userPaid: string;
-  //
   // @NoArgsConstructor
   // public class CreateExpense {
-  //     private Long groupId;
-  //     private String userPaid;
-  //     private String name;
-  //     private double amount;
-  //     private String description;
-  //     private List<String> copayerNames;
+  //     private Long groupId; Y
+  //     private String userPaid; Y
+  //     private String name; Y
+  //     private double amount; Y
+  //     private String description; Y
+  //     private List<String> copayerNames; Y
   // }
 
-  editPayment(expenseId: number) {
+  extractCopayers(members: string): any[] {
+    console.log(members);
+    const copayers: any[] = [];
+    const splitComma = members.split(',');
+    // console.log(splitComma);
+    splitComma.forEach((element) => {
+      if (element.includes(' ')) {
+        const splitSpace = element.split(' ');
+        // console.log(splitSpace);
+        splitSpace.forEach((name) => {
+          if (name !== '') {
+            copayers.push(name);
+          }
+        });
+      } else {
+        copayers.push(element);
+      }
+    });
+    console.log(copayers);
+    return copayers;
+  }
+
+  editPayment(expenseId: number): void {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {
-      },
+      data: {},
       width: '60vw',
       height: '60vh',
       position: {},
@@ -218,36 +220,26 @@ export class GroupHistoryComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result != null) {
-        // console.log(result);
-        // Algorithm:
-        // array.find(i => i.id === 1);
-        // delete
-        // push
-        // Or: find somthing to replace object instead of delete and push new
-        this.expenses.push({
-          // input values via dialog box
+        this.expenses.push({ // push to expenses or a new array just for added values?
           userPaid: result.userPaid,
           name: result.reason, // reason
           amount: result.amount,
-          description: result.description, /////////////////////////
-          // copayerIds: result.members,  //////////////////////////
-          // unpaid: true/false //////////////////////////
-          // calculated values
-          groupId: this.groupId, ////////////////////////////////////
-          // consumerCount: , //////// needs logic
+          description: result.description,
+          copayerIds: this.extractCopayers(result.members),
+          groupId: this.groupId,
         });
       }
       this.apiService.editExpenseById(1); //////////////////////
       console.log(this.expenses); ////////////////////////////////
-      console.log("Expense edited"); ////////////////////////////////
+      console.log('Expense edited'); ////////////////////////////////
     });
   }
 
-  deletePayment() {
+  deletePayment(): void {
     this.apiService.deleteExpenseById(1);
   }
 
-  public isactive(Absender: string) {
+  public isactive(Absender: string): boolean {
     if (Absender === this.userName) {
       return true;
     } else {
@@ -255,8 +247,8 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  public openDialogChatChange(i: number) {
-    let dialogref = this.matDialog.open(ChatdialogComponent, {
+  public openDialogChatChange(i: number): void {
+    const dialogref = this.matDialog.open(ChatdialogComponent, {
       data: {
         Absender: this.Chats[i].Absender,
         Datum: this.Chats[i].Datum,
@@ -280,7 +272,7 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  public checkDate(datecheck: Date) {
+  public checkDate(datecheck: Date): boolean {
     /* console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
     /* console.log(datecheck.getDate()) */
@@ -292,7 +284,6 @@ export class GroupHistoryComponent implements OnInit {
       datecheck.getFullYear() == this.ChatDatevar.getFullYear()
     ) {
       this.ChatDatevar = datecheck;
-
       return false;
     } else {
       this.ChatDatevar = datecheck;
@@ -300,29 +291,29 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  returnChatHistory() {
+  returnChatHistory(): boolean {
     return this.GroupChat;
   }
 
-  returnGroupHistory() {
+  returnGroupHistory(): boolean {
     return this.GroupHistory;
   }
 
-  GroupChatButton() {
+  GroupChatButton(): void {
     this.GroupChat = false;
     this.GroupHistory = true;
   }
 
-  GroupHistoryButton() {
+  GroupHistoryButton(): void {
     this.GroupHistory = false;
     this.GroupChat = true;
   }
 
-  public delay(ms: number) {
+  public delay(ms: number): Promise<unknown> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  public async SwipeLeft() {
+  public async SwipeLeft(): Promise<void> {
     if (!this.currentTabChat) {
       this.startAnimation('slideOutLeft');
       await this.delay(400);
@@ -331,7 +322,7 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  public async SwipeRight() {
+  public async SwipeRight(): Promise<void> {
     if (this.currentTabChat) {
       this.startAnimation('slideOutRight');
       await this.delay(400);
@@ -340,17 +331,17 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  startAnimation(state: any) {
+  startAnimation(state: string): void {
     if (!this.animationState) {
       this.animationState = state;
     }
   }
 
-  resetAnimationState() {
+  resetAnimationState(): void {
     this.animationState = '';
   }
 
-  closeBill() {
+  closeBill(): void {
     this.expenses = null; ///////////////////////////////////////////
     this.router.navigate(['/', 'zahlungen']);
   }

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-payment-dialog',
@@ -13,23 +14,24 @@ export class AddPaymentDialogComponent implements OnInit {
   description: any;
   members: any; // List<String> copayerNames
   selfPaid = false;
-  Username = 'Cevin'; ////////////////////////////
+  Username = this.route.snapshot.paramMap.get('id');
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      userPaid: string;
+      userPaid: any;
       reason: string;
       description: string;
       members: string;
       amount: any;
     },
+    private route: ActivatedRoute,
     private matDialogRef: MatDialogRef<AddPaymentDialogComponent>
   ) {}
 
   ngOnInit(): void {}
 
-  public selfPaidName() {
+  public selfPaidName(): boolean {
     this.selfPaid = !this.selfPaid;
     if (this.selfPaid) {
       this.data.userPaid = this.Username;
@@ -40,7 +42,7 @@ export class AddPaymentDialogComponent implements OnInit {
     return this.selfPaid;
   }
 
-  public dialogSaveGroup() {
+  public dialogSaveGroup(): void {
     this.data.userPaid = this.userPaid;
     this.data.reason = this.reason;
     this.data.description = this.description;
@@ -49,7 +51,7 @@ export class AddPaymentDialogComponent implements OnInit {
     this.matDialogRef.close(this.data);
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     console.log(this.data);
     if (
       this.data.userPaid === null ||
@@ -63,7 +65,7 @@ export class AddPaymentDialogComponent implements OnInit {
     }
   }
 
-  public dialogClose() {
+  public dialogClose(): void {
     this.matDialogRef.close();
   }
 }
