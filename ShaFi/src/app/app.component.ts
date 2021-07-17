@@ -18,39 +18,27 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     //Initiales Login
-    if (sessionStorage.getItem('Token') === null) {
-      const data = { password: 'pass', username: 'Cevin' };
-      sessionStorage.setItem("username", "Cevin");
-      console.log(data);
-      this.api.postLogin(data).subscribe((response) => {
-        console.log(response);
-        const keys = response.headers.keys();
-
-        const headers = keys.map(
-          (key: any) => `${key}: ${response.headers.get(key)}`
-        );
-        console.log(keys);
-        console.log(headers);
-        console.log(headers[2].slice(15));
-        sessionStorage.setItem('Token', headers[2].slice(15));
-        console.log(sessionStorage.getItem('Token'));
-      });
-    }
-
-    this.api.getAllExpense().subscribe((returnData: any) => {
-      console.log(returnData);
-    });
-
-    // this.api.getSpecificExpense(1).subscribe((returnData) => {
-    //   console.log(returnData);
-    // });
-    
-    if(sessionStorage.getItem('Token') !== null){
-      this.logedIn= true
-    }
 
 
-     console.log(sessionStorage.getItem('Token'))
+    	 if(sessionStorage.getItem("Token")  === null ) {
+    let data  = {"password": "pass", "username": "Cevin"}
+    console.log(data)
+    sessionStorage.setItem("username", "Cevin")
+    this.api.postLogin(data).subscribe(response => {
+      console.log(response)
+      const keys = response.headers.keys();
+
+       let headers = keys.map((key: any) =>
+       `${key}: ${response.headers.get(key)}`);
+      console.log(keys);
+      console.log(headers);
+      console.log(headers[2].slice(15));
+      sessionStorage.setItem("Token", headers[2].slice(15));
+      console.log(sessionStorage.getItem("Token")) 
+    })
+  }
+  sessionStorage.setItem("username", "Cevin")    
+
   }
 
   public thisclicked():void {

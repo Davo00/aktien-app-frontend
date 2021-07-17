@@ -8,6 +8,7 @@ import * as CryptoJS from 'crypto-js';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent {
   constructor(private router: Router, private api: ApiService) {}
 
@@ -24,6 +25,7 @@ export class LoginComponent {
     sessionStorage.setItem('username', username);
     this.api.postLogin(LoginData).subscribe((response) => {
       console.log(response);
+
       const keys = response.headers.keys();
 
       const headers = keys.map(

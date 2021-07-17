@@ -12,6 +12,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class RegisterComponent {
   control = new FormControl('', [Validators.required, Validators.email]);
+
   errorNach = false;
   errorGroßVar = false;
   errorUser = false;

@@ -53,11 +53,10 @@ export class ApiService {
     return this.http.get(url ,{headers: this.headersToken} ); // this.baseUrl + url
   }
 
-  public createGroup(groupName: string, myUsers: string[]): Observable<any> {
-    const url = '/group/' + groupName;
 
-    return this.http.post<string>(url, null ,{headers: this.headersToken, observe: 'response'} );
-
+  public createGroup(group: object): Observable<any> {
+    let url = '/group';
+    return this.http.post<string>(url, group ,{headers: this.headersToken, observe: 'response'} );
   }
 
   public addUserToGroup(groupId: number, userName: string): Observable<any> {
@@ -66,9 +65,17 @@ export class ApiService {
 
   }
 
-  public updateGroupById(groupId: number): Observable<any> {
-    const url = '/group/' + groupId;
-    return this.http.put<string>(url, null ,{headers: this.headersToken} );
+
+  public updateGroupById(groupId: number, data: Object): Observable<any> {
+    let url = '/group/' + groupId;
+    console.log(data)
+    return this.http.put<string>(url, data ,{headers: this.headersToken,  observe: 'response'});
+
+  }
+
+  public updateGroupByIdDelete(groupId: number, data: Object): Observable<any> {
+    let url = '/group/' + groupId;
+    return this.http.put<string>(url, data ,{headers: this.headersToken,  observe: 'response'});
 
   }
 

@@ -36,16 +36,15 @@
       <ng-template #groupsExistBlock>
         <div class="groupPreviewContent">
           <h4>Group Name: {{ groupToPreview.name }}</h4>
+          
           <br />
-          <h4>Group ID: {{ groupToPreview.id }}</h4>
-          <br />
-          <h4>
-            Group Members:
 
+          <h4>Group Members: </h4>
+            
             <ul *ngFor="let members of groupToPreview.myUsers; let i = index">
-              <div>{{ groupToPreview.myUsers[i] }}</div>
+              <p>{{groupToPreview.myUsers[i]}}</p>
             </ul>
-          </h4>
+
         </div>
       </ng-template>
     </div>
