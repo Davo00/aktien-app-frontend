@@ -104,6 +104,11 @@ export class ApiService {
     return this.http.get<dataType[]>(url, {headers: this.headersToken});
   }
 
+  public getCredits(groupId: number): Observable<dataType[]> {
+    const url = '/calculate/overview/'  + groupId;
+    return this.http.get<dataType[]>(url, {headers: this.headersToken});
+  }
+
   public finalizeCalculatedDebts(groupId: number) {
     const url = '/calculate/final/' + groupId;
     return this.http.put(url, null, {headers: this.headersToken});

@@ -1,6 +1,5 @@
 <div class="groupHisoryPage">
   <div class="groupHisoryPageContent">
-
     <div class="groupHisory" [ngClass]="{ deactiv: returnGroupHistory() }">
       <div class="groupContainer">
         <h1 class="heading">Group History</h1>
@@ -8,24 +7,30 @@
           <button (click)="addPayment()" class="addPaymentButton">+</button>
         </div>
         <div class="history">
-          <ul class="payment" *ngFor="let payment of expenses; let i = index">
+          <ul class="payment" *ngFor="let payment of credits; let i = index">
             <!--  (click)="editPayment(i)" -->
             <div class="paymentName">
-              <h3 class="">{{ expenses[i].userPaid }}</h3>
+              <h3 class="">{{ payment.username }}</h3>
             </div>
             <div class="paymentInfo">
               <div class="paymentAmount">
-                <h3 class="">{{ expenses[i].amount }}€</h3>
+                <h3 class="">{{ payment.credit }}€</h3>
               </div>
               <div class="paymentArrow">
-                <div *ngIf="expenses[i].amount >= 0" class="positivAmount">
+                <div *ngIf="payment.credit >= 0" class="positivAmount">
                   <i class="fas fa-plus"></i>
                 </div>
-                <div *ngIf="expenses[i].amount < 0" class="negativAmount">
+                <div *ngIf="payment.credit < 0" class="negativAmount">
                   <i class="fas fa-minus"></i>
                 </div>
               </div>
             </div>
+            <!-- <div class="editBlock" (click)="editPayment(credits[i].id)">
+              <i class="fas fa-edit"></i>
+            </div>
+            <div class="deleteBlock" (click)="deletePayment(credits[i].id)">
+              <i class="far fa-trash-alt"></i>
+            </div> -->
           </ul>
         </div>
       </div>
@@ -118,24 +123,27 @@
             <div class="history">
               <ul
                 class="payment"
-                *ngFor="let payment of expenses; let i = index"
+                *ngFor="let payment of credits; let i = index"
               >
                 <div class="paymentName">
-                  <h3 class="">{{ expenses[i].userPaid }}</h3>
+                  <h3 class="">{{ payment.username }}</h3>
                 </div>
                 <div class="paymentInfo">
                   <div class="paymentAmount">
-                    <h3 class="">{{ expenses[i].amount }}€</h3>
+                    <h3 class="">{{ payment.credit }}€</h3>
                   </div>
                   <div class="paymentArrow">
-                    <div *ngIf="expenses[i].amount >= 0" class="positivAmount">
+                    <div *ngIf="payment.credit >= 0" class="positivAmount">
                       <i class="fas fa-plus"></i>
                     </div>
-                    <div *ngIf="expenses[i].amount < 0" class="negativAmount">
+                    <div *ngIf="payment.credit < 0" class="negativAmount">
                       <i class="fas fa-minus"></i>
                     </div>
                   </div>
                 </div>
+            <!-- <div class="deleteBlock" (click)="deletePayment(credits[i].id)">
+              <i class="far fa-trash-alt"></i>
+            </div> -->
               </ul>
             </div>
           </div>

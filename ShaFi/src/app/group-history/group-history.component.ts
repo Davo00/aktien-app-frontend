@@ -6,6 +6,7 @@ import { trigger, keyframes, animate, transition } from '@angular/animations';
 import * as kf from './keyframes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { EditPaymentDialogComponent } from '../edit-payment-dialog/edit-payment-dialog.component';
 
 // type expenseType = {
 //   amount: number;
@@ -41,8 +42,7 @@ export class GroupHistoryComponent implements OnInit {
   ChatDatevar = new Date(0);
   GroupHistory = false;
   GroupChat = true;
-  expenses: any = [];
-  // copayerIds: number[];
+  credits: any = [];
 
   constructor(
     private matDialog: MatDialog,
@@ -52,7 +52,7 @@ export class GroupHistoryComponent implements OnInit {
   ) {
     this.animationState = '';
     this.currentTabChat = false;
-    this.expenses = [];
+    this.credits = [];
     this.groupId = this.route.snapshot.paramMap.get('id');
   }
 
@@ -83,11 +83,14 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistory = false;
       this.GroupChat = true;
     }
-    this.apiService.getAllExpense().subscribe((returnData: boolean) => { //////// boolean?
-      console.log(returnData);
-      this.expenses = returnData;
-    });
     console.log(this.groupId);
+    this.apiService.getCredits(this.groupId).subscribe((returnData: unknown) => {
+      this.credits = returnData;
+      console.log(this.credits);
+      this.credits.forEach((i: any) => {
+        console.log(i.username);
+      });
+    });
   }
 
   // outdated test data
@@ -151,11 +154,9 @@ export class GroupHistoryComponent implements OnInit {
   ];
 
   addPayment(): void {
+    let addedCredit: any;
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
-        // userPaid: null,
-        // amount: null,
-        // description: null
       },
       width: '60vw',
       height: '60vh',
@@ -163,18 +164,27 @@ export class GroupHistoryComponent implements OnInit {
       disableClose: false,
     });
     dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
       if (result != null) {
-        this.expenses.push({ // push to expenses or a new array just for added values?
-          userPaid: result.userPaid,
-          name: result.reason, // reason
-          amount: result.amount,
-          description: result.description,
-          copayerIds: this.extractCopayers(result.members),
-          groupId: this.groupId,
-        });
+        addedCredit = {
+            userPaid: result.userPaid,
+            name: result.reason, // reason
+            amount: result.amount,
+            description: result.description,
+            copayerIds: this.extractCopayers(result.members),
+            groupId: this.groupId,
+          }
+        // this.credits.push({ // push to credits or a new array just for added values?
+        //   userPaid: result.userPaid,
+        //   name: result.reason, // reason
+        //   amount: result.amount,
+        //   description: result.description,
+        //   copayerIds: this.extractCopayers(result.members),
+        //   groupId: this.groupId,
+        // });
       }
-      this.apiService.createExpense(); //////////////////////
-      console.log(this.expenses); ////////////////////////////////
+      // this.apiService.createExpense(); ////////////////////// 
+      console.log(this.credits); ////////////////////////////////
       console.log('Expense created'); ////////////////////////////////
     });
   }
@@ -188,30 +198,32 @@ export class GroupHistoryComponent implements OnInit {
   //     private List<String> copayerNames; Y
   // }
 
-  extractCopayers(members: string): any[] {
-    console.log(members);
-    const copayers: any[] = [];
-    const splitComma = members.split(',');
-    // console.log(splitComma);
-    splitComma.forEach((element) => {
-      if (element.includes(' ')) {
-        const splitSpace = element.split(' ');
-        // console.log(splitSpace);
-        splitSpace.forEach((name) => {
-          if (name !== '') {
-            copayers.push(name);
-          }
-        });
-      } else {
-        copayers.push(element);
-      }
-    });
-    console.log(copayers);
-    return copayers;
+  extractCopayers(members: string): any { // if (members == "") {nix} hat nic gebracht!
+    if (members !== null || members !== "") {
+      console.log(members);
+      const copayers: any[] = [];
+      const splitComma = members.split("");
+      // console.log(splitComma);
+      splitComma.forEach((element) => {
+        if (element.includes(' ')) {
+          const splitSpace = element.split(" ");
+          // console.log(splitSpace);
+          splitSpace.forEach((name) => {
+            if (name !== "") {
+              copayers.push(name);
+            }
+          });
+        } else {
+          copayers.push(element);
+        }
+      });
+      console.log(copayers);
+      return copayers;
+    }
   }
 
   editPayment(expenseId: number): void {
-    const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
+    const dialogRef = this.matDialog.open(EditPaymentDialogComponent, {
       data: {},
       width: '60vw',
       height: '60vh',
@@ -220,7 +232,7 @@ export class GroupHistoryComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result != null) {
-        this.expenses.push({ // push to expenses or a new array just for added values?
+        this.credits.push({ // delete element with the id and add a new one?
           userPaid: result.userPaid,
           name: result.reason, // reason
           amount: result.amount,
@@ -229,14 +241,14 @@ export class GroupHistoryComponent implements OnInit {
           groupId: this.groupId,
         });
       }
-      this.apiService.editExpenseById(1); //////////////////////
-      console.log(this.expenses); ////////////////////////////////
+      this.apiService.editExpenseById(expenseId);
       console.log('Expense edited'); ////////////////////////////////
     });
   }
 
-  deletePayment(): void {
-    this.apiService.deleteExpenseById(1);
+  deletePayment(expenseId: number): void {
+    this.apiService.deleteExpenseById(expenseId);
+    console.log('Expense deleted');
   }
 
   public isactive(Absender: string): boolean {
@@ -342,7 +354,7 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   closeBill(): void {
-    this.expenses = null; ///////////////////////////////////////////
-    this.router.navigate(['/', 'zahlungen']);
+    this.credits = null; ///////////////////////////////////////////
+    this.router.navigate(['/', 'abrechnung', this.groupId]);
   }
 }

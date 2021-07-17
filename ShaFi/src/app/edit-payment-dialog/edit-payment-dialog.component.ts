@@ -3,11 +3,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-add-payment-dialog',
-  templateUrl: './add-payment-dialog.component.html',
-  styleUrls: ['./add-payment-dialog.component.css'],
+  selector: 'app-edit-payment-dialog',
+  templateUrl: './edit-payment-dialog.component.html',
+  styleUrls: ['./edit-payment-dialog.component.css']
 })
-export class AddPaymentDialogComponent implements OnInit {
+export class EditPaymentDialogComponent implements OnInit {
   userPaid: any;
   reason: any;
   amount: any;
@@ -26,10 +26,11 @@ export class AddPaymentDialogComponent implements OnInit {
       amount: any;
     },
     private route: ActivatedRoute,
-    private matDialogRef: MatDialogRef<AddPaymentDialogComponent>
+    private matDialogRef: MatDialogRef<EditPaymentDialogComponent>
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   public selfPaidName(): boolean {
     this.selfPaid = !this.selfPaid;
@@ -41,15 +42,14 @@ export class AddPaymentDialogComponent implements OnInit {
     console.log(this.selfPaid);
     return this.selfPaid;
   }
-
+  
   public dialogSaveGroup(): void {
     this.data.userPaid = this.userPaid;
     this.data.reason = this.reason;
     this.data.description = this.description;
     this.data.members = this.members;
     this.data.amount = this.amount;
-    this.matDialogRef.close();
-    // backend befehl
+    this.matDialogRef.close(this.data);
   }
 
   public ngOnDestroy(): void {
@@ -69,4 +69,5 @@ export class AddPaymentDialogComponent implements OnInit {
   public dialogClose(): void {
     this.matDialogRef.close();
   }
+
 }
