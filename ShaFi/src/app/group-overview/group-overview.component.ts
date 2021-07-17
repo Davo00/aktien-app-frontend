@@ -116,8 +116,9 @@ export class GroupOverviewComponent implements OnInit {
         )
         
         console.log(this.Groups);
+        window.location.reload()
       }
-      window.location.reload()
+     
     });
   }
 
