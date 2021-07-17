@@ -1,11 +1,14 @@
- 
- 
- <div>Möchten Sie die Gruppe {{data.groupName}} wirklich löschen?</div>
-
-  
-  <div style="display: block">
-    <button (click)="dialogClose()">Cancel</button>
-    <button (click)="deleteSure()">
-      Löschen
-    </button>
+<div *ngIf="data.type === 'group'">
+  <div>Really delete the group {{ data.groupName }}?</div>
+</div>
+<div *ngIf="data.type === 'expense'">
+  <div>
+    Really delete the Expense by {{ data.memberstring }} about
+    {{ data.amount }} Euro?
   </div>
+</div>
+
+<div style="display: block">
+  <button (click)="dialogClose()">Cancel</button>
+  <button (click)="deleteSure()">delete</button>
+</div>

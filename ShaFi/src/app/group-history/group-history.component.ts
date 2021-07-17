@@ -7,6 +7,7 @@ import * as kf from './keyframes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { EditPaymentDialogComponent } from '../edit-payment-dialog/edit-payment-dialog.component';
+import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-dialog.component';
 
 // type expenseType = {
 //   amount: number;
@@ -43,6 +44,7 @@ export class GroupHistoryComponent implements OnInit {
   GroupHistory = false;
   GroupChat = true;
   credits: any = [];
+  chatContent: any = [];
 
   constructor(
     private matDialog: MatDialog,
@@ -63,7 +65,9 @@ export class GroupHistoryComponent implements OnInit {
     if (scrollclass != null) {
       scrollclass.scrollTop = scrollclass.scrollHeight;
     }
-    const myscrollElement = document.getElementById('scrollBlock') as HTMLElement; // any
+    const myscrollElement = document.getElementById(
+      'scrollBlock'
+    ) as HTMLElement; // any
     const target = myscrollElement?.scrollHeight;
     let currentScrollPos = 0;
     const intervalId = setInterval(() => {
@@ -84,14 +88,64 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupChat = true;
     }
     console.log(this.groupId);
-    this.apiService.getCredits(this.groupId).subscribe((returnData: unknown) => {
-      this.credits = returnData;
-      console.log(this.credits);
-      this.credits.forEach((i: any) => {
-        console.log(i.username);
+    this.apiService
+      .getCredits(this.groupId)
+      .subscribe((returnData: unknown) => {
+        this.credits = returnData;
+        console.log(this.credits);
+        this.credits.forEach((i: any) => {
+          console.log(i.username);
+        });
       });
+
+    this.apiService.getSpecificExpense(this.groupId).subscribe((resp: any) => {
+      console.log(resp);
+      this.chatContent = resp.body;
+      for (let element of resp.body) {
+        let string = this.arraylist(element.copayerIds);
+        this.chatContent.copayerIds = string;
+        console.log(string);
+      }
+
+      console.log(this.chatContent[0].userPaid);
     });
   }
+
+  public arraylist(userlist: any): string {
+    let all = '';
+    let i = 1;
+
+    if (userlist !== null) {
+      for (const member of userlist) {
+        if (userlist.length !== i) {
+          all = all + member + ', ';
+        } else {
+          all = all + member;
+        }
+        i++;
+      }
+
+      return all;
+    } else {
+      return '';
+    }
+  }
+
+  /*   amount: 28.99
+consumerCount: 0
+copayerIds: Array(4)
+0: 4
+1: 5
+2: 3
+3: 6
+length: 4
+__proto__: Array(0)
+description: "Teuerstes Bier der Welt"
+groupId: 1
+id: 9
+name: "Bier"
+unpaid: true
+userPaid: "Moritz" */
 
   // outdated test data
   // Payments: { userPaid: string; amount: number }[] = [
@@ -156,8 +210,7 @@ export class GroupHistoryComponent implements OnInit {
   addPayment(): void {
     let addedCredit: any;
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {
-      },
+      data: {},
       width: '60vw',
       height: '60vh',
       position: {},
@@ -167,13 +220,13 @@ export class GroupHistoryComponent implements OnInit {
       console.log(result);
       if (result != null) {
         addedCredit = {
-            userPaid: result.userPaid,
-            name: result.reason, // reason
-            amount: result.amount,
-            description: result.description,
-            copayerIds: this.extractCopayers(result.members),
-            groupId: this.groupId,
-          }
+          userPaid: result.userPaid,
+          name: result.reason, // reason
+          amount: result.amount,
+          description: result.description,
+          copayerIds: this.extractCopayers(result.members),
+          groupId: this.groupId,
+        };
         // this.credits.push({ // push to credits or a new array just for added values?
         //   userPaid: result.userPaid,
         //   name: result.reason, // reason
@@ -183,7 +236,7 @@ export class GroupHistoryComponent implements OnInit {
         //   groupId: this.groupId,
         // });
       }
-      // this.apiService.createExpense(); ////////////////////// 
+      // this.apiService.createExpense(); //////////////////////
       console.log(this.credits); ////////////////////////////////
       console.log('Expense created'); ////////////////////////////////
     });
@@ -198,18 +251,19 @@ export class GroupHistoryComponent implements OnInit {
   //     private List<String> copayerNames; Y
   // }
 
-  extractCopayers(members: string): any { // if (members == "") {nix} hat nic gebracht!
-    if (members !== null || members !== "") {
+  extractCopayers(members: string): any {
+    // if (members == "") {nix} hat nic gebracht!
+    if (members !== null || members !== '') {
       console.log(members);
       const copayers: any[] = [];
-      const splitComma = members.split("");
+      const splitComma = members.split(',');
       // console.log(splitComma);
       splitComma.forEach((element) => {
         if (element.includes(' ')) {
-          const splitSpace = element.split(" ");
+          const splitSpace = element.split(' ');
           // console.log(splitSpace);
           splitSpace.forEach((name) => {
-            if (name !== "") {
+            if (name !== '') {
               copayers.push(name);
             }
           });
@@ -222,7 +276,7 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  editPayment(expenseId: number): void {
+  /* editPayment(expenseId: number): void {
     const dialogRef = this.matDialog.open(EditPaymentDialogComponent, {
       data: {},
       width: '60vw',
@@ -232,7 +286,8 @@ export class GroupHistoryComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result != null) {
-        this.credits.push({ // delete element with the id and add a new one?
+        this.credits.push({
+          // delete element with the id and add a new one?
           userPaid: result.userPaid,
           name: result.reason, // reason
           amount: result.amount,
@@ -244,7 +299,7 @@ export class GroupHistoryComponent implements OnInit {
       this.apiService.editExpenseById(expenseId);
       console.log('Expense edited'); ////////////////////////////////
     });
-  }
+  } */
 
   deletePayment(expenseId: number): void {
     this.apiService.deleteExpenseById(expenseId);
@@ -262,11 +317,11 @@ export class GroupHistoryComponent implements OnInit {
   public openDialogChatChange(i: number): void {
     const dialogref = this.matDialog.open(ChatdialogComponent, {
       data: {
-        Absender: this.Chats[i].Absender,
-        Datum: this.Chats[i].Datum,
-        Text: this.Chats[i].Text,
-        Value: this.Chats[i].Value,
-        Mitglieder: this.Chats[i].Mitglieder,
+        Absender: this.chatContent[i].userPaid,
+        Text: this.chatContent[i].name,
+        Value: this.chatContent[i].amount,
+        Mitglieder: this.chatContent[i].copayerIds,
+        ID: this.chatContent[i].id,
       },
       width: '400px',
       height: '400px',
@@ -275,10 +330,47 @@ export class GroupHistoryComponent implements OnInit {
     });
 
     dialogref.afterClosed().subscribe((result) => {
-      console.log(result);
-      this.Chats[i].Text = result.Text;
-      this.Chats[i].Mitglieder = result.Mitglieder;
-      this.Chats[i].Value = result.Value;
+      if (result === null) {
+      } else if (result != null && result.delete === false) {
+        console.log(result, 'Änderung');
+        this.chatContent[i].name = result.Text;
+        this.chatContent[i].copayerIds = result.Mitglieder;
+        this.chatContent[i].amount = result.Value;
+
+        console.log(this.chatContent[i]);
+        this.apiService
+          .editExpenseById(this.chatContent[i].id, this.chatContent[i])
+          .subscribe((data) => console.log(data));
+
+        console.log(this.chatContent);
+        window.location.reload();
+      } else {
+        console.log('DELETE');
+        const dialogref = this.matDialog.open(DeleteGroupDialogComponent, {
+          data: {
+            groupId: this.chatContent[i].id,
+            memberstring: this.chatContent[i].userPaid,
+            type: 'expense',
+            amount: this.chatContent[i].amount,
+          },
+          width: '250px',
+          height: '200px',
+          position: {},
+          disableClose: false,
+        });
+
+        dialogref.afterClosed().subscribe((resultdelete) => {
+          if (resultdelete) {
+            console.log('läuft');
+            this.apiService
+              .deleteExpenseById(this.chatContent[i].id)
+              .subscribe((resp: any) => {
+                console.log(resp);
+                window.location.reload();
+              });
+          }
+        });
+      }
       /* this.Infos[number].name = result.Gruppenname;
         this.Infos[number].mitglieder = result.Mitglieder; */
     });

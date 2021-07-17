@@ -20,15 +20,12 @@ export class GroupOverviewComponent implements OnInit {
   mobileView: boolean;
   innerWidth: number;
   innerHeight: number;
-  Groups:any = [];
-    
+  Groups: any = [];
 
   public ngOnInit(): void {
     this.apiService.getAllGroupsOfUser().subscribe((data) => {
-
-    this.Groups = data;
-     console.log(this.Groups)
-
+      this.Groups = data;
+      console.log(this.Groups);
     });
   }
   //Groups: { id: number; name: string; username: number[] }[] = [
@@ -73,20 +70,19 @@ export class GroupOverviewComponent implements OnInit {
           // groupHistory: result.groupHistory //////////////////////
         }); */
 
-        console.log(Name, members)
-        let GroupObject = {"name": Name, "usernames":members}
-        
-        this.apiService.createGroup(GroupObject).subscribe((result)=>{
-          console.log(result)
+        console.log(Name, members);
+        let GroupObject = { name: Name, usernames: members };
+
+        this.apiService.createGroup(GroupObject).subscribe((result) => {
+          console.log(result);
 
           const keys = result.headers.keys();
           console.log(keys);
         });
-        window.location.reload() 
+        window.location.reload();
       }
     });
   }
-
 
   public editGroup(groupId: number, arrayelement: number) {
     console.log(arrayelement);
@@ -110,24 +106,18 @@ export class GroupOverviewComponent implements OnInit {
         this.Groups[arrayelement].id = result.groupId;
         this.Groups[arrayelement].usernames = result.members;
 
-        console.log(this.Groups[arrayelement])
-        this.apiService.updateGroupById(groupId, this.Groups[arrayelement]).subscribe(data =>
-          console.log(data)
-        )
-        
+        console.log(this.Groups[arrayelement]);
+        this.apiService
+          .updateGroupById(groupId, this.Groups[arrayelement])
+          .subscribe((data) => console.log(data));
+
         console.log(this.Groups);
-        window.location.reload()
+        window.location.reload();
       }
-     
     });
   }
 
-
-  
-
-  deleteGroup(GroupID: number,element:number){
-
-
+  deleteGroup(GroupID: number, element: number) {
     console.log(this.Groups[element].id);
 
     const dialogref = this.matDialog.open(DeleteGroupDialogComponent, {
@@ -135,6 +125,7 @@ export class GroupOverviewComponent implements OnInit {
         groupName: this.Groups[element].name,
         groupId: this.Groups[element].id,
         members: this.Groups[element].myUsers,
+        type: 'group',
       },
       width: '250px',
       height: '200px',
@@ -143,55 +134,48 @@ export class GroupOverviewComponent implements OnInit {
     });
 
     dialogref.afterClosed().subscribe((resulut) => {
-        console.log(resulut)
-        
-      if(resulut){
-        let username = sessionStorage.getItem("username")
-        console.log(username)
-        let deleteGroup = {"name": this.Groups[element].name, "usernames": this.Groups[element].myUsers, "id": this.Groups[element].id}
-        let i = 0
-        console.log(deleteGroup)
-        
-        for(let element of deleteGroup.usernames){
-          if(element === username){
+      console.log(resulut);
+
+      if (resulut) {
+        let username = sessionStorage.getItem('username');
+        console.log(username);
+        let deleteGroup = {
+          name: this.Groups[element].name,
+          usernames: this.Groups[element].myUsers,
+          id: this.Groups[element].id,
+        };
+        let i = 0;
+        console.log(deleteGroup);
+
+        for (let element of deleteGroup.usernames) {
+          if (element === username) {
             deleteGroup.usernames.splice(i, 1);
-          }
-          else{
-            deleteGroup.usernames[i] = element
+          } else {
+            deleteGroup.usernames[i] = element;
           }
           i++;
         }
 
-        
-        
-        console.log(deleteGroup)
-        
-        this.apiService.updateGroupByIdDelete(deleteGroup.id, deleteGroup).subscribe(resp =>
-          console.log(resp)
-          
-        )
+        console.log(deleteGroup);
 
-        window.location.reload()
+        this.apiService
+          .updateGroupByIdDelete(deleteGroup.id, deleteGroup)
+          .subscribe((resp) => console.log(resp));
 
+        window.location.reload();
       }
-      
-      
-
-
     });
   }
 
-
-  public notNull(value: null){
-    if(value === null){return}
-    else{
-      return value
+  public notNull(value: null) {
+    if (value === null) {
+      return;
+    } else {
+      return value;
     }
-
   }
 
   public onResized(event: ResizedEvent) {
-
     this.innerWidth = event.newWidth;
     this.innerHeight = event.newHeight;
   }

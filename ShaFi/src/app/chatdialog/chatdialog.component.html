@@ -1,30 +1,37 @@
+<div style="display: flex">
+  <div style="width: 90%"><h2>Overview</h2></div>
+  <div (click)="deleteexpense()" style="font-size: 2rem; width: 10%">
+    <i class="far fa-trash-alt"></i>
+  </div>
+</div>
+<h3>Added by {{ data.Absender }}</h3>
 
-<h2>Übersicht</h2>
+<mat-form-field appearence="legacy" color="accent">
+  <mat-label>Reason</mat-label>
+  <input matInput value="{{ data.Text }}" #box1 />
+  <!--  (keyup)="getValue(box.value)" -->
+  <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
+</mat-form-field>
 
-<h3>Eingetragen von {{data.Absender}}</h3>
+<mat-form-field appearence="legacy" color="accent">
+  <mat-label>Value</mat-label>
+  <input matInput value="{{ data.Value }}" #box2 />
+  <!--  (keyup)="getValue(box.value)" -->
+  <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
+</mat-form-field>
 
-<mat-form-field appearence="legacy" color="accent"> 
-    <mat-label>Grund</mat-label>
-    <input matInput value={{data.Text}} #box1 >
-   <!--  (keyup)="getValue(box.value)" -->
-    <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
-  </mat-form-field>
+<mat-form-field appearence="legacy" color="accent">
+  <mat-label>Added members</mat-label>
+  <input matInput value="{{ data.Mitglieder }}" #box3 />
+  <!--  (keyup)="getValue(box.value)" -->
+  <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
+</mat-form-field>
 
-  <mat-form-field appearence="legacy" color="accent"> 
-    <mat-label>Wert der Zahlung</mat-label>
-    <input matInput value={{data.Value}} #box2 >
-   <!--  (keyup)="getValue(box.value)" -->
-    <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
-  </mat-form-field>
-  
-  <mat-form-field appearence="legacy" color="accent"> 
-    <mat-label>Mitgliedern</mat-label>
-    <input matInput value={{data.Mitglieder}} #box3 >
-   <!--  (keyup)="getValue(box.value)" -->
-    <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
-  </mat-form-field>
+<div>Delete this payment</div>
 
-  <button (click)="dialogClose()">Abbrechen</button>
-  <button (click) =" safeChatDialog(box1.value, box2.value, box3.value) ">Speichern</button> 
+<button (click)="dialogClose()">Abbrechen</button>
+<button (click)="safeChatDialog(box1.value, box2.value, box3.value)">
+  Speichern
+</button>
 
 <!--   value={{data.Mitglieder}} -->
