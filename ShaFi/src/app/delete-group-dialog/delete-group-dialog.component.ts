@@ -8,7 +8,7 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./delete-group-dialog.component.css'],
 })
 
-export class DeleteGroupDialogComponent implements OnInit {
+export class DeleteGroupDialogComponent {
 
     delete  = false
   
@@ -26,8 +26,7 @@ export class DeleteGroupDialogComponent implements OnInit {
   ) {}
 
 
-  ngOnInit(): void {
-  }
+
 
   public ngOnDestroy() {
     
@@ -47,6 +46,8 @@ export class DeleteGroupDialogComponent implements OnInit {
     this.delete = true
     this.matDialogRef.close(this.delete);
   }
+
+}
 
   
 
