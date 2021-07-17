@@ -12,20 +12,21 @@ export class AppComponent implements OnInit {
 
   constructor(public router: Router, private api: ApiService) {}
 
-  clicked: boolean = false;
+  clicked = false;
   logedIn= false
   
 
   public ngOnInit(): void {
     //Initiales Login
     if (sessionStorage.getItem('Token') === null) {
-      let data = { password: 'pass', username: 'Cevin' };
+      const data = { password: 'pass', username: 'Cevin' };
+      sessionStorage.setItem("username", "Cevin");
       console.log(data);
       this.api.postLogin(data).subscribe((response) => {
         console.log(response);
         const keys = response.headers.keys();
 
-        let headers = keys.map(
+        const headers = keys.map(
           (key: any) => `${key}: ${response.headers.get(key)}`
         );
         console.log(keys);
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
       });
     }
 
-    this.api.getAllExpense().subscribe((returnData) => {
+    this.api.getAllExpense().subscribe((returnData: any) => {
       console.log(returnData);
     });
 

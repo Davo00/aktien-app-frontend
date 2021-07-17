@@ -21,77 +21,76 @@ export class ApiService {
 
   // ** EXPENSE CONTROLLER ** //
 
-  public getAllExpense() {
-    let url = '/expense';
+  public getAllExpense(): any {
+    const url = '/expense';
     return this.http.get(url ,{headers: this.headersToken} );
   }
 
-  public getSpecificExpense(groupId: number) {
-    let url = '/expense/' + groupId;
+  public getSpecificExpense(groupId: number): any {
+    const url = '/expense/' + groupId;
     return this.http.get(url, {headers: this.headersToken});
   }
 
   public createExpense(): Observable<any> {
-    let url = '/expense/';
-    return this.http.post<string>(url, null);
+    const url = '/expense/';
+    return this.http.post<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   public editExpenseById(expenseId: number): Observable<any> {
-    let url = '/expense/' + expenseId;
-    return this.http.put<string>(url, null);
+    const url = '/expense/' + expenseId;
+    return this.http.put<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   public deleteExpenseById(expenseId: number): Observable<any> {
-    let url = '/expense/' + expenseId;
-    return this.http.delete<string>(url);
+    const url = '/expense/' + expenseId;
+    return this.http.delete<string>(url, {headers: this.headersToken, observe: 'response'});
   }
 
   // ** GROUP CONTROLLER ** //
 
   public getUserByGroup(groupId: number) {
-    let url = '/group/' + 'allUsers/' + groupId;
+    const url = '/group/' + 'allUsers/' + groupId;
     return this.http.get(url ,{headers: this.headersToken} ); // this.baseUrl + url
   }
 
   public createGroup(groupName: string, myUsers: string[]): Observable<any> {
-    let url = '/group/' + groupName;
+    const url = '/group/' + groupName;
 
     return this.http.post<string>(url, null ,{headers: this.headersToken, observe: 'response'} );
 
   }
 
   public addUserToGroup(groupId: number, userName: string): Observable<any> {
-    let url = '/group/' + groupId + '/' + userName;
+    const url = '/group/' + groupId + '/' + userName;
     return this.http.put<string>(url, null ,{headers: this.headersToken} );
 
   }
 
   public updateGroupById(groupId: number): Observable<any> {
-    let url = '/group/' + groupId;
+    const url = '/group/' + groupId;
     return this.http.put<string>(url, null ,{headers: this.headersToken} );
 
   }
 
   public deleteGroupById(groupId: number): Observable<any> {
-    let url = '/group/' + groupId;
+    const url = '/group/' + groupId;
     return this.http.delete<string>(url ,{headers: this.headersToken} );
   }
 
   // ** USER CONTROLLER ** //
 
   public getAllGroupsOfUser() {
-    let url = '/user/' + 'allGroups/';
+    const url = '/user/' + 'allGroups/';
     return this.http.get(url ,{headers: this.headersToken} );
   }
 
-
   public getUsersByGroup(groupName: string) {
-    let url = '/user/' + 'group/' + groupName;
-
+    const url = '/user/' + 'group/' + groupName;
     return this.http.get(url, {headers: this.headersToken} );
   }
+
   public postLogin(login: Object): Observable<any> {
-    let url =  '/user/login';
+    const url =  '/user/login';
     console.log(login)
     
       return this.http.post<any>(url, login, {observe: 'response'} );
@@ -101,7 +100,12 @@ export class ApiService {
   // ** CALCULATE CONTROLLER ** //
 
   public getCalculatedDebtsForGroup(groupId: number): Observable<dataType[]> {
-    let url = '/calculate/debts/'  + groupId;
+    const url = '/calculate/debts/'  + groupId;
+    return this.http.get<dataType[]>(url, {headers: this.headersToken});
+  }
+
+  public getCredits(groupId: number): Observable<dataType[]> {
+    const url = '/calculate/overview/'  + groupId;
     return this.http.get<dataType[]>(url, {headers: this.headersToken});
   }
 
@@ -118,22 +122,22 @@ export class ApiService {
   }
  
   public postRegister(register: Object){
-    let url = '/user/register';
+    const url = '/user/register';
     return this.http.post<any>(url, register, {observe: 'response'} );
   }
 
   public createUser(): Observable<any> {
-    let url = '/user/register';
+    const url = '/user/register';
     return this.http.post<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   public editUserByIda(expenseId: number): Observable<any> { // by id?
-    let url = '/user/' + expenseId;
+    const url = '/user/' + expenseId;
     return this.http.put<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   public deleteUserByIda(expenseId: number): Observable<any> { // by id?
-    let url = '/user/' + expenseId;
+    const url = '/user/' + expenseId;
     return this.http.delete<string>(url, {headers: this.headersToken, observe: 'response'});
   }
 

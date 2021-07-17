@@ -4,21 +4,21 @@ import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dia
 import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
 import { trigger, keyframes, animate, transition } from '@angular/animations';
 import * as kf from './keyframes';
-import { GroupOverviewComponent } from '../group-overview/group-overview.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { EditPaymentDialogComponent } from '../edit-payment-dialog/edit-payment-dialog.component';
 
-type expenseType = {
-  amount: number;
-  consumerCount: number;
-  copayerIds: number[];
-  description: string;
-  groupId: number;
-  id: number;
-  name: string; // reason
-  unpaid: boolean;
-  userPaid: string;
-};
+// type expenseType = {
+//   amount: number;
+//   consumerCount: number;
+//   copayerIds: number[];
+//   description: string;
+//   groupId: number;
+//   id: number;
+//   name: string; // reason
+//   unpaid: boolean;
+//   userPaid: string;
+// };
 
 @Component({
   selector: 'app-group-history',
@@ -35,23 +35,35 @@ type expenseType = {
   ],
 })
 export class GroupHistoryComponent implements OnInit {
+  groupId: any;
+  userName = sessionStorage.getItem('username');
   animationState: string;
   currentTabChat: boolean;
   ChatDatevar = new Date(0);
-  userName = 'Cevin';
   GroupHistory = false;
   GroupChat = true;
-  // expenses: expenseType[]; ////////////////////////////////
-  expenses: any = [];
+  credits: any = [];
+
+  constructor(
+    private matDialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router,
+    private apiService: ApiService
+  ) {
+    this.animationState = '';
+    this.currentTabChat = false;
+    this.credits = [];
+    this.groupId = this.route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit(): void {
     // console.log(this.Chats);
     // console.log(this.Payments);
-    var scrollclass = document.getElementById('scrollBlock');
+    const scrollclass = document.getElementById('scrollBlock');
     if (scrollclass != null) {
       scrollclass.scrollTop = scrollclass.scrollHeight;
     }
-    let myscrollElement = document.getElementById('scrollBlock') as any;
+    const myscrollElement = document.getElementById('scrollBlock') as HTMLElement; // any
     const target = myscrollElement?.scrollHeight;
     let currentScrollPos = 0;
     const intervalId = setInterval(() => {
@@ -63,7 +75,7 @@ export class GroupHistoryComponent implements OnInit {
         clearInterval(intervalId);
       }
     }, 20);
-    let query = window.matchMedia('(min-width: 900px');
+    const query = window.matchMedia('(min-width: 900px');
     if (query.matches) {
       this.GroupHistory = false;
       this.GroupChat = false;
@@ -71,28 +83,17 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistory = false;
       this.GroupChat = true;
     }
-    this.apiService.getAllExpense().subscribe((returnData) => {
-      console.log(returnData);      
-      this.expenses = returnData;
-      console.log(this.expenses);
+    console.log(this.groupId);
+    this.apiService.getCredits(this.groupId).subscribe((returnData: unknown) => {
+      this.credits = returnData;
+      console.log(this.credits);
+      this.credits.forEach((i: any) => {
+        console.log(i.username);
+      });
     });
-    // console.log(this.Payments);
-    // this.apiService.getAllGroupsOfUser(1).subscribe(data => {
-    //    console.log(data);
-    // })
   }
 
-  constructor(
-    private matDialog: MatDialog,
-    private route: ActivatedRoute,
-    private router: Router,
-    private apiService: ApiService
-  ) {
-    this.animationState = '';
-    this.currentTabChat = false;
-    this.expenses = [];
-  }
-
+  // outdated test data
   // Payments: { userPaid: string; amount: number }[] = [
   //   { userPaid: 'Hendrik', amount: 9999 },
   //   { userPaid: 'Moritz', amount: -9999 },
@@ -152,11 +153,10 @@ export class GroupHistoryComponent implements OnInit {
     },
   ];
 
-  addPayment() {
+  addPayment(): void {
+    let addedCredit: any;
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {
-        userPaid: null,
-        amount: null,
       },
       width: '60vw',
       height: '60vh',
@@ -164,37 +164,94 @@ export class GroupHistoryComponent implements OnInit {
       disableClose: false,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result == null) {
-      } else {
-        console.log(result);
-        this.expenses.push({
-          amount: result.amount,
-          consumerCount: result.consumerCount,
-          copayerIds: result.copayerIds,
-          description: result.description,
-          groupId: result.groupId,
-          id: result.id,
-          name: result.name, // reason
-          unpaid: result.unpaid,
+      console.log(result);
+      if (result != null) {
+        addedCredit = {
+            userPaid: result.userPaid,
+            name: result.reason, // reason
+            amount: result.amount,
+            description: result.description,
+            copayerIds: this.extractCopayers(result.members),
+            groupId: this.groupId,
+          }
+        // this.credits.push({ // push to credits or a new array just for added values?
+        //   userPaid: result.userPaid,
+        //   name: result.reason, // reason
+        //   amount: result.amount,
+        //   description: result.description,
+        //   copayerIds: this.extractCopayers(result.members),
+        //   groupId: this.groupId,
+        // });
+      }
+      // this.apiService.createExpense(); ////////////////////// 
+      console.log(this.credits); ////////////////////////////////
+      console.log('Expense created'); ////////////////////////////////
+    });
+  }
+  // @NoArgsConstructor
+  // public class CreateExpense {
+  //     private Long groupId; Y
+  //     private String userPaid; Y
+  //     private String name; Y
+  //     private double amount; Y
+  //     private String description; Y
+  //     private List<String> copayerNames; Y
+  // }
+
+  extractCopayers(members: string): any { // if (members == "") {nix} hat nic gebracht!
+    if (members !== null || members !== "") {
+      console.log(members);
+      const copayers: any[] = [];
+      const splitComma = members.split("");
+      // console.log(splitComma);
+      splitComma.forEach((element) => {
+        if (element.includes(' ')) {
+          const splitSpace = element.split(" ");
+          // console.log(splitSpace);
+          splitSpace.forEach((name) => {
+            if (name !== "") {
+              copayers.push(name);
+            }
+          });
+        } else {
+          copayers.push(element);
+        }
+      });
+      console.log(copayers);
+      return copayers;
+    }
+  }
+
+  editPayment(expenseId: number): void {
+    const dialogRef = this.matDialog.open(EditPaymentDialogComponent, {
+      data: {},
+      width: '60vw',
+      height: '60vh',
+      position: {},
+      disableClose: false,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != null) {
+        this.credits.push({ // delete element with the id and add a new one?
           userPaid: result.userPaid,
+          name: result.reason, // reason
+          amount: result.amount,
+          description: result.description,
+          copayerIds: this.extractCopayers(result.members),
+          groupId: this.groupId,
         });
       }
-      this.apiService.createExpense(); //////////////////////
-      console.log("Expense created");
+      this.apiService.editExpenseById(expenseId);
+      console.log('Expense edited'); ////////////////////////////////
     });
   }
 
-  editPayment() {
-    /////////////////////////////////////////////
-    this.apiService.editExpenseById(1);
+  deletePayment(expenseId: number): void {
+    this.apiService.deleteExpenseById(expenseId);
+    console.log('Expense deleted');
   }
 
-  deletePayment() {
-    /////////////////////////////////////////////
-    this.apiService.deleteExpenseById(1);
-  }
-
-  public isactive(Absender: string) {
+  public isactive(Absender: string): boolean {
     if (Absender === this.userName) {
       return true;
     } else {
@@ -202,8 +259,8 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  public openDialogChatChange(i: number) {
-    let dialogref = this.matDialog.open(ChatdialogComponent, {
+  public openDialogChatChange(i: number): void {
+    const dialogref = this.matDialog.open(ChatdialogComponent, {
       data: {
         Absender: this.Chats[i].Absender,
         Datum: this.Chats[i].Datum,
@@ -227,7 +284,7 @@ export class GroupHistoryComponent implements OnInit {
     });
   }
 
-  public checkDate(datecheck: Date) {
+  public checkDate(datecheck: Date): boolean {
     /* console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
     /* console.log(datecheck.getDate()) */
@@ -239,7 +296,6 @@ export class GroupHistoryComponent implements OnInit {
       datecheck.getFullYear() == this.ChatDatevar.getFullYear()
     ) {
       this.ChatDatevar = datecheck;
-
       return false;
     } else {
       this.ChatDatevar = datecheck;
@@ -247,29 +303,29 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  returnChatHistory() {
+  returnChatHistory(): boolean {
     return this.GroupChat;
   }
 
-  returnGroupHistory() {
+  returnGroupHistory(): boolean {
     return this.GroupHistory;
   }
 
-  GroupChatButton() {
+  GroupChatButton(): void {
     this.GroupChat = false;
     this.GroupHistory = true;
   }
 
-  GroupHistoryButton() {
+  GroupHistoryButton(): void {
     this.GroupHistory = false;
     this.GroupChat = true;
   }
 
-  public delay(ms: number) {
+  public delay(ms: number): Promise<unknown> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  public async SwipeLeft() {
+  public async SwipeLeft(): Promise<void> {
     if (!this.currentTabChat) {
       this.startAnimation('slideOutLeft');
       await this.delay(400);
@@ -278,7 +334,7 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  public async SwipeRight() {
+  public async SwipeRight(): Promise<void> {
     if (this.currentTabChat) {
       this.startAnimation('slideOutRight');
       await this.delay(400);
@@ -287,19 +343,18 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  startAnimation(state: any) {
-    console.log(state);
+  startAnimation(state: string): void {
     if (!this.animationState) {
       this.animationState = state;
     }
   }
 
-  resetAnimationState() {
+  resetAnimationState(): void {
     this.animationState = '';
   }
-  closeBill() {
-    /////////////////////////////////////////////////
-    // alles auf null setzen
-    this.router.navigate(['/', 'zahlungen']);
+
+  closeBill(): void {
+    this.credits = null; ///////////////////////////////////////////
+    this.router.navigate(['/', 'abrechnung', this.groupId]);
   }
 }
