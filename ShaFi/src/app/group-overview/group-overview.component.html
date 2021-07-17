@@ -6,24 +6,18 @@
         <button (click)="addGroup()" class="addGroupButton">+</button>
       </div>
       <div class="groups">
-        <ul
-          class="group"
-          *ngFor="let group of Groups; let i = index"
-          
-        >
+        <ul class="group" *ngFor="let group of Groups; let i = index">
           <div class="flexElement">
             <div class="GroupBlockleft" (click)="previewGroup(group)">
-            <h3>{{ Groups[i].name }}</h3>
-            
+              <h3>{{ Groups[i].name }}</h3>
+            </div>
+            <div (click)="editGroup(Groups[i].id, i)" class="GroupBlockright">
+              <i class="fas fa-edit"></i>
+            </div>
+            <div (click)="deleteGroup(Groups[i].id, i)" class="GroupBlockright">
+              <i class="far fa-trash-alt"></i>
+            </div>
           </div>
-          <div (click)="editGroup(Groups[i].id, i)"class="GroupBlockright">
-            <i class="fas fa-edit"></i>
-          </div>
-          <div (click)="deleteGroup(Groups[i].id, i)"class="GroupBlockright">
-            <i class="far fa-trash-alt"></i>
-          </div>
-          </div>
-          
         </ul>
       </div>
     </div>
@@ -44,23 +38,21 @@
           <h4>Group Name: {{ groupToPreview.name }}</h4>
           
           <br />
+
           <h4>Group Members: </h4>
             
             <ul *ngFor="let members of groupToPreview.myUsers; let i = index">
               <p>{{groupToPreview.myUsers[i]}}</p>
 
+
+            <ul *ngFor="let members of groupToPreview.myUsers; let i = index">
+              <div>{{ groupToPreview.myUsers[i] }}</div>
             </ul>
-          
-        
-            
-            
+
         </div>
       </ng-template>
     </div>
-    <button
-      class="moreDetailsButton"
-      (click)="openGroup(groupToPreview.id)"
-    >
+    <button class="moreDetailsButton" (click)="openGroup(groupToPreview.id)">
       more details
     </button>
   </div>

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import * as CryptoJS from 'crypto-js';
@@ -10,10 +10,7 @@ import * as CryptoJS from 'crypto-js';
 })
 
 export class LoginComponent {
-  constructor(
-    private router: Router,
-     private api: ApiService
-     ) {}
+  constructor(private router: Router, private api: ApiService) {}
 
   public handleSubmit(username: string, pass: string): void {
     const hash = CryptoJS.SHA3(pass, { outputLength: 256 });
@@ -25,6 +22,7 @@ export class LoginComponent {
     };
     console.log(username, pass);
 
+    sessionStorage.setItem('username', username);
     this.api.postLogin(LoginData).subscribe((response) => {
       console.log(response);
 
@@ -36,11 +34,7 @@ export class LoginComponent {
       sessionStorage.setItem('Token', headers[2].slice(15));
       console.log(sessionStorage.getItem('Token'));
 
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
     });
-
-    
-
-    
   }
 }

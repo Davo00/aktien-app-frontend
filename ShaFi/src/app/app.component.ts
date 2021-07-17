@@ -12,12 +12,13 @@ export class AppComponent implements OnInit {
 
   constructor(public router: Router, private api: ApiService) {}
 
-  clicked: boolean = false;
+  clicked = false;
   logedIn= false
   
 
   public ngOnInit(): void {
     //Initiales Login
+
 
     	 if(sessionStorage.getItem("Token")  === null ) {
     let data  = {"password": "pass", "username": "Cevin"}
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
     })
   }
   sessionStorage.setItem("username", "Cevin")    
+
   }
 
   public thisclicked():void {
