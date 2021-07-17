@@ -8,19 +8,19 @@
         </div>
 
         <div class="history">
-          <ul class="payment" *ngFor="let payment of Payments; let i = index">
+          <ul class="payment" *ngFor="let payment of expenses; let i = index">
             <div class="paymentName">
-              <h3 class="">{{ Payments[i].payerName }}</h3>
+              <h3 class="">{{ expenses[i].userPaid }}</h3>
             </div>
             <div class="paymentInfo">
               <div class="paymentAmount">
-                <h3 class="">{{ Payments[i].amount }}€</h3>
+                <h3 class="">{{ expenses[i].amount }}€</h3>
               </div>
               <div class="paymentArrow">
-                <div *ngIf="Payments[i].amount >= 0" class="positivAmount">
+                <div *ngIf="expenses[i].amount >= 0" class="positivAmount">
                   <i class="fas fa-plus"></i>
                 </div>
-                <div *ngIf="Payments[i].amount < 0" class="negativAmount">
+                <div *ngIf="expenses[i].amount < 0" class="negativAmount">
                   <i class="fas fa-minus"></i>
                 </div>
               </div>
@@ -117,20 +117,20 @@
             <div class="history">
               <ul
                 class="payment"
-                *ngFor="let payment of Payments; let i = index"
+                *ngFor="let payment of expenses; let i = index"
               >
                 <div class="paymentName">
-                  <h3 class="">{{ Payments[i].payerName }}</h3>
+                  <h3 class="">{{ expenses[i].userPaid }}</h3>
                 </div>
                 <div class="paymentInfo">
                   <div class="paymentAmount">
-                    <h3 class="">{{ Payments[i].amount }}€</h3>
+                    <h3 class="">{{ expenses[i].amount }}€</h3>
                   </div>
                   <div class="paymentArrow">
-                    <div *ngIf="Payments[i].amount >= 0" class="positivAmount">
+                    <div *ngIf="expenses[i].amount >= 0" class="positivAmount">
                       <i class="fas fa-plus"></i>
                     </div>
-                    <div *ngIf="Payments[i].amount < 0" class="negativAmount">
+                    <div *ngIf="expenses[i].amount < 0" class="negativAmount">
                       <i class="fas fa-minus"></i>
                     </div>
                   </div>

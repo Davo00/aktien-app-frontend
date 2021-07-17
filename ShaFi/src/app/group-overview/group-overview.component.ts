@@ -23,10 +23,12 @@ export class GroupOverviewComponent implements OnInit {
   Groups:any = [];
     
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.apiService.getAllGroupsOfUser().subscribe((data) => {
+
     this.Groups = data;
      console.log(this.Groups)
+
     });
   }
   //Groups: { id: number; name: string; username: number[] }[] = [
@@ -45,12 +47,7 @@ export class GroupOverviewComponent implements OnInit {
   // groupHistory: GroupHistoryComponent
   // Groups: { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent }[] = [
 
-  // get group from backend
-  // getGroup(groupName: string, groupId: string, members: string) {
-  //   this.Groups.push({ groupName, groupId, members });
-  // }
-
-  addGroup() {
+  public addGroup() {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: null,
@@ -63,24 +60,25 @@ export class GroupOverviewComponent implements OnInit {
       disableClose: false,
     });
 
-    dialogRef.afterClosed().subscribe(
-      result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result == null) {
       } else {
         console.log(result);
-        let Name =   result.groupName;
-        let members = result.members
-             /* this.Groups.push({
+        let Name = result.groupName;
+        let members = result.members;
+        /* this.Groups.push({
           name: result.groupName,
           id: result.groupId,
           username: result.members,
           // groupHistory: result.groupHistory //////////////////////
         }); */
+
         console.log(Name, members)
         let GroupObject = {"name": Name, "usernames":members}
         
         this.apiService.createGroup(GroupObject).subscribe((result)=>{
           console.log(result)
+
           const keys = result.headers.keys();
           console.log(keys);
         });
@@ -123,9 +121,11 @@ export class GroupOverviewComponent implements OnInit {
     });
   }
 
+
   
 
   deleteGroup(GroupID: number,element:number){
+
 
     console.log(this.Groups[element].id);
 
@@ -140,6 +140,7 @@ export class GroupOverviewComponent implements OnInit {
       position: {},
       disableClose: false,
     });
+
     dialogref.afterClosed().subscribe((resulut) => {
         console.log(resulut)
         
@@ -175,9 +176,10 @@ export class GroupOverviewComponent implements OnInit {
       
       
 
-    });
 
+    });
   }
+
 
   public notNull(value: null){
     if(value === null){return}
@@ -187,18 +189,19 @@ export class GroupOverviewComponent implements OnInit {
 
   }
 
-  onResized(event: ResizedEvent) {
+  public onResized(event: ResizedEvent) {
+
     this.innerWidth = event.newWidth;
     this.innerHeight = event.newHeight;
   }
 
-  previewGroup(group: groupType) {
+  public previewGroup(group: groupType) {
     if (this.innerWidth <= 900) {
       this.openGroup(group.id);
     } else this.groupToPreview = group;
   }
 
-  openGroup(id: number) {
+  public openGroup(id: number) {
     for (let group of this.Groups) {
       if (group.id === id) this.router.navigate(['/', 'group', id]);
       else console.log('Group does not exist'); // hier kann man mehr machen

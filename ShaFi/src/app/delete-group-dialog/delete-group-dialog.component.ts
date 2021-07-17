@@ -1,12 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-delete-group-dialog',
   templateUrl: './delete-group-dialog.component.html',
-  styleUrls: ['./delete-group-dialog.component.css']
+  styleUrls: ['./delete-group-dialog.component.css'],
 })
+
 export class DeleteGroupDialogComponent implements OnInit {
 
     delete  = false
@@ -18,10 +19,12 @@ export class DeleteGroupDialogComponent implements OnInit {
       groupId: number;
       members: string[];
      
+
     },
     private matDialogRef: MatDialogRef<DeleteGroupDialogComponent>,
     private apiService: ApiService
   ) {}
+
 
   ngOnInit(): void {
   }
@@ -47,4 +50,4 @@ export class DeleteGroupDialogComponent implements OnInit {
 
   
 
-}
+

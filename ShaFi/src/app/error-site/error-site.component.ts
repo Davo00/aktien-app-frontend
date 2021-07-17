@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorSiteComponent implements OnInit {
 
-  LogedIN: boolean = false;
-  constructor() { }
+  LogedIN= false;
+
 
   public ngOnInit(): void {
     console.log(sessionStorage.getItem('login'))
