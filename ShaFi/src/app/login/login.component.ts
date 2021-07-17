@@ -23,16 +23,8 @@ export class LoginComponent implements OnInit {
    var LoginData: { username: string; password: string; } = 
    {"password": pass, "username": username}
     console.log(username, pass)
-
-    const crypto = require('crypto');
-
-      const secret = 'abcdefg';
-      const hash = crypto.createHmac('sha256', secret)
-                        .update('I love cupcakes')
-                        .digest('hex');
-      console.log(hash);
-
-
+    sessionStorage.setItem("username", username)
+    
     this.api.postLogin(LoginData).subscribe(response => {
       console.log(response)
       const keys = response.headers.keys();

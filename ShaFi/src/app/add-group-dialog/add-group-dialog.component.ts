@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,25 +6,34 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './add-group-dialog.component.html',
   styleUrls: ['./add-group-dialog.component.css'],
 })
-export class AddGroupDialogComponent{
+export class AddGroupDialogComponent implements OnInit{
   groupName: any;
   members: any;
+  groupnameAlt: any;
+  membersalt: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
       groupName: String;
-      members: Number[];
-      membersStr:String[];
+      members: string[];
+      
     },
     private matDialogRef: MatDialogRef<AddGroupDialogComponent>
   ) {}
+
+  public ngOnInit(){
+    this.groupnameAlt= this.data.groupName;
+    this.membersalt = this.data.members
+  }
 
 
 
   public ngOnDestroy() {
     console.log(this.data);
-    if (this.data.groupName === "" || this.data.members === null) {
+   // console.log(this.membersalt, this.groupnameAlt);
+
+    if (this.data.groupName === this.groupnameAlt && this.data.members === this.membersalt || this.data.groupName === null || this.data.groupName === "" ||this.data.members === [""] || this.data.members === null) {
       console.log("if")
       this.matDialogRef.close(null);
     } else {
@@ -35,6 +44,7 @@ export class AddGroupDialogComponent{
 
   public dialogClose() {
     this.matDialogRef.close();
+
   }
 
   public arraylist(){
@@ -60,14 +70,17 @@ export class AddGroupDialogComponent{
 
   public dialogSave(groupname: string, member: string){
 
-    let memberArray = member.split(",");
-    console.log(memberArray)
-    let memberIntArray = memberArray.map(Number);
-    console.log(memberIntArray)
+    
+    
 
+    let memberArray = member.split(", ");
+    console.log(memberArray)
+    let memberStringArray = memberArray.map(String);
+    console.log(memberStringArray)
+    
 
     this.data.groupName  = groupname;
-    this.data.members = memberIntArray;
+    this.data.members = memberStringArray;
     	
     this.matDialogRef.close();
     //data.groupName = box1.value; data.members = box2.value; dialogClose()

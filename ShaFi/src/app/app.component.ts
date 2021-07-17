@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     	 if(sessionStorage.getItem("Token")  === null ) {
     let data  = {"password": "pass", "username": "Cevin"}
     console.log(data)
+    sessionStorage.setItem("username", "Cevin")
     this.api.postLogin(data).subscribe(response => {
       console.log(response)
       const keys = response.headers.keys();
@@ -34,8 +35,7 @@ export class AppComponent implements OnInit {
       console.log(sessionStorage.getItem("Token")) 
     })
   }
-
-    
+  sessionStorage.setItem("username", "Cevin")
 
 
 

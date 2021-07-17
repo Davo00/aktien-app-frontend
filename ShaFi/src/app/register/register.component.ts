@@ -12,7 +12,7 @@ import { ApiService } from '../services/api.service';
 })
 export class RegisterComponent implements OnInit{
   control = new FormControl('', [Validators.required, Validators.email]);
-  errorNach: boolean = false;
+  errorNach: boolean = false; 
   errorGroßVar:boolean = false;
   errorUser: boolean = false;
   date:Date = new Date();
