@@ -4,7 +4,8 @@
       <div class="groupContainer">
         <h1 class="heading">Group History</h1>
         <div class="AddButton">
-          <button (click)="addPayment()" class="addPaymentButton">+</button>
+          <!-- <button (click)="addPayment()" class="addPaymentButton">+</button> -->
+          <i class="fas fa-plus" (click)="addPayment()"></i>
         </div>
         <div class="history">
           <ul class="payment" *ngFor="let payment of credits; let i = index">
@@ -117,7 +118,8 @@
               <h1 class="heading">Group History</h1>
             </div>
             <div class="AddButton">
-              <button (click)="addPayment()" class="addPaymentButton">+</button>
+              <!-- <button (click)="addPayment()" class="addPaymentButton">+</button> -->
+              <i class="fas fa-plus" (click)="addPayment()"></i>
             </div>
 
             <div class="history">

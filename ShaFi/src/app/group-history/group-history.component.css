@@ -39,6 +39,17 @@
 }
 
 .AddButton {
+  margin-right: 1rem;
+  justify-self: flex-end;
+  width: 5%;
+  font-size: 2rem;
+  color: black;
+}
+
+.AddButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 100ms;
 }
 
 .addPaymentButton {
@@ -216,7 +227,9 @@
 }
 .chatLI.active {
   background-color: rgb(196, 83, 181);
-
+  background-color:  #d080ff;
+  background-color:  #8e8cff;
+  background-color:  #8f92ec;
   margin-left: 20%;
 }
 .chatLIeigen {

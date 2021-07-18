@@ -1,11 +1,11 @@
- 
- 
- <div>Möchten Sie die Gruppe {{data.groupName}} wirklich löschen?</div>
+<h2>Delete Group</h2>
 
-  
+<div>Do you realy wish to delete the group: {{data.groupName}}?</div>
+<br/>
+<br/>
   <div style="display: block">
-    <button (click)="dialogClose()">Cancel</button>
-    <button (click)="deleteSure()">
-      Löschen
+    <button  class="close" (click)="dialogClose()">Cancel</button>
+    <button  class="delete" (click)="deleteSure()">
+      Delete
     </button>
   </div>
