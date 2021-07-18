@@ -9,11 +9,11 @@
     <div class="Gruppenübersichtblock">
     
     <ul *ngFor="let group of Groups; let i = index" class="GroupElement">
-      <div class="GurppenBlock">
-        <li>
-          <div class="ZahlungReceiver" (click)="this.router.navigate(['/group-overview']);"> {{group.groupName}} </div>
+      <div class="GurppenBlock" (click)="this.router.navigate(['/', 'group', group.id]);">
+        
+          <div class="ZahlungReceiver" > {{group.name}} </div>
           
-        </li>
+        
       </div>
       
     </ul>
