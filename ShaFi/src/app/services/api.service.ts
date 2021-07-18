@@ -156,8 +156,9 @@ export class ApiService {
   }
 
   public acceptShare(debtId: number): Observable<any> {
+    console.log(debtId);
     const url = 'debt/accept/' + debtId;
-    return this.http.put(url, null, {headers: this.headersToken});
+    return this.http.put(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   // ** SHARE CONTROLLER ** //

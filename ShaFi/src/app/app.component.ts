@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     //Initiales Login
     if(sessionStorage.getItem("Token")  === null ) {
-      let data  = {"password": "pass", "username": "Davit"}
+      let data  = {"password": "pass", "username": "Hendrik"}
       sessionStorage.setItem("userName", data.username);
       console.log(data)
       this.api.postLogin(data).subscribe(response => {

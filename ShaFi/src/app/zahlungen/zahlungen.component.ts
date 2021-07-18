@@ -14,7 +14,9 @@ export interface paymentType {
   startDate: string,
   inOrOut: string,
   proposeType: number,
-  debtId: number
+  debtId: number,
+  proportion: number,
+  shareName: string,
 }
 
 @Component({
@@ -54,29 +56,34 @@ export class ZahlungenComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const dd = String(this.today.getDate()).padStart(2, '0');
-    const mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    const yyyy = this.today.getFullYear();
-
-    let date = dd + "." + mm + "." + yyyy;
-    let userName = sessionStorage.getItem("userName");
+    const userName = sessionStorage.getItem("userName");
     this.api.getAllDebtsForUser().subscribe(data => {
       console.log(data);
       for(let i=0; i < data.length; i++) {
-        let paymentObject: paymentType = {type: "open", name: "", amount: data[i].amount, endDate: "", startDate: "", inOrOut: "", proposeType: 0, debtId: data[i].id};
-        let deadline = data[i].deadline.split("T")[0].split("-");
-        let creation = data[i].creation.split("T")[0].split("-");
+        const paymentObject: paymentType = 
+        {type: "open",
+         name: "", 
+         amount: data[i].amount, 
+         endDate: "",
+         startDate: "", 
+         inOrOut: "", 
+         proposeType: 0, 
+         debtId: data[i].id, 
+         proportion: data[i].shareProportion,
+         shareName: data[i].selectedShare.name};
+        const deadline = data[i].deadline.split("T")[0].split("-");
+        const creation = data[i].creation.split("T")[0].split("-");
         paymentObject.endDate = deadline[2] + "." + deadline[1] + "." + deadline[0];
         paymentObject.startDate = creation[2] + "." + creation[1] + "." + creation[0];
 
 
         if(data[i].creditorUsername === userName) {
-          paymentObject.name = data[0].debtorUsername;
+          paymentObject.name = data[i].debtorUsername;
           paymentObject.inOrOut = "+";
           paymentObject.proposeType = 0;
         }
         else {
-          paymentObject.name = data[0].creditorUsername;
+          paymentObject.name = data[i].creditorUsername;
           paymentObject.inOrOut = "-";
           paymentObject.proposeType = 1;
         }
@@ -152,8 +159,10 @@ export class ZahlungenComponent implements OnInit {
   public onAcceptShare(event: Event): void {
     const elementId: string = (event.target as Element).id;
     const buttonNumber: number = parseInt(elementId.split('-')[1]);
-    this.api.acceptShare(buttonNumber);
-    window.location.reload();
+    console.log(buttonNumber)
+    this.api.acceptShare(buttonNumber).subscribe(() => {
+      window.location.reload();
+    });
   }
 
   public changeTab(tabId: string): string {
