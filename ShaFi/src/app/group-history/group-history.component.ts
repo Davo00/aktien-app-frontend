@@ -12,7 +12,7 @@ import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-
 // type expenseType = {
 //   amount: number;
 //   consumerCount: number;
-//   copayerIds: number[];
+//   copayerNames: number[];
 //   description: string;
 //   groupId: number;
 //   id: number;
@@ -40,11 +40,12 @@ export class GroupHistoryComponent implements OnInit {
   userName = sessionStorage.getItem('username');
   animationState: string;
   currentTabChat: boolean;
-  ChatDatevar = new Date(0);
+  ChatDatevar: string = 'null';
   GroupHistory = false;
   GroupChat = true;
   credits: any = [];
   chatContent: any = [];
+  currentDate = '';
 
   constructor(
     private matDialog: MatDialog,
@@ -100,14 +101,14 @@ export class GroupHistoryComponent implements OnInit {
 
     this.apiService.getSpecificExpense(this.groupId).subscribe((resp: any) => {
       console.log(resp);
+      let d = 0;
       this.chatContent = resp.body;
       for (let element of resp.body) {
-        let string = this.arraylist(element.copayerIds);
-        this.chatContent.copayerIds = string;
-        console.log(string);
+        let string = this.arraylist(element.copayerNames);
+        this.chatContent[d].copayerNames = string;
+        d++;
       }
-
-      console.log(this.chatContent[0].userPaid);
+      console.log(this.chatContent);
     });
   }
 
@@ -133,7 +134,7 @@ export class GroupHistoryComponent implements OnInit {
 
   /*   amount: 28.99
 consumerCount: 0
-copayerIds: Array(4)
+copayerNames: Array(4)
 0: 4
 1: 5
 2: 3
@@ -224,7 +225,7 @@ userPaid: "Moritz" */
           name: result.reason, // reason
           amount: result.amount,
           description: result.description,
-          copayerIds: this.extractCopayers(result.members),
+          copayerNames: this.extractCopayers(result.members),
           groupId: this.groupId,
         };
         // this.credits.push({ // push to credits or a new array just for added values?
@@ -232,7 +233,7 @@ userPaid: "Moritz" */
         //   name: result.reason, // reason
         //   amount: result.amount,
         //   description: result.description,
-        //   copayerIds: this.extractCopayers(result.members),
+        //   copayerNames: this.extractCopayers(result.members),
         //   groupId: this.groupId,
         // });
       }
@@ -292,7 +293,7 @@ userPaid: "Moritz" */
           name: result.reason, // reason
           amount: result.amount,
           description: result.description,
-          copayerIds: this.extractCopayers(result.members),
+          copayerNames: this.extractCopayers(result.members),
           groupId: this.groupId,
         });
       }
@@ -320,7 +321,7 @@ userPaid: "Moritz" */
         Absender: this.chatContent[i].userPaid,
         Text: this.chatContent[i].name,
         Value: this.chatContent[i].amount,
-        Mitglieder: this.chatContent[i].copayerIds,
+        Mitglieder: this.chatContent[i].copayerNames,
         ID: this.chatContent[i].id,
       },
       width: '400px',
@@ -334,7 +335,7 @@ userPaid: "Moritz" */
       } else if (result != null && result.delete === false) {
         console.log(result, 'Änderung');
         this.chatContent[i].name = result.Text;
-        this.chatContent[i].copayerIds = result.Mitglieder;
+        this.chatContent[i].copayerNames = result.Mitglieder;
         this.chatContent[i].amount = result.Value;
 
         console.log(this.chatContent[i]);
@@ -376,21 +377,19 @@ userPaid: "Moritz" */
     });
   }
 
-  public checkDate(datecheck: Date): boolean {
+  public checkDate(datecheck: string): boolean {
     /* console.log(datecheck); */
     /* console.log(this.CheckDatevar); */
     /* console.log(datecheck.getDate()) */
     /* console.log(this.ChatDatevar) */
     /* console.log(this.ChatDatevar) */
-    if (
-      datecheck.getDate() == this.ChatDatevar.getDate() &&
-      datecheck.getMonth() + 1 == this.ChatDatevar.getMonth() + 1 &&
-      datecheck.getFullYear() == this.ChatDatevar.getFullYear()
-    ) {
-      this.ChatDatevar = datecheck;
+
+    let date = this.getDate(datecheck);
+    console.log(date === this.ChatDatevar);
+    if (date === this.ChatDatevar) {
       return false;
     } else {
-      this.ChatDatevar = datecheck;
+      this.ChatDatevar = date;
       return true;
     }
   }
@@ -448,5 +447,41 @@ userPaid: "Moritz" */
   closeBill(): void {
     this.credits = null; ///////////////////////////////////////////
     this.router.navigate(['/', 'abrechnung', this.groupId]);
+  }
+
+  public getDate(date: string) {
+    const year = date.substr(0, 4);
+    const month = date.substr(5, 2);
+    const day = date.substr(8, 2);
+    let currentdate = day + '.' + month + '.' + year;
+    //console.log(currentdate)
+
+    return currentdate;
+  }
+
+  public getHours(hours: string) {
+    let houramndMin = hours.substr(11, 5);
+    return houramndMin;
+  }
+  public checkDates(i: number) {
+    let currentDate = this.getDate(this.chatContent[i].created);
+    let oldDate = '';
+    if (i !== 0) {
+      oldDate = this.getDate(this.chatContent[i - 1].created);
+    }
+    console.log(currentDate);
+    if (i === 0) {
+      this.currentDate = currentDate;
+      return true;
+    } else if (currentDate === oldDate) return false;
+    else {
+      this.currentDate = currentDate;
+      return true;
+    }
+  }
+  setnewDate() {
+    console.log(this.ChatDatevar, this.currentDate);
+    this.ChatDatevar = this.currentDate;
+    return false;
   }
 }
