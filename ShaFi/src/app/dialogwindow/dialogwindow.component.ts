@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA,MatDialogRef } from '@angular/material/dialog';
 
 
@@ -8,21 +8,18 @@ import { MAT_DIALOG_DATA,MatDialogRef } from '@angular/material/dialog';
   templateUrl: './dialogwindow.component.html',
   styleUrls: ['./dialogwindow.component.css']
 })
-export class DialogwindowComponent implements OnInit {
+export class DialogwindowComponent   {
 
-  Gruppenname: any;
-  Mitglieder: any;
+  Gruppenname= "";
+  Mitglieder="";
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
-    Gruppenname: String, Mitglieder: String
+    Gruppenname: string, Mitglieder: string
   },private matDialogRef:MatDialogRef<DialogwindowComponent>
   ) { }
 
-  ngOnInit(): void {
-    
-  }
 
-  public ngOnDestroy(){
+  public ngOnDestroy():void{
     console.log(this.data)
     if(this.data.Gruppenname === null || this.data.Mitglieder === null){
       this.matDialogRef.close(null)
@@ -33,11 +30,11 @@ export class DialogwindowComponent implements OnInit {
     }
   }
 
-  public dialogClose(){
+  public dialogClose():void{
     this.matDialogRef.close();
   }
 
-  public dialogSavenewInfo(){
+  public dialogSavenewInfo():void{
 
     this.data.Gruppenname = this.Gruppenname;
     this.data.Mitglieder = this.Mitglieder;

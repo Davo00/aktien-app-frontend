@@ -1,46 +1,55 @@
-<!-- <div class="mobileNav">
-    <div class="elementMobileNav" [ngClass]="{ deactiv: returnGroupsOverview() }" (click)="GroupsOverviewButton()">Groups Overview</div>
-    <div class="elementMobileNav" [ngClass]="{ deactiv: returnGroupPreview() }" (click)="GroupPreviewButton()">Group Preview</div>
-</div> -->
+<div class="groupOverviewPage" (resized)="onResized($event)">
+  <div class="groupOverview">
+    <div class="groupContainer">
+      <h1 class="heading">Groups Overview</h1>
+      <div class="AddButton">
+        <button (click)="addGroup()" class="addGroupButton">+</button>
+      </div>
+      <div class="groups">
+        <ul class="group" *ngFor="let group of Groups; let i = index">
+          <div class="flexElement">
+            <div class="GroupBlockleft" (click)="previewGroup(group)">
+              <h3>{{ Groups[i].name }}</h3>
+            </div>
+            <div (click)="editGroup(Groups[i].id, i)" class="GroupBlockright">
+              <i class="fas fa-edit"></i>
+            </div>
+            <div (click)="deleteGroup(Groups[i].id, i)" class="GroupBlockright">
+              <i class="far fa-trash-alt"></i>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="groupPreview">
+    <div class="groupPreviewContainer">
+      <h1 class="heading">Group Preview</h1>
+      <div
+        class="groupPreviewContent"
+        *ngIf="groupToPreview == null; else groupsExistBlock"
+      >
+        <div>
+          <h4>Here you can find a group details when you click on it</h4>
+        </div>
+      </div>
+      <ng-template #groupsExistBlock>
+        <div class="groupPreviewContent">
+          <h4>Group Name: {{ groupToPreview.name }}</h4>
+          
+          <br />
 
-<div class="groupOverviewPage">
-    <div class="groupOverview">
-        <div class="groupContainer">
-            <!-- <div class="displayNone900"> -->
-            <h1 class="heading">Groups Overview</h1>
-            <!-- </div> -->
-            <div class="AddButton"><button (click)="addGroup()" class="addGroupButton">+</button></div>
-            <div class="groups">
-                <ul class="group" *ngFor="let group of Groups; let i = index">
-                    <!-- (click)="preview($event, group)" -->
-                    <div>
-                        <h3>{{ Groups[i].groupName }}</h3>
-                        <p>{{ Groups[i].members }}</p>
-                        <!-- <button (click)="editGroup(i)">Edit Group</button> -->
-                    </div>
-                </ul>
-            </div>
+          <h4>Group Members: </h4>
+            
+            <ul *ngFor="let members of groupToPreview.myUsers; let i = index">
+              <p>{{groupToPreview.myUsers[i]}}</p>
+            </ul>
+
         </div>
+      </ng-template>
     </div>
-    <div class="groupPreview">
-        <div class="groupPreviewContainer">
-            <!-- <div class="displayNone900"> -->
-            <h1 class="heading">Group Preview</h1>
-            <!-- </div> -->
-            <div></div>
-            <div class="groupPreviewContent">
-                <p>
-                    Hier sieht man Infos über die erste Gruppe (default) Wenn man auf eine Gruppe klickt, dann erscheinen ihre Informationen hier.
-                </p>
-                <p>description</p>
-                <p>description</p>
-                <p>description</p>
-                <p>description</p>
-                <p>description</p>
-                <p>description</p>
-                <p>description</p>
-            </div>
-        </div>
-        <button class="moreDetailsButton" routerLink="/group-history">more details</button>
-    </div>
+    <button class="moreDetailsButton" (click)="openGroup(groupToPreview.id)">
+      more details
+    </button>
+  </div>
 </div>

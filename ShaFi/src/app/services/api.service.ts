@@ -1,24 +1,158 @@
+import { dataType } from './../abbrechnung/abbrechnung.component';
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-const baseUrl: String = "http://162.55.185.65:8080/";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class ApiService {
+  token = sessionStorage.getItem("Token")
+  headersToken= new HttpHeaders()
+  
+  .set('Authorization', 'Bearer ' + this.token)
+  //.set('Access-Control-Allow-Origin', 'POST');
 
-  constructor(private http: HttpClient) { }
 
-  public getAllExpense() {
-    let url = "/expense";
-    return this.http.get(url);
+
+  constructor(private http: HttpClient) {}
+
+
+  // ** EXPENSE CONTROLLER ** //
+
+  public getAllExpense(): any {
+    const url = '/expense';
+    return this.http.get(url ,{headers: this.headersToken} );
   }
 
-  public getSpecificExpense(groupId: number) {
-    let url = "/expense/" + groupId;
-    return this.http.get(url);
+  public getSpecificExpense(groupId: number): any {
+    const url = '/expense/' + groupId;
+    return this.http.get(url, {headers: this.headersToken});
   }
+
+  public createExpense(): Observable<any> {
+    const url = '/expense/';
+    return this.http.post<string>(url, null, {headers: this.headersToken, observe: 'response'});
+  }
+
+  public editExpenseById(expenseId: number): Observable<any> {
+    const url = '/expense/' + expenseId;
+    return this.http.put<string>(url, null, {headers: this.headersToken, observe: 'response'});
+  }
+
+  public deleteExpenseById(expenseId: number): Observable<any> {
+    const url = '/expense/' + expenseId;
+    return this.http.delete<string>(url, {headers: this.headersToken, observe: 'response'});
+  }
+
+  // ** GROUP CONTROLLER ** //
+
+  public getUserByGroup(groupId: number) {
+    const url = '/group/' + 'allUsers/' + groupId;
+    return this.http.get(url ,{headers: this.headersToken} ); // this.baseUrl + url
+  }
+
+
+  public createGroup(group: object): Observable<any> {
+    let url = '/group';
+    return this.http.post<string>(url, group ,{headers: this.headersToken, observe: 'response'} );
+  }
+
+  public addUserToGroup(groupId: number, userName: string): Observable<any> {
+    const url = '/group/' + groupId + '/' + userName;
+    return this.http.put<string>(url, null ,{headers: this.headersToken} );
+
+  }
+
+
+  public updateGroupById(groupId: number, data: Object): Observable<any> {
+    let url = '/group/' + groupId;
+    console.log(data)
+    return this.http.put<string>(url, data ,{headers: this.headersToken,  observe: 'response'});
+
+  }
+
+  public updateGroupByIdDelete(groupId: number, data: Object): Observable<any> {
+    let url = '/group/' + groupId;
+    return this.http.put<string>(url, data ,{headers: this.headersToken,  observe: 'response'});
+
+  }
+
+  public deleteGroupById(groupId: number): Observable<any> {
+    const url = '/group/' + groupId;
+    return this.http.delete<string>(url ,{headers: this.headersToken} );
+  }
+
+  // ** USER CONTROLLER ** //
+
+  public getAllGroupsOfUser() {
+    const url = '/user/' + 'allGroups/';
+    return this.http.get(url ,{headers: this.headersToken} );
+  }
+
+  public getUsersByGroup(groupName: string) {
+    const url = '/user/' + 'group/' + groupName;
+    return this.http.get(url, {headers: this.headersToken} );
+  }
+
+  public postLogin(login: Object): Observable<any> {
+    const url =  '/user/login';
+    console.log(login)
+    
+      return this.http.post<any>(url, login, {observe: 'response'} );
+
+  }
+
+  // ** CALCULATE CONTROLLER ** //
+
+  public getCalculatedDebtsForGroup(groupId: number): Observable<dataType[]> {
+    const url = '/calculate/debts/'  + groupId;
+    return this.http.get<dataType[]>(url, {headers: this.headersToken});
+  }
+
+  public getCredits(groupId: number): Observable<dataType[]> {
+    const url = '/calculate/overview/'  + groupId;
+    return this.http.get<dataType[]>(url, {headers: this.headersToken});
+  }
+
+  public finalizeCalculatedDebts(groupId: number) {
+    const url = '/calculate/final/' + groupId;
+    return this.http.put(url, null, {headers: this.headersToken});
+  }
+
+
+  //** LOGIN **/
+  public loginUser(login: object) {
+    const url = 'user/login';
+    return this.http.post(url, login)
+  }
+ 
+  public postRegister(register: Object){
+    const url = '/user/register';
+    return this.http.post<any>(url, register, {observe: 'response'} );
+  }
+
+  public createUser(): Observable<any> {
+    const url = '/user/register';
+    return this.http.post<string>(url, null, {headers: this.headersToken, observe: 'response'});
+  }
+
+  public editUserByIda(expenseId: number): Observable<any> { // by id?
+    const url = '/user/' + expenseId;
+    return this.http.put<string>(url, null, {headers: this.headersToken, observe: 'response'});
+  }
+
+  public deleteUserByIda(expenseId: number): Observable<any> { // by id?
+    const url = '/user/' + expenseId;
+    return this.http.delete<string>(url, {headers: this.headersToken, observe: 'response'});
+  }
+
+  // public getUsersByGroup(groupName: string) {
+  //   let url = '/user/' + 'group/' + groupName;
+  //   return this.http.get(url);
+  // }
+
+
 
 }

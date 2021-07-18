@@ -1,34 +1,128 @@
-<body style="background: var(--maincolor); height: 100%; padding-top: 5rem;">
-    <h2 style="line-height: 0px !important; margin-top: 0rem !important; margin-left: 1rem !important;">
-        Ein/Auszahlungen
-    </h2>
-    <p style="margin-left: 1rem !important;">
-        Hier sehen sie die Übersicht ihrer einzelnen Zahlungen
-    </p>
-    <div style="width:50%">
-        <h3 style="padding-left: 1rem !important;">Fällige Zahlungen:</h3>
-        <div *ngFor = "let data of zahlungExample">
-            <div *ngIf = 'data.type == "Faellig"'>
-                <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+<div class="groupOverviewPage">
+    <div>
+        <h1 class="header">
+            Payments
+        </h1>
+        <p class="subHeader">
+            Here you can see the overview of your individual payments
+        </p>
+        <div *ngIf = "!mobile" class="desktopView">
+            <div>
+                <h3 class="headerZahlungen">Due payments:</h3>
+                <div *ngFor = "let data of zahlungExample">
+                    <div *ngIf = 'data.type == "Faellig"'>
+                        <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                    </div>
+                </div> 
             </div>
-        </div> 
-    </div>
-    <div style="display: flex;">
-        <div style="width:50%">
-            <h3 style="padding-left: 1rem !important;">Einzahlungen:</h3>
-            <div *ngFor = "let data of zahlungExample">
-                <div *ngIf = 'data.type == "Einzahlung"'>
-                    <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+            <div>
+                <div>
+                    <h3 class="headerZahlungen">Deposits:</h3>
+                    <div *ngFor = "let data of zahlungExample">
+                        <div *ngIf = 'data.type == "Einzahlung"'>
+                            <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                        </div>
+                    </div> 
                 </div>
-            </div> 
-        </div>
-        <div style="width:50%;">
-            <h3 style="padding-left: 1rem !important;">Auszahlungen:</h3>
-            <div *ngFor = "let data of zahlungExample">
-                <div *ngIf = 'data.type == "Auszahlung"'>
-                    <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                <div>
+                    <h3 class="headerZahlungen">Payments:</h3>
+                    <div *ngFor = "let data of zahlungExample">
+                        <div *ngIf = 'data.type == "Auszahlung"'>
+                            <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Mobile -->
+        <div class="mobile" *ngIf = "mobile">
+            <div class="smallNavHistory">
+                <div
+                  class="ElementNavHis"
+                  id = "faelligId"
+                  [ngClass]="{ deactiv: returnFaellig() }"
+                  (click)="Swipe('faelligId')"
+                >
+                    <h3 id="test1">
+                        Due payments  
+                    </h3>
+                </div>
+                <div
+                  class="ElementNavHis"
+                  id = "einzahlungId"
+                  [ngClass]="{ deactiv: returnEinzahlung() }"
+                  (click)="Swipe('einzahlungId')"
+                >
+                    <h3 id="test2">
+                        Deposits
+                    </h3>
+                </div>
+                <div
+                  class="ElementNavHis"
+                  id = "auszahlundId"
+                  [ngClass]="{ deactiv: returnAuszahlung() }"
+                  (click)="Swipe('auszahlungId')"
+                >
+                    <h3 id="test3">
+                        Payments
+                    </h3>
+                </div>
+            </div>
+            <mat-card
+            id="faelligTest"
+            *ngIf="currentId == 'faelligId'"
+            class="cardContainer"
+            [@cardAnimator]="animationState"
+            (@cardAnimator.done)="resetAnimationState()"
+            (swipe)="Swipe('faelligId')"
+            >
+            <mat-card-actions class="card">
+                <div class="groupHisory" [ngClass]="{ deactiv: returnFaellig() }">
+                    <div *ngFor = "let data of zahlungExample">
+                        <div *ngIf = 'data.type == "Faellig"'>
+                            <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-actions>
+            </mat-card>
+            <mat-card
+            id="einzahlungTest"
+            *ngIf="currentId == 'einzahlungId'"
+            class="cardContainer"
+            [@cardAnimator]="animationState"
+            (@cardAnimator.done)="resetAnimationState()"
+            (swipe)="Swipe('einzahlungId')"
+            >
+            <mat-card-actions class="card">
+                <div class="groupHisory" [ngClass]="{ deactiv: returnEinzahlung() }">
+                    <div *ngFor = "let data of zahlungExample">
+                        <div *ngIf = 'data.type == "Einzahlung"'>
+                            <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-actions>
+            </mat-card>
+            <mat-card
+            id="auszahlungTest"
+            *ngIf="currentId == 'auszahlungId'"
+            class="cardContainer"
+            [@cardAnimator]="animationState"
+            (@cardAnimator.done)="resetAnimationState()"
+            (swipe)="Swipe('auszahlungId')"
+            >
+            <mat-card-actions class="card">
+                <div class="groupHisory" [ngClass]="{ deactiv: returnAuszahlung() }">
+                    <div *ngFor = "let data of zahlungExample">
+                        <div *ngIf = 'data.type == "Auszahlung"'>
+                            <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-actions>
+            </mat-card>
+        </div>
     </div>
-</body> 
+</div> 

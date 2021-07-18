@@ -1,29 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
 
-  
-  
-   
+export class LoginComponent {
+  constructor(private router: Router, private api: ApiService) {}
 
-  constructor(private router: Router) { }
+  public handleSubmit(username: string, pass: string): void {
+    const hash = CryptoJS.SHA3(pass, { outputLength: 256 });
+    const passhash = hash.toString(CryptoJS.enc.Base64);
 
-  ngOnInit(): void {
+    const LoginData: { username: string; password: string } = {
+      password: passhash,
+      username: username,
+    };
+    console.log(username, pass);
+
+    sessionStorage.setItem('username', username);
+    this.api.postLogin(LoginData).subscribe((response) => {
+      console.log(response);
+
+      const keys = response.headers.keys();
+
+      const headers = keys.map(
+        (key: unknown) => `${key}: ${response.headers.get(key)}`
+      );
+      sessionStorage.setItem('Token', headers[2].slice(15));
+      console.log(sessionStorage.getItem('Token'));
+
+      this.router.navigate(['/home']);
+    });
   }
-
-  public handleSubmit(user: string, pass: string){
-
-   var LoginData: { User: string; Password: string; } = 
-   {"User": user, "Password": pass}
-    console.log(user, pass)
-    
-    this.router.navigate([''])
-  }
-
 }

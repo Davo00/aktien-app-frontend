@@ -392,6 +392,9 @@ a {
   .LoginFeld {
     display: none;
   }
+  .logedin{
+    display: none
+  }
 
 
   .MenuList {

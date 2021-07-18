@@ -1,11 +1,20 @@
-# aktien-app-frontend
-This is the frontend for the pay by stock value app
+# SharedFinanze
+<p align="center">
+ <img alt ="ShaFi Logo"  src="../Doku_Unterlagen/LogoShaFi.png" height = 10% width= auto>
+</p>
 
 
-## Guide to run the application on your localhost
+# Screenshots
+Kommen im laufe der Tage hinzu
 
-1. clone the repository
-2. go into the subfolder Shafi
-3. execute the command: “npm install”
-4. execute the command: “ng serve -o”
-A new window should popup and show the page.
+# Dokumentationen
+1. [Dokumenation des Frontend](https://github.com/Davo00/aktien-app-frontend/tree/main/ShaFi#readme)
+2. [Dokumentation des Backend](https://github.com/Davo00/aktien-app-backend/blob/main/README.md)
+3. [Video für die Installation des Frontend ()](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+4. [Video für die Verwendung der App ()](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+
+# Wichtige Links
+1. [Die Webseite](http://162.55.185.65/)
+2. [Das Backend](https://github.com/Davo00/aktien-app-backend)
+

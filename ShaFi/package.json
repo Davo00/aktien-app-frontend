@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "lint": "eslint . --ext .ts",
     "test": "ng test"
   },
   "private": true,
@@ -20,6 +21,8 @@
     "@angular/platform-browser": "~12.0.2",
     "@angular/platform-browser-dynamic": "~12.0.2",
     "@angular/router": "~12.0.2",
+    "angular-resize-event": "^2.1.0",
+    "crypto-js": "^4.0.0",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
@@ -29,15 +32,19 @@
     "@angular-devkit/build-angular": "~12.0.2",
     "@angular/cli": "^12.0.4",
     "@angular/compiler-cli": "~12.0.2",
+    "@types/crypto-js": "^4.0.2",
     "@types/hammerjs": "^2.0.39",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
     "jasmine-core": "~3.7.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "typescript": "~4.2.3"
+    "typescript": "^4.2.4"
   }
 }

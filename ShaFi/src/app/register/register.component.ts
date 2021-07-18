@@ -1,29 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { EmptyError } from 'rxjs';
+import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
+import * as CryptoJS from 'crypto-js';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent {
   control = new FormControl('', [Validators.required, Validators.email]);
-  errorNach: boolean = false;
-  date:Date = new Date();
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  errorNach = false;
+  errorGroßVar = false;
+  errorUser = false;
+  date: Date = new Date();
 
-  public showError(){
+  constructor(private router: Router, private api: ApiService) {}
+
+  public showError():void {
     this.errorNach = !this.errorNach;
+    
   }
-  public errorAbfrage(){
+  public errorAbfrage():boolean {
     return this.errorNach;
   }
+  public errorall():boolean {
+    return this.errorGroßVar;
+  }
+  public erroruser():boolean {
+    return this.errorUser;
+  }
 
-  public getErrorMessage() {
+  public getErrorMessage():string {
     if (this.control.hasError('required')) {
       return 'You must enter a value';
     }
@@ -31,24 +42,43 @@ export class RegisterComponent implements OnInit{
     return this.control.hasError('email') ? 'Not a valid email' : '';
   }
 
-  public handleSubmit(Benutzername: string,email: string,password: string,passwordrep: string,){
-
-    if(password !== passwordrep){
+  public handleSubmit(
+    Benutzername: string,
+    email: string,
+    password: string,
+    passwordrep: string
+  ):void {
+    if (password !== passwordrep) {
       this.showError();
-    
     }
-    if(password === passwordrep ){
-      if(this.errorNach)
-      this.showError();
+    if (password === passwordrep) {
+      if (this.errorNach) this.showError();
+      console.log(password);
 
-      /* var alterDate = new Date(alter); */
-      /* console.log(alterDate) */
-    var submit: {Benutzername: string; Email: string; Password: string} = 
-    {"Benutzername": Benutzername, "Email": email, "Password": password}
+      const hash = CryptoJS.SHA3(password, { outputLength: 256 });
+      const passhash = hash.toString(CryptoJS.enc.Base64);
+      const submit: { email: string; password: string; username: string } = {
+        email: email,
+        password: passhash,
+        username: Benutzername,
+      };
 
-    console.log(submit)
-    
+      console.log(submit);
+
+      this.api.postRegister(submit).subscribe(
+        (response) => {
+          console.log(response);
+          if (response.status === 201) {
+            this.router.navigate(['/login']);
+          }
+        },
+        (error) => {
+          if (error.status !== 500) this.errorGroßVar = true;
+
+          if (error.status === 500) this.errorUser=true;
+          console.log(this.errorGroßVar);
+        }
+      );
     }
   }
-
 }

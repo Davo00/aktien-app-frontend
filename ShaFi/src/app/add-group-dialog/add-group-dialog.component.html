@@ -5,18 +5,23 @@
   <input matInput value="{{ data.groupName }}" #box1 />
 </mat-form-field>
 
+
+<!-- <ul *ngFor="let members of data.members; let i = index">
+  <div>{{data.members[i]}}</div>
+
+
+
+</ul> -->
+
 <mat-form-field appearence="legacy" color="accent">
   <mat-label>Members</mat-label>
-  <input matInput value="{{ data.members }}" #box2 />
-</mat-form-field>
+  <input matInput value="{{ arraylist() }}" #box2 />
+</mat-form-field> 
+
 
 <div style="display: block">
   <button (click)="dialogClose()">Cancel</button>
-  <button
-    (click)="
-      data.groupName = box1.value; data.members = box2.value; dialogClose()
-    "
-  >
+  <button (click)="dialogSave(box1.value, box2.value)">
     Save
   </button>
 </div>

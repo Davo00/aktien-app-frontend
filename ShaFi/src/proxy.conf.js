@@ -5,7 +5,8 @@ const PROXY_CONFIG = [
             "/share",
             "/user",
             "/debt",
-            "/group"
+            "/group",
+            "/calculate"
         ],
         target: "http://162.55.185.65:8080",
         secure: false,

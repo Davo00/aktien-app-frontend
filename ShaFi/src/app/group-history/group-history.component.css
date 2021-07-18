@@ -4,12 +4,16 @@
 .groupHisoryPageContent {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-  height: 65vh;
 }
 
 .groupHisoryPageContentMobile {
   display: none;
+}
+
+.heading {
+  text-align: center;
+  line-height: 100%;
+  transform: translateY(1rem);
 }
 
 /* HISTORY */
@@ -24,16 +28,6 @@
   border-radius: 10px;
 }
 
-.history {
-  height: 53vh;
-  overflow-x: auto;
-  overflow-y: scroll;
-}
-
-.history::-webkit-scrollbar {
-  display: none;
-}
-
 .groupHisory.deactiv {
   display: none;
 }
@@ -44,23 +38,30 @@
   margin-right: 0.5rem;
 }
 
-.heading {
-  text-align: center;
-  line-height: 100%;
+.AddButton {
 }
 
 .addPaymentButton {
   margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
   float: right;
+  cursor: pointer;
+  transform: translateY(-0.1rem);
 }
 
 .addPaymentButton:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
-.AddButton {
-  height: 30px;
+.history {
+  height: 55vh;
+  margin-top: 0.7rem;
+  overflow-x: auto;
+  overflow-y: scroll;
+  clip-path: inset(12px 0px);
+}
+
+.history::-webkit-scrollbar {
+  display: none;
 }
 
 .payment {
@@ -124,6 +125,16 @@
 
 .negativAmount {
   color: red;
+}
+
+.deleteBlock {
+  font-size: 1.3rem;
+  padding-left:1rem;
+}
+
+.editBlock {
+  font-size: 1.3rem;
+  padding-left:1rem;
 }
 
 /* CHAT */
@@ -250,9 +261,10 @@
 .closeBillArea {
   justify-content: center;
   display: grid;
-  margin-top: 2.5rem;
-  padding-bottom: 2rem;
-  transform: translateY(-5rem);
+  padding-top: 0rem;
+  /* padding-bottom: 2rem; */
+  /* transform: translateY(-7rem); */
+  display: flex;
 }
 
 .closeBillButton {
@@ -265,6 +277,7 @@
   box-shadow: 1px 1px 1px 1px silver;
   border-radius: 3rem;
   border-width: 0.01rem;
+  margin-bottom: 5rem;
 }
 
 .closeBillButton:hover {
@@ -308,21 +321,38 @@
   border-bottom: none;
 }
 
-.card {
-  /* background-color: red; */
-}
-
-/* img {
-  width: 200px;
+/* .card {
 } */
+
+@media screen and (max-width: 1250px) {
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  .closeBillArea {
+    margin-top: 2rem;
+    display: flex;
+  }
+}
 
 @media screen and (min-width: 900px) {
   .smallNavHistory {
     display: none;
   }
+
   .closeBillArea {
     padding-bottom: 2rem;
     transform: translateY(0rem);
+  }
+
+  .payment {
+    width: 91%;
+  }
+}
+
+@media screen and (max-height: 950px) {
+  .closeBillArea {
+    transform: translateY(1rem);
   }
 }
 
@@ -334,6 +364,7 @@
   .groupHisoryPageContentMobile {
     display: inherit;
     vertical-align: middle;
+    overflow-x: hidden;
   }
 
   .cardContainer {
@@ -350,9 +381,8 @@
     width: 95.5%;
     display: flex;
     vertical-align: middle;
-    vertical-align: middle;
   }
-  
+
   .card {
     width: 85%;
     margin: 0 0 0 0;
@@ -378,14 +408,16 @@
     padding: 0 0 0 0;
     margin: 0 0 0 0;
   }
+
   .groupChat {
     width: 100%;
     margin: 0 0 0 0;
   }
+
   .groupChatContent {
     height: 57.7vh;
   }
-  
+
   .groupChatContent {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
@@ -393,7 +425,9 @@
 
   .closeBillArea {
     padding-bottom: unset;
-    margin-top: 7rem;
+    position: unset;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
   }
 
   .smallNavHistory {
@@ -409,12 +443,25 @@
   }
 }
 
+@media screen and (max-width: 400px) and (max-height: 800px) {
+  .closeBillArea {
+    transform: translateY(1rem);
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .closeBillArea {
+    transform: translateY(1rem);
+  }
+}
+
 @media screen and (max-width: 700px) {
   .closeBillArea {
     margin-top: 1rem;
     padding: 0 0 0 0;
     transform: translateY(-1rem);
   }
+
   .cardContainer {
     width: 94%;
   }
@@ -430,6 +477,7 @@
   .cardContainer {
     width: 93.5%;
   }
+
   .smallNavHistory {
     margin: 0 0 0 0;
   }
@@ -439,21 +487,27 @@
   .closeBillArea {
     /* transform: translateY(-6rem); */
   }
+
   .ElementNavHis {
     font-size: 1.5rem;
   }
+
   .Chatprogramm {
     padding: 0;
   }
+
   .card {
     width: 100%;
   }
+
   .cardContainer {
     width: 92.5%;
   }
+
   .history {
     height: 50vh;
   }
+
   .groupChatContent {
     height: 53.5vh;
   }
@@ -473,21 +527,27 @@
   .card {
     width: 100%;
   }
+
   .cardContainer {
     width: 91%;
   }
+
   .closeBillArea {
     transform: translateY(-2rem);
   }
+
   .history {
     height: 45vh;
   }
+
   .groupChatContent {
     height: 47.5vh;
   }
+
   .smallNavHistory {
     grid-gap: 1rem;
   }
+
   .Chatprogramm {
     padding: 0;
   }
@@ -497,16 +557,9 @@
   }
 }
 
-@media screen and (max-width: 400px), 
-screen and (max-height: 800px) {
+@media screen and (max-width: 400px) and (max-height: 800px) {
   .closeBillArea {
     transform: translateY(-1rem);
-  }
-  .history {
-    height: 50vh;
-  }
-  .groupChatContent {
-    height: 53.5vh;
   }
 }
 
@@ -529,17 +582,5 @@ screen and (max-height: 800px) {
 @media screen and (max-width: 300px) {
   .cardContainer {
     width: 88%;
-  }
-}
-
-@media screen and (max-width: 325px) {
-  .cardContainer {
-    width: 89%;
-  }
-}
-
-@media screen and (max-width: 1250px) {
-  h1 {
-    font-size: 3rem !important;
   }
 }
