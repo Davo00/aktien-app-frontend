@@ -32,7 +32,6 @@
 
     <div
       class="MobileSiteMenu"
-      id="MobileNav"
       [ngClass]="{ active: isactive() }"
     >
       <!-- <div class="MobileSiteContent"> -->
@@ -56,7 +55,7 @@
           </div>
 
           <div (click)="this.router.navigate(['login']); clicked = !clicked" class="UserIcon">
-            <i class="fas fa-user"></i>
+            <i class="far fa-user"></i>
             <p class="UserName">Username</p>
           </div>
           <ul class="BurgerNavList">
