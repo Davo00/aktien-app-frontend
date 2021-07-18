@@ -140,12 +140,12 @@
 
 .deleteBlock {
   font-size: 1.3rem;
-  padding-left:1rem;
+  padding-left: 1rem;
 }
 
 .editBlock {
   font-size: 1.3rem;
-  padding-left:1rem;
+  padding-left: 1rem;
 }
 
 /* CHAT */
@@ -242,6 +242,7 @@
 
 .chatAbsender {
   font-weight: bold;
+  display: flex;
 }
 
 .chatDate {

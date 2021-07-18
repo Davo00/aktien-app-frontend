@@ -125,6 +125,7 @@ export class GroupOverviewComponent implements OnInit {
         groupName: this.Groups[element].name,
         groupId: this.Groups[element].id,
         members: this.Groups[element].myUsers,
+        type: 'group',
       },
       width: '350px',
       height: '250px',
