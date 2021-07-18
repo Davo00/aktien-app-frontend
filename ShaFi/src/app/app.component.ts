@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { ApiService } from './services/api.service';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'ShaFi';
 
   constructor(public router: Router,
-     //private api: ApiService
+     private api: ApiService
      ) {}
 
   clicked = false;
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     //Initiales Login
-    /* if (sessionStorage.getItem('Token') === null) {
+    if (sessionStorage.getItem('Token') === null) {
       const data = { password: 'pass', username: 'Cevin' };
       //console.log(data);
       sessionStorage.setItem('username', 'Cevin');
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
         //console.log(sessionStorage.getItem('Token'));
       });
     }
-    sessionStorage.setItem('username', 'Cevin');*/
+    sessionStorage.setItem('username', 'Cevin');
     if (sessionStorage.getItem('username') !== null) {
       this.username = sessionStorage.getItem('username');
       this.logedIn = true;
