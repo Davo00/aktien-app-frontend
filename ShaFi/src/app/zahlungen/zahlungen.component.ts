@@ -149,10 +149,13 @@ export class ZahlungenComponent implements OnInit {
       data: {
         debtId: buttonNumber
       },
-      width: '60vw',
+      width: '30vw',
       height: '60vh',
       position: {},
       disableClose: false,
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      window.location.reload();
     });
   }
 

@@ -41,7 +41,6 @@ export class ProposeShareDialogComponent implements OnInit {
       console.log(data);
     });
     this.matDialogRef.close();
-    window.location.reload();
   }
 
   public onPressCancel(): void {
