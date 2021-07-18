@@ -40,7 +40,7 @@ export class GroupHistoryComponent implements OnInit {
   userName = sessionStorage.getItem('username');
   animationState: string;
   currentTabChat: boolean;
-  ChatDatevar: string = 'null';
+  ChatDatevar = 'null';
   GroupHistory = false;
   GroupChat = true;
   credits: any = [];
@@ -103,8 +103,8 @@ export class GroupHistoryComponent implements OnInit {
       console.log(resp);
       let d = 0;
       this.chatContent = resp.body;
-      for (let element of resp.body) {
-        let string = this.arraylist(element.copayerNames);
+      for (const element of resp.body) {
+        const string = this.arraylist(element.copayerNames);
         this.chatContent[d].copayerNames = string;
         d++;
       }
@@ -131,22 +131,6 @@ export class GroupHistoryComponent implements OnInit {
       return '';
     }
   }
-
-  /*   amount: 28.99
-consumerCount: 0
-copayerNames: Array(4)
-0: 4
-1: 5
-2: 3
-3: 6
-length: 4
-__proto__: Array(0)
-description: "Teuerstes Bier der Welt"
-groupId: 1
-id: 9
-name: "Bier"
-unpaid: true
-userPaid: "Moritz" */
 
   // outdated test data
   // Payments: { userPaid: string; amount: number }[] = [
@@ -209,7 +193,6 @@ userPaid: "Moritz" */
   ];
 
   addPayment(): void {
-    let addedCredit: any;
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {},
       width: '60vw',
@@ -220,7 +203,7 @@ userPaid: "Moritz" */
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
       if (result != null) {
-        addedCredit = {
+        const addedCredit: any = {
           userPaid: result.userPaid,
           name: result.reason, // reason
           amount: result.amount,
@@ -228,29 +211,15 @@ userPaid: "Moritz" */
           copayerNames: this.extractCopayers(result.members),
           groupId: this.groupId,
         };
-        // this.credits.push({ // push to credits or a new array just for added values?
-        //   userPaid: result.userPaid,
-        //   name: result.reason, // reason
-        //   amount: result.amount,
-        //   description: result.description,
-        //   copayerNames: this.extractCopayers(result.members),
-        //   groupId: this.groupId,
-        // });
+        this.apiService.createExpense(addedCredit).subscribe((result) => {
+          console.log(result);
+          const keys = result.headers.keys();
+          console.log(keys);
+        });
       }
-      // this.apiService.createExpense(); //////////////////////
-      console.log(this.credits); ////////////////////////////////
-      console.log('Expense created'); ////////////////////////////////
+      console.log('Expense created');
     });
   }
-  // @NoArgsConstructor
-  // public class CreateExpense {
-  //     private Long groupId; Y
-  //     private String userPaid; Y
-  //     private String name; Y
-  //     private double amount; Y
-  //     private String description; Y
-  //     private List<String> copayerNames; Y
-  // }
 
   extractCopayers(members: string): any {
     // if (members == "") {nix} hat nic gebracht!
@@ -384,7 +353,7 @@ userPaid: "Moritz" */
     /* console.log(this.ChatDatevar) */
     /* console.log(this.ChatDatevar) */
 
-    let date = this.getDate(datecheck);
+    const date = this.getDate(datecheck);
     console.log(date === this.ChatDatevar);
     if (date === this.ChatDatevar) {
       return false;
@@ -449,22 +418,22 @@ userPaid: "Moritz" */
     this.router.navigate(['/', 'abrechnung', this.groupId]);
   }
 
-  public getDate(date: string) {
+  public getDate(date: string): string {
     const year = date.substr(0, 4);
     const month = date.substr(5, 2);
     const day = date.substr(8, 2);
-    let currentdate = day + '.' + month + '.' + year;
+    const currentdate = day + '.' + month + '.' + year;
     //console.log(currentdate)
 
     return currentdate;
   }
 
-  public getHours(hours: string) {
-    let houramndMin = hours.substr(11, 5);
+  public getHours(hours: string): string {
+    const houramndMin = hours.substr(11, 5);
     return houramndMin;
   }
-  public checkDates(i: number) {
-    let currentDate = this.getDate(this.chatContent[i].created);
+  public checkDates(i: number): boolean {
+    const currentDate = this.getDate(this.chatContent[i].created);
     let oldDate = '';
     if (i !== 0) {
       oldDate = this.getDate(this.chatContent[i - 1].created);
@@ -479,7 +448,7 @@ userPaid: "Moritz" */
       return true;
     }
   }
-  setnewDate() {
+  setnewDate(): boolean {
     console.log(this.ChatDatevar, this.currentDate);
     this.ChatDatevar = this.currentDate;
     return false;

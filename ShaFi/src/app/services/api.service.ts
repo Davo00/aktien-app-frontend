@@ -31,7 +31,7 @@ export class ApiService {
     return this.http.get(url, {headers: this.headersToken, observe: 'response'});
   }
 
-  public createExpense(): Observable<any> {
+  public createExpense(group: object): Observable<any> {
     const url = '/expense/';
     return this.http.post<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
