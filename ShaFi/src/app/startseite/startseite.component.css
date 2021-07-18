@@ -1,18 +1,37 @@
-.startDiv{
-    
-    margin: 1rem 0 1rem 0%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
+
+.startDiv {
+  margin: 6rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.startText{
-    display: block;
-    width: 80%;
-    background-color: white;
-    
-    padding: 2rem;
-    border-radius: 30px;
+
+.startText {
+  display: inline-flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 2rem 4rem 2rem 4rem;
+  background-color: white;
+  text-justify: distribute;
+  text-align: justify;
+  border-radius: 30px;
 }
-p{
-    font-size: 1.5rem;
+
+h2 {
+  font-family: 'Barriecito', sans-serif !important;
+  margin-bottom: 4rem !important;
+}
+
+h3 {
+  margin-left: 2rem!important;
+}
+
+p {
+  display: flex;
+  color: #222f3e;
+  font-size: 1.5rem;
+  line-height: 150% !important;
+  align-self: center;
+  margin: 2rem 8rem 4rem 8rem;
 }
