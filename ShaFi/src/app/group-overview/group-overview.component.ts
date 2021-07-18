@@ -44,7 +44,7 @@ export class GroupOverviewComponent implements OnInit {
   // groupHistory: GroupHistoryComponent
   // Groups: { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent }[] = [
 
-  public addGroup() {
+  public addGroup(): void {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: null,
@@ -61,8 +61,8 @@ export class GroupOverviewComponent implements OnInit {
       if (result == null) {
       } else {
         console.log(result);
-        let Name = result.groupName;
-        let members = result.members;
+        const Name = result.groupName;
+        const members = result.members;
         /* this.Groups.push({
           name: result.groupName,
           id: result.groupId,
@@ -71,7 +71,7 @@ export class GroupOverviewComponent implements OnInit {
         }); */
 
         console.log(Name, members);
-        let GroupObject = { name: Name, usernames: members };
+        const GroupObject = { name: Name, usernames: members };
 
         this.apiService.createGroup(GroupObject).subscribe((result) => {
           console.log(result);
@@ -84,7 +84,7 @@ export class GroupOverviewComponent implements OnInit {
     });
   }
 
-  public editGroup(groupId: number, arrayelement: number) {
+  public editGroup(groupId: number, arrayelement: number): void {
     console.log(arrayelement);
     console.log(this.Groups);
     const dialogref = this.matDialog.open(AddGroupDialogComponent, {
@@ -137,9 +137,9 @@ export class GroupOverviewComponent implements OnInit {
       console.log(resulut);
 
       if (resulut) {
-        let username = sessionStorage.getItem('username');
+        const username = sessionStorage.getItem('username');
         console.log(username);
-        let deleteGroup = {
+        const deleteGroup = {
           name: this.Groups[element].name,
           usernames: this.Groups[element].myUsers,
           id: this.Groups[element].id,
@@ -147,7 +147,7 @@ export class GroupOverviewComponent implements OnInit {
         let i = 0;
         console.log(deleteGroup);
 
-        for (let element of deleteGroup.usernames) {
+        for (const element of deleteGroup.usernames) {
           if (element === username) {
             deleteGroup.usernames.splice(i, 1);
           } else {
@@ -167,7 +167,7 @@ export class GroupOverviewComponent implements OnInit {
     });
   }
 
-  public notNull(value: null) {
+  public notNull(value: null): unknown {
     if (value === null) {
       return;
     } else {
@@ -175,19 +175,19 @@ export class GroupOverviewComponent implements OnInit {
     }
   }
 
-  public onResized(event: ResizedEvent) {
+  public onResized(event: ResizedEvent): void {
     this.innerWidth = event.newWidth;
     this.innerHeight = event.newHeight;
   }
 
-  public previewGroup(group: groupType) {
+  public previewGroup(group: groupType): void {
     if (this.innerWidth <= 900) {
       this.openGroup(group.id);
     } else this.groupToPreview = group;
   }
 
-  public openGroup(id: number) {
-    for (let group of this.Groups) {
+  public openGroup(id: number): void {
+    for (const group of this.Groups) {
       if (group.id === id) this.router.navigate(['/', 'group', id]);
       else console.log('Group does not exist'); // hier kann man mehr machen
     }
