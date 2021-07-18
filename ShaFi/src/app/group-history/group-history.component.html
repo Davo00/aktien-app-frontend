@@ -42,14 +42,54 @@
         <div class="groupChatContent" id="scrollBlock">
           <div class="Chatprogramm">
             <div class="ChatprogrammDiv">
-              <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
-                <li *ngIf="checkDate(chat.Datum)">
+              <ul
+                *ngFor="let message of chatContent; let i = index"
+                class="checkUL"
+              >
+              <li *ngIf="checkDates(i)">
+                <div class="chatDateforInput" >
+                  {{ currentDate }} 
+                  
+                </div>
+              </li> 
+                <li
+                  (click)="openDialogChatChange(i)"
+                  class="chatLI"
+                  [ngClass]="{ active: isactive(message.userPaid) }"
+                >
+                  <div class="chatBox">
+                    <div class="chatAbsender">
+                      <div style="width: 90%; padding-left: 5%">
+                        Paid by: {{ message.userPaid }}
+                      </div>
+
+                      <div style="width: 10%"><i class="fas fa-edit"></i></div>
+                    </div>
+                    <div class="chatText">Amount: {{ message.amount }}</div>
+
+                    <div class="chatText">
+                      Paif for: {{ message.copayerNames }}
+                    </div>
+
+                    <div class="chatInfo">
+                      <div class="chatText">Reason: {{ message.name }}</div>
+
+                       <div class="chatDate">
+                      {{getHours(message.created)}}
+                      </div> 
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <!--<ul *ngFor="let chat of Chats; let i = index" class="checkUL">
+                 <li *ngIf="checkDate(chat.Datum)">
                   <div class="chatDateforInput">
                     {{ chat.Datum.getDate() }}.{{
                       chat.Datum.getMonth() + 1
                     }}.{{ chat.Datum.getFullYear() }}
                   </div>
-                </li>
+                </li> 
                 <li
                   (click)="openDialogChatChange(i)"
                   class="chatLI"
@@ -71,11 +111,11 @@
                       <div class="chatDate">
                         {{ chat.Datum.getHours() }} :
                         {{ chat.Datum.getMinutes() }}
-                      </div>
+                      </div> 
                     </div>
                   </div>
                 </li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </div>
@@ -141,7 +181,7 @@
                     </div>
                   </div>
                 </div>
-            <!-- <div class="deleteBlock" (click)="deletePayment(credits[i].id)">
+                <!-- <div class="deleteBlock" (click)="deletePayment(credits[i].id)">
               <i class="far fa-trash-alt"></i>
             </div> -->
               </ul>
@@ -167,7 +207,43 @@
             <div class="groupChatContent">
               <div id="scrollBlock" class="Chatprogramm">
                 <div class="ChatprogrammDiv">
-                  <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
+                  <ul
+                *ngFor="let message of chatContent; let i = index"
+                class="checkUL"
+              >
+                <li
+                  (click)="openDialogChatChange(i)"
+                  class="chatLI"
+                  [ngClass]="{ active: isactive(message.userPaid) }"
+                >
+                  <div class="chatBox">
+                    <div class="chatAbsender">
+                      <div style="width: 90%; padding-left: 5%">
+                        Paid by: {{ message.userPaid }}
+                      </div>
+
+                      <div style="width: 10%"><i class="fas fa-edit"></i></div>
+                    </div>
+                    <div class="chatText">Amount: {{ message.amount }}</div>
+                   
+
+                    <div class="chatText">
+                      paid for: 
+                      {{message.copayerNames}}
+                    </div>
+
+                    <div class="chatInfo">
+                      <div class="chatText">Reason: {{ message.name }}</div>
+
+                      <!-- <div class="chatDate">
+                      {{ chat.Datum.getHours() }} :
+                      {{ chat.Datum.getMinutes() }}
+                    </div> -->
+                    </div>
+                  </div>
+                </li>
+              </ul>
+                  <!-- <ul *ngFor="let chat of Chats; let i = index" class="checkUL">
                     <li *ngIf="checkDate(chat.Datum)">
                       <div class="chatDateforInput">
                         {{ chat.Datum.getDate() }}.{{
@@ -200,7 +276,7 @@
                         </div>
                       </div>
                     </li>
-                  </ul>
+                  </ul> -->
                 </div>
               </div>
             </div>

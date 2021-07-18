@@ -28,7 +28,7 @@ export class ApiService {
 
   public getSpecificExpense(groupId: number): any {
     const url = '/expense/' + groupId;
-    return this.http.get(url, {headers: this.headersToken});
+    return this.http.get(url, {headers: this.headersToken, observe: 'response'});
   }
 
   public createExpense(): Observable<any> {
@@ -36,9 +36,9 @@ export class ApiService {
     return this.http.post<string>(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
-  public editExpenseById(expenseId: number): Observable<any> {
+  public editExpenseById(expenseId: number, element: object): Observable<any> {
     const url = '/expense/' + expenseId;
-    return this.http.put<string>(url, null, {headers: this.headersToken, observe: 'response'});
+    return this.http.put<string>(url, element, {headers: this.headersToken, observe: 'response'});
   }
 
   public deleteExpenseById(expenseId: number): Observable<any> {
