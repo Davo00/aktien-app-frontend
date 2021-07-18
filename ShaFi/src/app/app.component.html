@@ -6,10 +6,12 @@
     <nav>
       <ul class="MenuList">
         <li>
-          <div *ngIf="logedIn === false"><a class="NavListElement" href="#" routerLink="/" > Home </a></div>
-          <div *ngIf="logedIn === true"><a class="NavListElement" href="#" routerLink="/home" > Home </a></div>
-          
-         
+          <div *ngIf="logedIn === false">
+            <a class="NavListElement" href="#" routerLink="/"> Home </a>
+          </div>
+          <div *ngIf="logedIn === true">
+            <a class="NavListElement" href="#" routerLink="/home"> Home </a>
+          </div>
         </li>
         <li>
           <a class="NavListElement" href="#" routerLink="/group-overview">
@@ -17,14 +19,16 @@
           </a>
         </li>
         <li>
-          <a class="NavListElement" href="#" routerLink="/zahlungen"> Zahlungen </a>
+          <a class="NavListElement" href="#" routerLink="/zahlungen">
+            Zahlungen
+          </a>
         </li>
         <!-- <li><a class="NavListElement" href="#" routerLink="/"> Aktien </a></li> -->
       </ul>
     </nav>
 
     <div class="LoginFeld">
-      <a class="LoginButton" href="#" routerLink="/login"> Konto erstellen </a>
+      <a class="LoginButton" href="#" routerLink="/login"> {{ username }} </a>
     </div>
   </div>
 
@@ -58,7 +62,10 @@
             <i class="fas fa-times"></i>
           </div>
 
-          <div (click)="this.router.navigate(['login']); clicked = !clicked" class="UserIcon">
+          <div
+            (click)="this.router.navigate(['login']); clicked = !clicked"
+            class="UserIcon"
+          >
             <i class="fas fa-user"></i>
             <p class="UserName">Username</p>
           </div>

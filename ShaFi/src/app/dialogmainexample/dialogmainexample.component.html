@@ -4,19 +4,18 @@
     Open Dialog
   </button> -->
 
-  <button (click)="openDialogClickcreate()" style="font-weight: bold;">
-    Create new Group
-  </button>
+<button (click)="openDialogClickcreate()" style="font-weight: bold">
+  Create new Group
+</button>
 
+<div>
   <div>
-    <div>Hier steht das Feld {{Infos[0].name}} mit den Mitgliedern 
-      <ul *ngFor="let info of Infos; let i = index">
-        
-      <li>Name: {{info.name}} und Mitglieder: {{info.mitglieder}}
-        <button (click)="openDialogchange(i)">Ändern</button>  
+    Hier steht das Feld {{ Infos[0].name }} mit den Mitgliedern
+    <ul *ngFor="let info of Infos; let i = index">
+      <li>
+        Name: {{ info.name }} und Mitglieder: {{ info.mitglieder }}
+        <button (click)="openDialogchange(i)">Ändern</button>
       </li>
-    </ul> 
-    </div>
+    </ul>
   </div>
-  
-
+</div>

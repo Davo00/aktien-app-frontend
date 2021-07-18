@@ -284,11 +284,10 @@ a {
   .LoginFeld {
     display: none;
   }
-  .logedin{
-    display: none
+  .logedin {
+    display: none;
   }
 
-  
   .MenuList {
     margin: 0 0 0 0;
   }
@@ -326,11 +325,9 @@ a {
     font-size: 1.6rem;
   }
 
-
-
-.MenuList {
-  margin: 0 0 0 0;
-}
+  .MenuList {
+    margin: 0 0 0 0;
+  }
 }
 
 @media screen and (min-width: 450px) and (max-width: 700px) {

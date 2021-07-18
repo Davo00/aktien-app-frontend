@@ -14,9 +14,10 @@
     margin-bottom: 1rem;
 }
 .headerLoginIcon{
-    background-color: aqua;
+    background-color: #ffe9c8;
     padding: 1rem;
     border-radius: 100rem;
+    color: black
 }
 
 .FormField{
