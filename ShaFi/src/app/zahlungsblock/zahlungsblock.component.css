@@ -24,7 +24,24 @@
 
 .horizontal{
     display:inline-flex;
+    padding-top: 1rem;
 }
+
+.shares {
+  padding-top: 0rem;
+}
+
+.amount {
+  margin-bottom: 0rem !important;
+  font-size: 2rem !important;
+}
+
+.date {
+  font-weight: bold; 
+  padding-left:0.5rem; 
+  padding-right: 1rem;
+}
+
 .layoutRight {
     float:right; 
     align-items: center; 
@@ -32,7 +49,6 @@
 }
 .dateIcons {
     padding-right: 1rem;
-    padding-top: 0.5rem; 
     font-size: 200%;
 }
 .chartIcon {

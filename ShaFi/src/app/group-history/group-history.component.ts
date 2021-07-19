@@ -211,9 +211,10 @@ userPaid: "Moritz" */
   addPayment(): void {
     let addedCredit: any;
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {},
-      width: '60vw',
-      height: '60vh',
+      data: {
+      },
+      width: '35vw',
+      height: '55vh',
       position: {},
       disableClose: false,
     });
@@ -324,7 +325,7 @@ userPaid: "Moritz" */
         Mitglieder: this.chatContent[i].copayerNames,
         ID: this.chatContent[i].id,
       },
-      width: '400px',
+      width: '300px',
       height: '400px',
       position: {},
       disableClose: false,

@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
         //console.log(response);
         const keys = response.headers.keys();
 
+
         const headers = keys.map(
           (key: unknown) => `${key}: ${response.headers.get(key)}`
         );
