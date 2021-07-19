@@ -58,24 +58,25 @@ export class ZahlungenComponent implements OnInit {
   ngOnInit(): void {
     const userName = sessionStorage.getItem("username");
     this.api.getAllDebtsForUser().subscribe(data => {
+      console.log(data);
       for(let i=0; i < data.length; i++) {
         const paymentObject: paymentType = 
         {type: "open",
          name: "", 
          amount: data[i].amount, 
-         endDate: "",
+         endDate: "-",
          startDate: "", 
          inOrOut: "", 
          proposeType: 0, 
          debtId: data[i].id, 
          proportion: data[i].shareProportion,
-         shareName: data[i].selectedShare.name};
-        const deadline = data[i].deadline.split("T")[0].split("-");
+         shareName: "0"};
         const creation = data[i].creation.split("T")[0].split("-");
-        paymentObject.endDate = deadline[2] + "." + deadline[1] + "." + deadline[0];
         paymentObject.startDate = creation[2] + "." + creation[1] + "." + creation[0];
 
-
+        if(data[i].selectedShare !== null) {
+          paymentObject.shareName = data[i].selectedShare.name;
+        }
         if(data[i].creditorUsername === userName) {
           paymentObject.name = data[i].debtorUsername;
           paymentObject.inOrOut = "+";
@@ -89,15 +90,19 @@ export class ZahlungenComponent implements OnInit {
         if(data[i].debtorConfirmed === true || data[i].creditorConfirmed === true) {
           paymentObject.proposeType = 2;
         }
-        if(this.today > new Date(deadline[1] + " " + deadline[2] + " " + deadline[0])) {
-          paymentObject.type = "due";
-        } 
-        else {
-          if(data[i].creditorUsername === userName && data[i].creditorConfirmed === true) {
-            paymentObject.type = "deposit";
-          }
-          else if(data[i].debtorUsername === userName && data[i].debtorConfirmed === true) {
-            paymentObject.type = "payment";
+        if(data[i].deadline !== null) {
+          const deadline = data[i].deadline.split("T")[0].split("-");
+          paymentObject.endDate = deadline[2] + "." + deadline[1] + "." + deadline[0];
+          if(this.today > new Date(deadline[1] + " " + deadline[2] + " " + deadline[0])) {
+            paymentObject.type = "due";
+          } 
+          else {
+            if(data[i].creditorUsername === userName && data[i].creditorConfirmed === true) {
+              paymentObject.type = "deposit";
+            }
+            else if(data[i].debtorUsername === userName && data[i].debtorConfirmed === true) {
+              paymentObject.type = "payment";
+            }
           }
         }        
         this.displayedPayments.push(paymentObject);
