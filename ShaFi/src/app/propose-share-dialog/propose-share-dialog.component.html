@@ -1,0 +1,14 @@
+<h3>
+    Choose a Share you want to pay your debts with:
+</h3>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [(ngModel)]="selectedShare">
+  <mat-radio-button class="example-radio-button" *ngFor="let share of displayedShares" [value]="share.shareId">
+    {{share.name}} - Shareprice: {{share.price}} €
+  </mat-radio-button>
+</mat-radio-group>
+<p> Your selected Share is: {{selectedShare}}</p>
+<button (click)="onPressCancel()">Cancel</button>
+<button (click)="proposeShare()">Propose</button>

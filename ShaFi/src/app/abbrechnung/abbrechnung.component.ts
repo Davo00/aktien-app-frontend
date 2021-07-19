@@ -51,7 +51,7 @@ export class AbbrechnungComponent implements OnInit {
 
 
   @HostListener('window:resize', ['$event'])
-  onResize() {
+  onResize(): void {
     this.innerWidth = window.innerWidth;
     console.log(this.innerWidth);
     if(this.innerWidth <= 800) {
@@ -92,23 +92,19 @@ export class AbbrechnungComponent implements OnInit {
     
     return this.mobile;
   }
-
-  isExpanded(member: string): boolean {
-    return true;
-  }
-
+  
   getData(member: string): PeriodicElement[] {
     const displayedData: PeriodicElement[] = [];
     for(let i=0; i < this.FETCHED_DATA.length; i++) {
       const newRow: PeriodicElement = {member: "", erhalten: "", bezahlen:""};
       if(this.FETCHED_DATA[i].creditor === member) {
         newRow.member = this.FETCHED_DATA[i].debitor;
-        newRow.erhalten = this.FETCHED_DATA[i].amount;
+        newRow.erhalten = this.FETCHED_DATA[i].amount + " €";
         displayedData.push(newRow);
       }
       else if(this.FETCHED_DATA[i].debitor === member) {
         newRow.member = this.FETCHED_DATA[i].creditor;
-        newRow.bezahlen = this.FETCHED_DATA[i].amount;
+        newRow.bezahlen = this.FETCHED_DATA[i].amount + " €";
         displayedData.push(newRow);
       }
     }
