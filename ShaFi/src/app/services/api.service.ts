@@ -32,7 +32,7 @@ export class ApiService {
   }
 
   public createExpense(expense: object): Observable<any> {
-    const url = '/expense/';
+    const url = '/expense';
     return this.http.post<string>(url, expense, {headers: this.headersToken, observe: 'response'});
   }
 

@@ -99,6 +99,7 @@ export class GroupHistoryComponent implements OnInit {
         });
       });
 
+      // IF NO EXPENSES DO NOTHING 
     this.apiService.getSpecificExpense(this.groupId).subscribe((resp: any) => {
       console.log(resp);
       let d = 0;

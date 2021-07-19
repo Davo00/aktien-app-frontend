@@ -14,7 +14,9 @@ export class AddPaymentDialogComponent implements OnInit {
   description: any;
   members: any; // List<String> copayerNames
   selfPaid = false;
-  Username = this.route.snapshot.paramMap.get('id');
+  // Username = this.route.snapshot.paramMap.get('id');
+  Username = sessionStorage.getItem('username');
+
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
