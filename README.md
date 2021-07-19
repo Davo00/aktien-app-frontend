@@ -1,6 +1,6 @@
 # SharedFinanze
 <p align="center">
- <img alt ="ShaFi Logo"  src="../Doku_Unterlagen/LogoShaFi.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/LogoShaFi.png" height = 10% width= auto>
 </p>
 
 
