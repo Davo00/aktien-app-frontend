@@ -8,7 +8,7 @@
 Kommen im laufe der Tage hinzu
 
 # Dokumentationen
-1. [Dokumenation des Frontend](https://github.com/Davo00/aktien-app-frontend/blob/main/README.md)
+1. [Dokumenation des Frontend](https://github.com/Davo00/aktien-app-frontend/tree/main/ShaFi#readme)
 2. [Dokumentation des Backend](https://github.com/Davo00/aktien-app-backend/blob/main/README.md)
 3. [Video für die Installation des Frontend ()](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 4. [Video für die Verwendung der App ()](https://www.youtube.com/watch?v=dQw4w9WgXcQ)

@@ -41,6 +41,7 @@ import { CommonModule } from '@angular/common';
 import { ProposeShareDialogComponent } from './propose-share-dialog/propose-share-dialog.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-dialog.component';
+import { EditPaymentDialogComponent } from './edit-payment-dialog/edit-payment-dialog.component';
 
 
 
@@ -73,7 +74,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     StartseiteComponent,
     HammertimeDirective,
     ProposeShareDialogComponent,
-    DeleteGroupDialogComponent
+    DeleteGroupDialogComponent,
+    EditPaymentDialogComponent
 
     // Observable
   ],

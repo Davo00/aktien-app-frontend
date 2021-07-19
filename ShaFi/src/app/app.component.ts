@@ -12,40 +12,25 @@ export class AppComponent implements OnInit {
 
   constructor(public router: Router, private api: ApiService) {}
 
-  clicked: boolean = false;
+  clicked = false;
   logedIn= false
   
 
   public ngOnInit(): void {
     //Initiales Login
+
     if(sessionStorage.getItem("Token")  === null ) {
-      let data  = {"password": "pass", "username": "Hendrik"}
-      sessionStorage.setItem("userName", data.username);
-      console.log(data)
+      const data  = {"password": "pass", "username": "Cevin"}
+      sessionStorage.setItem("username", data.username);
       this.api.postLogin(data).subscribe(response => {
-        console.log(response)
         const keys = response.headers.keys();
-
-        let headers = keys.map((key: any) =>
+        const headers = keys.map((key: any) =>
         `${key}: ${response.headers.get(key)}`);
-        console.log(keys);
-        console.log(headers);
-        console.log(headers[2].slice(15));
         sessionStorage.setItem("Token", headers[2].slice(15));
-        console.log(sessionStorage.getItem("Token")) 
-      })
-    }
+    })
+  }
+  sessionStorage.setItem("username", "Cevin")    
 
-    // this.api.getSpecificExpense(1).subscribe((returnData) => {
-    //   console.log(returnData);
-    // });
-    
-    if(sessionStorage.getItem('Token') !== null){
-      this.logedIn= true
-    }
-
-
-     console.log(sessionStorage.getItem('Token'))
   }
 
   public thisclicked():void {
