@@ -6,7 +6,6 @@ import { trigger, keyframes, animate, transition } from '@angular/animations';
 import * as kf from './keyframes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { EditPaymentDialogComponent } from '../edit-payment-dialog/edit-payment-dialog.component';
 import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-dialog.component';
 
 // type expenseType = {
@@ -99,7 +98,7 @@ export class GroupHistoryComponent implements OnInit {
         });
       });
 
-      // IF NO EXPENSES DO NOTHING 
+    // IF NO EXPENSES DO NOTHING
     this.apiService.getSpecificExpense(this.groupId).subscribe((resp: any) => {
       //console.log(resp);
       let d = 0;
@@ -133,66 +132,6 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
 
-  // outdated test data
-  // Payments: { userPaid: string; amount: number }[] = [
-  //   { userPaid: 'Hendrik', amount: 9999 },
-  //   { userPaid: 'Moritz', amount: -9999 },
-  //   { userPaid: 'Moayad', amount: 9999 },
-  //   { userPaid: 'Davit', amount: 9999 },
-  //   { userPaid: 'Hendrik', amount: 9999 },
-  // ];
-
-  Chats: {
-    Absender: string;
-    Datum: Date;
-    Text: string;
-    Value: number;
-    Mitglieder: string;
-  }[] = [
-    {
-      Absender: 'Peter',
-      Datum: new Date(5000000000),
-      Text: 'Einkauf von Bier',
-      Value: 10,
-      Mitglieder: 'Peter, Albani, Renate',
-    },
-    {
-      Absender: 'Ullo',
-      Datum: new Date(50000000000),
-      Text: 'Einkauf von Bier',
-      Value: 10,
-      Mitglieder: 'Peter, Albani, Renate',
-    },
-    {
-      Absender: 'Cevin',
-      Datum: new Date(500000000000),
-      Text: 'Einkauf von Bier für die Party die wir am letzten Sonntag gefeiert haben',
-      Value: 10,
-      Mitglieder: 'Peter, Albani, Renate',
-    },
-    {
-      Absender: 'Carolina',
-      Datum: new Date(500000000000),
-      Text: 'Einkauf von Bier',
-      Value: 5,
-      Mitglieder: 'Peter, Albani, Renate',
-    },
-    {
-      Absender: 'Sabine',
-      Datum: new Date(),
-      Text: 'Einkauf von Bier',
-      Value: 10,
-      Mitglieder: 'Peter, Albani, Renate',
-    },
-    {
-      Absender: 'Cevin',
-      Datum: new Date(),
-      Text: 'Einkauf von Bier',
-      Value: 10,
-      Mitglieder: 'Peter, Albani, Renate',
-    },
-  ];
-
   addPayment(): void {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {},
@@ -202,7 +141,6 @@ export class GroupHistoryComponent implements OnInit {
       disableClose: false,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      //console.log(result);
       if (result != null) {
         const addedCredit: any = {
           userPaid: result.userPaid,
@@ -222,11 +160,8 @@ export class GroupHistoryComponent implements OnInit {
           // console.log(keys);
           console.log('Expense created');
         });
-        // window.location.reload();
+        window.location.reload();
       }
-      // this.apiService.createExpense(); //////////////////////
-      //console.log(this.credits); ////////////////////////////////
-      //console.log('Expense created'); ////////////////////////////////
     });
   }
 
@@ -253,31 +188,6 @@ export class GroupHistoryComponent implements OnInit {
       return copayers;
     }
   }
-
-  /* editPayment(expenseId: number): void {
-    const dialogRef = this.matDialog.open(EditPaymentDialogComponent, {
-      data: {},
-      width: '60vw',
-      height: '60vh',
-      position: {},
-      disableClose: false,
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result != null) {
-        this.credits.push({
-          // delete element with the id and add a new one?
-          userPaid: result.userPaid,
-          name: result.reason, // reason
-          amount: result.amount,
-          description: result.description,
-          copayerNames: this.extractCopayers(result.members),
-          groupId: this.groupId,
-        });
-      }
-      this.apiService.editExpenseById(expenseId);
-      console.log('Expense edited'); ////////////////////////////////
-    });
-  } */
 
   deletePayment(expenseId: number): void {
     this.apiService.deleteExpenseById(expenseId);
@@ -313,17 +223,15 @@ export class GroupHistoryComponent implements OnInit {
       } else if (result != null && result.delete === false) {
         //console.log(result, 'Änderung');
         this.chatContent[i].name = result.Text;
-        let memebrs = this.extractCopayers(result.Mitglieder)
+        const memebrs = this.extractCopayers(result.Mitglieder);
         this.chatContent[i].copayerNames = memebrs;
         this.chatContent[i].amount = result.Value;
         //this.chatContent[i].unpaid = true
-
         //console.log(this.chatContent[i]);
-        
-        this.apiService
-          .editExpenseById(this.chatContent[i].id, this.chatContent[i])
-          //.subscribe((data) => console.log(data));
-
+        this.apiService.editExpenseById(
+          this.chatContent[i].id,
+          this.chatContent[i]
+        );
         //console.log(this.chatContent);
         window.location.reload();
       } else {
@@ -353,19 +261,11 @@ export class GroupHistoryComponent implements OnInit {
           }
         });
       }
-      /* this.Infos[number].name = result.Gruppenname;
-        this.Infos[number].mitglieder = result.Mitglieder; */
     });
   }
 
   public checkDate(datecheck: string): boolean {
-    /* //console.log(datecheck); */
-    /* //console.log(this.CheckDatevar); */
-    /* //console.log(datecheck.getDate()) */
-    /* //console.log(this.ChatDatevar) */
-    /* //console.log(this.ChatDatevar) */
-
-    let date = this.getDate(datecheck);
+    const date = this.getDate(datecheck);
     //console.log(date === this.ChatDatevar);
     if (date === this.ChatDatevar) {
       return false;
