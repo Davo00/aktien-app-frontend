@@ -38,6 +38,10 @@
     margin-bottom: 5rem;
   }
 
+  .openButtons {
+    margin-left: 20px;
+  }
+
   .desktopView {
     margin: 0 auto; 
     width:50%
@@ -72,7 +76,7 @@
 
   @media screen and (max-width: 1486px) {
     h1 {
-      font-size: 4rem !important;
+      font-size: 4.5rem !important;
     }
     .subHeader {
         text-align: center;
@@ -81,7 +85,7 @@
   
   @media screen and (max-width: 1250px) {
     h1 {
-      font-size: 3.5rem !important;
+      font-size: 4rem !important;
     }
     .group {
       width: 95%;
@@ -93,7 +97,7 @@
   
   @media screen and (max-width: 1075px) {
     h1 {
-      font-size: 3rem !important;
+      font-size: 3.5rem !important;
     }
     .subHeader {
         text-align: center;
@@ -111,7 +115,7 @@
   
   @media screen and (max-width: 930px) {
     h1 {
-      font-size: 2.8rem !important;
+      font-size: 3.1rem !important;
     }
     .subHeader {
         text-align: center;
@@ -144,7 +148,10 @@
 
   @media screen and (max-width: 420px) {
     h1 {
-      font-size: 2.3rem !important;
+      font-size: 2.6rem !important;
+    }
+    h2 {
+      font-size: 2rem !important;
     }
     h3 {
         font-size: 1.2rem !important;
@@ -160,7 +167,10 @@
   
   @media screen and (max-width: 360px) {
     h1 {
-      font-size: 2.2rem !important;
+      font-size: 2.4rem !important;
+    }
+    h2 {
+      font-size: 1.7rem !important;
     }
     h3 {
         font-size: 1rem !important;
