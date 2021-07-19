@@ -194,15 +194,14 @@ export class GroupHistoryComponent implements OnInit {
 
   addPayment(): void {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
-      data: {
-      },
+      data: {},
       width: '35vw',
       height: '55vh',
       position: {},
       disableClose: false,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      console.log(this.credits);
       if (result != null) {
         const addedCredit: any = {
           userPaid: result.userPaid,
@@ -212,27 +211,30 @@ export class GroupHistoryComponent implements OnInit {
           copayerNames: this.extractCopayers(result.members),
           groupId: this.groupId,
         };
+        this.credits.push({
+          username: addedCredit.userPaid,
+          credit: addedCredit.amount,
+        });
         this.apiService.createExpense(addedCredit).subscribe((result) => {
           console.log(result);
           const keys = result.headers.keys();
-          console.log(keys);
+          // console.log(keys);
+          console.log('Expense created');
         });
+        // window.location.reload();
       }
-      console.log('Expense created');
+      console.log(this.credits);
     });
   }
 
   extractCopayers(members: string): any {
-    // if (members == "") {nix} hat nic gebracht!
     if (members !== null || members !== '') {
       console.log(members);
       const copayers: any[] = [];
       const splitComma = members.split(',');
-      // console.log(splitComma);
       splitComma.forEach((element) => {
         if (element.includes(' ')) {
           const splitSpace = element.split(' ');
-          // console.log(splitSpace);
           splitSpace.forEach((name) => {
             if (name !== '') {
               copayers.push(name);
@@ -439,7 +441,7 @@ export class GroupHistoryComponent implements OnInit {
     if (i !== 0) {
       oldDate = this.getDate(this.chatContent[i - 1].created);
     }
-    console.log(currentDate);
+    // console.log(currentDate); ////////////////////////////////////
     if (i === 0) {
       this.currentDate = currentDate;
       return true;
