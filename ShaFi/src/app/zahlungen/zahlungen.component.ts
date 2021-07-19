@@ -56,7 +56,7 @@ export class ZahlungenComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const userName = sessionStorage.getItem("userName");
+    const userName = sessionStorage.getItem("username");
     this.api.getAllDebtsForUser().subscribe(data => {
       console.log(data);
       for(let i=0; i < data.length; i++) {
