@@ -3,7 +3,8 @@
     <div class="groupContainer">
       <h1 class="heading">Groups Overview</h1>
       <div class="AddButton">
-        <button (click)="addGroup()" class="addGroupButton">+</button>
+        <i class="fas fa-plus" (click)="addGroup()"></i>
+        <!-- <button (click)="addGroup()" class="addGroupButton">+</button> -->
       </div>
       <div class="groups">
         <ul class="group" *ngFor="let group of Groups; let i = index">
@@ -14,7 +15,7 @@
             <div (click)="editGroup(Groups[i].id, i)" class="GroupBlockright">
               <i class="fas fa-edit"></i>
             </div>
-            <div (click)="deleteGroup(Groups[i].id, i)" class="GroupBlockright">
+            <div (click)="deleteGroup(Groups[i].id, i)" class="GroupBlockTrash">
               <i class="far fa-trash-alt"></i>
             </div>
           </div>
@@ -36,15 +37,11 @@
       <ng-template #groupsExistBlock>
         <div class="groupPreviewContent">
           <h4>Group Name: {{ groupToPreview.name }}</h4>
-          
           <br />
-
           <h4>Group Members: </h4>
-            
             <ul *ngFor="let members of groupToPreview.myUsers; let i = index">
               <p>{{groupToPreview.myUsers[i]}}</p>
             </ul>
-
         </div>
       </ng-template>
     </div>

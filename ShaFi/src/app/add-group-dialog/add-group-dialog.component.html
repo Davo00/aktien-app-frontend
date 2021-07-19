@@ -1,21 +1,20 @@
-<mat-form-field appearence="legacy" color="accent">
-  <mat-label>Group Name</mat-label>
-  <input matInput value="{{ data.groupName }}" #box1 />
-</mat-form-field>
-
-<!-- <ul *ngFor="let members of data.members; let i = index">
-  <div>{{data.members[i]}}</div>
-
-
-
-</ul> -->
-
-<mat-form-field appearence="legacy" color="accent">
-  <mat-label>Members</mat-label>
-  <input matInput value="{{ arraylist() }}" #box2 />
-</mat-form-field>
-
-<div style="display: block">
-  <button (click)="dialogClose()">Cancel</button>
-  <button (click)="dialogSave(box1.value, box2.value)">Save</button>
+<h2>Create Group</h2>
+<br />
+<div class="fields">
+  <mat-form-field appearence="legacy" color="accent">
+    <mat-label>Group Name</mat-label>
+    <input matInput value="{{ data.groupName }}" #box1 />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearence="legacy" color="accent">
+    <mat-label>Members</mat-label>
+    <input matInput value="{{ arraylist() }}" #box2 />
+  </mat-form-field>
+</div>
+<br />
+<div class="buttons" style="display: block">
+  <button class="close" (click)="dialogClose()">Cancel</button>
+  <button class="save" (click)="dialogSave(box1.value, box2.value)">
+    Save
+  </button>
 </div>

@@ -21,7 +21,16 @@
 }
 
 .AddButton {
-  height: 30px;
+  justify-self: flex-end;
+  width: 5%;
+  font-size: 2rem;
+  color: black;
+}
+
+.AddButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 100ms;
 }
 
 .addGroupButton {
@@ -82,10 +91,10 @@
   background-color: white;
   box-shadow: 1px 1px 1px 1px silver;
   border-radius: 10px;
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
   margin-top: 4.54rem;
   min-height: 20vh;
 }
@@ -108,17 +117,21 @@
   transition: transform 150ms;
 }
 
-.GroupBlockleft{
+.GroupBlockleft {
   text-align: left;
   width: 90%;
 }
-  .GroupBlockright{
-    font-size: 1.3rem;
-    padding: 0rem 0.5rem 0 0 ;
-    transform: translateY(-10px);
-  }
-  
-
+.GroupBlockright {
+  font-size: 1.3rem;
+  padding: 0rem 0.5rem 0 0;
+  transform: translateY(-10px);
+}
+.GroupBlockTrash {
+  font-size: 1.3rem;
+  padding: 0rem 0.5rem 0 0;
+  transform: translateY(-10px);
+  color: red;
+}
 
 @media screen and (min-width: 900px) {
   /* .mobileNav {
