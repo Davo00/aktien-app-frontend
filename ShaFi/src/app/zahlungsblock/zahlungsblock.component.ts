@@ -5,12 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './zahlungsblock.component.html',
   styleUrls: ['./zahlungsblock.component.css']
 })
-export class ZahlungsblockComponent implements OnInit {
+export class ZahlungsblockComponent {
 
   @Input() zahlung: any 
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 }

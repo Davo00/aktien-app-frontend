@@ -58,7 +58,6 @@ export class ZahlungenComponent implements OnInit {
   ngOnInit(): void {
     const userName = sessionStorage.getItem("username");
     this.api.getAllDebtsForUser().subscribe(data => {
-      console.log(data);
       for(let i=0; i < data.length; i++) {
         const paymentObject: paymentType = 
         {type: "open",
@@ -103,10 +102,8 @@ export class ZahlungenComponent implements OnInit {
         }        
         this.displayedPayments.push(paymentObject);
       }
-      console.log(this.displayedPayments)
     });
     this.innerWidth = window.innerWidth;
-    console.log(this.innerWidth);
     if(this.innerWidth <= 700) {
       this.mobile = true;
     }
@@ -118,7 +115,6 @@ export class ZahlungenComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     this.innerWidth = window.innerWidth;
-    console.log(this.innerWidth);
     if(this.innerWidth <= 700) {
       this.mobile = true;
     }
@@ -162,7 +158,6 @@ export class ZahlungenComponent implements OnInit {
   public onAcceptShare(event: Event): void {
     const elementId: string = (event.target as Element).id;
     const buttonNumber: number = parseInt(elementId.split('-')[1]);
-    console.log(buttonNumber)
     this.api.acceptShare(buttonNumber).subscribe(() => {
       window.location.reload();
     });

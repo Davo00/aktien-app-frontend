@@ -30,24 +30,19 @@
   </div>
 
   <div class="GruppenÜbersichtdiv">
-    <h2>Due payments</h2>
+    <h2>Due Payments</h2>
   </div>
   <div class="Zahlungübersicht">
-    <div class="Zahlungübersichtblock">
-      <ul *ngFor="let zahlung of Zahlungen; let i = index" class="GroupElement">
+    <div class="Zahlungübersichtblock">    
+      <ul *ngFor="let zahlung of duePayments; let i = index" class="GroupElement">
         <div class="ZahlungBlock">
           <li>
-            <div class="Zahlungseinzel">
-              <div class="ZahlungReceiver">{{ zahlung.receiver }}</div>
-              <div class="ZahlungAmount" *ngIf="zahlung.amount >= 0">
-                +{{ zahlung.amount }}
-              </div>
-              <div class="ZahlungAmount" *ngIf="zahlung.amount < 0">
-                -{{ zahlung.amount }}
-              </div>
-            </div>
+            <div class="Zahlungseinzel" (click)="clickZahlung()">
+              <div class="ZahlungReceiver"> {{zahlung.name}} </div>
+              <div class="ZahlungAmount"> {{zahlung.inOrOut}} {{zahlung.amount}} </div>         
+          </div>
           </li>
-        </div>
+        </div>     
       </ul>
     </div>
   </div>
