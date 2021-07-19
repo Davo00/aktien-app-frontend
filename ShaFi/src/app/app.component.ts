@@ -10,46 +10,56 @@ import { ApiService } from './services/api.service';
 export class AppComponent implements OnInit {
   title = 'ShaFi';
 
-  constructor(public router: Router, private api: ApiService) {}
+  constructor(public router: Router,
+     private api: ApiService
+     ) {}
 
   clicked = false;
-  logedIn= false
-  
+  logedIn = false;
+  username: unknown;
 
   public ngOnInit(): void {
     //Initiales Login
-
-    if(sessionStorage.getItem("Token")  === null ) {
-      const data  = {"password": "pass", "username": "Cevin"}
-      sessionStorage.setItem("username", data.username);
-      this.api.postLogin(data).subscribe(response => {
+    if (sessionStorage.getItem('Token') === null) {
+      const data = { password: 'pass', username: 'Cevin' };
+      //console.log(data);
+      sessionStorage.setItem('username', 'Cevin');
+      this.api.postLogin(data).subscribe((response) => {
+        //console.log(response);
         const keys = response.headers.keys();
-        const headers = keys.map((key: any) =>
-        `${key}: ${response.headers.get(key)}`);
-        sessionStorage.setItem("Token", headers[2].slice(15));
-    })
-  }
-  sessionStorage.setItem("username", "Cevin")    
 
+
+        const headers = keys.map(
+          (key: unknown) => `${key}: ${response.headers.get(key)}`
+        );
+        //console.log(keys);
+        //console.log(headers);
+        //console.log(headers[2].slice(15));
+        sessionStorage.setItem('Token', headers[2].slice(15));
+        //console.log(sessionStorage.getItem('Token'));
+      });
+    }
+    sessionStorage.setItem('username', 'Cevin');
+    if (sessionStorage.getItem('username') !== null) {
+      this.username = sessionStorage.getItem('username');
+      this.logedIn = true;
+    } else {
+      this.username = 'username';
+      this.logedIn = false;
+    } 
   }
 
-  public thisclicked():void {
+//Die Folgenden Methoden werden für das SiteMenü gebraucht
+  public thisclicked(): void {
     this.clicked = !this.clicked;
   }
 
-  public isactive():boolean {
+  public isactive(): boolean {
     return this.clicked;
   }
 
-  public islogedIn():boolean{
-    return this.logedIn
+  public islogedIn(): boolean {
+    return this.logedIn;
   }
 
-  /* setClasses(){
-    let myClasses = {
-      MobileSiteMenu: this.clicked == true,
-      MobileSiteMenuive: this.clicked != true,
-    }
-    return myClasses;
-  }  */
 }

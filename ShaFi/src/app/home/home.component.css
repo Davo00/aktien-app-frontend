@@ -1,167 +1,155 @@
-.Gruppenübersicht{
-    border-radius: 20px;
+.Gruppenübersicht {
+  border-radius: 20px;
+  width: 100%;
+  /*  display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.Gruppenübersicht::-webkit-scrollbar {
+  display: none;
+}
+.GruppenÜbersichtdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Gruppenübersichtblock {
+  display: block;
+  overflow-y: hidden;
+  /* height: calc(3*(3rem+2rem)); */
+  height: 15rem;
+}
+
+.Gruppenübersichtblock::-webkit-scrollbar {
+  display: none;
+}
+
+.GruppenBox {
+  background-color: white;
+  border-radius: 20px;
+  width: 70%;
+  height: 3rem;
+  margin-left: 10%;
+}
+
+.GroupElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.GurppenBlock,
+.ZahlungBlock {
+  background: var(--boxcolor);
+  width: 70vw;
+  height: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Buttonrerout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: black solid 2px;
+  width: 60%;
+  height: 2rem;
+  margin-left: 20%;
+  border-radius: 20px;
+  margin-bottom: 10vh;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.Zahlungübersichtblock {
+  display: block;
+  overflow-y: scroll;
+  max-height: 40vh;
+}
+
+.Zahlungübersichtblock::-webkit-scrollbar {
+  display: none;
+}
+.Zahlungübersicht {
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Zahlungseinzel {
+  display: block;
+}
+
+.ZahlungReceiver {
+  font-size: 1.5rem;
+}
+.flexDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.ZahlungAmount {
+  padding-top: 0.5rem;
+  font-weight: bold;
+}
+.outerButtonrerout {
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 600px) {
+  .Gruppenübersicht {
     width: 100%;
-   /*  display: flex; */
-    justify-content: center;
-    align-items: center;
-    
-}
 
-.Gruppenübersicht::-webkit-scrollbar{
-display: none;
-}
-.GruppenÜbersichtdiv{
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-.Gruppenübersichtblock{
-    display: block;
-    overflow-y: hidden;
-    /* height: calc(3*(3rem+2rem)); */
-    height: 15rem;
-}
-
-.Gruppenübersichtblock::-webkit-scrollbar{
-    display: none;
-    
-    }
-
-.GruppenBox{
-    background-color: white;
-    border-radius: 20px;
-    width: 70%;
-    height: 3rem;
-    margin-left: 10%;
-    
-}
-
-.GroupElement{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-}
-
-.GurppenBlock, .ZahlungBlock{
-    background: var(--boxcolor);
-    width: 70vw;
-    height: 3rem;
-    border-radius: 20px;
-    text-align: center;
-    padding: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.Buttonrerout{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: black solid 2px;
-    width: 60%;
-    height: 2rem;
-    margin-left: 20%;
-    border-radius:20px;
-    margin-bottom: 10vh;
-    margin-top: 1rem;
-    cursor: pointer;
-}
-
-.Zahlungübersichtblock{
-    display: block;
-    overflow-y: scroll;
-    max-height: 40vh;
-}
-
-.Zahlungübersichtblock::-webkit-scrollbar{
-display: none;
-
-}
-.Zahlungübersicht{
-    border-radius: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-}
-
-.Zahlungseinzel{
-    display: block;
-}
-
-.ZahlungReceiver{
-    font-size:1.5rem;
-}
-.flexDisplay{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 2rem;
-}
-
-.ZahlungAmount{
-    padding-top: 0.5rem;
-    font-weight: bold;
-}
-.outerButtonrerout{
-    padding-bottom: 2rem;
-}
-
-@media screen and (min-width: 600px){
-
-    .Gruppenübersicht{
-    
-    width: 100%;
-    
     flex-wrap: wrap;
-    }
+  }
 
-    .Gruppenübersichtblock{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-gap:1rem;
-        flex-wrap: wrap;
-        height: 20rem;
-    }
+  .Gruppenübersichtblock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 1rem;
+    flex-wrap: wrap;
+    height: 20rem;
+  }
 
-    .GurppenBlock{
+  .GurppenBlock {
     width: 20rem;
     height: 6rem;
-   cursor: pointer;
-    }
+    cursor: pointer;
+  }
 
-    .Buttonrerout{
-        width: 40%;
-        height: 2rem;
-        margin: 1rem 0 1rem 0; 
+  .Buttonrerout {
+    width: 40%;
+    height: 2rem;
+    margin: 1rem 0 1rem 0;
+  }
 
-    }
-
-    .ZahlungBlock{
-        width: 40vw;
-        
-    }
-    .outerButtonrerout{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-    }
+  .ZahlungBlock {
+    width: 40vw;
+  }
+  .outerButtonrerout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media screen and (min-width: 1500px) {
-    .Buttonrerout{
-        width: 20%;
-        height: 2rem;
-        margin: 1rem 0 1rem 0; 
-    }
-    
+  .Buttonrerout {
+    width: 20%;
+    height: 2rem;
+    margin: 1rem 0 1rem 0;
+  }
 }

@@ -1,9 +1,8 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import * as CryptoJS from 'crypto-js';
-
 
 @Component({
   selector: 'app-register',
@@ -20,21 +19,20 @@ export class RegisterComponent {
 
   constructor(private router: Router, private api: ApiService) {}
 
-  public showError():void {
+  public showError(): void {
     this.errorNach = !this.errorNach;
-    
   }
-  public errorAbfrage():boolean {
+  public errorAbfrage(): boolean {
     return this.errorNach;
   }
-  public errorall():boolean {
+  public errorall(): boolean {
     return this.errorGroßVar;
   }
-  public erroruser():boolean {
+  public erroruser(): boolean {
     return this.errorUser;
   }
 
-  public getErrorMessage():string {
+  public getErrorMessage(): string {
     if (this.control.hasError('required')) {
       return 'You must enter a value';
     }
@@ -47,13 +45,13 @@ export class RegisterComponent {
     email: string,
     password: string,
     passwordrep: string
-  ):void {
+  ): void {
     if (password !== passwordrep) {
       this.showError();
     }
     if (password === passwordrep) {
       if (this.errorNach) this.showError();
-      console.log(password);
+      //console.log(password);
 
       const hash = CryptoJS.SHA3(password, { outputLength: 256 });
       const passhash = hash.toString(CryptoJS.enc.Base64);
@@ -63,11 +61,11 @@ export class RegisterComponent {
         username: Benutzername,
       };
 
-      console.log(submit);
+      //console.log(submit);
 
       this.api.postRegister(submit).subscribe(
         (response) => {
-          console.log(response);
+          //console.log(response);
           if (response.status === 201) {
             this.router.navigate(['/login']);
           }
@@ -75,8 +73,8 @@ export class RegisterComponent {
         (error) => {
           if (error.status !== 500) this.errorGroßVar = true;
 
-          if (error.status === 500) this.errorUser=true;
-          console.log(this.errorGroßVar);
+          if (error.status === 500) this.errorUser = true;
+          //console.log(this.errorGroßVar);
         }
       );
     }

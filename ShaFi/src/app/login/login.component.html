@@ -1,43 +1,38 @@
 <body>
-<div class= "login">
-
+  <div class="login">
     <div class="headerLogin">
-        <div class="headerLoginIcon">
+      <div class="headerLoginIcon">
         <i class="fas fa-user"></i>
-        </div>
+      </div>
     </div>
     <div class="SigninText">
-        <h1 style="font-weight: 900;">Sign In</h1>
+      <h1 style="font-weight: 900">Sign In</h1>
     </div>
     <div class="FormField">
-
-        
-<mat-form-field  appearance="fill"  color="accent"> 
-    
-    <mat-label>Username</mat-label>
-    <input  matInput #box1 >
-   <!--  (keyup)="getValue(box.value)" -->
-    <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
-    
-  </mat-form-field>
-</div>
-<div class="FormField">
-    <mat-form-field  appearance="fill"  color="accent"> 
-        
-        <mat-label>Password</mat-label>
-        <input type="password" matInput #box2 >
-       <!--  (keyup)="getValue(box.value)" -->
+      <mat-form-field appearance="legacy" color="accent">
+        <mat-label>Username</mat-label>
+        <input matInput #box1 />
+        <!--  (keyup)="getValue(box.value)" -->
         <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
-        
+      </mat-form-field>
+    </div>
+    <div class="FormField">
+      <mat-form-field appearance="legacy" color="accent">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput #box2 />
+        <!--  (keyup)="getValue(box.value)" -->
+        <!-- <mat-hint align="end">Min 5 character</mat-hint> -->
       </mat-form-field>
     </div>
 
-<div class="Register">
-    <a class="registertext"href="#" routerLink="/register">register here!</a>
-</div>
-<div class="flexElement">
-    <button (click)="handleSubmit(box1.value, box2.value)" class="buttonstyle">Log in</button>
-</div>
-</div>
+    <div class="Register" style="padding-top: 3rem; grid-gap:1rem">
+      <a class="registertext" href="#" routerLink="/register"
+        ><div class="buttonDesign">Register here!</div>
+      </a>
 
+      <a (click)="handleSubmit(box1.value, box2.value)" class="buttonDesign"
+        >Log in</a
+      >
+    </div>
+  </div>
 </body>

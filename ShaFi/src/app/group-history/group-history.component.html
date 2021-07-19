@@ -69,7 +69,7 @@
                     <div class="chatText">Amount: {{ message.amount }}</div>
 
                     <div class="chatText">
-                      Paif for: {{ message.copayerNames }}
+                      Paid for: {{ message.copayerNames }}
                     </div>
 
                     <div class="chatInfo">
@@ -213,6 +213,12 @@
                 *ngFor="let message of chatContent; let i = index"
                 class="checkUL"
               >
+              <li *ngIf="checkDates(i)">
+                <div class="chatDateforInput" >
+                  {{ currentDate }} 
+                  
+                </div>
+              </li> 
                 <li
                   (click)="openDialogChatChange(i)"
                   class="chatLI"
@@ -227,20 +233,17 @@
                       <div style="width: 10%"><i class="fas fa-edit"></i></div>
                     </div>
                     <div class="chatText">Amount: {{ message.amount }}</div>
-                   
 
                     <div class="chatText">
-                      paid for: 
-                      {{message.copayerNames}}
+                      Paid for: {{ message.copayerNames }}
                     </div>
 
                     <div class="chatInfo">
                       <div class="chatText">Reason: {{ message.name }}</div>
 
-                      <!-- <div class="chatDate">
-                      {{ chat.Datum.getHours() }} :
-                      {{ chat.Datum.getMinutes() }}
-                    </div> -->
+                       <div class="chatDate">
+                      {{getHours(message.created)}}
+                      </div> 
                     </div>
                   </div>
                 </li>

@@ -13,6 +13,30 @@ header {
   background-color: #686de0;
 }
 
+.buttonDesign{
+  background-color: rgb(50, 104, 185);
+  border:  2px solid rgb(50, 104, 185);
+  color: #f5f6fa;
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 3rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  text-align: center;
+  transition: 500ms;
+}
+.buttonDesign:hover {
+  background-color: #ffe9c8;
+  border:  2px solid #ffe9c8;
+  transition: 500ms;
+  color: #222f3e;
+  font-family: 'Barriecito', sans-serif;
+
+  text-align: center;
+}
+
+
 /* 
 button{
     margin: 0 0 0 0;

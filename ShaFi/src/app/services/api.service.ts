@@ -38,6 +38,7 @@ export class ApiService {
 
   public editExpenseById(expenseId: number, element: object): Observable<any> {
     const url = '/expense/' + expenseId;
+    console.log(element)
     return this.http.put<string>(url, element, {headers: this.headersToken, observe: 'response'});
   }
 

@@ -29,6 +29,8 @@
 
 .erroronFalse{
 display: none;
+padding: 0 0 1rem 2rem;
+color:red
 }
 
 .errorgroßnonvisible{
