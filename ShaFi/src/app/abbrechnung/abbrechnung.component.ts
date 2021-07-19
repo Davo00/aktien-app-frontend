@@ -53,7 +53,6 @@ export class AbbrechnungComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     this.innerWidth = window.innerWidth;
-    console.log(this.innerWidth);
     if(this.innerWidth <= 800) {
       this.mobile = true;
     }
