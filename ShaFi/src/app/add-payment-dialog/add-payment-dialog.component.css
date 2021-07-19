@@ -1,2 +1,11 @@
-.mat-row .mat-cell {
+.fields {
+  margin-left: 5%;
+}
+.close {
+  float: left;
+  margin-left: 5%;
+}
+.save {
+  float: right;
+  margin-right: 5%;
 }

@@ -51,8 +51,8 @@ export class GroupOverviewComponent implements OnInit {
         groupId: null,
         members: null,
       },
-      width: '60vw',
-      height: '60vh',
+      width: '35vw',
+      height: '35vh',
       position: {},
       disableClose: false,
     });
@@ -93,8 +93,8 @@ export class GroupOverviewComponent implements OnInit {
         groupId: this.Groups[arrayelement].id,
         members: this.Groups[arrayelement].myUsers,
       },
-      width: '60vw',
-      height: '60vh',
+      width: '35vw',
+      height: '35vh',
       position: {},
       disableClose: false,
     });
@@ -127,8 +127,8 @@ export class GroupOverviewComponent implements OnInit {
         members: this.Groups[element].myUsers,
         type: 'group',
       },
-      width: '250px',
-      height: '200px',
+      width: '350px',
+      height: '250px',
       position: {},
       disableClose: false,
     });
