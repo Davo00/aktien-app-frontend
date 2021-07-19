@@ -8,18 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-dialog.component';
 
-// type expenseType = {
-//   amount: number;
-//   consumerCount: number;
-//   copayerNames: number[];
-//   description: string;
-//   groupId: number;
-//   id: number;
-//   name: string; // reason
-//   unpaid: boolean;
-//   userPaid: string;
-// };
-
 @Component({
   selector: 'app-group-history',
   templateUrl: './group-history.component.html',
@@ -98,15 +86,16 @@ export class GroupHistoryComponent implements OnInit {
         });
       });
 
-    // IF NO EXPENSES DO NOTHING
     this.apiService.getSpecificExpense(this.groupId).subscribe((resp: any) => {
       //console.log(resp);
-      let d = 0;
-      this.chatContent = resp.body;
-      for (const element of resp.body) {
-        const string = this.arraylist(element.copayerNames);
-        this.chatContent[d].copayerNames = string;
-        d++;
+      if (resp !== null) {
+        let d = 0;
+        this.chatContent = resp.body;
+        for (const element of resp.body) {
+          const string = this.arraylist(element.copayerNames);
+          this.chatContent[d].copayerNames = string;
+          d++;
+        }
       }
       //console.log(this.chatContent);
     });
@@ -125,7 +114,6 @@ export class GroupHistoryComponent implements OnInit {
         }
         i++;
       }
-
       return all;
     } else {
       return '';
@@ -135,8 +123,8 @@ export class GroupHistoryComponent implements OnInit {
   addPayment(): void {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {},
-      width: '35vw',
-      height: '55vh',
+      width: '330px',
+      height: '550px',
       position: {},
       disableClose: false,
     });
@@ -166,7 +154,7 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   extractCopayers(members: string): any {
-    if (members !== null || members !== '') {
+    if (members !== undefined) {
       //console.log(members);
       const copayers: any[] = [];
       const splitComma = members.split(',');
@@ -193,7 +181,6 @@ export class GroupHistoryComponent implements OnInit {
     this.apiService.deleteExpenseById(expenseId);
     //console.log('Expense deleted');
   }
-
   public isactive(Absender: string): boolean {
     if (Absender === this.userName) {
       return true;
@@ -216,7 +203,6 @@ export class GroupHistoryComponent implements OnInit {
       position: {},
       disableClose: false,
     });
-
     dialogref.afterClosed().subscribe((result) => {
       if (result === null) {
         //
@@ -248,7 +234,6 @@ export class GroupHistoryComponent implements OnInit {
           position: {},
           disableClose: false,
         });
-
         dialogref.afterClosed().subscribe((resultdelete) => {
           if (resultdelete) {
             //console.log('läuft');
@@ -326,7 +311,7 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   closeBill(): void {
-    this.credits = null; ///////////////////////////////////////////
+    this.credits = null;
     this.router.navigate(['/', 'abrechnung', this.groupId]);
   }
 
@@ -344,6 +329,7 @@ export class GroupHistoryComponent implements OnInit {
     const houramndMin = hours.substr(11, 5);
     return houramndMin;
   }
+  
   public checkDates(i: number): boolean {
     const currentDate = this.getDate(this.chatContent[i].created);
     let oldDate = '';
@@ -360,6 +346,7 @@ export class GroupHistoryComponent implements OnInit {
       return true;
     }
   }
+
   setnewDate(): boolean {
     //console.log(this.ChatDatevar, this.currentDate);
     this.ChatDatevar = this.currentDate;

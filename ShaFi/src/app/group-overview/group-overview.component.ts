@@ -8,7 +8,6 @@ import { ApiService } from '../services/api.service';
 import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-dialog.component';
 
 type groupType = { name: string; id: number; usernames: string[] };
-// type groupType = { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent };
 
 @Component({
   selector: 'app-group-overview',
@@ -28,7 +27,6 @@ export class GroupOverviewComponent implements OnInit {
       //console.log(this.Groups);
     });
   }
-  //Groups: { id: number; name: string; username: number[] }[] = [
   constructor(
     private matDialog: MatDialog,
     private router: Router,
@@ -41,9 +39,6 @@ export class GroupOverviewComponent implements OnInit {
     this.innerHeight = 0;
   }
 
-  // groupHistory: GroupHistoryComponent
-  // Groups: { groupName: string; groupId: string; members: string; groupHistory: GroupHistoryComponent }[] = [
-
   public addGroup(): void {
     const dialogRef = this.matDialog.open(AddGroupDialogComponent, {
       data: {
@@ -51,12 +46,11 @@ export class GroupOverviewComponent implements OnInit {
         groupId: null,
         members: null,
       },
-      width: '35vw',
-      height: '35vh',
+      width: '300px',
+      height: '350px',
       position: {},
       disableClose: false,
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result == null) {
         //
@@ -64,28 +58,19 @@ export class GroupOverviewComponent implements OnInit {
         //console.log(result);
         const Name = result.groupName;
         const members = result.members;
-        /* this.Groups.push({
-          name: result.groupName,
-          id: result.groupId,
-          username: result.members,
-          // groupHistory: result.groupHistory //////////////////////
-        }); */
-
         //console.log(Name, members);
         const GroupObject = { name: Name, usernames: members };
-
         this.apiService.createGroup(GroupObject).subscribe((result) => {
-          //console.log(result);
-
-          const keys = result.headers.keys();
-          //console.log(keys);
+        //console.log(result);
+        // const keys = result.headers.keys();
+        //console.log(keys);
         });
         window.location.reload();
       }
     });
   }
 
-  public editGroup(groupId: number, arrayelement: number): void  {
+  public editGroup(groupId: number, arrayelement: number): void {
     //console.log(arrayelement);
     //console.log(this.Groups);
     const dialogref = this.matDialog.open(AddGroupDialogComponent, {
@@ -94,8 +79,8 @@ export class GroupOverviewComponent implements OnInit {
         groupId: this.Groups[arrayelement].id,
         members: this.Groups[arrayelement].myUsers,
       },
-      width: '35vw',
-      height: '35vh',
+      width: '300px',
+      height: '350px',
       position: {},
       disableClose: false,
     });
@@ -107,12 +92,9 @@ export class GroupOverviewComponent implements OnInit {
         this.Groups[arrayelement].name = result.groupName;
         this.Groups[arrayelement].id = result.groupId;
         this.Groups[arrayelement].usernames = result.members;
-
         //console.log(this.Groups[arrayelement]);
-        this.apiService
-          .updateGroupById(groupId, this.Groups[arrayelement])
-          //.subscribe((data) => console.log(data));
-
+        this.apiService.updateGroupById(groupId, this.Groups[arrayelement]);
+        //.subscribe((data) => console.log(data));
         //console.log(this.Groups);
         window.location.reload();
       }
@@ -121,7 +103,6 @@ export class GroupOverviewComponent implements OnInit {
 
   deleteGroup(GroupID: number, element: number): void {
     //console.log(this.Groups[element].id);
-
     const dialogref = this.matDialog.open(DeleteGroupDialogComponent, {
       data: {
         groupName: this.Groups[element].name,
@@ -134,10 +115,8 @@ export class GroupOverviewComponent implements OnInit {
       position: {},
       disableClose: false,
     });
-
     dialogref.afterClosed().subscribe((resulut) => {
       //console.log(resulut);
-
       if (resulut) {
         const username = sessionStorage.getItem('username');
         // console.log(username);
@@ -148,7 +127,6 @@ export class GroupOverviewComponent implements OnInit {
         };
         let i = 0;
         //console.log(deleteGroup);
-
         for (const element of deleteGroup.usernames) {
           if (element === username) {
             deleteGroup.usernames.splice(i, 1);
@@ -157,13 +135,9 @@ export class GroupOverviewComponent implements OnInit {
           }
           i++;
         }
-
         //console.log(deleteGroup);
-
-        this.apiService
-          .updateGroupByIdDelete(deleteGroup.id, deleteGroup)
-          //.subscribe((resp) => console.log(resp));
-
+        this.apiService.updateGroupByIdDelete(deleteGroup.id, deleteGroup);
+        //.subscribe((resp) => console.log(resp));
         window.location.reload();
       }
     });

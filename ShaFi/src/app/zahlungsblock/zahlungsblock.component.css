@@ -24,7 +24,7 @@
 
 .horizontal{
     display:inline-flex;
-    padding-top: 1rem;
+    padding-top: 0rem;
 }
 
 .shares {
@@ -32,14 +32,24 @@
 }
 
 .amount {
-  margin-bottom: 0rem !important;
+  margin-top: 1.6rem !important;
   font-size: 2rem !important;
 }
 
 .date {
   font-weight: bold; 
-  padding-left:0.5rem; 
+  padding-left:0.5rem;
   padding-right: 1rem;
+}
+
+.creationDate {
+  /* padding-top: 5rem !important; */
+  margin-top: 0.7rem !important;
+}
+
+.dueDate {
+  /* padding-top: 5rem !important; */
+  margin-top: 0.7rem !important;
 }
 
 .layoutRight {
