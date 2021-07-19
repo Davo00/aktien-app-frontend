@@ -9,8 +9,16 @@ export class ZahlungsblockComponent implements OnInit {
 
   @Input() zahlung: any 
 
-  constructor() { }
-
+  mobile = false;
+  innerWidth: any;
+  
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    if(this.innerWidth <= 700) {
+      this.mobile = true;
+    }
+    else{
+      this.mobile = false;
+    }
   }
 }

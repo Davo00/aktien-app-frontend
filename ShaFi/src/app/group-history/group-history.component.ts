@@ -88,20 +88,20 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistory = false;
       this.GroupChat = true;
     }
-    console.log(this.groupId);
+    //console.log(this.groupId);
     this.apiService
       .getCredits(this.groupId)
       .subscribe((returnData: unknown) => {
         this.credits = returnData;
-        console.log(this.credits);
+        //console.log(this.credits);
         this.credits.forEach((i: any) => {
-          console.log(i.username);
+          //console.log(i.username);
         });
       });
 
       // IF NO EXPENSES DO NOTHING 
     this.apiService.getSpecificExpense(this.groupId).subscribe((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
       let d = 0;
       this.chatContent = resp.body;
       for (const element of resp.body) {
@@ -109,7 +109,7 @@ export class GroupHistoryComponent implements OnInit {
         this.chatContent[d].copayerNames = string;
         d++;
       }
-      console.log(this.chatContent);
+      //console.log(this.chatContent);
     });
   }
 
@@ -202,7 +202,7 @@ export class GroupHistoryComponent implements OnInit {
       disableClose: false,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(this.credits);
+      //console.log(result);
       if (result != null) {
         const addedCredit: any = {
           userPaid: result.userPaid,
@@ -224,18 +224,22 @@ export class GroupHistoryComponent implements OnInit {
         });
         // window.location.reload();
       }
-      console.log(this.credits);
+      // this.apiService.createExpense(); //////////////////////
+      //console.log(this.credits); ////////////////////////////////
+      //console.log('Expense created'); ////////////////////////////////
     });
   }
 
   extractCopayers(members: string): any {
     if (members !== null || members !== '') {
-      console.log(members);
+      //console.log(members);
       const copayers: any[] = [];
       const splitComma = members.split(',');
+      // //console.log(splitComma);
       splitComma.forEach((element) => {
         if (element.includes(' ')) {
           const splitSpace = element.split(' ');
+          // //console.log(splitSpace);
           splitSpace.forEach((name) => {
             if (name !== '') {
               copayers.push(name);
@@ -245,7 +249,7 @@ export class GroupHistoryComponent implements OnInit {
           copayers.push(element);
         }
       });
-      console.log(copayers);
+      //console.log(copayers);
       return copayers;
     }
   }
@@ -277,7 +281,7 @@ export class GroupHistoryComponent implements OnInit {
 
   deletePayment(expenseId: number): void {
     this.apiService.deleteExpenseById(expenseId);
-    console.log('Expense deleted');
+    //console.log('Expense deleted');
   }
 
   public isactive(Absender: string): boolean {
@@ -305,21 +309,25 @@ export class GroupHistoryComponent implements OnInit {
 
     dialogref.afterClosed().subscribe((result) => {
       if (result === null) {
+        //
       } else if (result != null && result.delete === false) {
-        console.log(result, 'Änderung');
+        //console.log(result, 'Änderung');
         this.chatContent[i].name = result.Text;
-        this.chatContent[i].copayerNames = result.Mitglieder;
+        let memebrs = this.extractCopayers(result.Mitglieder)
+        this.chatContent[i].copayerNames = memebrs;
         this.chatContent[i].amount = result.Value;
+        //this.chatContent[i].unpaid = true
 
-        console.log(this.chatContent[i]);
+        //console.log(this.chatContent[i]);
+        
         this.apiService
           .editExpenseById(this.chatContent[i].id, this.chatContent[i])
-          .subscribe((data) => console.log(data));
+          //.subscribe((data) => console.log(data));
 
-        console.log(this.chatContent);
+        //console.log(this.chatContent);
         window.location.reload();
       } else {
-        console.log('DELETE');
+        //console.log('DELETE');
         const dialogref = this.matDialog.open(DeleteGroupDialogComponent, {
           data: {
             groupId: this.chatContent[i].id,
@@ -335,11 +343,11 @@ export class GroupHistoryComponent implements OnInit {
 
         dialogref.afterClosed().subscribe((resultdelete) => {
           if (resultdelete) {
-            console.log('läuft');
+            //console.log('läuft');
             this.apiService
               .deleteExpenseById(this.chatContent[i].id)
               .subscribe((resp: any) => {
-                console.log(resp);
+                //console.log(resp);
                 window.location.reload();
               });
           }
@@ -351,14 +359,14 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   public checkDate(datecheck: string): boolean {
-    /* console.log(datecheck); */
-    /* console.log(this.CheckDatevar); */
-    /* console.log(datecheck.getDate()) */
-    /* console.log(this.ChatDatevar) */
-    /* console.log(this.ChatDatevar) */
+    /* //console.log(datecheck); */
+    /* //console.log(this.CheckDatevar); */
+    /* //console.log(datecheck.getDate()) */
+    /* //console.log(this.ChatDatevar) */
+    /* //console.log(this.ChatDatevar) */
 
-    const date = this.getDate(datecheck);
-    console.log(date === this.ChatDatevar);
+    let date = this.getDate(datecheck);
+    //console.log(date === this.ChatDatevar);
     if (date === this.ChatDatevar) {
       return false;
     } else {
@@ -442,7 +450,7 @@ export class GroupHistoryComponent implements OnInit {
     if (i !== 0) {
       oldDate = this.getDate(this.chatContent[i - 1].created);
     }
-    // console.log(currentDate); ////////////////////////////////////
+    //console.log(currentDate);
     if (i === 0) {
       this.currentDate = currentDate;
       return true;
@@ -453,7 +461,7 @@ export class GroupHistoryComponent implements OnInit {
     }
   }
   setnewDate(): boolean {
-    console.log(this.ChatDatevar, this.currentDate);
+    //console.log(this.ChatDatevar, this.currentDate);
     this.ChatDatevar = this.currentDate;
     return false;
   }

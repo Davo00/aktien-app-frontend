@@ -8,9 +8,27 @@
         </p>
         <div *ngIf = "!mobile" class="desktopView">
             <div>
+                <h2 class="headerZahlungen">Open payments:</h2>
+                <div *ngFor = "let data of displayedPayments">
+                    <div *ngIf = 'data.type == "open"'>
+                        <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                        <div *ngIf = 'data.proposeType == 0'>
+                            <button class="openButtons" [disabled]='true'> Wait for debtor</button>
+                        </div>
+                        <div *ngIf = 'data.proposeType == 1'>
+                            <button id="{{'prefered-' + data.debtId}}" class="openButtons" (click)="onProposeShare($event)"> Propose prefered Share</button>
+                        </div>
+                        <div *ngIf = 'data.proposeType == 2'>
+                            <button id="{{'accept-' + data.debtId}}" class="openButtons" (click)="onAcceptShare($event)"> Accept Share</button>
+                            <button id="{{'new-' + data.debtId}}" (click)="onProposeShare($event)"> Propose new Share</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div>
                 <h3 class="headerZahlungen">Due payments:</h3>
-                <div *ngFor = "let data of zahlungExample">
-                    <div *ngIf = 'data.type == "Faellig"'>
+                <div *ngFor = "let data of displayedPayments">
+                    <div *ngIf = 'data.type == "due"'>
                         <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                     </div>
                 </div> 
@@ -18,16 +36,16 @@
             <div>
                 <div>
                     <h3 class="headerZahlungen">Deposits:</h3>
-                    <div *ngFor = "let data of zahlungExample">
-                        <div *ngIf = 'data.type == "Einzahlung"'>
+                    <div *ngFor = "let data of displayedPayments">
+                        <div *ngIf = 'data.type == "deposit"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                         </div>
                     </div> 
                 </div>
                 <div>
                     <h3 class="headerZahlungen">Payments:</h3>
-                    <div *ngFor = "let data of zahlungExample">
-                        <div *ngIf = 'data.type == "Auszahlung"'>
+                    <div *ngFor = "let data of displayedPayments">
+                        <div *ngIf = 'data.type == "payment"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                         </div>
                     </div>
@@ -37,6 +55,15 @@
 
         <!-- Mobile -->
         <div class="mobile" *ngIf = "mobile">
+            <div>
+                <h2 class="headerZahlungen">Open payments:</h2>
+                <div *ngFor = "let data of displayedPayments">
+                    <div *ngIf = 'data.type == "open"'>
+                        <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                        <button> Propose prefered Share</button>
+                    </div>
+                </div> 
+            </div>
             <div class="smallNavHistory">
                 <div
                   class="ElementNavHis"
@@ -79,8 +106,8 @@
             >
             <mat-card-actions class="card">
                 <div class="groupHisory" [ngClass]="{ deactiv: returnFaellig() }">
-                    <div *ngFor = "let data of zahlungExample">
-                        <div *ngIf = 'data.type == "Faellig"'>
+                    <div *ngFor = "let data of displayedPayments">
+                        <div *ngIf = 'data.type == "due"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                         </div>
                     </div>
@@ -97,8 +124,8 @@
             >
             <mat-card-actions class="card">
                 <div class="groupHisory" [ngClass]="{ deactiv: returnEinzahlung() }">
-                    <div *ngFor = "let data of zahlungExample">
-                        <div *ngIf = 'data.type == "Einzahlung"'>
+                    <div *ngFor = "let data of displayedPayments">
+                        <div *ngIf = 'data.type == "deposit"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                         </div>
                     </div>
@@ -115,8 +142,8 @@
             >
             <mat-card-actions class="card">
                 <div class="groupHisory" [ngClass]="{ deactiv: returnAuszahlung() }">
-                    <div *ngFor = "let data of zahlungExample">
-                        <div *ngIf = 'data.type == "Auszahlung"'>
+                    <div *ngFor = "let data of displayedPayments">
+                        <div *ngIf = 'data.type == "payment"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                         </div>
                     </div>

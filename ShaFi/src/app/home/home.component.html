@@ -1,60 +1,54 @@
 <div>
   <div class="flexDisplay">
-  <h1>Willkommen bei ShaFi</h1>
-</div>
+    <h1>Welcome to ShaFi</h1>
+  </div>
   <div class="GruppenÜbersichtdiv">
-    <h2>Gruppenübersicht</h2>
+    <h2>Group overview</h2>
   </div>
   <div class="Gruppenübersicht">
     <div class="Gruppenübersichtblock">
-    
-    <ul *ngFor="let group of Groups; let i = index" class="GroupElement">
-      <div class="GurppenBlock" (click)="this.router.navigate(['/', 'group', group.id]);">
-        
-          <div class="ZahlungReceiver" > {{group.name}} </div>
-          
-        
+      <ul *ngFor="let group of Groups; let i = index" class="GroupElement">
+        <div
+          class="GurppenBlock"
+          (click)="this.router.navigate(['/', 'group', group.id])"
+        >
+          <div class="ZahlungReceiver">{{ group.name }}</div>
+        </div>
+      </ul>
+    </div>
+    <!--   <div style="width: 100%; display: flex; align-items:center; justify-content: center;"> -->
+    <div class="outerButtonrerout">
+      <div
+        class="Buttonrerout"
+        (click)="this.router.navigate(['/group-overview'])"
+        style="margin-bottom: 0"
+      >
+        More Groups
       </div>
-      
-    </ul>
-  </div>
-<!--   <div style="width: 100%; display: flex; align-items:center; justify-content: center;"> -->
-  <div class="outerButtonrerout" >
-  <div class="Buttonrerout" (click)="this.router.navigate(['/group-overview']);" style="margin-bottom: 0">
-  Weitere Gruppen
-</div></div>
-<!-- </div> -->
-    
-
-
+    </div>
+    <!-- </div> -->
   </div>
 
   <div class="GruppenÜbersichtdiv">
-    <h2>Fällige Zahlung</h2>
+    <h2>Due Payments</h2>
   </div>
   <div class="Zahlungübersicht">
-    <div class="Zahlungübersichtblock">
-    
-    <ul *ngFor="let zahlung of Zahlungen; let i = index" class="GroupElement">
-      <div class="ZahlungBlock">
-        <li>
-          <div class="Zahlungseinzel">
-
-            <div class="ZahlungReceiver"> {{zahlung.receiver}} </div>
-            <div class="ZahlungAmount" *ngIf="zahlung.amount >=0"> +{{zahlung.amount}} </div>
-            <div class="ZahlungAmount" *ngIf="zahlung.amount < 0"> -{{zahlung.amount}} </div>
-          
-        </div>
-        </li>
-      </div>
-      
-    </ul>
+    <div class="Zahlungübersichtblock">    
+      <ul *ngFor="let zahlung of duePayments; let i = index" class="GroupElement">
+        <div class="ZahlungBlock">
+          <li>
+            <div class="Zahlungseinzel" (click)="clickZahlung()">
+              <div class="ZahlungReceiver"> {{zahlung.name}} </div>
+              <div class="ZahlungAmount"> {{zahlung.inOrOut}} {{zahlung.amount}} </div>         
+          </div>
+          </li>
+        </div>     
+      </ul>
+    </div>
   </div>
-</div>
-<div class="outerButtonrerout" >
-    <div class="Buttonrerout" (click)="this.router.navigate(['/zahlungen']);">
-      Übersicht der Zahlungen
+  <div class="outerButtonrerout">
+    <div class="Buttonrerout" (click)="this.router.navigate(['/zahlungen'])">
+      Overview payments
     </div>
   </div>
 </div>
-

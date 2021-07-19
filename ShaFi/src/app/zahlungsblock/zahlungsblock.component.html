@@ -4,47 +4,66 @@
             <h2>
                 {{zahlung.name}}
             </h2>
-            <p class="reason">
-                {{zahlung.reason}}
-            </p>
             <div class="horizontal">
                 <i class="fas fa-chart-bar chartIcon"></i>
-                <div *ngIf = 'zahlung.type == "Einzahlung"'>
-                    <p style="font-size: 2rem !important;">
-                        +  {{zahlung.amount}} EURO
-                    </p>
-                </div>
-                <div *ngIf = 'zahlung.type == "Auszahlung"'>
-                    <p style="font-size: 2rem !important;">
-                        -  {{zahlung.amount}} EURO
+                <div>
+                    <p class="amount">
+                        {{zahlung.inOrOut}}  {{zahlung.amount}} €
                     </p>
                 </div>
             </div>
+            <div *ngIf="zahlung.shareName !== '0'">
+                <p class="shares"> Paid with: {{zahlung.proportion}} {{zahlung.shareName}} - Shares</p>
+            </div>
         </section>
         <section class="elementRight">
-            <div class="layoutRight">
+            <div class="layoutRight" *ngIf="!this.mobile">
+                <div>
+                    <div class="horizontal">
+                        <i class="fas fa-calendar-check dateIcons"></i>
+                        <p>
+                            Creation date:
+                        </p>
+                        <p class="date">
+                            {{zahlung.startDate}}
+                        </p>
+                    </div>
+                </div>
+                <div class="horizontal">
+                    <i class="fas fa-calendar-times dateIcons"></i>
+                    <p>
+                        Due date:
+                    </p>
+                    <p class="date">
+                        {{zahlung.endDate}}
+                    </p>
+                </div>
+            </div>
+            <div class="layoutRight" *ngIf="this.mobile">
                 <div class="horizontal">
                     <i class="fas fa-calendar-check dateIcons"></i>
                     <p>
-                        Entstehungsdatum:
+                        Creation date:
                     </p>
-                    <p style="font-weight: bold !important; padding-left:0.5rem !important; padding-right: 1rem !important;">
+                    <p class="date">
                         {{zahlung.startDate}}
                     </p>
                 </div>
-                <div class="horizontal" style="padding-top: 1rem;">
+                <div class="horizontal">
                     <i class="fas fa-calendar-times dateIcons"></i>
                     <p>
-                        Fälligkeitsdatum:
+                        Due date:
                     </p>
-                    <p style="font-weight: bold !important; padding-left:0.5rem !important; padding-right: 1rem !important;">
+                    <p class="date">
                         {{zahlung.endDate}}
                     </p>
                 </div>
             </div>
         </section>
     </div>
-    <p>
-        Der gezeigte Betrag wird durch den Kurswert der ausgewählten Aktie bestimmt.
-    </p>
+    <div>
+        <p> 
+            The amount shown is determined by the market value of the selected share.
+        </p>
+    </div>
 </section>

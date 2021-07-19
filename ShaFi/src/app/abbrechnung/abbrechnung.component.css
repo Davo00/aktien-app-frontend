@@ -50,6 +50,14 @@
     width:50%
 }
 
+.mat-row:nth-child(even){
+    background-color: rgb(224, 224, 224);
+}
+        
+.mat-row:nth-child(odd){
+    background-color: white;
+}
+
 @media screen and (max-width: 700px) {
     .tableMobileDiv {
       margin: 0 1rem 0 1rem;
