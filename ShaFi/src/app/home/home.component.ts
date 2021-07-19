@@ -28,18 +28,20 @@ export class HomeComponent implements OnInit {
     const userName = sessionStorage.getItem("username");
     this.apiService.getAllDebtsForUser().subscribe(data => {
       for(let i=0; i < data.length; i++) {
-        const deadline = data[i].deadline.split("T")[0].split("-");
-        if(this.today > new Date(deadline[1] + " " + deadline[2] + " " + deadline[0])) {
-          const paymentObject: paymentType = {name: "", amount: data[i].amount, inOrOut: "", debtId: data[i].id};
-          if(data[i].creditorUsername === userName) {
-            paymentObject.name = data[i].debtorUsername;
-            paymentObject.inOrOut = "+";
+        if(data[i].deadline !== null){
+          const deadline = data[i].deadline.split("T")[0].split("-");
+          if(this.today > new Date(deadline[1] + " " + deadline[2] + " " + deadline[0])) {
+            const paymentObject: paymentType = {name: "", amount: data[i].amount, inOrOut: "", debtId: data[i].id};
+            if(data[i].creditorUsername === userName) {
+              paymentObject.name = data[i].debtorUsername;
+              paymentObject.inOrOut = "+";
+            }
+            else {
+              paymentObject.name = data[i].creditorUsername;
+              paymentObject.inOrOut = "-";
+            }
+            this.duePayments.push(paymentObject);
           }
-          else {
-            paymentObject.name = data[i].creditorUsername;
-            paymentObject.inOrOut = "-";
-          }
-          this.duePayments.push(paymentObject);
         }
       }
     });

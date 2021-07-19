@@ -12,10 +12,34 @@
                     </p>
                 </div>
             </div>
-            <p class="shares"> Paid with: {{zahlung.proportion}} {{zahlung.shareName}} - Shares</p>
+            <div *ngIf="zahlung.shareName !== '0'">
+                <p class="shares"> Paid with: {{zahlung.proportion}} {{zahlung.shareName}} - Shares</p>
+            </div>
         </section>
         <section class="elementRight">
-            <div class="layoutRight">
+            <div class="layoutRight" *ngIf="!this.mobile">
+                <div>
+                    <div class="horizontal">
+                        <i class="fas fa-calendar-check dateIcons"></i>
+                        <p>
+                            Creation date:
+                        </p>
+                        <p class="date">
+                            {{zahlung.startDate}}
+                        </p>
+                    </div>
+                </div>
+                <div class="horizontal">
+                    <i class="fas fa-calendar-times dateIcons"></i>
+                    <p>
+                        Due date:
+                    </p>
+                    <p class="date">
+                        {{zahlung.endDate}}
+                    </p>
+                </div>
+            </div>
+            <div class="layoutRight" *ngIf="this.mobile">
                 <div class="horizontal">
                     <i class="fas fa-calendar-check dateIcons"></i>
                     <p>
@@ -37,7 +61,9 @@
             </div>
         </section>
     </div>
-    <p> 
-        The amount shown is determined by the market value of the selected share.
-    </p>
+    <div>
+        <p> 
+            The amount shown is determined by the market value of the selected share.
+        </p>
+    </div>
 </section>
