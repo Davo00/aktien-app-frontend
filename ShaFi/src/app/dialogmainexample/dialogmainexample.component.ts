@@ -32,13 +32,11 @@ export class DialogmainexampleComponent {
     });
 
     dialogref.afterClosed().subscribe((result) => {
-      console.log(result);
+      //console.log(result);
       this.Infos[number].name = result.Gruppenname;
       this.Infos[number].mitglieder = result.Mitglieder;
     });
   }
-
-
 
   public openDialogClickcreate(): void {
     const dialogref = this.matDialog.open(DialogwindowComponent, {
@@ -55,7 +53,7 @@ export class DialogmainexampleComponent {
 
     dialogref.afterClosed().subscribe((result) => {
       if (result != null) {
-        console.log(result);
+        //console.log(result);
         this.Infos.push({
           name: result.Gruppenname,
           mitglieder: result.Mitglieder,

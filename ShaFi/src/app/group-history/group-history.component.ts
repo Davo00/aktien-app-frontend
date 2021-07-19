@@ -336,10 +336,13 @@ userPaid: "Moritz" */
       } else if (result != null && result.delete === false) {
         console.log(result, 'Änderung');
         this.chatContent[i].name = result.Text;
-        this.chatContent[i].copayerNames = result.Mitglieder;
+        let memebrs = this.extractCopayers(result.Mitglieder)
+        this.chatContent[i].copayerNames = memebrs;
         this.chatContent[i].amount = result.Value;
+        //this.chatContent[i].unpaid = true
 
         console.log(this.chatContent[i]);
+        
         this.apiService
           .editExpenseById(this.chatContent[i].id, this.chatContent[i])
           .subscribe((data) => console.log(data));
@@ -470,7 +473,7 @@ userPaid: "Moritz" */
     if (i !== 0) {
       oldDate = this.getDate(this.chatContent[i - 1].created);
     }
-    console.log(currentDate);
+    //console.log(currentDate);
     if (i === 0) {
       this.currentDate = currentDate;
       return true;

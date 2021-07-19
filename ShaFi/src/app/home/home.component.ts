@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
 export interface paymentType {
@@ -12,10 +12,9 @@ export interface paymentType {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  
 
   constructor(public router: Router, private apiService: ApiService) { }
   Groups: any = []
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit {
   today = new Date();
 
   public ngOnInit(): void {
-
     this.apiService.getAllGroupsOfUser().subscribe((data) => {
       this.Groups = data;
     });

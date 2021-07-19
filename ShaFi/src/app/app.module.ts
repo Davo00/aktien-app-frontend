@@ -8,7 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { AbbrechnungComponent } from './abbrechnung/abbrechnung.component';
 import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 import { ChatdialogComponent } from './chatdialog/chatdialog.component';
@@ -35,15 +35,13 @@ import {
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
 import { AngularResizedEventModule } from 'angular-resize-event';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 import { ApiService } from './services/api.service';
 import { CommonModule } from '@angular/common';
 import { ProposeShareDialogComponent } from './propose-share-dialog/propose-share-dialog.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-dialog.component';
 import { EditPaymentDialogComponent } from './edit-payment-dialog/edit-payment-dialog.component';
-
-
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -96,6 +94,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     CommonModule,
     MatRadioModule,
     FormsModule
+
   ],
   providers: [
     {
@@ -106,8 +105,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
-
-    }
+    },
   ],
   bootstrap: [AppComponent],
 })

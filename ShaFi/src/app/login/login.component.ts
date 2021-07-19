@@ -8,7 +8,6 @@ import * as CryptoJS from 'crypto-js';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent {
   constructor(private router: Router, private api: ApiService) {}
 
@@ -20,11 +19,10 @@ export class LoginComponent {
       password: passhash,
       username: username,
     };
-    console.log(username, pass);
+    //console.log(username, pass);
 
-    sessionStorage.setItem('username', username);
     this.api.postLogin(LoginData).subscribe((response) => {
-      console.log(response);
+      //console.log(response);
 
       const keys = response.headers.keys();
 
@@ -32,7 +30,8 @@ export class LoginComponent {
         (key: unknown) => `${key}: ${response.headers.get(key)}`
       );
       sessionStorage.setItem('Token', headers[2].slice(15));
-      console.log(sessionStorage.getItem('Token'));
+      sessionStorage.setItem('username', username);
+      //console.log(sessionStorage.getItem('Token'));
 
       this.router.navigate(['/home']);
     });
