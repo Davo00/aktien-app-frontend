@@ -143,8 +143,13 @@ export class ApiService {
   // }
 
     // ** DEBT CONTROLLER ** //
-  public getAllDebtsForUser(): Observable<any> {
+  public getAllDebts(): Observable<any> {
     const url = '/debt';
+    return this.http.get<any>(url, {headers: this.headersToken});
+  }
+
+  public getAllDebtsForUser(): Observable<any> {
+    const url = '/user/debt';
     return this.http.get<any>(url, {headers: this.headersToken});
   }
 
