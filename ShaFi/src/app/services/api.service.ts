@@ -200,6 +200,11 @@ export class ApiService {
     });
   }
 
+  public closePaidDebt(debtId: number): Observable<any> {
+    const url = '/debt/' + debtId + '/paid/' + true;
+    return this.http.put(url, null, {headers: this.headersToken, observe: 'response'});
+  }
+
   // ** SHARE CONTROLLER ** //
   public getAllShares(): Observable<any> {
     const url = '/share';

@@ -28,7 +28,7 @@
             <div>
                 <h3 class="headerZahlungen">Due payments:</h3>
                 <div *ngFor = "let data of displayedPayments">
-                    <div *ngIf = 'data.type == "due"'>
+                    <div *ngIf = 'data.type == "due && data.paid === false"'>
                         <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
                     </div>
                 </div> 
@@ -118,6 +118,9 @@
                     <div *ngFor = "let data of displayedPayments">
                         <div *ngIf = 'data.type == "due"'>
                             <app-zahlungsblock [zahlung] = "data"></app-zahlungsblock>
+                            <div *ngIf="data.inOrOut === '+'">
+                                <button id="{{'due-' + data.debtId}}" class="openButtons" (click)="onCloseShare($event)"> Debt is paid</button>
+                            </div>
                         </div>
                     </div>
                 </div>

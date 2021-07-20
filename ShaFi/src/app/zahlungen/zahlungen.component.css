@@ -87,12 +87,6 @@
     h1 {
       font-size: 4rem !important;
     }
-    .group {
-      width: 95%;
-    }
-    .subHeader {
-        text-align: center;
-    }
   }
   
   @media screen and (max-width: 1075px) {

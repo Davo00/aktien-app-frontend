@@ -72,29 +72,17 @@
     h1 {
       font-size: 4rem !important;
     }
-    .subHeader {
-        text-align: center;
-    }
   }
   
   @media screen and (max-width: 1250px) {
     h1 {
       font-size: 3.5rem !important;
     }
-    .group {
-      width: 95%;
-    }
-    .subHeader {
-        text-align: center;
-    }
   }
   
   @media screen and (max-width: 1075px) {
     h1 {
       font-size: 3rem !important;
-    }
-    .subHeader {
-        text-align: center;
     }
     .block {
         margin-left: 0.5rem !important;  
@@ -103,26 +91,11 @@
     .layoutBlock {
         display:unset;
     }
-    .elementLeft{
-        width: 100%;
-    }
-    .elementRight{
-        width: 100%;
-    }
     .horizontal {
         padding-top: 0rem !important;
     }
     .layoutRight {
         padding-top: 0rem !important;
-    }
-  }
-  
-  @media screen and (max-width: 1000px) {
-    .group {
-      width: 94%;
-    }
-    .subHeader {
-        text-align: center;
     }
   }
   
@@ -133,9 +106,6 @@
     h2 {
         font-size: 2rem!important;
     }
-    .subHeader {
-        text-align: center;
-    }
   }
 
   @media screen and (max-width: 900px) {
@@ -145,28 +115,6 @@
     h2 {
         font-size: 2rem!important;
     }
-    .groupPreview {
-      display: none;
-    }
-    .group {
-      width: 96%;
-    }
-    .subHeader {
-        text-align: center;
-    }
-  }
-  
-  @media screen and (max-width: 620px) {
-    .groupOverviewPage {
-      margin-top: 1rem;
-    }
-    .group {
-      width: 95%;
-    }
-    .subHeader {
-        text-align: center;
-    }
-    
   }
 
   @media screen and (max-width: 420px) {
@@ -179,12 +127,6 @@
     }
     h3 {
         font-size: 1.2rem !important;
-        text-align: center;
-    }
-    .group {
-      width: 94%;
-    }
-    .subHeader {
         text-align: center;
     }
     .layoutBlock {
@@ -214,12 +156,6 @@
     }
     h3 {
         font-size: 1rem !important;
-        text-align: center;
-    }
-    .group {
-      width: 93%;
-    }
-    .subHeader {
         text-align: center;
     }
   }

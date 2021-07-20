@@ -146,9 +146,8 @@ export class AbbrechnungComponent implements OnInit {
 
   public finalizeAndMaintain(): void {
     console.log(this.groupId);
-    this.api.finalizeCalculatedDebts(this.groupId).subscribe(data => {
-      console.log(data);
-    });
+    this.api.finalizeCalculatedDebts(this.groupId).subscribe();
+    window.location.reload;
     this.router.navigate(['/', 'group', this.groupId]);
   }
 }
