@@ -124,7 +124,7 @@ export class GroupHistoryComponent implements OnInit {
     const dialogRef = this.matDialog.open(AddPaymentDialogComponent, {
       data: {},
       width: '330px',
-      height: '550px',
+      height: '650px',
       position: {},
       disableClose: false,
     });
@@ -198,8 +198,8 @@ export class GroupHistoryComponent implements OnInit {
         Mitglieder: this.chatContent[i].copayerNames,
         ID: this.chatContent[i].id,
       },
-      width: '300px',
-      height: '400px',
+      width: '330px',
+      height: '440px',
       position: {},
       disableClose: false,
     });
