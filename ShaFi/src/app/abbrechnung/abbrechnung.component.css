@@ -37,7 +37,13 @@
 }
 .memberExpandable{
     display: flex;
+    margin-top: 2rem;
 }
+
+.expandButton {
+    margin-right: 1rem;
+}
+
 .tableWrapper {
     margin-bottom: 4rem;
 }
@@ -50,11 +56,16 @@
     width:50%
 }
 
-.mat-row:nth-child(even){
+.middleButton {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.mat-row:nth-child(odd){
     background-color: rgb(224, 224, 224);
 }
         
-.mat-row:nth-child(odd){
+.mat-row:nth-child(even){
     background-color: white;
 }
 
@@ -62,5 +73,9 @@
     .tableMobileDiv {
       margin: 0 1rem 0 1rem;
       width:unset;
+    }
+    .middleButton{
+        margin-left: unset;
+        margin-right: unset;
     }
   }

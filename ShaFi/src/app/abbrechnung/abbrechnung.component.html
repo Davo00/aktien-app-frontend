@@ -4,8 +4,8 @@
     </h2>
     <div *ngIf = "isLoaded" >
         <div *ngFor = "let data of group; let i = index" class="tableMobileDiv">
-            <div class="memberExpandable">
-                <button id="{{ 'button-' + i }}" (click)="onClickExpand($event)">+</button>
+            <div id="{{ 'memberTrue-' + i }}" class="memberExpandable">
+                <i id="{{ 'button-' + i }}" (click)="onClickExpand($event)" class="fas fa-arrows-alt-v expandButton"></i>
                 <h3 class="groupNameHeader">
                     {{data}}
                 </h3>
@@ -34,9 +34,9 @@
             </div>
         </div>
         <div class="buttons">
-            <button (click)="cancelAbrechnung()">Cancel</button>
-            <button (click)="finalizeAndDelete()">Complete & Delete</button>
-            <button (click)="finalizeAndMaintain()">Complete & Maintain</button>
+            <button class="buttonDesign" (click)="cancelAbrechnung()">Cancel</button>
+            <button class="buttonDesign middleButton" (click)="finalizeAndDelete()">Complete & Delete</button>
+            <button class="buttonDesign" (click)="finalizeAndMaintain()">Complete & Maintain</button>
         </div>
     </div>
 </div>

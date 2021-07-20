@@ -29,6 +29,7 @@ export class AbbrechnungComponent implements OnInit {
   group: string[] = [];
   groupId = 0;
   columns: string[] = ['free', 'Erhalten', 'Bezahlen'];
+  isExpanded: boolean[] = [];
 
   constructor(private api: ApiService, private router: Router, private url: ActivatedRoute) { }
 
@@ -61,7 +62,7 @@ export class AbbrechnungComponent implements OnInit {
     }
   }
 
-  getDisplayedColumns(member: string): string[] {
+  public getDisplayedColumns(member: string): string[] {
     const newDisplayedColumns: string[] = [];
     newDisplayedColumns.push('free');
     for(let i=0; i < this.FETCHED_DATA.length; i++) {
@@ -74,25 +75,33 @@ export class AbbrechnungComponent implements OnInit {
     }
     return newDisplayedColumns;
   }
-  onClickExpand(event: Event): void {
+  public onClickExpand(event: Event): void {
     const elementId: string = (event.target as Element).id;
     const buttonNumber: string = elementId.split('-')[1];
     const tableId: string = "table-" + buttonNumber;
     const table = document.getElementById(tableId)!;
     if(table.style.display == "none") {
       table.style.display = "inline";
+      this.isExpanded[Number(buttonNumber)] = true;
     }
     else{
       table.style.display = "none";
+      this.isExpanded[Number(buttonNumber)] = false;
     }
   }
 
-  isActive(): boolean {
+  public getExpanded(event: Event): boolean {
+    const elementId: string = (event.target as Element).id;
+    const buttonNumber: string = elementId.split('-')[1];
+    return this.isExpanded[Number(buttonNumber)];
+  }
+
+  public isActive(): boolean {
     
     return this.mobile;
   }
   
-  getData(member: string): PeriodicElement[] {
+  public getData(member: string): PeriodicElement[] {
     const displayedData: PeriodicElement[] = [];
     for(let i=0; i < this.FETCHED_DATA.length; i++) {
       const newRow: PeriodicElement = {member: "", erhalten: "", bezahlen:""};
@@ -110,32 +119,36 @@ export class AbbrechnungComponent implements OnInit {
     return displayedData;
   }
 
-  getAllGroupMember(): string[] {
+  public getAllGroupMember(): string[] {
     const newDisplayedColumns: string[] = [];
     for(let i=0; i < this.FETCHED_DATA.length; i++) {
       if(!newDisplayedColumns.includes(this.FETCHED_DATA[i].creditor)) {
         newDisplayedColumns.push(this.FETCHED_DATA[i].creditor);
+        this.isExpanded.push(true);
       }
       if(!newDisplayedColumns.includes(this.FETCHED_DATA[i].debitor)) {
         newDisplayedColumns.push(this.FETCHED_DATA[i].debitor);
+        this.isExpanded.push(true);
       }
     }
     return newDisplayedColumns;
   }
 
-  cancelAbrechnung(): void {
+  public cancelAbrechnung(): void {
         this.router.navigate(['/', 'group', this.groupId]);
   }
 
-  finalizeAndDelete(): void {
+  public finalizeAndDelete(): void {
     this.api.finalizeCalculatedDebts(this.groupId);
     this.api.deleteGroupById(this.groupId);
     this.router.navigate(['/', 'home']);
   }
 
-  finalizeAndMaintain(): void {
+  public finalizeAndMaintain(): void {
     console.log(this.groupId);
-    this.api.finalizeCalculatedDebts(this.groupId);
+    this.api.finalizeCalculatedDebts(this.groupId).subscribe(data => {
+      console.log(data);
+    });
     this.router.navigate(['/', 'group', this.groupId]);
   }
 }
