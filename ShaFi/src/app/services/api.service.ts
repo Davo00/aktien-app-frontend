@@ -126,9 +126,9 @@ export class ApiService {
     return this.http.get<dataType[]>(url, { headers: this.headersToken });
   }
 
-  public finalizeCalculatedDebts(groupId: number) {
+  public finalizeCalculatedDebts(groupId: number): Observable<any> {
     const url = '/calculate/final/' + groupId;
-    return this.http.put(url, null, { headers: this.headersToken });
+    return this.http.put(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   //** LOGIN **/
@@ -198,6 +198,11 @@ export class ApiService {
       headers: this.headersToken,
       observe: 'response',
     });
+  }
+
+  public closePaidDebt(debtId: number): Observable<any> {
+    const url = '/debt/' + debtId + '/paid/' + true;
+    return this.http.put(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   // ** SHARE CONTROLLER ** //

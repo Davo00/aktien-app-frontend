@@ -17,6 +17,7 @@ export interface paymentType {
   debtId: number,
   proportion: number,
   shareName: string,
+  paid: boolean
 }
 
 @Component({
@@ -64,13 +65,14 @@ export class ZahlungenComponent implements OnInit {
         {type: "open",
          name: "", 
          amount: data[i].amount, 
-         endDate: "-",
+         endDate: "dd.mm.yyyy",
          startDate: "", 
          inOrOut: "", 
          proposeType: 0, 
          debtId: data[i].id, 
          proportion: data[i].shareProportion,
-         shareName: "0"};
+         shareName: "0",
+         paid: data[i].paid};
         const creation = data[i].creation.split("T")[0].split("-");
         paymentObject.startDate = creation[2] + "." + creation[1] + "." + creation[0];
 
@@ -109,7 +111,7 @@ export class ZahlungenComponent implements OnInit {
       }
     });
     this.innerWidth = window.innerWidth;
-    if(this.innerWidth <= 700) {
+    if(this.innerWidth <= 930) {
       this.mobile = true;
     }
     else{
@@ -120,7 +122,7 @@ export class ZahlungenComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     this.innerWidth = window.innerWidth;
-    if(this.innerWidth <= 700) {
+    if(this.innerWidth <= 930) {
       this.mobile = true;
     }
     else{
@@ -164,6 +166,14 @@ export class ZahlungenComponent implements OnInit {
     const elementId: string = (event.target as Element).id;
     const buttonNumber: number = parseInt(elementId.split('-')[1]);
     this.api.acceptShare(buttonNumber).subscribe(() => {
+      window.location.reload();
+    });
+  }
+
+  public onCloseShare(event: Event): void {
+    const elementId: string = (event.target as Element).id;
+    const buttonNumber: number = parseInt(elementId.split('-')[1]);
+    this.api.closePaidDebt(buttonNumber).subscribe(() => {
       window.location.reload();
     });
   }
