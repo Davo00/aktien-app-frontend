@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,12 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './edit-payment-dialog.component.html',
   styleUrls: ['./edit-payment-dialog.component.css']
 })
-export class EditPaymentDialogComponent implements OnInit {
+export class EditPaymentDialogComponent {
   userPaid: any;
   reason: any;
   amount: any;
   description: any;
-  members: any; // List<String> copayerNames
+  members: any;
   selfPaid = false;
   Username = this.route.snapshot.paramMap.get('id');
 
@@ -28,9 +28,6 @@ export class EditPaymentDialogComponent implements OnInit {
     private route: ActivatedRoute,
     private matDialogRef: MatDialogRef<EditPaymentDialogComponent>
   ) {}
-
-  ngOnInit(): void {
-  }
 
   public selfPaidName(): boolean {
     this.selfPaid = !this.selfPaid;

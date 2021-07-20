@@ -4,12 +4,10 @@
       <div class="groupContainer">
         <h1 class="heading">Group History</h1>
         <div class="AddButton">
-          <!-- <button (click)="addPayment()" class="addPaymentButton">+</button> -->
           <i class="fas fa-plus" (click)="addPayment()"></i>
         </div>
         <div class="history">
           <ul class="payment" *ngFor="let payment of credits; let i = index">
-            <!--  (click)="editPayment(i)" -->
             <div class="paymentName">
               <h3 class="">{{ payment.username }}</h3>
             </div>
@@ -158,7 +156,6 @@
               <h1 class="heading">Group History</h1>
             </div>
             <div class="AddButton">
-              <!-- <button (click)="addPayment()" class="addPaymentButton">+</button> -->
               <i class="fas fa-plus" (click)="addPayment()"></i>
             </div>
 
@@ -183,9 +180,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="deleteBlock" (click)="deletePayment(credits[i].id)">
-              <i class="far fa-trash-alt"></i>
-            </div> -->
               </ul>
             </div>
           </div>
@@ -290,7 +284,6 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
   <div class="closeBillArea">
     <button class="closeBillButton" (click)="closeBill()">Close Bill</button>
   </div>

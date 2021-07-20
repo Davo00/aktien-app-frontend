@@ -1,6 +1,5 @@
 import {
   Component,
-  ComponentFactoryResolver,
   Inject,
   OnInit,
 } from '@angular/core';
@@ -16,25 +15,22 @@ export class AddGroupDialogComponent implements OnInit {
   members: any;
   groupnameAlt: any;
   membersalt: any;
-
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      groupName: String;
+      groupName: string;
       members: string[];
     },
     private matDialogRef: MatDialogRef<AddGroupDialogComponent>
   ) {}
-
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.groupnameAlt = this.data.groupName;
     this.membersalt = this.data.members;
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     console.log(this.data);
     // console.log(this.membersalt, this.groupnameAlt);
-
     if (
       (this.data.groupName === this.groupnameAlt &&
         this.data.members === this.membersalt) ||
@@ -43,11 +39,10 @@ export class AddGroupDialogComponent implements OnInit {
       this.data.members === [''] ||
       this.data.members === null
     ) {
-      console.log('if');
-
+      // console.log('if');
       this.matDialogRef.close(null);
     } else {
-      console.log('else');
+      // console.log('else');
       this.matDialogRef.close(this.data);
     }
   }
@@ -74,15 +69,13 @@ export class AddGroupDialogComponent implements OnInit {
     }
   }
 
-  public dialogSave(groupname: string, member: string) {
-    let memberArray = member.split(', ');
+  public dialogSave(groupname: string, member: string): void {
+    const memberArray = member.split(', ');
     console.log(memberArray);
-    let memberStringArray = memberArray.map(String);
+    const memberStringArray = memberArray.map(String);
     console.log(memberStringArray);
-
     this.data.groupName = groupname;
     this.data.members = memberStringArray;
-
     this.matDialogRef.close();
   }
 }

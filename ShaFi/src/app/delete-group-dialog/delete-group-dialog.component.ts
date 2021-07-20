@@ -13,7 +13,7 @@ export class DeleteGroupDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      groupName: String;
+      groupName: string;
       groupId: number;
       members: string[];
       memberstring: string;
@@ -24,16 +24,16 @@ export class DeleteGroupDialogComponent {
     private apiService: ApiService
   ) {}
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.matDialogRef.close(this.delete);
   }
 
-  public dialogClose() {
+  public dialogClose(): void {
     this.delete = false;
     this.matDialogRef.close(this.delete);
   }
 
-  public deleteSure() {
+  public deleteSure(): void {
     this.delete = true;
     this.matDialogRef.close(this.delete);
   }
