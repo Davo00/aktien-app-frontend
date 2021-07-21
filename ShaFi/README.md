@@ -82,7 +82,7 @@ Damit kann man sagen, dass sehr viel Zeit für das Projekt aufgewendet wurde, um
 
 Erstelle eine Gruppe mit einem passenden Namen unter Gruppen. Füge deine Kollegen hinzu und fange an, alle Zahlungen in der App einzutragen. Sobald der Urlaub, die Party oder der entspannte Abend in der Bar vorbei sein, schließe die Abrechnung ab und es wird für jeden Nutzer eine Teilschuld bzw. eine Teilforderung berechnet. Nun kannst du auswählen, ob du deine Beiträge risikofrei im Barbetrag zahlen bzw. bekommen möchtest, also der tatsächliche Wert bezahlt werden soll, oder ob du zocken möchtest. Wähle hierfür eine Aktie aus und lege einen Zeitraum fest. Am Ende der Zeit wird dir der fällige Betrag dann mitgeteilt.
 
-## Installationshinweise
+## [Installationshinweise](https://www.youtube.com/watch?v=ffVUVSiPxsY)
 
 1. Klone das Repository (git clone https://github.com/Davo00/aktien-app-frontend.git).
 2. Navigiere in den Unterordner ShaFi (cd ./ShaFi/).
