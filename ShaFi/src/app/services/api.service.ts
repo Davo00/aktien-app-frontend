@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   token = sessionStorage.getItem('Token');
   headersToken = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+  baseUrl = "https://api.kreativegruppe42.de"
   //.set('Access-Control-Allow-Origin', 'POST');
 
   constructor(private http: HttpClient) {}
@@ -96,7 +97,7 @@ export class ApiService {
   // ** USER CONTROLLER ** //
 
   public getAllGroupsOfUser(): Observable<any> {
-    const url = '/user/' + 'allGroups/';
+    const url = this.baseUrl + '/user/' + 'allGroups/';
     return this.http.get<any>(url, { headers: this.headersToken });
   }
 
@@ -106,7 +107,7 @@ export class ApiService {
   }
 
   public postLogin(login: any): Observable<any> {
-    const url = '/user/login';
+    const url = this.baseUrl + '/user/login';
 
     return this.http.post<any>(url, login, { observe: 'response' });
   }
