@@ -10,13 +10,17 @@ import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import { AbbrechnungComponent } from './abbrechnung/abbrechnung.component';
-import { ChatprogrammComponent } from './chatprogramm/chatprogramm.component';
 import { ChatdialogComponent } from './chatdialog/chatdialog.component';
 import { GroupHistoryComponent } from './group-history/group-history.component';
 import { GroupOverviewComponent } from './group-overview/group-overview.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormControl, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+  FormsModule,
+} from '@angular/forms';
 import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
 import { AddPaymentDialogComponent } from './add-payment-dialog/add-payment-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -27,7 +31,7 @@ import { StartseiteComponent } from './startseite/startseite.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { HammertimeDirective } from './hammertime.directive';
 import * as Hammer from 'hammerjs';
 import {
@@ -41,7 +45,6 @@ import { CommonModule } from '@angular/common';
 import { ProposeShareDialogComponent } from './propose-share-dialog/propose-share-dialog.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-dialog.component';
-import { EditPaymentDialogComponent } from './edit-payment-dialog/edit-payment-dialog.component';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -62,7 +65,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ChatprogrammComponent,
     ChatdialogComponent,
     GroupHistoryComponent,
     GroupOverviewComponent,
@@ -73,7 +75,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     HammertimeDirective,
     ProposeShareDialogComponent,
     DeleteGroupDialogComponent,
-    EditPaymentDialogComponent
 
     // Observable
   ],
@@ -93,8 +94,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     AngularResizedEventModule,
     CommonModule,
     MatRadioModule,
-    FormsModule
-
+    FormsModule,
   ],
   providers: [
     {

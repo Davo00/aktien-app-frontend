@@ -36,7 +36,7 @@ export class AddPaymentDialogComponent {
     } else {
       this.data.userPaid = '';
     }
-    console.log(this.selfPaid);
+
     return this.selfPaid;
   }
 
@@ -51,7 +51,6 @@ export class AddPaymentDialogComponent {
   }
 
   public ngOnDestroy(): void {
-    console.log(this.data);
     if (
       this.data.userPaid === null ||
       this.data.reason === null ||

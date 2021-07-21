@@ -20,7 +20,6 @@ export class DialogwindowComponent {
   ) {}
 
   public ngOnDestroy(): void {
-    //console.log(this.data);
     if (this.data.Gruppenname === null || this.data.Mitglieder === null) {
       this.matDialogRef.close(null);
     } else {

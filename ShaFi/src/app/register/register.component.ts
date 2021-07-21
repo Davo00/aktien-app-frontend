@@ -51,8 +51,6 @@ export class RegisterComponent {
     }
     if (password === passwordrep) {
       if (this.errorNach) this.showError();
-      //console.log(password);
-
       const hash = CryptoJS.SHA3(password, { outputLength: 256 });
       const passhash = hash.toString(CryptoJS.enc.Base64);
       const submit: { email: string; password: string; username: string } = {
@@ -61,11 +59,8 @@ export class RegisterComponent {
         username: Benutzername,
       };
 
-      //console.log(submit);
-
       this.api.postRegister(submit).subscribe(
         (response) => {
-          //console.log(response);
           if (response.status === 201) {
             this.router.navigate(['/login']);
           }
@@ -74,7 +69,6 @@ export class RegisterComponent {
           if (error.status !== 500) this.errorGroßVar = true;
 
           if (error.status === 500) this.errorUser = true;
-          //console.log(this.errorGroßVar);
         }
       );
     }

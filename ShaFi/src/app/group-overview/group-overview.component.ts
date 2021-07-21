@@ -24,7 +24,6 @@ export class GroupOverviewComponent implements OnInit {
   public ngOnInit(): void {
     this.apiService.getAllGroupsOfUser().subscribe((data) => {
       this.Groups = data;
-      //console.log(this.Groups);
     });
   }
   constructor(
@@ -47,7 +46,7 @@ export class GroupOverviewComponent implements OnInit {
         members: null,
       },
       width: '335px',
-      height: '350px',
+      height: '400px',
       position: {},
       disableClose: false,
     });
@@ -55,15 +54,11 @@ export class GroupOverviewComponent implements OnInit {
       if (result == null) {
         //
       } else {
-        //console.log(result);
         const Name = result.groupName;
         const members = result.members;
-        //console.log(Name, members);
         const GroupObject = { name: Name, usernames: members };
         this.apiService.createGroup(GroupObject).subscribe((result) => {
-        //console.log(result);
         // const keys = result.headers.keys();
-        //console.log(keys);
         });
         window.location.reload();
       }
@@ -71,8 +66,6 @@ export class GroupOverviewComponent implements OnInit {
   }
 
   public editGroup(groupId: number, arrayelement: number): void {
-    //console.log(arrayelement);
-    //console.log(this.Groups);
     const dialogref = this.matDialog.open(AddGroupDialogComponent, {
       data: {
         groupName: this.Groups[arrayelement].name,
@@ -80,7 +73,7 @@ export class GroupOverviewComponent implements OnInit {
         members: this.Groups[arrayelement].myUsers,
       },
       width: '335px',
-      height: '350px',
+      height: '400px',
       position: {},
       disableClose: false,
     });
@@ -88,21 +81,16 @@ export class GroupOverviewComponent implements OnInit {
       if (result == null) {
         //
       } else {
-        //console.log(result);
         this.Groups[arrayelement].name = result.groupName;
         this.Groups[arrayelement].id = result.groupId;
         this.Groups[arrayelement].usernames = result.members;
-        //console.log(this.Groups[arrayelement]);
         this.apiService.updateGroupById(groupId, this.Groups[arrayelement]);
-        //.subscribe((data) => console.log(data));
-        //console.log(this.Groups);
         window.location.reload();
       }
     });
   }
 
   deleteGroup(GroupID: number, element: number): void {
-    //console.log(this.Groups[element].id);
     const dialogref = this.matDialog.open(DeleteGroupDialogComponent, {
       data: {
         groupName: this.Groups[element].name,
@@ -116,17 +104,14 @@ export class GroupOverviewComponent implements OnInit {
       disableClose: false,
     });
     dialogref.afterClosed().subscribe((resulut) => {
-      //console.log(resulut);
       if (resulut) {
         const username = sessionStorage.getItem('username');
-        // console.log(username);
         const deleteGroup = {
           name: this.Groups[element].name,
           usernames: this.Groups[element].myUsers,
           id: this.Groups[element].id,
         };
         let i = 0;
-        //console.log(deleteGroup);
         for (const element of deleteGroup.usernames) {
           if (element === username) {
             deleteGroup.usernames.splice(i, 1);
@@ -135,9 +120,7 @@ export class GroupOverviewComponent implements OnInit {
           }
           i++;
         }
-        //console.log(deleteGroup);
         this.apiService.updateGroupByIdDelete(deleteGroup.id, deleteGroup);
-        //.subscribe((resp) => console.log(resp));
         window.location.reload();
       }
     });
@@ -165,7 +148,7 @@ export class GroupOverviewComponent implements OnInit {
   public openGroup(id: number): void {
     for (const group of this.Groups) {
       if (group.id === id) this.router.navigate(['/', 'group', id]);
-      else console.log('Group does not exist'); // hier kann man mehr machen
+      else console.log('Group does not exist');
     }
   }
 }

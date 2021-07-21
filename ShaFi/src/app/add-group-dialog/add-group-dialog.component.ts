@@ -29,8 +29,6 @@ export class AddGroupDialogComponent implements OnInit {
   }
 
   public ngOnDestroy(): void {
-    console.log(this.data);
-    // console.log(this.membersalt, this.groupnameAlt);
     if (
       (this.data.groupName === this.groupnameAlt &&
         this.data.members === this.membersalt) ||
@@ -39,10 +37,8 @@ export class AddGroupDialogComponent implements OnInit {
       this.data.members === [''] ||
       this.data.members === null
     ) {
-      // console.log('if');
       this.matDialogRef.close(null);
     } else {
-      // console.log('else');
       this.matDialogRef.close(this.data);
     }
   }
@@ -71,9 +67,7 @@ export class AddGroupDialogComponent implements OnInit {
 
   public dialogSave(groupname: string, member: string): void {
     const memberArray = member.split(', ');
-    console.log(memberArray);
     const memberStringArray = memberArray.map(String);
-    console.log(memberStringArray);
     this.data.groupName = groupname;
     this.data.members = memberStringArray;
     this.matDialogRef.close();
