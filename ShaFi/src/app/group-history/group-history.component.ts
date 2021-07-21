@@ -47,8 +47,6 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.Chats);
-    // console.log(this.Payments);
     const scrollclass = document.getElementById('scrollBlock');
     if (scrollclass != null) {
       scrollclass.scrollTop = scrollclass.scrollHeight;
@@ -75,19 +73,16 @@ export class GroupHistoryComponent implements OnInit {
       this.GroupHistory = false;
       this.GroupChat = true;
     }
-    //console.log(this.groupId);
     this.apiService
       .getCredits(this.groupId)
       .subscribe((returnData: unknown) => {
         this.credits = returnData;
-        //console.log(this.credits);
-        this.credits.forEach((i: any) => {
-          //console.log(i.username);
+        this.credits.forEach(() => {
+        //
         });
       });
 
     this.apiService.getSpecificExpense(this.groupId).subscribe((resp: any) => {
-      //console.log(resp);
       if (resp !== null) {
         let d = 0;
         this.chatContent = resp.body;
@@ -97,7 +92,6 @@ export class GroupHistoryComponent implements OnInit {
           d++;
         }
       }
-      //console.log(this.chatContent);
     });
   }
 
@@ -143,10 +137,7 @@ export class GroupHistoryComponent implements OnInit {
           credit: addedCredit.amount,
         });
         this.apiService.createExpense(addedCredit).subscribe((result) => {
-          console.log(result);
           const keys = result.headers.keys();
-          // console.log(keys);
-          console.log('Expense created');
         });
         window.location.reload();
       }
@@ -155,14 +146,11 @@ export class GroupHistoryComponent implements OnInit {
 
   extractCopayers(members: string): any {
     if (members !== undefined) {
-      //console.log(members);
       const copayers: any[] = [];
       const splitComma = members.split(',');
-      // //console.log(splitComma);
       splitComma.forEach((element) => {
         if (element.includes(' ')) {
           const splitSpace = element.split(' ');
-          // //console.log(splitSpace);
           splitSpace.forEach((name) => {
             if (name !== '') {
               copayers.push(name);
@@ -172,14 +160,12 @@ export class GroupHistoryComponent implements OnInit {
           copayers.push(element);
         }
       });
-      //console.log(copayers);
       return copayers;
     }
   }
 
   deletePayment(expenseId: number): void {
     this.apiService.deleteExpenseById(expenseId);
-    //console.log('Expense deleted');
   }
   public isactive(Absender: string): boolean {
     if (Absender === this.userName) {
@@ -207,21 +193,17 @@ export class GroupHistoryComponent implements OnInit {
       if (result === null) {
         //
       } else if (result != null && result.delete === false) {
-        //console.log(result, 'Änderung');
         this.chatContent[i].name = result.Text;
         const memebrs = this.extractCopayers(result.Mitglieder);
         this.chatContent[i].copayerNames = memebrs;
         this.chatContent[i].amount = result.Value;
         //this.chatContent[i].unpaid = true
-        //console.log(this.chatContent[i]);
         this.apiService.editExpenseById(
           this.chatContent[i].id,
           this.chatContent[i]
         );
-        //console.log(this.chatContent);
         window.location.reload();
       } else {
-        //console.log('DELETE');
         const dialogref = this.matDialog.open(DeleteGroupDialogComponent, {
           data: {
             groupId: this.chatContent[i].id,
@@ -236,11 +218,9 @@ export class GroupHistoryComponent implements OnInit {
         });
         dialogref.afterClosed().subscribe((resultdelete) => {
           if (resultdelete) {
-            //console.log('läuft');
             this.apiService
               .deleteExpenseById(this.chatContent[i].id)
               .subscribe((resp: any) => {
-                //console.log(resp);
                 window.location.reload();
               });
           }
@@ -251,7 +231,6 @@ export class GroupHistoryComponent implements OnInit {
 
   public checkDate(datecheck: string): boolean {
     const date = this.getDate(datecheck);
-    //console.log(date === this.ChatDatevar);
     if (date === this.ChatDatevar) {
       return false;
     } else {
@@ -320,7 +299,6 @@ export class GroupHistoryComponent implements OnInit {
     const month = date.substr(5, 2);
     const day = date.substr(8, 2);
     const currentdate = day + '.' + month + '.' + year;
-    //console.log(currentdate)
 
     return currentdate;
   }
@@ -336,7 +314,6 @@ export class GroupHistoryComponent implements OnInit {
     if (i !== 0) {
       oldDate = this.getDate(this.chatContent[i - 1].created);
     }
-    //console.log(currentDate);
     if (i === 0) {
       this.currentDate = currentDate;
       return true;
@@ -348,7 +325,6 @@ export class GroupHistoryComponent implements OnInit {
   }
 
   setnewDate(): boolean {
-    //console.log(this.ChatDatevar, this.currentDate);
     this.ChatDatevar = this.currentDate;
     return false;
   }
