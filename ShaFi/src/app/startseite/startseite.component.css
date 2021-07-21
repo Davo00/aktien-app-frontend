@@ -35,3 +35,27 @@ p {
   align-self: center;
   margin: 2rem 8rem 4rem 8rem;
 }
+
+@media screen and (max-width: 900px) {
+
+  p{
+    margin: 3rem 6rem 4rem 6rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .startText{
+    padding: 1rem 2rem 1rem 2rem
+  }
+
+  p{
+    margin: 2rem 4rem 4rem 4rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  p{
+    margin: 1rem 2rem 4rem 2rem;
+  }
+}
