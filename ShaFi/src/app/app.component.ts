@@ -42,9 +42,14 @@ export class AppComponent implements OnInit {
     } 
   }
 
+  
+
 //Die Folgenden Methoden werden für das SiteMenü gebraucht
   public thisclicked(): void {
     this.clicked = !this.clicked;
+  }
+  public mainclicked(): void{
+    this.clicked = false;
   }
 
   public isactive(): boolean {

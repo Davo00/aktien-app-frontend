@@ -7,19 +7,19 @@
       <ul class="MenuList">
         <li>
           <div *ngIf="logedIn === false">
-            <a class="NavListElement" href="#" routerLink="/"> Home </a>
+            <a class="NavListElement" href="#" routerLink="/" (click)="mainclicked()"> Home </a>
           </div>
           <div *ngIf="logedIn === true">
-            <a class="NavListElement" href="#" routerLink="/home"> Home </a>
+            <a class="NavListElement" href="#" routerLink="/home" (click)="mainclicked()"> Home </a>
           </div>
         </li>
         <li>
-          <a class="NavListElement" href="#" routerLink="/group-overview">
+          <a class="NavListElement" href="#" routerLink="/group-overview" (click)="mainclicked()">
             Group
           </a>
         </li>
         <li>
-          <a class="NavListElement" href="#" routerLink="/zahlungen">
+          <a class="NavListElement" href="#" routerLink="/zahlungen" (click)="mainclicked()">
             Payments
           </a>
         </li>
@@ -28,7 +28,7 @@
     </nav>
 
     <div class="LoginFeld">
-      <a class="LoginButton" href="#" routerLink="/login"> {{ getUsername() }} </a>
+      <a class="LoginButton" href="#" routerLink="/login" (click)="mainclicked()"> {{ getUsername() }} </a>
     </div>
   </div>
 
@@ -67,17 +67,20 @@
           </div>
           <ul class="BurgerNavList">
             <li>
-              <a class="BurgerNavListElement" href="#" routerLink="/">
-               Home
-              </a>
+              <div *ngIf="logedIn === false">
+                <a class="BurgerNavListElement" href="#" routerLink="/" (click)="thisclicked()"> Home </a>
+              </div>
+              <div *ngIf="logedIn === true">
+                <a class="BurgerNavListElement" href="#" routerLink="/home" (click)="thisclicked()"> Home </a>
+              </div>
             </li>
             <li>
-              <a class="BurgerNavListElement" href="#" routerLink="/">
+              <a class="BurgerNavListElement" href="#" routerLink="/group-overview" (click)="thisclicked()">
                 Group
               </a>
             </li>
             <li>
-              <a class="BurgerNavListElement" href="#" routerLink="/">
+              <a class="BurgerNavListElement" href="#" routerLink="/zahlungen" (click)="thisclicked()">
                 Payments
               </a>
             </li>
