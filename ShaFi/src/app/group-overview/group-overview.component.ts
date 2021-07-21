@@ -58,7 +58,7 @@ export class GroupOverviewComponent implements OnInit {
         const members = result.members;
         const GroupObject = { name: Name, usernames: members };
         this.apiService.createGroup(GroupObject).subscribe((result) => {
-        // const keys = result.headers.keys();
+          const response = result
         });
         window.location.reload();
       }
@@ -84,8 +84,10 @@ export class GroupOverviewComponent implements OnInit {
         this.Groups[arrayelement].name = result.groupName;
         this.Groups[arrayelement].id = result.groupId;
         this.Groups[arrayelement].usernames = result.members;
-        this.apiService.updateGroupById(groupId, this.Groups[arrayelement]);
-        window.location.reload();
+        this.apiService.updateGroupById(groupId, this.Groups[arrayelement]).subscribe(data =>{
+          const response = data
+                })
+       window.location.reload();
       }
     });
   }
@@ -120,7 +122,9 @@ export class GroupOverviewComponent implements OnInit {
           }
           i++;
         }
-        this.apiService.updateGroupByIdDelete(deleteGroup.id, deleteGroup);
+        this.apiService.updateGroupByIdDelete(deleteGroup.id, deleteGroup).subscribe(resp=>{
+          const response = resp
+        });
         window.location.reload();
       }
     });

@@ -8,8 +8,8 @@ const PROXY_CONFIG = [
             "/group",
             "/calculate"
         ],
-        //target: "http://162.55.185.65:8080",
-        target:"https://api.kreativegruppe42.de",
+        target: "http://162.55.185.65:8080",
+        //target:"https://api.kreativegruppe42.de",
         secure: true,
         changeOrigin: true
     }

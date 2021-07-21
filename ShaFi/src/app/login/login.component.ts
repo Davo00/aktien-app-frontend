@@ -21,14 +21,19 @@ export class LoginComponent {
     };
 
     this.api.postLogin(LoginData).subscribe((response) => {
-      const keys = response.headers.keys();
+      console.log("response", response)
+     /*  const keys = response.headers.keys();
       const headers = keys.map(
         (key: unknown) => `${key}: ${response.headers.get(key)}`
-      );
-      sessionStorage.setItem('Token', headers[2].slice(15));
-      sessionStorage.setItem('username', username); 	
-      window.location.reload;
+      ); */
+        const token = response.body.jwt
+        console.log(token)
+
+        localStorage.setItem('Token', token );
+      sessionStorage.setItem('username', username); 	 
+      
       this.router.navigate(['/home']);
+     
     });
   }
 }
