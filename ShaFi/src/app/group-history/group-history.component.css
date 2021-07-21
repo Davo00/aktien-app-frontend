@@ -37,6 +37,7 @@
   width: 5%;
   font-size: 2rem;
   color: black;
+  z-index: 3;
 }
 
 .AddButton:hover {

@@ -25,7 +25,7 @@ export class ChatdialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
+
     this.Mitgliederalt = this.data.Mitglieder;
     this.valuealt = this.data.Value;
     this.textalt = this.data.Text;
@@ -33,7 +33,7 @@ export class ChatdialogComponent implements OnInit {
   }
 
   public ngOnDestroy() {
-    console.log(this.data);
+
 
     if (
       this.data.Text === null ||
@@ -50,7 +50,6 @@ export class ChatdialogComponent implements OnInit {
     ) {
       this.matDialogRef.close(null);
     } else {
-      console.log('else');
       this.matDialogRef.close(this.data);
     }
   }
@@ -61,7 +60,6 @@ export class ChatdialogComponent implements OnInit {
 
   public safeChatDialog(text: string, amount: string, mitglieder: string) {
     this.data.Text = text;
-    console.log(amount);
     this.data.Value = parseInt(amount);
     this.data.Mitglieder = mitglieder;
     this.matDialogRef.close(this.data);

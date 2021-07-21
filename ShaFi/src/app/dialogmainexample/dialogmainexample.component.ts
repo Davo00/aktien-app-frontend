@@ -32,7 +32,6 @@ export class DialogmainexampleComponent {
     });
 
     dialogref.afterClosed().subscribe((result) => {
-      //console.log(result);
       this.Infos[number].name = result.Gruppenname;
       this.Infos[number].mitglieder = result.Mitglieder;
     });
@@ -53,8 +52,7 @@ export class DialogmainexampleComponent {
 
     dialogref.afterClosed().subscribe((result) => {
       if (result != null) {
-        //console.log(result);
-        this.Infos.push({
+          this.Infos.push({
           name: result.Gruppenname,
           mitglieder: result.Mitglieder,
         });

@@ -19,21 +19,18 @@ export class LoginComponent {
       password: passhash,
       username: username,
     };
-    //console.log(username, pass);
 
     this.api.postLogin(LoginData).subscribe((response) => {
-      //console.log(response);
-
       const keys = response.headers.keys();
-
       const headers = keys.map(
         (key: unknown) => `${key}: ${response.headers.get(key)}`
       );
       sessionStorage.setItem('Token', headers[2].slice(15));
       sessionStorage.setItem('username', username);
-      //console.log(sessionStorage.getItem('Token'));
-
+       	
+      window.location.reload
       this.router.navigate(['/home']);
+
     });
   }
 }

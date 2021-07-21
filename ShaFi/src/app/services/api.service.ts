@@ -38,7 +38,6 @@ export class ApiService {
 
   public editExpenseById(expenseId: number, element: object): Observable<any> {
     const url = '/expense/' + expenseId;
-    //console.log(element)
     return this.http.put<string>(url, element, {
       headers: this.headersToken,
       observe: 'response',
@@ -75,7 +74,6 @@ export class ApiService {
 
   public updateGroupById(groupId: number, data: Object): Observable<any> {
     let url = '/group/' + groupId;
-    //console.log(data)
     return this.http.put<string>(url, data, {
       headers: this.headersToken,
       observe: 'response',
@@ -109,7 +107,6 @@ export class ApiService {
 
   public postLogin(login: Object): Observable<any> {
     const url = '/user/login';
-    //console.log(login)
 
     return this.http.post<any>(url, login, { observe: 'response' });
   }
@@ -187,12 +184,10 @@ export class ApiService {
   public proposeShare(debtId: number, shareId: number): Observable<any> {
     const url = 'debt/propose';
     const body = { debtId: debtId, shareId: shareId };
-    //console.log(body);
     return this.http.put(url, body, { headers: this.headersToken });
   }
 
   public acceptShare(debtId: number): Observable<any> {
-    //console.log(debtId);
     const url = 'debt/accept/' + debtId;
     return this.http.put(url, null, {
       headers: this.headersToken,

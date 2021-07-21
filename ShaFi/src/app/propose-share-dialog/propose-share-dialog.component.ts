@@ -22,7 +22,6 @@ export class ProposeShareDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getAllShares().subscribe(shareData => {
-      console.log(shareData);
       for(let i=0; i < shareData.length; i++) {
         const shareObject: shareType = {name: shareData[i].name, price: shareData[i].price, shareId: shareData[i].id};
         this.displayedShares.push(shareObject);
@@ -36,9 +35,8 @@ export class ProposeShareDialogComponent implements OnInit {
   }
 
   public proposeShare(): void {
-    console.log(this.data.debtId, this.selectedShare);
-    this.api.proposeShare(this.data.debtId, this.selectedShare).subscribe(data => {
-      console.log(data);
+    this.api.proposeShare(this.data.debtId, this.selectedShare).subscribe(() => {
+    //
     });
     this.matDialogRef.close();
   }

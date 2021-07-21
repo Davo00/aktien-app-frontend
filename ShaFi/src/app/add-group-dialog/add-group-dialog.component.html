@@ -1,4 +1,11 @@
-<h2>Create Group</h2>
+
+<div *ngIf = "data.groupName === null">
+  <h2>Create Group</h2>
+</div>
+<div *ngIf = "data.groupName !== null">
+  <h2>Edit Group</h2>
+</div>
+
 <br />
 <div class="fields">
   <mat-form-field appearence="legacy" color="accent">

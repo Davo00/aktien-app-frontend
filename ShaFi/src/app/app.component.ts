@@ -20,31 +20,24 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     //Initiales Login
-    if (sessionStorage.getItem('Token') === null) {
-      const data = { password: 'pass', username: 'Cevin' };
-      //console.log(data);
-      sessionStorage.setItem('username', 'Cevin');
-      this.api.postLogin(data).subscribe((response) => {
-        //console.log(response);
+    // if (sessionStorage.getItem('Token') === null) {
+     /* const password = ''
+      const data = { password: 'pass', username: password };
+      sessionStorage.setItem('username', password);
+      this.api.postLogin(data).subscribe((response) => {     
         const keys = response.headers.keys();
-
-
         const headers = keys.map(
           (key: unknown) => `${key}: ${response.headers.get(key)}`
-        );
-        //console.log(keys);
-        //console.log(headers);
-        //console.log(headers[2].slice(15));
+        ); 
         sessionStorage.setItem('Token', headers[2].slice(15));
-        //console.log(sessionStorage.getItem('Token'));
-      });
-    }
-    sessionStorage.setItem('username', 'Cevin');
+        }); */
+    //}
+    //sessionStorage.setItem('username', 'Cevin');
     if (sessionStorage.getItem('username') !== null) {
       this.username = sessionStorage.getItem('username');
       this.logedIn = true;
     } else {
-      this.username = 'username';
+      this.username = 'Log In';
       this.logedIn = false;
     } 
   }

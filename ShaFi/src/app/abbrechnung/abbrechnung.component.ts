@@ -139,16 +139,21 @@ export class AbbrechnungComponent implements OnInit {
   }
 
   public finalizeAndDelete(): void {
-    this.api.finalizeCalculatedDebts(this.groupId);
-    this.api.deleteGroupById(this.groupId);
-    this.router.navigate(['/', 'home']);
+    this.api.finalizeCalculatedDebts(this.groupId).subscribe(()=>{
+      this.api.deleteGroupById(this.groupId);
+      window.location.reload
+      this.router.navigate(['/', 'zahlungen']);
+    })
+    
+    
   }
 
   public finalizeAndMaintain(): void {
-    console.log(this.groupId);
-    this.api.finalizeCalculatedDebts(this.groupId).subscribe();
-    window.location.reload;
-    this.router.navigate(['/', 'group', this.groupId]);
+    this.api.finalizeCalculatedDebts(this.groupId).subscribe( () =>{
+      window.location.reload;
+      this.router.navigate(['/', 'zahlungen']);
+    });
+    
   }
 }
 
