@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   clicked = false;
   logedIn = false;
-  username: unknown;
+  username: any;
 
   public ngOnInit(): void {
     //Initiales Login
@@ -53,6 +53,17 @@ export class AppComponent implements OnInit {
 
   public islogedIn(): boolean {
     return this.logedIn;
+  }
+
+  public getUsername(): string {
+    if (sessionStorage.getItem('username') !== null) {
+      this.username = sessionStorage.getItem('username');
+      this.logedIn = true;
+    } else {
+      this.username = 'Log In';
+      this.logedIn = false;
+    }
+    return this.username;
   }
 
 }

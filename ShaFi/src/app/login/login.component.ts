@@ -26,11 +26,9 @@ export class LoginComponent {
         (key: unknown) => `${key}: ${response.headers.get(key)}`
       );
       sessionStorage.setItem('Token', headers[2].slice(15));
-      sessionStorage.setItem('username', username);
-       	
-      window.location.reload
+      sessionStorage.setItem('username', username); 	
+      window.location.reload;
       this.router.navigate(['/home']);
-
     });
   }
 }
