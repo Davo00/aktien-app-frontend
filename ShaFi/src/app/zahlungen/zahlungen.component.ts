@@ -151,8 +151,8 @@ export class ZahlungenComponent implements OnInit {
       data: {
         debtId: buttonNumber
       },
-      width: '30vw',
-      height: '60vh',
+      width: '350px',
+      height: '400px',
       position: {},
       disableClose: false,
     });
