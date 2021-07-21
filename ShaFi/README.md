@@ -77,6 +77,9 @@ Damit kann man sagen, dass sehr viel Zeit für das Projekt aufgewendet wurde, um
 - Dauer einer Bezahlung angeben bei dem akzeptieren einer Aktie
 - Mehr Aktien zur Auswahl stellen
 - User Login sicherer machen (Passwort mit bsp. mindestens acht Zeichen) 
+- Design
+- Aktienkurs anzeigen
+
 
 ## Verwendung der App
 
