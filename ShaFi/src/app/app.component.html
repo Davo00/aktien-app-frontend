@@ -63,33 +63,33 @@
 
           <div (click)="this.router.navigate(['login']); clicked = !clicked" class="UserIcon">
             <i class="far fa-user"></i>
-            <p class="UserName">Username</p>
+            <p class="UserName">{{ getUsername() }}</p>
           </div>
           <ul class="BurgerNavList">
             <li>
               <a class="BurgerNavListElement" href="#" routerLink="/">
-                Element der Liste
+               Home
               </a>
             </li>
             <li>
               <a class="BurgerNavListElement" href="#" routerLink="/">
-                Element der Liste
+                Group
               </a>
             </li>
             <li>
               <a class="BurgerNavListElement" href="#" routerLink="/">
-                Element der Liste
+                Payments
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a class="BurgerNavListElement" href="#" routerLink="/">
                 Element der Liste
               </a>
             </li>
-            <div class="BurgerNavListElementEinstellung">Einstellungen</div>
+            <div class="BurgerNavListElementEinstellung">Einstellungen</div> -->
           </ul>
         </div>
-        <ul class="BurgerNavList">
+        <!-- <ul class="BurgerNavList">
           <li>
             <a class="BurgerNavListElement" href="#" routerLink="/">
               Element der Liste
@@ -114,7 +114,7 @@
           <a class="BurgerNavListElement" href="#" routerLink="/">
             Einstellungen
           </a>
-        </ul>
+        </ul> -->
       </div>
       <!-- </div> -->
     </div>
