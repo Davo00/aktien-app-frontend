@@ -10,7 +10,7 @@ const PROXY_CONFIG = [
         ],
         //target: "http://162.55.185.65:8080",
         target:"https://api.kreativegruppe42.de",
-        secure: false,
+        secure: true,
         changeOrigin: true
     }
 ]
