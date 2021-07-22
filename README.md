@@ -6,25 +6,25 @@
 
 # Screenshots
 <p align="center">
- <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-home.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-home.png" height = auto width= auto>
 </p>
 <p align="center">
- <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-login.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-login.png" height = auto width= auto>
 </p>
 <p align="center">
- <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-group-overview.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-group-overview.png" height = auto width= auto>
 </p>
 <p align="center">
- <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-group-history.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-group-history.png" height = auto width= auto>
 </p>
 <p align="center">
- <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-payment.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-payment.png" height = auto width= auto>
 </p>
 <p align="center">
- <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-settlement.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-settlement.png" height = auto width= auto>
 </p>
 <p align="center">
- <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-payments.png" height = 10% width= auto>
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-payments.png" height = auto width= auto>
 </p>
 
 # Dokumentationen
