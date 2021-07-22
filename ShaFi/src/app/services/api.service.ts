@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  token = localStorage.getItem('Token');
+  token = sessionStorage.getItem('Token');
   headersToken = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
   //baseUrl = "https://api.kreativegruppe42.de"
   baseUrl = "http://162.55.185.65:8080"
@@ -188,13 +188,13 @@ export class ApiService {
   }
 
   public proposeShare(debtId: number, shareId: number): Observable<any> {
-    const url = this.baseUrl + 'debt/propose';
+    const url = this.baseUrl + '/debt/propose';
     const body = { debtId: debtId, shareId: shareId };
     return this.http.put(url, body, { headers: this.headersToken });
   }
 
   public acceptShare(debtId: number): Observable<any> {
-    const url = this.baseUrl + 'debt/accept/' + debtId;
+    const url = this.baseUrl + '/debt/accept/' + debtId;
     return this.http.put(url, null, {
       headers: this.headersToken,
       observe: 'response',
