@@ -21,15 +21,13 @@ export class LoginComponent {
     };
 
     this.api.postLogin(LoginData).subscribe((response) => {
-      console.log("response", response)
      /*  const keys = response.headers.keys();
       const headers = keys.map(
         (key: unknown) => `${key}: ${response.headers.get(key)}`
       ); */
         const token = response.body.jwt
-        console.log(token)
 
-        localStorage.setItem('Token', token );
+      sessionStorage.setItem('Token', token );
       sessionStorage.setItem('username', username); 	 
       
       this.router.navigate(['/home']);
