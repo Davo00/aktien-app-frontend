@@ -36,6 +36,6 @@
 
 
 # Wichtige Links
-1. [Die Webseite](http://162.55.185.65/)
+1. [Die Webseite](http://kreativegruppe42.de/#/)
 2. [Das Backend](https://github.com/Davo00/aktien-app-backend)
 
