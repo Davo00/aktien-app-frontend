@@ -5,7 +5,27 @@
 
 
 # Screenshots
-Kommen im laufe der Tage hinzu
+<p align="center">
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-home.png" height = 10% width= auto>
+</p>
+<p align="center">
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-login.png" height = 10% width= auto>
+</p>
+<p align="center">
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-group-overview.png" height = 10% width= auto>
+</p>
+<p align="center">
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-group-history.png" height = 10% width= auto>
+</p>
+<p align="center">
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-payment.png" height = 10% width= auto>
+</p>
+<p align="center">
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-settlement.png" height = 10% width= auto>
+</p>
+<p align="center">
+ <img alt ="ShaFi Logo"  src="./Doku_Unterlagen/ShaFi-payments.png" height = 10% width= auto>
+</p>
 
 # Dokumentationen
 1. [Dokumenation des Frontend](https://github.com/Davo00/aktien-app-frontend/tree/main/ShaFi#readme)
