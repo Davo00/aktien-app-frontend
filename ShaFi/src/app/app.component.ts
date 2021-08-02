@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   title = 'ShaFi';
 
   constructor(public router: Router,
-     private api: ApiService
+     private api: ApiService,
+     
      ) {}
 
   clicked = false;
@@ -71,4 +72,8 @@ export class AppComponent implements OnInit {
     return this.username;
   }
 
-}
+
+
+  
+  }
+

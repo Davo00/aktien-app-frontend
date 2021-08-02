@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dialog.component';
 import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
-import { trigger, keyframes, animate, transition } from '@angular/animations';
+import { trigger, keyframes, animate, transition, group } from '@angular/animations';
 import * as kf from './keyframes';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-dialog.component';
+import { AppService } from '../app.service';
+
 
 @Component({
   selector: 'app-group-history',
@@ -38,7 +40,8 @@ export class GroupHistoryComponent implements OnInit {
     private matDialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private appService:AppService
   ) {
     this.animationState = '';
     this.currentTabChat = false;
@@ -194,8 +197,8 @@ export class GroupHistoryComponent implements OnInit {
         //
       } else if (result != null && result.delete === false) {
         this.chatContent[i].name = result.Text;
-        const memebrs = this.extractCopayers(result.Mitglieder);
-        this.chatContent[i].copayerNames = memebrs;
+        //const memebrs = this.extractCopayers(result.Mitglieder);
+        this.chatContent[i].copayerNames = result.Mitglieder;
         this.chatContent[i].amount = result.Value;
         //this.chatContent[i].unpaid = true
         this.apiService.editExpenseById(
@@ -328,4 +331,33 @@ export class GroupHistoryComponent implements OnInit {
     this.ChatDatevar = this.currentDate;
     return false;
   }
+
+  download(){
+    console.log(this.chatContent)
+
+    let Infos: { name: string; paidby: string; amount: number; copayerNames: string; created: string; description: string }[] = [];
+
+    let date = this.getHours(this.chatContent[0].created);
+    let date2 = this.getDate(this.chatContent[0].created)
+    let i = 0;
+    console.log(date, date2)
+    
+    for(let chatbox in this.chatContent){
+      let copayer = this.chatContent[i].copayerNames.replaceAll(`,`,';')
+      Infos.push({
+        'name': this.chatContent[i].name, 'paidby': this.chatContent[i].userPaid, 'amount': this.chatContent[i].amount, 'copayerNames': copayer, 'created': date2 +' : '+ date,'description': this.chatContent[i].description
+      })
+      i++
+    }
+    console.log(Infos)
+let groupname = "";
+    this.apiService.updateGroupById(this.groupId, null).subscribe( data =>{
+      console.log(data.name)
+      groupname = data.name
+
+        })
+
+
+      this.appService.downloadFile(Infos, 'AllExpenses' + "_" +groupname);
+    }
 }

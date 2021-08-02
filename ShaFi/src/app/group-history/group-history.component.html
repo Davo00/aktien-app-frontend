@@ -38,6 +38,10 @@
     <div class="groupChat" [ngClass]="{ deactiv: returnChatHistory() }">
       <div class="groupChatContainer">
         <h1 class="heading">Group Chat</h1>
+        <div (click)="download()"  class="AddButton" style = "float:right">
+          <i class="fas fa-file-download"></i>
+       
+      </div>
         <div class="groupChatContent" id="scrollBlock">
           <div class="Chatprogramm">
             <div class="ChatprogrammDiv">
