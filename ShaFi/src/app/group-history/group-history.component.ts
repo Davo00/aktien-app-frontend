@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AddPaymentDialogComponent } from '../add-payment-dialog/add-payment-dialog.component';
-import { ChatdialogComponent } from '../chatdialog/chatdialog.component';
-import { trigger, keyframes, animate, transition, group } from '@angular/animations';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {AddPaymentDialogComponent} from '../add-payment-dialog/add-payment-dialog.component';
+import {ChatdialogComponent} from '../chatdialog/chatdialog.component';
+import {trigger, keyframes, animate, transition, group} from '@angular/animations';
 import * as kf from './keyframes';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from '../services/api.service';
-import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-dialog.component';
-import { AppService } from '../app.service';
+import {Router, ActivatedRoute} from '@angular/router';
+import {ApiService} from '../services/api.service';
+import {DeleteGroupDialogComponent} from '../delete-group-dialog/delete-group-dialog.component';
+import {AppService} from '../app.service';
 
 
 @Component({
@@ -41,7 +41,7 @@ export class GroupHistoryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private apiService: ApiService,
-    private appService:AppService
+    private appService: AppService
   ) {
     this.animationState = '';
     this.currentTabChat = false;
@@ -81,7 +81,7 @@ export class GroupHistoryComponent implements OnInit {
       .subscribe((returnData: unknown) => {
         this.credits = returnData;
         this.credits.forEach(() => {
-        //
+          //
         });
       });
 
@@ -141,8 +141,8 @@ export class GroupHistoryComponent implements OnInit {
         });
         this.apiService.createExpense(addedCredit).subscribe((result) => {
           const keys = result.headers.keys();
+          window.location.reload();
         });
-        window.location.reload();
       }
     });
   }
@@ -170,6 +170,7 @@ export class GroupHistoryComponent implements OnInit {
   deletePayment(expenseId: number): void {
     this.apiService.deleteExpenseById(expenseId);
   }
+
   public isactive(Absender: string): boolean {
     if (Absender === this.userName) {
       return true;
@@ -197,15 +198,18 @@ export class GroupHistoryComponent implements OnInit {
         //
       } else if (result != null && result.delete === false) {
         this.chatContent[i].name = result.Text;
-        //const memebrs = this.extractCopayers(result.Mitglieder);
-        this.chatContent[i].copayerNames = result.Mitglieder;
+        const members = this.extractCopayers(result.Mitglieder);
+        this.chatContent[i].copayerNames = members;
+        //console.log(this.chatContent[i].copayerNames);
         this.chatContent[i].amount = result.Value;
         //this.chatContent[i].unpaid = true
         this.apiService.editExpenseById(
           this.chatContent[i].id,
           this.chatContent[i]
-        );
-        window.location.reload();
+        ).subscribe(data => {
+          //console.log(data);
+        })
+        //window.location.reload();
       } else {
         const dialogref = this.matDialog.open(DeleteGroupDialogComponent, {
           data: {
@@ -310,7 +314,7 @@ export class GroupHistoryComponent implements OnInit {
     const houramndMin = hours.substr(11, 5);
     return houramndMin;
   }
-  
+
   public checkDates(i: number): boolean {
     const currentDate = this.getDate(this.chatContent[i].created);
     let oldDate = '';
@@ -332,32 +336,40 @@ export class GroupHistoryComponent implements OnInit {
     return false;
   }
 
-  download(){
-    console.log(this.chatContent)
+  download() {
+    //console.log(this.chatContent)
 
     let Infos: { name: string; paidby: string; amount: number; copayerNames: string; created: string; description: string }[] = [];
 
     let date = this.getHours(this.chatContent[0].created);
     let date2 = this.getDate(this.chatContent[0].created)
     let i = 0;
-    console.log(date, date2)
-    
-    for(let chatbox in this.chatContent){
-      let copayer = this.chatContent[i].copayerNames.replaceAll(`,`,';')
+    //console.log(date, date2)
+
+    for (let chatbox in this.chatContent) {
+      let copayer = this.chatContent[i].copayerNames
       Infos.push({
-        'name': this.chatContent[i].name, 'paidby': this.chatContent[i].userPaid, 'amount': this.chatContent[i].amount, 'copayerNames': copayer, 'created': date2 +' : '+ date,'description': this.chatContent[i].description
+        'name': this.chatContent[i].name,
+        'paidby': this.chatContent[i].userPaid,
+        'amount': this.chatContent[i].amount.toString().replace(".", ","),
+        'copayerNames': copayer,
+        'created': date2 + ' : ' + date,
+        'description': this.chatContent[i].description
       })
       i++
     }
-    console.log(Infos)
-let groupname = "";
-    this.apiService.updateGroupById(this.groupId, null).subscribe( data =>{
-      console.log(data.name)
-      groupname = data.name
+    //console.log(Infos)
+    let groupname = "";
+    this.apiService.getGroupnameById(this.groupId).subscribe((data: any) => {
+      //console.log(data.body.name)
+      groupname = data.body.name
+      //console.log("Groupname" + groupname)
+      let currentDate: string = new Date().toDateString();
+      //console.log(currentDate);
+      let dateparts = currentDate.split(" ");
+      currentDate = dateparts[2] + "-" + dateparts[1] + "-" + dateparts[3];
+      this.appService.downloadFile(Infos, 'AllExpenses' + "_" + groupname + "_" + currentDate);
+    })
 
-        })
-
-
-      this.appService.downloadFile(Infos, 'AllExpenses' + "_" +groupname);
-    }
+  }
 }

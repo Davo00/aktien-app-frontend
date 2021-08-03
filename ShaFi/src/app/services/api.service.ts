@@ -1,7 +1,7 @@
-import { dataType } from './../abbrechnung/abbrechnung.component';
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {dataType} from './../abbrechnung/abbrechnung.component';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,17 +9,19 @@ import { Observable } from 'rxjs';
 export class ApiService {
   token = sessionStorage.getItem('Token');
   headersToken = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
-  baseUrl = "https://api.kreativegruppe42.de"
-  //baseUrl = "http://162.55.185.65:8080"
+  //baseUrl = "https://api.kreativegruppe42.de"
+  baseUrl = "http://localhost:8080"
+
   //.set('Access-Control-Allow-Origin', 'POST');
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   // ** EXPENSE CONTROLLER ** //
 
   public getAllExpense(): any {
     const url = this.baseUrl + '/expense';
-    return this.http.get(url, { headers: this.headersToken });
+    return this.http.get(url, {headers: this.headersToken});
   }
 
   public getSpecificExpense(groupId: number): any {
@@ -56,13 +58,18 @@ export class ApiService {
 
   // ** GROUP CONTROLLER ** //
 
+  public getGroupnameById(groupId: number): any {
+    const url = this.baseUrl + '/group/' + 'name/' + groupId;
+    return this.http.get(url, {headers: this.headersToken, observe: 'response'}); // this.baseUrl + url
+  }
+
   public getUserByGroup(groupId: number): any {
     const url = this.baseUrl + '/group/' + 'allUsers/' + groupId;
-    return this.http.get(url, { headers: this.headersToken }); // this.baseUrl + url
+    return this.http.get(url, {headers: this.headersToken}); // this.baseUrl + url
   }
 
   public createGroup(group: any): Observable<any> {
-    const url = this.baseUrl +  '/group';
+    const url = this.baseUrl + '/group';
     return this.http.post<string>(url, group, {
       headers: this.headersToken,
       observe: 'response',
@@ -71,7 +78,7 @@ export class ApiService {
 
   public addUserToGroup(groupId: number, userName: string): Observable<any> {
     const url = this.baseUrl + '/group/' + groupId + '/' + userName;
-    return this.http.put<string>(url, null, { headers: this.headersToken });
+    return this.http.put<string>(url, null, {headers: this.headersToken});
   }
 
   public updateGroupById(groupId: number, data: any): Observable<any> {
@@ -84,7 +91,7 @@ export class ApiService {
   }
 
   public updateGroupByIdDelete(groupId: number, data: any): Observable<any> {
-    const url = this.baseUrl +  '/group/' + groupId;
+    const url = this.baseUrl + '/group/' + groupId;
     return this.http.put<string>(url, data, {
       headers: this.headersToken,
       observe: 'response',
@@ -93,40 +100,39 @@ export class ApiService {
 
   public deleteGroupById(groupId: number): Observable<any> {
     const url = this.baseUrl + '/group/' + groupId;
-    return this.http.delete<string>(url, { headers: this.headersToken,observe: 'response', });
+    return this.http.delete<string>(url, {headers: this.headersToken, observe: 'response',});
   }
 
   // ** USER CONTROLLER ** //
 
   public getAllGroupsOfUser(): Observable<any> {
     const url = this.baseUrl + '/user/' + 'allGroups/';
-    return this.http.get<any>(url, { headers: this.headersToken });
+    return this.http.get<any>(url, {headers: this.headersToken});
   }
 
   public getUsersByGroup(groupName: string): any {
     const url = this.baseUrl + '/user/' + 'group/' + groupName;
-    return this.http.get(url, { headers: this.headersToken });
+    return this.http.get(url, {headers: this.headersToken});
   }
 
   public postLogin(login: any): Observable<any> {
     const url = this.baseUrl + '/user/login';
 
-    return this.http.post<any>(url, login, { observe: 'response' })
-      
-    
-    
+    return this.http.post<any>(url, login, {observe: 'response'})
+
+
   }
 
   // ** CALCULATE CONTROLLER ** //
 
   public getCalculatedDebtsForGroup(groupId: number): Observable<dataType[]> {
-    const url =this.baseUrl +  '/calculate/debts/' + groupId;
-    return this.http.get<dataType[]>(url, { headers: this.headersToken });
+    const url = this.baseUrl + '/calculate/debts/' + groupId;
+    return this.http.get<dataType[]>(url, {headers: this.headersToken});
   }
 
   public getCredits(groupId: number): Observable<dataType[]> {
-    const url =this.baseUrl +  '/calculate/overview/' + groupId;
-    return this.http.get<dataType[]>(url, { headers: this.headersToken });
+    const url = this.baseUrl + '/calculate/overview/' + groupId;
+    return this.http.get<dataType[]>(url, {headers: this.headersToken});
   }
 
   public finalizeCalculatedDebts(groupId: number): Observable<any> {
@@ -142,7 +148,7 @@ export class ApiService {
 
   public postRegister(register: any): Observable<any> {
     const url = this.baseUrl + '/user/register';
-    return this.http.post<any>(url, register, { observe: 'response' });
+    return this.http.post<any>(url, register, {observe: 'response'});
   }
 
   public createUser(): Observable<any> {
@@ -179,18 +185,18 @@ export class ApiService {
   // ** DEBT CONTROLLER ** //
   public getAllDebts(): any {
     const url = this.baseUrl + '/debt';
-    return this.http.get(url, { headers: this.headersToken });
+    return this.http.get(url, {headers: this.headersToken});
   }
 
   public getAllDebtsForUser(): Observable<any> {
     const url = this.baseUrl + '/user/debt';
-    return this.http.get<any>(url, { headers: this.headersToken });
+    return this.http.get<any>(url, {headers: this.headersToken});
   }
 
   public proposeShare(debtId: number, shareId: number): Observable<any> {
     const url = this.baseUrl + '/debt/propose';
-    const body = { debtId: debtId, shareId: shareId };
-    return this.http.put(url, body, { headers: this.headersToken });
+    const body = {debtId: debtId, shareId: shareId};
+    return this.http.put(url, body, {headers: this.headersToken});
   }
 
   public acceptShare(debtId: number): Observable<any> {
@@ -202,13 +208,13 @@ export class ApiService {
   }
 
   public closePaidDebt(debtId: number): Observable<any> {
-    const url =this.baseUrl +  '/debt/' + debtId + '/paid/' + true;
+    const url = this.baseUrl + '/debt/' + debtId + '/paid/' + true;
     return this.http.put(url, null, {headers: this.headersToken, observe: 'response'});
   }
 
   // ** SHARE CONTROLLER ** //
   public getAllShares(): Observable<any> {
     const url = this.baseUrl + '/share';
-    return this.http.get<any>(url, { headers: this.headersToken });
+    return this.http.get<any>(url, {headers: this.headersToken});
   }
 }

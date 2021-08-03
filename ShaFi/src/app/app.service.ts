@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AppService {
 downloadFile(data:any, filename='data') {
-   
+
         let csvData = this.ConvertToCSV(data, ['name','paidby','amount', 'copayerNames', 'created', 'description']);
-        console.log(csvData)
+        //console.log(csvData)
         let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' });
         let dwldLink = document.createElement("a");
         let url = URL.createObjectURL(blob);
@@ -22,9 +22,9 @@ downloadFile(data:any, filename='data') {
 ConvertToCSV(objArray:any, headerList:any) {
          let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
          let str = '';
-         let row = 'ID,';
+         let row = 'ID;';
 for (let index in headerList) {
-             row += headerList[index] + ',';
+             row += headerList[index] + ';';
          }
          row = row.slice(0, -1);
          str += row + '\r\n';
@@ -32,7 +32,7 @@ for (let index in headerList) {
              let line = (i+1)+'';
              for (let index in headerList) {
                 let head = headerList[index];
-line += ',' + array[i][head];
+line += ';' + array[i][head];
              }
              str += line + '\r\n';
          }
@@ -43,4 +43,3 @@ line += ',' + array[i][head];
 
 
    }
-   
