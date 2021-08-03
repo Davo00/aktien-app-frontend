@@ -9,8 +9,8 @@ import {Observable} from 'rxjs';
 export class ApiService {
   token = sessionStorage.getItem('Token');
   headersToken = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
-  //baseUrl = "https://api.kreativegruppe42.de"
-  baseUrl = "http://localhost:8080"
+  baseUrl = "https://api.kreativegruppe42.de"
+  //baseUrl = "http://localhost:8080"
 
   //.set('Access-Control-Allow-Origin', 'POST');
 
