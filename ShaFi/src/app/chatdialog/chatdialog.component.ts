@@ -33,8 +33,6 @@ export class ChatdialogComponent implements OnInit {
   }
 
   public ngOnDestroy() {
-
-
     if (
       this.data.Text === null ||
       this.data.Value === null ||

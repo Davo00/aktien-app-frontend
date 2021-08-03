@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AddGroupDialogComponent } from '../add-group-dialog/add-group-dialog.component';
-import { Router } from '@angular/router';
-import { ResizedEvent } from 'angular-resize-event';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../services/api.service';
-import { DeleteGroupDialogComponent } from '../delete-group-dialog/delete-group-dialog.component';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {AddGroupDialogComponent} from '../add-group-dialog/add-group-dialog.component';
+import {Router} from '@angular/router';
+import {ResizedEvent} from 'angular-resize-event';
+import {ActivatedRoute} from '@angular/router';
+import {ApiService} from '../services/api.service';
+import {DeleteGroupDialogComponent} from '../delete-group-dialog/delete-group-dialog.component';
 
 type groupType = { name: string; id: number; usernames: string[] };
 
@@ -26,6 +26,7 @@ export class GroupOverviewComponent implements OnInit {
       this.Groups = data;
     });
   }
+
   constructor(
     private matDialog: MatDialog,
     private router: Router,
@@ -56,11 +57,12 @@ export class GroupOverviewComponent implements OnInit {
       } else {
         const Name = result.groupName;
         const members = result.members;
-        const GroupObject = { name: Name, usernames: members };
+        const GroupObject = {name: Name, usernames: members};
         this.apiService.createGroup(GroupObject).subscribe((result) => {
           const response = result
+          window.location.reload();
+
         });
-        window.location.reload();
       }
     });
   }
@@ -84,10 +86,10 @@ export class GroupOverviewComponent implements OnInit {
         this.Groups[arrayelement].name = result.groupName;
         this.Groups[arrayelement].id = result.groupId;
         this.Groups[arrayelement].usernames = result.members;
-        this.apiService.updateGroupById(groupId, this.Groups[arrayelement]).subscribe(data =>{
+        this.apiService.updateGroupById(groupId, this.Groups[arrayelement]).subscribe(data => {
           const response = data
-                })
-       window.location.reload();
+          window.location.reload();
+        })
       }
     });
   }
@@ -122,10 +124,10 @@ export class GroupOverviewComponent implements OnInit {
           }
           i++;
         }
-        this.apiService.updateGroupByIdDelete(deleteGroup.id, deleteGroup).subscribe(resp=>{
+        this.apiService.updateGroupByIdDelete(deleteGroup.id, deleteGroup).subscribe(resp => {
           const response = resp
+          window.location.reload();
         });
-        window.location.reload();
       }
     });
   }

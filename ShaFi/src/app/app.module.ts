@@ -45,6 +45,7 @@ import { CommonModule } from '@angular/common';
 import { ProposeShareDialogComponent } from './propose-share-dialog/propose-share-dialog.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-dialog.component';
+import { AppService } from './app.service';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -102,6 +103,7 @@ export class MyHammerConfig extends HammerGestureConfig {
       useClass: MyHammerConfig,
     },
     ApiService,
+    AppService,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
